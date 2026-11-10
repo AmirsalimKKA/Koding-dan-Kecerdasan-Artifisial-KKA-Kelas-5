@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Materi 1 – Mengenal Berpikir Komputasional</title>
-<!-- Tailwind & FontAwesome for consistency -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -13,20 +12,16 @@
   --card: #ffffff; 
   --ink: #333333; 
   --muted: #6b6880;
-  
-  /* VisualMath KKA Theme Colors */
   --navy: #022050;
   --teal: #0B7C86; 
   --teal-d: #085E66;
   --cyan: #00D6D8;
-  
   --orange: #ff8a3d; 
   --orange-d: #d4651a;
   --yellow: #ffd34e; 
   --pink: #ff6f91; 
   --green: #2fb36d; 
   --red: #e5484d; 
-
   --line: #c3e2e5; 
   --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
   --r: 20px;
@@ -49,10 +44,8 @@ h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margi
 h2{font-size:1.55rem} h3{font-size:1.15rem}
 p{margin:.4em 0 .8em}
 button{font:inherit;cursor:pointer}
-.sr{position:absolute;left:-9999px}
 a{color:var(--teal-d)}
 
-/* top bar */
 .top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
 .top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -84,7 +77,6 @@ a{color:var(--teal-d)}
 .btn{border:0;border-radius:14px;padding:12px 20px;font-weight:800;color:#fff;background:var(--teal);box-shadow:0 4px 0 var(--teal-d);transition:all .1s; font-family: 'Fredoka', sans-serif; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 8px;}
 .btn:hover { background: var(--navy); box-shadow:0 4px 0 #01122e; }
 .btn.o{background:var(--orange);box-shadow:0 4px 0 var(--orange-d)}
-.btn.o:hover { background: #e87b32; box-shadow:0 4px 0 var(--orange-d); }
 .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
 .btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -107,7 +99,6 @@ table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:
 table.t th{background:#e9f8f9; color: var(--navy);}
 .foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
 
-/* Interactive Quiz Styles */
 .quiz-box { margin-bottom: 16px; }
 .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
 .opt-btn { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 10px 14px; text-align: left; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--ink); }
@@ -173,7 +164,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div class="bubble">“Tenang, Andi. Ayo kita selesaikan dengan <b>berpikir komputasional</b>!”</div>
     </div>
 
-    <!-- Analisis Cerita Interaktif untuk Siswa -->
     <div class="card">
       <h3>🔍 Ayo Analisis Cerita Andi</h3>
       <p class="mini">Pilih jawaban yang paling tepat untuk menguji pemahamanmu tentang masalah Andi!</p>
@@ -262,7 +252,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <h2 id="latihan">5. Ayo Berlatih!</h2>
     <p>Uji kemampuan detektif masalahmu dengan memilih jawaban analisis masalah yang paling tepat berikut!</p>
     
-    <!-- Latihan 1: Situasi Terlambat -->
     <div class="card">
       <h3>Kasus 1: Terlambat ke Sekolah</h3>
       <div class="quiz-box" id="lat1">
@@ -278,7 +267,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       </div>
     </div>
 
-    <!-- Latihan 2: Situasi Buku Tertinggal -->
     <div class="card">
       <h3>Kasus 2: Buku PR Tertinggal</h3>
       <div class="quiz-box" id="lat2">
@@ -294,7 +282,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       </div>
     </div>
 
-    <!-- Latihan 3: Situasi Tas Berat -->
     <div class="card">
       <h3>Kasus 3: Tas Terlalu Berat</h3>
       <div class="quiz-box" id="lat3">
@@ -332,7 +319,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <h3>✅ Uji Pemahaman Mandiri</h3>
       <p class="mini">Klik pilihan jawaban yang menurutmu paling tepat. Pembahasan akan langsung muncul!</p>
       
-      <!-- Soal 1 -->
       <div class="quiz-box" id="q1">
         <p><b>1. Berpikir komputasional adalah cara berpikir untuk …</b></p>
         <div class="quiz-options">
@@ -345,7 +331,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
         </div>
       </div>
 
-      <!-- Soal 2 -->
       <div class="quiz-box" id="q2" style="margin-top: 20px;">
         <p><b>2. Contoh masalah sederhana dalam kehidupan sehari-hari adalah …</b></p>
         <div class="quiz-options">
@@ -358,7 +343,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
         </div>
       </div>
 
-      <!-- Soal 3 -->
       <div class="quiz-box" id="q3" style="margin-top: 20px;">
         <p><b>3. Langkah pertama saat menghadapi masalah adalah …</b></p>
         <div class="quiz-options">
@@ -388,7 +372,6 @@ function checkAnswer(btn, qId, isCorrect) {
   const buttons = container.querySelectorAll('.opt-btn');
   const explanation = document.getElementById('exp-' + qId);
 
-  // Nonaktifkan semua pilihan setelah dijawab
   buttons.forEach(b => {
     b.style.pointerEvents = 'none';
   });
@@ -399,7 +382,6 @@ function checkAnswer(btn, qId, isCorrect) {
     btn.classList.add('wrong');
   }
 
-  // Tampilkan pembahasan
   if (explanation) {
     explanation.style.display = 'block';
   }
