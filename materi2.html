@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Materi 2 – Urutan Langkah dan IPO</title>
+<!-- Tailwind & FontAwesome for consistency -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>:root{
+  --bg: #f4f9f9; 
+  --card: #ffffff; 
+  --ink: #333333; 
+  --muted: #6b6880;
+  
+  /* VisualMath KKA Theme Colors */
+  --navy: #022050;
+  --teal: #0B7C86; 
+  --teal-d: #085E66;
+  --cyan: #00D6D8;
+  
+  --orange: #ff8a3d; 
+  --orange-d: #d4651a;
+  --yellow: #ffd34e; 
+  --pink: #ff6f91; 
+  --green: #2fb36d; 
+  --red: #e5484d; 
+
+  --line: #c3e2e5; 
+  --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
+  --r: 20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: 'Nunito', "Trebuchet MS", sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margin:0 0 .5em; color: var(--navy);}
+h2{font-size:1.55rem} h3{font-size:1.15rem}
+p{margin:.4em 0 .8em}
+button{font:inherit;cursor:pointer}
+.sr{position:absolute;left:-9999px}
+a{color:var(--teal-d)}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
+.top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.top .ttl{font-size:1.1rem;line-height:1.15; color: var(--cyan);}
+.top .ttl small{display:block;font-weight:600;opacity:.85;font-size:.78rem; color: #e2e8f0; font-family: 'Nunito', sans-serif;}
+.top .sp{flex:1}
+.home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
+.home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
+
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+.toc{display:flex;flex-wrap:wrap;gap:8px}.toc a{text-decoration:none;font-weight:700;background:#fff;border:2px solid var(--line);border-radius:99px;padding:3px 14px;color:var(--ink); transition: all 0.2s;}
+.toc a:hover{background: var(--teal); color: white; border-color: var(--teal);}
+.def{background:#e9f8f9;border:3px solid var(--teal);border-radius:var(--r);padding:14px 18px;font-size:1.15rem;font-weight:700;margin:14px 0; color: var(--navy);}
+.tbl{overflow-x:auto}
+
+.art h2{margin-top:30px;border-bottom:4px solid var(--yellow);display:inline-block;padding-bottom:2px}
+.art p,.art li{font-size:1.05rem}
+.kw span{display:inline-block;background:#fff1d6;border:2px solid #ffdca1;border-radius:99px;padding:1px 12px;margin:2px;font-weight:700;font-size:.9rem; color: var(--orange-d);}
+
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);margin:16px 0; transition: transform 0.2s;}
+.card:hover { transform: translateY(-3px); }
+.card.tip{background:#f0fbff;border-color:var(--cyan)}
+.card.key{background:var(--navy);border-color:var(--navy); color: white;}
+.card.key h3, .card.key b { color: var(--cyan); }
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+
+.btn{border:0;border-radius:14px;padding:12px 20px;font-weight:800;color:#fff;background:var(--teal);box-shadow:0 4px 0 var(--teal-d);transition:all .1s; font-family: 'Fredoka', sans-serif; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 8px;}
+.btn:hover { background: var(--navy); box-shadow:0 4px 0 #01122e; }
+.btn.o{background:var(--orange);box-shadow:0 4px 0 var(--orange-d)}
+.btn.o:hover { background: #e87b32; box-shadow:0 4px 0 var(--orange-d); }
+.btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
+
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:4px 14px;font-size:.8rem;font-weight:800;border:2px solid}
+.chip.tp{background:#e3f6f7;color:var(--teal-d);border-color:var(--cyan)}
+.chip.mindful{background:#e8efff;color:#2c52c4;border-color:#c6d5ff}
+.chip.joyful{background:#fff1d6;color:#a8620a;border-color:#ffdca1}
+.chip.meaningful{background:#e2f7ea;color:#1c7d49;border-color:#b4e8ca}
+.chip.intro{background:#f0e9ff;color:#5b3bb5;border-color:#d9c9ff}
+
+.kodi-say{display:flex;gap:16px;align-items:flex-start}
+.kodi-say img {width:90px;height:90px;flex:0 0 auto; object-fit: contain;}
+.bubble{background:#fff;border:2px solid var(--teal);border-radius:18px;padding:14px 20px;position:relative;box-shadow:0 4px 0 var(--teal);font-weight:600; color: var(--ink);}
+.card.key .bubble { background: var(--teal); color: white; border-color: var(--cyan); box-shadow: 0 4px 0 var(--navy); }
+
+table.t{border-collapse:collapse;width:100%;font-size:.95rem}
+table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.t th{background:#e9f8f9; color: var(--navy);}
+.foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
+
+/* Flow & IPO specific styles */
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:12px 0}
+.flow .s{background:#fff;border:2px solid var(--teal);border-radius:14px;padding:8px 12px;font-weight:700;text-align:center;min-width:110px;flex:1; color: var(--navy);}
+.flow .s b{display:block;background:var(--teal);color:#fff;border-radius:50%;width:26px;height:26px;margin:0 auto 4px;line-height:26px;font-size:.85rem}
+.flow .ar{align-self:center;font-weight:800;color:var(--orange)}
+.gridm{display:grid;grid-template-columns:repeat(3,70px);gap:5px;margin:8px 0}
+.gridm div{height:70px;border:2px solid var(--line);border-radius:10px;display:grid;place-items:center;font-size:1.7rem;background:#fff}
+.ipo3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;text-align:center}
+@media(max-width:700px){.ipo3{grid-template-columns:1fr}.ipo3 .ar{display:none}}
+.ipo3>div:not(.ar){background:#fff;border:3px solid var(--line);border-radius:14px;padding:10px}
+.ipo3 .ar{font-size:1.6rem;color:var(--orange);font-weight:800}
+
+/* Interactive Quiz Styles */
+.quiz-box { margin-bottom: 16px; }
+.quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.opt-btn { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 10px 14px; text-align: left; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--ink); }
+.opt-btn:hover { border-color: var(--teal); background: #f0f9fa; }
+.opt-btn.correct { background: #e2f7ea !important; border-color: var(--green) !important; color: #14663a; }
+.opt-btn.wrong { background: #ffe6e6 !important; border-color: var(--red) !important; color: #a31d22; }
+.explanation { margin-top: 8px; padding: 10px 14px; background: #e9f8f9; border-left: 4px solid var(--teal); border-radius: 0 12px 12px 0; display: none; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="logo.png" alt="Logo KKA">
+    <div class="ttl">Materi 2 · Urutan Langkah dan IPO<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
+  </div>
+  <div class="sp"></div>
+  <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a class="home" href="pemetaan.html" style="margin-left:6px"><i class="fa-solid fa-map"></i> Pemetaan</a>
+</header>
+
+<div class="wrap">
+  <div class="card key" style="margin-top:20px">
+    <div class="row">
+      <span class="chip intro">Pertemuan 2 • 2 JP (2×35 menit)</span>
+      <span class="chip tp">🎯 TP 3</span>
+      <span class="chip tp">🎯 TP 4</span>
+    </div>
+    <h1 style="margin:8px 0 4px; color: var(--cyan);">📖 Materi 2: Urutan Langkah dan IPO</h1>
+    <p style="margin:0">Urutan langkah (algoritma dasar) serta Input – Proses – Output (IPO) sederhana.</p>
+    <p class="kw" style="margin:10px 0 0"><b>Kata kunci:</b> <span>urutan</span><span>algoritma</span><span>input</span><span>proses</span><span>output</span></p>
+    <div class="row" style="margin-top:12px">
+      <a class="btn ghost" href="index.html" style="text-decoration:none"><i class="fa-solid fa-house"></i> Beranda</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>Isi halaman:</b>
+    <div class="toc" style="margin-top:6px">
+      <a href="#urutan">Mengapa urutan penting</a>
+      <a href="#algoritma">Algoritma</a>
+      <a href="#latihan">Latihan</a>
+      <a href="#robot">Robot Patuh</a>
+      <a href="#ipo">IPO</a>
+      <a href="#rangkum">Rangkuman</a>
+    </div>
+  </div>
+
+  <div class="art">
+    <div class="card key kodi-say">
+      <img src="logo.png" alt="Kodi">
+      <div class="bubble">Kemarin kita membantu Andi menemukan masalah dan penyebabnya. <b>Hari ini, kita carikan caranya!</b></div>
+    </div>
+
+    <div class="card tip">
+      <h3 style="margin-bottom:4px"><i class="fa-solid fa-lightbulb"></i> Pertanyaan pematik</h3>
+      <p><b>Mengapa suatu kegiatan perlu dilakukan secara berurutan?</b> Apa yang terjadi jika langkah dilakukan tidak sesuai urutan?</p>
+    </div>
+
+    <h2 id="urutan">1. Mengapa Urutan Itu Penting?</h2>
+    <p>Bayangkan jika kamu memakai <b>sepatu lebih dulu, baru kaus kaki</b>. Hasilnya aneh, bukan? Kegiatan yang sama bisa gagal bila <b>urutannya salah</b> atau ada <b>langkah yang terlewat</b>.</p>
+    
+    <div class="grid g2">
+      <div class="card" style="margin:0;background:#e2f7ea">
+        <b>✅ Urutan benar</b><br>🧦 kaus kaki → 👟 sepatu: nyaman dan rapi.
+      </div>
+      <div class="card" style="margin:0;background:#ffe6e6">
+        <b>❌ Urutan salah</b><br>👟 sepatu → 🧦 kaus kaki: hasil tidak sesuai harapan.
+      </div>
+    </div>
+
+    <h2 id="algoritma">2. Apa Itu Algoritma?</h2>
+    <div class="def">Algoritma adalah urutan langkah yang jelas dan runtut untuk menyelesaikan suatu pekerjaan atau masalah.</div>
+    <p>Algoritma yang baik memiliki ciri berikut:</p>
+    <ul>
+      <li><b>Jelas:</b> setiap langkah mudah dipahami.</li>
+      <li><b>Berurutan:</b> langkah dilakukan satu per satu dari awal sampai akhir.</li>
+      <li><b>Ada hasil akhir:</b> pekerjaan selesai dan tujuan tercapai.</li>
+    </ul>
+    
+    <p><b>Contoh algoritma mencuci tangan</b> (6 langkah yang harus berurutan):</p>
+    <div class="flow">
+      <div class="s"><b>1</b>Basahi tangan</div><span class="ar">➜</span>
+      <div class="s"><b>2</b>Sabuni tangan</div><span class="ar">➜</span>
+      <div class="s"><b>3</b>Gosok telapak, punggung tangan, sela jari</div><span class="ar">➜</span>
+      <div class="s"><b>4</b>Bilas sampai bersih</div><span class="ar">➜</span>
+      <div class="s"><b>5</b>Tutup keran</div><span class="ar">➜</span>
+      <div class="s"><b>6</b>Keringkan dengan lap bersih</div>
+    </div>
+
+    <div class="card tip">
+      <h3 style="margin-bottom:4px"><i class="fa-solid fa-star"></i> Tahukah kamu?</h3>
+      <p>Kamu tidak perlu komputer untuk membuat algoritma. Resep masakan, petunjuk permainan, dan aturan upacara bendera pun merupakan algoritma!</p>
+    </div>
+
+    <h2 id="latihan">3. Ayo Berlatih</h2>
+    <div class="card">
+      <h3>Latihan 1: Susun urutannya</h3>
+      <p>Langkah menyikat gigi berikut urutannya acak. Beri nomor 1–5 pada setiap langkah.</p>
+      <ul>
+        <li>☐ Berkumur sampai bersih</li>
+        <li>☐ Ambil sikat gigi dan pasta gigi</li>
+        <li>☐ Gosok gigi</li>
+        <li>☐ Oleskan pasta gigi pada sikat</li>
+        <li>☐ Rapikan peralatan</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Latihan 2: Pecahkan masalah Andi</h3>
+      <p>Bayangkan kamu adalah Andi. Tuliskan langkah kegiatan pagi harimu agar tidak lupa membawa alat tulis.</p>
+      <table class="t">
+        <tr><th style="width:60px">No</th><th>Langkah kegiatan</th></tr>
+        <tr><td>1</td><td>&nbsp;</td></tr>
+        <tr><td>2</td><td>&nbsp;</td></tr>
+        <tr><td>3</td><td>&nbsp;</td></tr>
+        <tr><td>4</td><td>&nbsp;</td></tr>
+        <tr><td>5</td><td>&nbsp;</td></tr>
+      </table>
+    </div>
+
+    <h2 id="robot">4. Ayo Bermain: Robot Patuh</h2>
+    <p>Robot hanya bisa mengikuti perintah yang <b>jelas dan berurutan</b>. Mari antar Kodi ke bendera!</p>
+    <ul>
+      <li>Satu temanmu berperan sebagai robot, temanmu yang lain memberi perintah.</li>
+      <li>Perintah hanya boleh: <b>atas, kanan, kiri, atau bawah</b>.</li>
+      <li>Robot hanya bergerak sesuai perintah, tidak boleh menebak!</li>
+      <li>Amati: apa yang terjadi bila perintahnya tidak jelas atau tidak berurutan?</li>
+    </ul>
+    
+    <div class="card">
+      <h3>🤖 Tantangan Algoritma Kodi</h3>
+      <p>Kodi (K) berada di kotak kiri bawah. Bendera (B) ada di kotak paling atas, kolom ketiga. Tuliskan algoritmanya.</p>
+      <div class="gridm">
+        <div></div><div></div><div>🚩</div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div>🤖</div><div></div><div></div>
+      </div>
+      <p>Algoritma Kodi: ……………………………………</p>
+      <details>
+        <summary>🔑 Contoh jawaban</summary>
+        <p style="margin-top: 8px;">atas, atas, atas, kanan, kanan</p>
+      </details>
+    </div>
+
+    <h2 id="ipo">5. Input – Proses – Output (IPO)</h2>
+    <p>Setiap kegiatan memiliki tiga bagian penting.</p>
+    
+    <div class="ipo3">
+      <div><b>📥 INPUT</b><br><span class="mini">Bahan atau informasi awal yang dibutuhkan</span></div>
+      <div class="ar">➜</div>
+      <div><b>⚙️ PROSES</b><br><span class="mini">Langkah-langkah yang dilakukan</span></div>
+      <div class="ar">➜</div>
+      <div><b>📤 OUTPUT</b><br><span class="mini">Hasil akhir</span></div>
+    </div>
+
+    <div class="tbl" style="margin-top:12px">
+      <table class="t">
+        <tr><th>Kegiatan</th><th>Input</th><th>Proses</th><th>Output</th></tr>
+        <tr><td>Membuat segelas teh manis</td><td>Gelas, teh celup, gula, air panas</td><td>Tuang air, masukkan teh, tambah gula, aduk</td><td>Segelas teh manis</td></tr>
+        <tr><td>Mencuci tangan</td><td>Air, sabun, tangan kotor</td><td>Basahi, sabuni, gosok, bilas, keringkan</td><td>Tangan bersih</td></tr>
+        <tr><td>Menyiram tanaman</td><td>Air, gembor, tanaman</td><td>Isi gembor, siramkan air ke tanah</td><td>Tanaman segar</td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <h3>Latihan 3: IPO untuk Andi</h3>
+      <p>Gunakan langkah yang sudah kamu buat untuk menyusun algoritma dengan format IPO.</p>
+      <div class="grid g3">
+        <div><b>INPUT:</b> Apa yang dibutuhkan Andi sebelum berangkat?<br>……………</div>
+        <div><b>PROSES:</b> Apa saja langkah yang harus dilakukan Andi?<br>……………</div>
+        <div><b>OUTPUT:</b> Apa hasil yang diharapkan?<br>……………</div>
+      </div>
+    </div>
+
+    <h2 id="rangkum">6. Rangkuman</h2>
+    <div class="card key">
+      <ul>
+        <li>Algoritma adalah urutan langkah yang jelas dan runtut.</li>
+        <li>Jika urutan langkah salah, hasilnya bisa tidak sesuai harapan.</li>
+        <li>Setiap kegiatan punya Input (bahan awal), Proses (langkah), dan Output (hasil akhir).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🪞 Refleksi Diriku</h3>
+      <ul>
+        <li><span class="chip mindful">Mindful</span> Bagian mana yang paling mudah dan paling sulit bagimu hari ini?</li>
+        <li><span class="chip joyful">Joyful</span> Permainan apa yang paling kamu sukai? Mengapa?</li>
+        <li><span class="chip meaningful">Meaningful</span> Kegiatan apa di rumahmu yang bisa kamu tuliskan algoritmanya?</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✅ Ayo Uji Pemahamanmu</h3>
+      <p class="mini">Silakan jawab pertanyaan di bawah ini dengan mengklik pilihan jawaban yang paling tepat. Pembahasan dan kunci jawaban akan muncul setelah kamu mencoba menjawab!</p>
+      
+      <!-- Soal 1 -->
+      <div class="quiz-box" id="q1">
+        <p><b>1. Urutan langkah yang jelas dan runtut untuk menyelesaikan masalah disebut …</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 1, true)">A. algoritma</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 1, false)">B. animasi</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 1, false)">C. aplikasi</button>
+        </div>
+        <div class="explanation" id="exp1">
+          <b>Pembahasan:</b> Pilihan A tepat. Algoritma merupakan urutan langkah logis dan runtut untuk menyelesaikan suatu pekerjaan atau masalah.
+        </div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="quiz-box" id="q2" style="margin-top: 20px;">
+        <p><b>2. Hasil akhir dari suatu kegiatan disebut …</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 2, false)">A. input</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 2, false)">B. proses</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 2, true)">C. output</button>
+        </div>
+        <div class="explanation" id="exp2">
+          <b>Pembahasan:</b> Pilihan C tepat. Output adalah hasil akhir yang diperoleh dari suatu proses kegiatan.
+        </div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="quiz-box" id="q3" style="margin-top: 20px;">
+        <p><b>3. Pada pembuatan teh manis, “gula” termasuk …</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 3, true)">A. input</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 3, false)">B. proses</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 3, false)">C. output</button>
+        </div>
+        <div class="explanation" id="exp3">
+          <b>Pembahasan:</b> Pilihan A tepat. Gula adalah bahan awal atau material yang dimasukkan (input) sebelum diolah.
+        </div>
+      </div>
+
+      <!-- Soal 4 -->
+      <div class="quiz-box" id="q4" style="margin-top: 20px;">
+        <p><b>4. Jika langkah-langkah dilakukan tidak berurutan, maka …</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 4, true)">A. hasilnya bisa tidak sesuai harapan</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 4, false)">B. hasilnya pasti benar</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 4, false)">C. pekerjaan jadi lebih cepat selesai</button>
+        </div>
+        <div class="explanation" id="exp4">
+          <b>Pembahasan:</b> Pilihan A tepat. Urutan yang salah atau terlewat membuat tujuan kegiatan tidak tercapai secara optimal.
+        </div>
+      </div>
+
+      <!-- Catatan Latihan Tambahan -->
+      <div style="margin-top: 20px; padding: 12px; background: #fffbe3; border: 2px solid #ffe58a; border-radius: 12px;">
+        <b>Catatan Latihan 1 (Menyikat gigi):</b> Urutan yang benar adalah: 
+        (1) Ambil sikat gigi dan pasta gigi, 
+        (2) Oleskan pasta gigi pada sikat, 
+        (3) Gosok gigi, 
+        (4) Berkumur sampai bersih, 
+        (5) Rapikan peralatan.
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pn">
+    <a class="btn ghost" href="materi1.html" style="text-decoration:none"><i class="fa-solid fa-arrow-left"></i> Materi 1</a>
+    <a class="btn o" href="materi3.html" style="text-decoration:none">Materi 3 <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<div class="foot">SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si • Tahun Ajaran 2026/2027</div>
+
+<script>
+function checkAnswer(btn, qNum, isCorrect) {
+  const container = document.getElementById('q' + qNum);
+  const buttons = container.querySelectorAll('.opt-btn');
+  const explanation = document.getElementById('exp' + qNum);
+
+  // Nonaktifkan semua tombol pada soal ini setelah dipilih
+  buttons.forEach(b => {
+    b.style.pointerEvents = 'none';
+  });
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+  } else {
+    btn.classList.add('wrong');
+  }
+
+  // Tampilkan pembahasan
+  explanation.style.display = 'block';
+}
+</script>
+</body>
+</html>
