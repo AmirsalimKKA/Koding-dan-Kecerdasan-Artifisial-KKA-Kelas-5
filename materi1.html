@@ -125,7 +125,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
   </div>
   <div class="sp"></div>
   <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
-  <a class="home" href="pemetaan.html" style="margin-left:6px"><i class="fa-solid fa-map"></i> Pemetaan</a>
 </header>
 
 <div class="wrap">
@@ -174,13 +173,34 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div class="bubble">“Tenang, Andi. Ayo kita selesaikan dengan <b>berpikir komputasional</b>!”</div>
     </div>
 
+    <!-- Analisis Cerita Interaktif untuk Siswa -->
     <div class="card">
-      <h3>🗣️ Ayo diskusikan bersama temanmu</h3>
-      <ol>
-        <li>Apa masalah yang dialami Andi pagi ini?</li>
-        <li>Bagaimana perasaan Andi? Mengapa?</li>
-        <li>Menurutmu, mengapa Andi bisa lupa membawa alat tulisnya?</li>
-      </ol>
+      <h3>🔍 Ayo Analisis Cerita Andi</h3>
+      <p class="mini">Pilih jawaban yang paling tepat untuk menguji pemahamanmu tentang masalah Andi!</p>
+      
+      <div class="quiz-box" id="ca1">
+        <p><b>1. Apa masalah utama yang dialami Andi pagi ini?</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca1', false)">A. Tas Andi robek</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca1', true)">B. Alat tulis Andi berserakan dan belum dimasukkan ke tas</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca1', false)">C. Andi tidak memiliki buku pelajaran</button>
+        </div>
+        <div class="explanation" id="exp-ca1">
+          <b>Penjelasan:</b> Masalah Andi adalah alat tulisnya masih berserakan di lantai sehingga ia terburu-buru dan berisiko terlambat.
+        </div>
+      </div>
+
+      <div class="quiz-box" id="ca2" style="margin-top:16px;">
+        <p><b>2. Mengapa Andi bisa mengalami masalah tersebut?</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca2', true)">A. Andi tidak menyiapkan dan memeriksa isi tas sejak malam hari</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca2', false)">B. Alat tulis Andi dipinjam oleh temannya</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'ca2', false)">C. Jam di rumah Andi mati</button>
+        </div>
+        <div class="explanation" id="exp-ca2">
+          <b>Penjelasan:</b> Penyebab utamanya adalah Andi terburu-buru di pagi hari dan tidak membiasakan diri menyiapkannya sebelum tidur.
+        </div>
+      </div>
     </div>
 
     <h2 id="pengertian">2. Apa Itu Berpikir Komputasional?</h2>
@@ -239,49 +259,56 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       </table>
     </div>
 
-    <div class="card tip">
-      <h3 style="margin-bottom:4px"><i class="fa-solid fa-magnifying-glass"></i> Ayo Bermain: Detektif Masalah</h3>
-      <ol>
-        <li>Bentuklah kelompok berisi 4–5 teman.</li>
-        <li>Ambil satu kartu situasi dari gurumu.</li>
-        <li>Diskusikan: apa masalahnya, apa penyebabnya, dan apa solusinya.</li>
-        <li>Tuliskan hasilnya pada LKPD Kegiatan 1.</li>
-        <li>Ceritakan hasil kelompokmu di depan kelas.</li>
-      </ol>
+    <h2 id="latihan">5. Ayo Berlatih!</h2>
+    <p>Uji kemampuan detektif masalahmu dengan memilih jawaban analisis masalah yang paling tepat berikut!</p>
+    
+    <!-- Latihan 1: Situasi Terlambat -->
+    <div class="card">
+      <h3>Kasus 1: Terlambat ke Sekolah</h3>
+      <div class="quiz-box" id="lat1">
+        <p><b>Apa solusi paling tepat untuk masalah "Terlambat ke sekolah karena bangun kesiangan"?</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat1', false)">A. Berlari secepat mungkin tanpa sarapan</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat1', true)">B. Tidur lebih awal dan memasang alarm di malam hari</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat1', false)">C. Meminta jam sekolah dimundurkan</button>
+        </div>
+        <div class="explanation" id="exp-lat1">
+          <b>Pembahasan Solusi:</b> Tidur lebih awal dan memasang alarm mengatasi akar penyebab masalah (bangun kesiangan).
+        </div>
+      </div>
     </div>
 
-    <h2 id="latihan">5. Ayo Berlatih!</h2>
-    <p>Lengkapi tabel berikut bersama teman satu kelompokmu.</p>
-    
-    <div class="tbl">
-      <table class="t">
-        <tr>
-          <th>Situasi</th>
-          <th>Masalahnya</th>
-          <th>Penyebabnya</th>
-          <th>Solusinya</th>
-        </tr>
-        <tr>
-          <td>Terlambat ke sekolah</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Buku tertinggal</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Tas terlalu berat</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
+    <!-- Latihan 2: Situasi Buku Tertinggal -->
+    <div class="card">
+      <h3>Kasus 2: Buku PR Tertinggal</h3>
+      <div class="quiz-box" id="lat2">
+        <p><b>Apa penyebab utama dari masalah "Buku PR tertinggal di rumah"?</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat2', false)">A. Guru memberikan PR terlalu banyak</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat2', true)">B. Tidak memeriksa jadwal pelajaran saat menyiapkan tas</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat2', false)">C. Tas sekolah terlalu kecil</button>
+        </div>
+        <div class="explanation" id="exp-lat2">
+          <b>Pembahasan Penyebab:</b> Lupa memeriksa jadwal adalah penyebab utama buku tidak masuk ke dalam tas.
+        </div>
+      </div>
     </div>
-    <p style="margin-top: 14px;">Tuliskan satu masalah sederhana yang pernah kamu alami di rumah atau di sekolah: ……………………………………</p>
+
+    <!-- Latihan 3: Situasi Tas Berat -->
+    <div class="card">
+      <h3>Kasus 3: Tas Terlalu Berat</h3>
+      <div class="quiz-box" id="lat3">
+        <p><b>Bagaimana langkah berpikir komputasional untuk memecahkan masalah tas yang terlalu berat?</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat3', true)">A. Mengeluarkan buku yang tidak sesuai jadwal hari ini</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat3', false)">B. Membeli tas baru yang lebih besar</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'lat3', false)">C. Meminta teman membawakan tas</button>
+        </div>
+        <div class="explanation" id="exp-lat3">
+          <b>Pembahasan Solusi:</b> Menyaring buku sesuai jadwal hari ini merupakan penerapan berpikir teratur (abstraksi/pemilihan hal penting).
+        </div>
+      </div>
+    </div>
 
     <h2 id="rangkum">6. Rangkuman</h2>
     <div class="card key">
@@ -302,18 +329,18 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     </div>
 
     <div class="card">
-      <h3>✅ Ayo Uji Pemahamanmu</h3>
-      <p class="mini">Silakan jawab pertanyaan di bawah ini dengan mengklik pilihan jawaban yang paling tepat. Pembahasan dan kunci jawaban akan muncul setelah kamu mencoba menjawab!</p>
+      <h3>✅ Uji Pemahaman Mandiri</h3>
+      <p class="mini">Klik pilihan jawaban yang menurutmu paling tepat. Pembahasan akan langsung muncul!</p>
       
       <!-- Soal 1 -->
       <div class="quiz-box" id="q1">
         <p><b>1. Berpikir komputasional adalah cara berpikir untuk …</b></p>
         <div class="quiz-options">
-          <button class="opt-btn" onclick="checkAnswer(this, 1, false)">A. bermain gim sepanjang hari</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 1, true)">B. menyelesaikan masalah secara logis, runtut, dan sistematis</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 1, false)">C. menggambar tanpa aturan</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q1', false)">A. bermain gim sepanjang hari</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q1', true)">B. menyelesaikan masalah secara logis, runtut, dan sistematis</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q1', false)">C. menggambar tanpa aturan</button>
         </div>
-        <div class="explanation" id="exp1">
+        <div class="explanation" id="exp-q1">
           <b>Pembahasan:</b> Pilihan B tepat. Berpikir komputasional adalah metode penyelesaian masalah secara logis, terstruktur, dan runtut.
         </div>
       </div>
@@ -322,11 +349,11 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div class="quiz-box" id="q2" style="margin-top: 20px;">
         <p><b>2. Contoh masalah sederhana dalam kehidupan sehari-hari adalah …</b></p>
         <div class="quiz-options">
-          <button class="opt-btn" onclick="checkAnswer(this, 2, true)">A. terlambat ke sekolah karena bangun kesiangan</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 2, false)">B. matahari terbit di timur</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 2, false)">C. bumi mengelilingi matahari</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q2', true)">A. terlambat ke sekolah karena bangun kesiangan</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q2', false)">B. matahari terbit di timur</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q2', false)">C. bumi mengelilingi matahari</button>
         </div>
-        <div class="explanation" id="exp2">
+        <div class="explanation" id="exp-q2">
           <b>Pembahasan:</b> Pilihan A tepat. Terlambat ke sekolah adalah kendala atau masalah yang mengganggu aktivitas dan dapat diselesaikan dengan solusi, sedangkan pilihan lainnya adalah fakta alam.
         </div>
       </div>
@@ -335,11 +362,11 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div class="quiz-box" id="q3" style="margin-top: 20px;">
         <p><b>3. Langkah pertama saat menghadapi masalah adalah …</b></p>
         <div class="quiz-options">
-          <button class="opt-btn" onclick="checkAnswer(this, 3, false)">A. langsung marah</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 3, true)">B. mengenali masalahnya</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 3, false)">C. menyalahkan teman</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q3', false)">A. langsung marah</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q3', true)">B. mengenali masalahnya</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'q3', false)">C. menyalahkan teman</button>
         </div>
-        <div class="explanation" id="exp3">
+        <div class="explanation" id="exp-q3">
           <b>Pembahasan:</b> Pilihan B tepat. Langkah awal yang runtut dalam mendeteksi masalah adalah mengenali apa masalah yang sedang terjadi.
         </div>
       </div>
@@ -356,12 +383,12 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <div class="foot">SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si • Tahun Ajaran 2026/2027</div>
 
 <script>
-function checkAnswer(btn, qNum, isCorrect) {
-  const container = document.getElementById('q' + qNum);
+function checkAnswer(btn, qId, isCorrect) {
+  const container = document.getElementById(qId);
   const buttons = container.querySelectorAll('.opt-btn');
-  const explanation = document.getElementById('exp' + qNum);
+  const explanation = document.getElementById('exp-' + qId);
 
-  // Nonaktifkan semua tombol pada soal ini setelah dipilih
+  // Nonaktifkan semua pilihan setelah dijawab
   buttons.forEach(b => {
     b.style.pointerEvents = 'none';
   });
@@ -370,14 +397,12 @@ function checkAnswer(btn, qNum, isCorrect) {
     btn.classList.add('correct');
   } else {
     btn.classList.add('wrong');
-    // Cari tombol yang benar lalu tandai juga
-    buttons.forEach(b => {
-      // Jika teksnya mengandung kunci benar atau kita bisa tandai sesuai kondisi
-    });
   }
 
   // Tampilkan pembahasan
-  explanation.style.display = 'block';
+  if (explanation) {
+    explanation.style.display = 'block';
+  }
 }
 </script>
 </body>
