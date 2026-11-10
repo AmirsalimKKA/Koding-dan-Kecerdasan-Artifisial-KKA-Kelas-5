@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pertemuan 1: Mengenal Berpikir Komputasional – Media Interaktif KKA Kelas V</title>
+<meta name="description" content="Media interaktif Pertemuan 1: pengertian berpikir komputasional dan masalah sederhana.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9aa7'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E🤖%3C/text%3E%3C/svg%3E">
+<!-- Tailwind & FontAwesome for consistency if needed, but styling here is mostly custom CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>:root{
+  --bg: #f4f9f9; 
+  --card: #ffffff; 
+  --ink: #333333; 
+  --muted: #6b6880;
+  
+  /* VisualMath KKA Theme Colors */
+  --navy: #022050;
+  --teal: #0B7C86; 
+  --teal-d: #085E66;
+  --cyan: #00D6D8;
+  
+  --orange: #ff8a3d; 
+  --orange-d: #d4651a;
+  --yellow: #ffd34e; 
+  --pink: #ff6f91; 
+  --green: #2fb36d; 
+  --red: #e5484d; 
+
+  --line: #c3e2e5; 
+  --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
+  --r: 20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: 'Nunito', "Trebuchet MS", sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margin:0 0 .5em; color: var(--navy);}
+h2{font-size:1.55rem} h3{font-size:1.15rem}
+p{margin:.4em 0 .8em}
+button{font:inherit;cursor:pointer}
+.sr{position:absolute;left:-9999px}
+a{color:var(--teal-d)}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
+.top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.top .ttl{font-size:1.1rem;line-height:1.15; color: var(--cyan);}
+.top .ttl small{display:block;font-weight:600;opacity:.85;font-size:.78rem; color: #e2e8f0; font-family: 'Nunito', sans-serif;}
+.top .sp{flex:1}
+.stars{background:#fff;color:var(--navy);border-radius:99px;padding:5px 14px;font-weight:800;display:flex;gap:6px;align-items:center;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
+.home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
+
+/* step nav */
+.steps{display:flex;gap:8px;overflow-x:auto;padding:20px 20px 6px;max-width:1100px;margin:0 auto;scrollbar-width:thin}
+.steps button{flex:0 0 auto;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 14px;font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center;box-shadow:0 3px 0 var(--line)}
+.steps button .n{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem}
+.steps button.on{background:var(--teal);border-color:var(--teal-d);color:#fff;box-shadow:0 3px 0 var(--teal-d)}
+.steps button.on .n{background:#fff;color:var(--teal-d)}
+.steps button.done:not(.on) .n{background:var(--cyan);color:var(--navy)}
+
+main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
+.panel{display:none;animation:pop .35s ease}
+.panel.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.phead{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 6px}
+.phead h2{margin:0}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:800;border:2px solid}
+.chip.tp{background:#e3f6f7;color:var(--teal-d);border-color:var(--cyan)}
+.chip.mindful{background:#e8efff;color:#2c52c4;border-color:#c6d5ff}
+.chip.joyful{background:#fff1d6;color:#a8620a;border-color:#ffdca1}
+.chip.meaningful{background:#e2f7ea;color:#1c7d49;border-color:#b4e8ca}
+.chip.intro{background:#f0e9ff;color:#5b3bb5;border-color:#d9c9ff}
+
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);margin:16px 0; transition: transform 0.2s;}
+.card:hover { transform: translateY(-3px); }
+.card.tip{background:#f0fbff;border-color:var(--cyan)}
+.card.key{background:var(--navy);border-color:var(--navy); color: white;}
+.card.key h3, .card.key b { color: var(--cyan); }
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}.top .ttl small{display:none}}
+@media(min-width:821px) and (max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}}
+
+.btn{border:0;border-radius:14px;padding:12px 20px;font-weight:800;color:#fff;background:var(--teal);box-shadow:0 4px 0 var(--teal-d);transition:all .1s; font-family: 'Fredoka', sans-serif; font-size: 1.05rem;}
+.btn:hover { background: var(--navy); box-shadow:0 4px 0 #01122e; }
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--teal-d)}
+.btn.o{background:var(--orange);box-shadow:0 4px 0 var(--orange-d)}
+.btn.o:hover { background: #e87b32; box-shadow:0 4px 0 var(--orange-d); }
+.btn.g{background:var(--green);box-shadow:0 4px 0 #1f8a50}
+.btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
+.btn[disabled]{opacity:.45;cursor:not-allowed; transform: none; box-shadow:0 4px 0 var(--teal-d);}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
+
+.fb{min-height:2.2em;margin-top:14px;font-weight:700;border-radius:14px;padding:12px 16px;display:none}
+.fb.show{display:block; animation: pop 0.3s;}
+.fb.ok{background:#e2f7ea;color:#14663a; border: 2px solid #b4e8ca;}
+.fb.no{background:#ffe6e6;color:#a31d22; border: 2px solid #f2b0b2;}
+.fb.hint{background:#e9f8f9;color:var(--teal-d); border: 2px solid var(--line);}
+
+/* chips / option buttons */
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;font-weight:600;color:var(--ink);margin:8px 0;box-shadow:0 3px 0 var(--line); transition: all 0.2s;}
+.opt:hover{border-color:var(--teal); transform: translateY(-2px);}
+.opt.right{background:#e2f7ea;border-color:var(--green);box-shadow:0 3px 0 #8fd6b0}
+.opt.wrong{background:#ffe6e6;border-color:var(--red);box-shadow:0 3px 0 #f2b0b2}
+.opt.sel{border-color:var(--orange);background:#fff4e8}
+.word{display:inline-block;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 16px;font-weight:800;margin:6px;box-shadow:0 3px 0 var(--line); transition: transform 0.1s;}
+.word:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line);}
+.word.used{opacity:.35;pointer-events:none}
+.blank{display:inline-block;min-width:140px;border-bottom:4px dashed var(--teal);text-align:center;font-weight:800;color:var(--teal-d);padding:0 10px;cursor:pointer; font-size: 1.1rem;}
+.blank.ok{border-bottom-style:solid;border-color:var(--cyan);color:var(--navy)}
+
+/* sequencer */
+.seq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:820px){.seq{grid-template-columns:1fr}}
+.seq h4{margin:0 0 10px;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px; font-weight: 800;}
+.pool,.slots{display:flex;flex-direction:column;gap:10px;min-height:60px}
+.scard{border:2px solid var(--line);background:#fff;border-radius:16px;padding:12px 16px;font-weight:700;text-align:left;display:flex;gap:12px;align-items:center;box-shadow:0 3px 0 var(--line);color:var(--ink); transition: transform 0.1s;}
+.scard:active { transform: translateY(3px); box-shadow: none; }
+.scard .e{font-size:1.6rem}
+.slot{border:3px dashed var(--line);border-radius:16px;padding:10px 14px;min-height:60px;display:flex;align-items:center;gap:12px;background:#f8fbfc}
+.slot .no{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+.slot .scard{flex:1;box-shadow:none;border-color:var(--cyan);background:#e9f8f9}
+.slot.ok{border-color:var(--green);background:#eefaf3}.slot.ok .no{background:var(--green)}
+.slot.bad{border-color:var(--red);background:#fff2f2}.slot.bad .no{background:var(--red)}
+
+/* flip card */
+.flip{perspective:900px;min-height:180px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
+.flip .in{position:relative;width:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:20px;border:2px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-weight:700}
+.flip .f{background:#fff; color: var(--navy); border-color: var(--teal); border-width: 3px;}
+.flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg); border-color: var(--cyan); border-width: 3px;}
+.flip .big{font-size:2.8rem; margin-bottom: 10px;}
+
+/* quiz */
+.q{margin:16px 0 26px}
+.q .qt{font-weight:800;margin-bottom:8px; font-size: 1.1rem; color: var(--navy);}
+.score{display:flex;gap:10px;align-items:center;font-weight:800; background: var(--navy); color: white; padding: 10px 20px; border-radius: 16px; width: max-content; font-size: 1.1rem;}
+.score .v { color: var(--cyan); }
+.badge{display:none;text-align:center;padding:30px;border-radius:var(--r);background:linear-gradient(135deg,#e9f8f9,#c3e2e5);border:4px solid var(--teal);margin-top:20px}
+.badge.show{display:block;animation:pop .5s}
+.badge .big{font-size:3.5rem; margin-bottom: 10px;}
+textarea,input[type=text]{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;background:#fff;color:var(--ink); transition: border-color 0.2s;}
+textarea:focus,input:focus,button:focus-visible{outline:none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(11, 124, 134, 0.2);}
+table.t{border-collapse:collapse;width:100%;font-size:.95rem}
+table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.t th{background:#e9f8f9; color: var(--navy);}
+.mini{font-size:.9rem;color:var(--muted)}
+.kodi-say{display:flex;gap:16px;align-items:flex-start}
+.kodi-say img {width:90px;height:90px;flex:0 0 auto; object-fit: contain;}
+.bubble{background:#fff;border:2px solid var(--teal);border-radius:18px;padding:14px 20px;position:relative;box-shadow:0 4px 0 var(--teal);font-weight:600; color: var(--ink);}
+.card.key .bubble { background: var(--teal); color: white; border-color: var(--cyan); box-shadow: 0 4px 0 var(--navy); }
+.foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
+@media print{.top,.steps,.pn,.noprint{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <!-- Panggilan logo.png -->
+    <img src="../logo.png" alt="Logo KKA">
+    <div class="ttl">Pertemuan 1 · Mengenal Berpikir Komputasional<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
+  </div>
+  <div class="sp"></div>
+  <!-- Tombol Beranda -->
+  <a class="home" href="../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
+</header>
+<nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
+<main>
+<!-- 0 MULAI -->
+<section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
+  <div class="card key kodi-say">
+    <!-- Menggunakan logo.png sebagai karakter pembicara (Kodi/Robot) -->
+    <img src="../logo.png" alt="Kodi">
+    <div class="bubble"><b>Halo, teman-teman!</b> Aku Kodi, robot sahabat Andi. Hari ini kita akan <b>mengenal berpikir komputasional</b> dan menjadi <b>detektif masalah</b>. Siap?</div>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>🎯 Tujuan pertemuan ini</h3>
+      <p>Kamu akan mampu:</p>
+      <ul>
+        <li><b>TP 1</b> – menjelaskan pengertian berpikir komputasional;</li>
+        <li><b>TP 2</b> – mengidentifikasi masalah sederhana di lingkungan sekitar beserta penyebabnya.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🧭 Cara belajar</h3>
+      <p><span class="chip mindful">Mindful</span> mengamati dengan penuh perhatian<br>
+      <span class="chip joyful">Joyful</span> bermain dan berdiskusi<br>
+      <span class="chip meaningful">Meaningful</span> mengaitkan dengan kehidupanmu</p>
+      <p class="mini">Kumpulkan ⭐ setiap menyelesaikan satu kegiatan.</p>
+    </div>
+  </div>
+  <div class="card tip">
+    <h3>💭 Pertanyaan pematik</h3>
+    <p><b>Apa yang kamu lakukan ketika menemui masalah kecil di rumah atau di sekolah?</b></p>
+    <textarea rows="2" data-save="pematik" placeholder="Tuliskan atau ceritakan jawabanmu secara lisan…"></textarea>
+  </div>
+</section>
+
+<!-- 1 AMATI -->
+<section class="panel" id="p-amati" data-title="Ayo Amati" data-icon="👀" data-tp="2" data-sintaks="Mindful">
+  <div class="card">
+    <h3>📖 Cerita Pagi Andi</h3>
+    <p>Jam menunjukkan pukul <b>06.50</b>. Sebentar lagi bel sekolah berbunyi! Andi buru-buru memasukkan buku ke dalam tas. Tetapi, tunggu dulu… pensil, penghapus, dan penggaris tidak ada di dalam tas. Semuanya masih berserakan di lantai kamar.</p>
+  </div>
+  <div class="card" id="scene">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div class="kodi-say" style="flex:1;min-width:260px">
+        <div style="font-size: 4rem;">👦</div>
+        <div class="bubble" id="andiSay">“Aduh! Alat tulisku mana, ya? Aku telat!”</div>
+      </div>
+      <div style="text-align:center;background:var(--navy);color:var(--cyan);border-radius:14px;padding:8px 20px;font:800 2.2rem/1.1 'Fredoka',sans-serif;box-shadow:0 4px 0 #01122e">06.50<div style="font-size:.8rem;color:#fff;font-weight:600; font-family: 'Nunito', sans-serif;">⏰ bel sekolah sebentar lagi</div></div>
+    </div>
+    <p class="mini" style="margin-top:16px; font-weight: 700;">👇 Ketuk benda-benda di lantai kamar Andi. Apa yang kamu temukan?</p>
+    <div class="row" style="justify-content:center;gap:18px;padding:24px;background:#e9f8f9;border-radius:18px; border: 2px dashed var(--teal);">
+      <button class="scard floor" type="button" data-k="pensil"><span class="e">✏️</span>Pensil</button>
+      <button class="scard floor" type="button" data-k="penghapus"><span class="e">🧽</span>Penghapus</button>
+      <button class="scard floor" type="button" data-k="penggaris"><span class="e">📏</span>Penggaris</button>
+      <div class="scard" style="background:#fff"><span class="e">🎒</span>Tas Andi <span class="mini">(hanya berisi buku 📘)</span></div>
+    </div>
+    <div class="fb" id="sceneFb"></div>
+  </div>
+  <div class="card">
+    <h3>🗣️ Ayo diskusikan bersama temanmu</h3>
+    <div id="disk"></div>
+  </div>
+</section>
+
+<!-- 2 KONSEP -->
+<section class="panel" id="p-konsep" data-title="Apa Itu Berpikir Komputasional?" data-icon="💡" data-tp="1" data-sintaks="Mindful">
+  <div class="card">
+    <h3>🧩 Lengkapi definisinya</h3>
+    <p>Ketuk kata yang tepat untuk mengisi bagian kosong.</p>
+    <p style="font-size:1.2rem;line-height:2.2">Berpikir komputasional adalah cara berpikir untuk menyelesaikan masalah secara
+      <span class="blank" data-set="a"></span>,
+      <span class="blank" data-set="a"></span>, dan
+      <span class="blank" data-set="a"></span>
+      dengan menyusun <span class="blank" data-set="b"></span> yang jelas.</p>
+    <div id="bank"></div>
+    <div class="fb" id="defFb"></div>
+  </div>
+  <div class="card key kodi-say" id="defExplain" style="display:none">
+    <img src="../logo.png" alt="Kodi">
+    <div class="bubble">Kata “komputasional” berasal dari kata <b>komputer</b>. Komputer bekerja sangat teratur: ia tahu <b>apa masalahnya</b>, <b>apa langkah-langkahnya</b>, dan <b>apa hasilnya</b>. Cara berpikir ini <b>tidak harus memakai komputer</b>. Cukup dengan otak, kertas, dan pensil!</div>
+  </div>
+  <div class="card tip">
+    <h3>✨ Tahukah kamu?</h3>
+    <p>Kamu sudah sering berpikir komputasional tanpa sadar! Ketuk kartu untuk melihat caranya.</p>
+    <div class="grid g3">
+      <button class="flip" type="button"><div class="in"><div class="f"><span class="big">🧹</span>Membuat jadwal piket</div><div class="b">Kamu membagi tugas dan menentukan urutan siapa mengerjakan apa. Itu langkah yang teratur!</div></div></button>
+      <button class="flip" type="button"><div class="in"><div class="f"><span class="big">🍳</span>Mengikuti resep masakan</div><div class="b">Resep adalah urutan langkah yang jelas untuk mencapai hasil: makanan yang siap dimakan.</div></div></button>
+      <button class="flip" type="button"><div class="in"><div class="f"><span class="big">📅</span>Menyusun rencana belajar</div><div class="b">Kamu memilih apa yang dipelajari dulu dan apa yang menyusul, secara runtut.</div></div></button>
+    </div>
+  </div>
+</section>
+
+<!-- 3 DETEKTIF -->
+<section class="panel" id="p-detektif" data-title="Detektif Masalah" data-icon="🕵️" data-tp="2" data-sintaks="Joyful">
+  <div class="card">
+    <p>Saat menemui masalah, lakukan <b>tiga langkah detektif</b>: <b>① Kenali masalah</b> → <b>② Cari penyebab</b> → <b>③ Pikirkan solusi</b>. Pilih satu kartu situasi lalu selesaikan penyelidikanmu!</p>
+    <div class="row" id="caseTabs"></div>
+  </div>
+  <div class="card" id="caseBox"></div>
+</section>
+
+<!-- 4 LATIHAN -->
+<section class="panel" id="p-latihan" data-title="Ayo Berlatih" data-icon="✍️" data-tp="2,1" data-sintaks="Meaningful">
+  <div class="card">
+    <h3>🔎 Masalah atau bukan?</h3>
+    <p>Masalah adalah sesuatu yang membuat kegiatan kita <b>terganggu atau tidak berjalan sesuai harapan</b>. Tentukan mana yang termasuk masalah sederhana dalam kehidupan sehari-hari.</p>
+    <div id="mb"></div>
+    <div class="fb" id="mbFb"></div>
+  </div>
+  <div class="card">
+    <h3>📝 Masalah dari pengalamanmu</h3>
+    <p>Tuliskan satu masalah sederhana yang pernah kamu alami di rumah atau di sekolah, lalu tulis penyebab dan solusinya.</p>
+    <div class="grid g3">
+      <div><label class="mini" style="margin-bottom:6px; display:block;"><b>Masalahnya</b></label><textarea rows="3" data-save="my-masalah"></textarea></div>
+      <div><label class="mini" style="margin-bottom:6px; display:block;"><b>Penyebabnya</b></label><textarea rows="3" data-save="my-sebab"></textarea></div>
+      <div><label class="mini" style="margin-bottom:6px; display:block;"><b>Solusinya</b></label><textarea rows="3" data-save="my-solusi"></textarea></div>
+    </div>
+    <p class="mini mt-2 text-center text-teal-600 font-semibold">Jawabanmu tersimpan otomatis di perangkat ini.</p>
+  </div>
+  <div class="card key"><h3>📌 Rangkuman</h3>
+    <ul style="padding-left: 20px;">
+      <li style="margin-bottom: 8px;">Berpikir komputasional adalah cara berpikir menyelesaikan masalah secara <b>logis, runtut, dan sistematis</b>.</li>
+      <li style="margin-bottom: 8px;">Masalah sederhana ada di sekitar kita: terlambat, lupa membawa buku, kamar berantakan.</li>
+      <li>Saat menemui masalah: <b>kenali masalah, cari penyebab, lalu pikirkan solusi</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 UJI -->
+<section class="panel" id="p-uji" data-title="Uji Pemahaman & Refleksi" data-icon="🏆" data-tp="1,2" data-sintaks="Meaningful">
+  <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div></div>
+  <div class="badge" id="badge"><div class="big">🕵️🏅</div><h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu Detektif Masalah!</h3><p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 1. Sampai jumpa di Pertemuan 2: <b>Urutan Langkah dan IPO</b>.</p><a class="btn o" href="media2.html" style="text-decoration:none;display:inline-block; margin-top: 10px; font-size: 1.2rem;">Ke Pertemuan 2 →</a></div>
+  <div class="card">
+    <h3>🪞 Refleksi diriku</h3>
+    <p><span class="chip mindful">Mindful</span> Apa yang kamu pelajari hari ini tentang berpikir komputasional?</p><textarea rows="2" data-save="rf1"></textarea>
+    <p><span class="chip joyful">Joyful</span> Bagian kegiatan mana yang paling kamu sukai? Mengapa?</p><textarea rows="2" data-save="rf2"></textarea>
+    <p><span class="chip meaningful">Meaningful</span> Masalah apa di rumah yang bisa kamu selesaikan dengan cara ini?</p><textarea rows="2" data-save="rf3"></textarea>
+  </div>
+</section>
+
+</main>
+<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SDN 4 Tugusari • Disusun oleh Amir Salim, S.Si.</div>
+<script>
+const PAGE='media1';
+const TPS={
+ 1:'Menjelaskan pengertian berpikir komputasional.',
+ 2:'Mengidentifikasi masalah sederhana di lingkungan sekitar.',
+ 3:'Memecah masalah menjadi langkah-langkah kecil dan menyusunnya menjadi urutan langkah (algoritma dasar) yang runtut.',
+ 4:'Menentukan input, proses, dan output (IPO) dari kegiatan sehari-hari.',
+ 5:'Menyebutkan empat pilar berpikir komputasional (dekomposisi, pengenalan pola, abstraksi, algoritma) beserta contohnya.',
+ 6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
+};
+</script>
+<script>/* ===== Utilitas & komponen bersama – Media Interaktif KKA Kelas V Bab 1 ===== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={
+  get(k){try{return localStorage.getItem(PAGE+':'+k)}catch(e){return null}},
+  set(k,v){try{localStorage.setItem(PAGE+':'+k,v)}catch(e){}}
+};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+/* umpan balik */
+function fb(box,kind,msg){box.className='fb show '+kind;box.innerHTML=msg;box.setAttribute('role','status')}
+function fbClear(box){box.className='fb';box.innerHTML=''}
+
+/* bintang */
+const earned=new Set();
+function earn(id){
+  if(earned.has(id))return;earned.add(id);
+  store.set('stars',JSON.stringify([...earned]));
+  $('#starN').textContent=earned.size;
+  const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+}
+
+/* ===== navigasi panel ===== */
+function initNav(){
+  try{JSON.parse(store.get('stars')||'[]').forEach(x=>earned.add(x))}catch(e){}
+  $('#starN').textContent=earned.size;
+  const panels=$$('.panel'), nav=$('#steps');
+  panels.forEach((p,i)=>{
+    const b=el('button','',`<span class="n">${i+1}</span>${p.dataset.title}`);
+    b.type='button';b.onclick=()=>go(i);nav.appendChild(b);
+    // header
+    const tps=(p.dataset.tp||'').split(',').filter(Boolean);
+    const h=el('div','');
+    let chips='';
+    tps.forEach(n=>chips+=`<span class="chip tp" title="${TPS[n]}">🎯 TP ${n}</span>`);
+    if(p.dataset.sintaks)chips+=`<span class="chip ${p.dataset.sintaks.toLowerCase()}">${p.dataset.sintaks} Learning</span>`;
+    if(p.dataset.intro)chips+=`<span class="chip intro">Pembuka</span>`;
+    h.innerHTML=`<div class="phead"><h2>${p.dataset.icon||''} ${p.dataset.title}</h2>${chips}</div>`+
+      (tps.length?`<p class="mini" style="margin-top:0">${tps.map(n=>`<b>TP ${n}:</b> ${TPS[n]}`).join(' &nbsp;•&nbsp; ')}</p>`:'');
+    p.prepend(h);
+    const pn=el('div','pn noprint');
+    const prev=el('button','btn ghost','← Sebelumnya'),next=el('button','btn o','Lanjut →');
+    prev.type=next.type='button';
+    prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
+    if(i===0)prev.style.visibility='hidden';
+    if(i===panels.length-1)next.style.visibility='hidden';
+    pn.append(prev,next);p.append(pn);
+  });
+  function go(i){
+    i=Math.max(0,Math.min(panels.length-1,i));
+    panels.forEach((p,j)=>p.classList.toggle('on',j===i));
+    $$('button',nav).forEach((b,j)=>{b.classList.toggle('on',j===i);if(j<i)b.classList.add('done')});
+    const cur=$$('button',nav)[i];cur.scrollIntoView({inline:'center',block:'nearest'});
+    history.replaceState(null,'','#'+panels[i].id);
+    window.scrollTo({top:0});
+  }
+  window.go=go;
+  const h=location.hash.slice(1);
+  const idx=panels.findIndex(p=>p.id===h);
+  go(idx>=0?idx:0);
+}
+
+/* ===== Sequencer: ketuk kartu untuk menyusun urutan ===== */
+function Sequencer(root,cfg){
+  // cfg: {id, items:[{id,t,e}], order:[id...], validator?(placed)->{ok,bad:[idx],msg}, okMsg, onOk}
+  const byId=Object.fromEntries(cfg.items.map(i=>[i.id,i]));
+  let placed=Array(cfg.items.length).fill(null), pool=[];
+  root.innerHTML=`<div class="seq"><div><h4>Kartu langkah (ketuk untuk memilih)</h4><div class="pool"></div></div>
+  <div><h4>Urutanmu</h4><div class="slots"></div></div></div>
+  <div class="row" style="margin-top:20px"><button class="btn g chk" type="button"><i class="fa-solid fa-check"></i> Periksa urutan</button><button class="btn ghost rst" type="button"><i class="fa-solid fa-rotate-right"></i> Acak ulang</button></div><div class="fb"></div>`;
+  const P=$('.pool',root),S=$('.slots',root),F=$('.fb',root);
+  function card(id){const c=byId[id];const b=el('button','scard',`<span class="e">${c.e||''}</span><span>${c.t}</span>`);b.type='button';return b}
+  function draw(){
+    P.innerHTML='';S.innerHTML='';
+    pool.forEach(id=>{const b=card(id);b.onclick=()=>{const k=placed.indexOf(null);if(k<0)return;placed[k]=id;pool=pool.filter(x=>x!==id);fbClear(F);draw()};P.appendChild(b)});
+    placed.forEach((id,k)=>{
+      const s=el('div','slot',`<span class="no">${k+1}</span>`);s.dataset.k=k;
+      if(id){const b=card(id);b.title='Ketuk untuk mengembalikan';b.onclick=()=>{placed[k]=null;pool.push(id);fbClear(F);draw()};s.appendChild(b)}
+      S.appendChild(s);
+    });
+  }
+  function reset(){placed=Array(cfg.items.length).fill(null);pool=shuffle(cfg.items.map(i=>i.id));
+    // pastikan acakan tidak sama dengan jawaban
+    if(cfg.order&&pool.join()===cfg.order.join())pool=shuffle(pool);
+    fbClear(F);draw()}
+  $('.rst',root).onclick=reset;
+  $('.chk',root).onclick=()=>{
+    if(placed.includes(null)){fb(F,'hint','Susun semua kartu dulu, ya. Masih ada kartu yang belum dipilih. 🙂');return}
+    let res;
+    if(cfg.validator)res=cfg.validator(placed);
+    else{const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});res={ok:!bad.length,bad,msg:'Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.'}}
+    $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(res.bad.includes(k)?'bad':'ok')});
+    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
+    else fb(F,'no','🤔 '+res.msg);
+  };
+  reset();
+  return {reset};
+}
+
+/* ===== Kuis pilihan ganda ===== */
+function Quiz(root,qs,cfg){
+  let score=0,done=0;
+  const sc=el('div','score',`Skor: <span class="v">0</span> / ${qs.length}`);
+  qs.forEach((q,qi)=>{
+    const d=el('div','q',`<div class="qt">${qi+1}. ${q.q}</div>`);
+    const f=el('div','fb');
+    q.o.forEach((t,oi)=>{
+      const b=el('button','opt',`<b>${'ABCD'[oi]}.</b> ${t}`);b.type='button';
+      b.onclick=()=>{
+        if(d.dataset.done)return;d.dataset.done=1;done++;
+        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('right')});
+        if(oi===q.a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
+        else{b.classList.add('wrong');fb(f,'no','❌ Belum tepat. '+q.why)}
+        $('.v',sc).textContent=score;
+        if(done===qs.length){earn(cfg.id);cfg.onDone&&cfg.onDone(score)}
+      };
+      d.appendChild(b);
+    });
+    d.appendChild(f);root.appendChild(d);
+  });
+  root.appendChild(sc);
+}
+
+/* ===== refleksi (disimpan di peramban) ===== */
+function initReflect(){
+  $$('textarea[data-save]').forEach(t=>{
+    const v=store.get('r:'+t.dataset.save);if(v)t.value=v;
+    t.addEventListener('input',()=>store.set('r:'+t.dataset.save,t.value));
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(window.main)main()});
+</script>
+<script>function main(){
+  /* --- Ayo Amati --- */
+  const says={
+    pensil:'“Ini pensilku! Kok masih di lantai, bukan di tas?”',
+    penghapus:'“Penghapusku juga di sini. Aduh, belum masuk tas!”',
+    penggaris:'“Penggaris juga tertinggal di lantai. Waktuku hampir habis!”'};
+  const seen=new Set();
+  $$('.floor').forEach(b=>b.onclick=()=>{
+    $('#andiSay').textContent=says[b.dataset.k];seen.add(b.dataset.k);b.style.borderColor='var(--teal)';b.style.background='#e9f8f9';
+    if(seen.size===3){fb($('#sceneFb'),'ok','🔍 Kamu menemukan <b>masalahnya</b>: alat tulis Andi belum masuk tas, padahal bel sebentar lagi berbunyi!');earn('amati')}
+  });
+  const D=[
+    ['Apa masalah yang dialami Andi pagi ini?','Andi belum membawa alat tulis (pensil, penghapus, penggaris) karena masih berserakan di lantai, sementara waktu hampir habis.'],
+    ['Bagaimana perasaan Andi? Mengapa?','Andi cemas dan terburu-buru karena takut terlambat ke sekolah.'],
+    ['Menurutmu, mengapa Andi bisa lupa membawa alat tulisnya?','Andi tidak menyiapkan tas sejak malam, bangun terburu-buru, dan barangnya tidak disimpan di tempat yang tetap.']];
+  D.forEach(([q,a],i)=>{
+    const d=el('div','q',`<div class="qt">${i+1}. ${q}</div>`);
+    const t=el('textarea');t.rows=2;t.dataset.save='disk'+i;t.placeholder='Tuliskan pendapatmu…';
+    const b=el('button','btn ghost','Lihat contoh jawaban');b.type='button';b.style.marginTop='10px';
+    const f=el('div','fb');
+    b.onclick=()=>{fb(f,'hint','💡 Contoh jawaban (jawabanmu boleh berbeda): '+a)};
+    d.append(t,b,f);$('#disk').appendChild(d);
+  });
+
+  /* --- Definisi --- */
+  const blanks=$$('.blank');
+  const words=[['logis','a'],['runtut','a'],['sistematis','a'],['langkah-langkah','b'],['asal-asalan',''],['acak',''],['secepat kilat','']];
+  const bank=$('#bank');
+  shuffle(words).forEach(([w,s])=>{
+    const b=el('button','word',w);b.type='button';
+    b.onclick=()=>{
+      const free=blanks.find(x=>!x.textContent&&x.dataset.set===s);
+      if(!s||!free){fb($('#defFb'),'no','🤔 Kata “'+w+'” belum cocok. Ingat: berpikir komputasional itu <b>logis, runtut, dan sistematis</b>, dengan menyusun <b>langkah-langkah</b> yang jelas.');return}
+      free.textContent=w;free.classList.add('ok');b.classList.add('used');
+      if(blanks.every(x=>x.textContent)){fb($('#defFb'),'ok','🎉 Tepat sekali! Definisinya sudah lengkap.');$('#defExplain').style.display='flex';earn('definisi')}
+      else fbClear($('#defFb'));
+    };
+    bank.appendChild(b);
+  });
+  $$('.flip').forEach(f=>f.onclick=()=>{f.classList.toggle('on');earn('flip')});
+
+  /* --- Detektif Masalah --- */
+  const cases=[
+   {n:'Terlambat ke sekolah',e:'⏰',s:'Pukul 06.55, Rani baru sampai di gerbang. Bel sekolah sudah berbunyi dan ia dimarahi karena terlambat.',
+   st:[['Kenali masalah: apa masalahnya?',['Rani terlambat ke sekolah','Gerbang sekolah terlalu tinggi','Rani tidak suka bel sekolah'],0],
+       ['Cari penyebab: mengapa itu terjadi?',['Rani bangun kesiangan dan tidak punya jadwal pagi','Bel sekolah berbunyi terlalu cepat','Matahari terbit terlalu lambat'],0],
+       ['Pikirkan solusi: apa yang sebaiknya dilakukan?',['Memasang alarm dan menyiapkan keperluan sejak malam','Berangkat lebih siang lagi','Tidak usah berangkat sekolah'],0]]},
+   {n:'Buku tertinggal',e:'📚',s:'Di kelas, Dimas membuka tasnya, tetapi buku KKA yang dibutuhkan tidak ada di dalamnya.',
+   st:[['Kenali masalah: apa masalahnya?',['Buku KKA Dimas tertinggal','Tas Dimas berwarna biru','Guru terlalu cepat menjelaskan'],0],
+       ['Cari penyebab: mengapa itu terjadi?',['Dimas tidak memeriksa isi tas sebelum berangkat','Bukunya pergi sendiri','Teman Dimas pandai membaca'],0],
+       ['Pikirkan solusi: apa yang sebaiknya dilakukan?',['Membuat daftar periksa isi tas setiap malam','Membawa semua mainan ke sekolah','Menyalahkan teman sebangku'],0]]},
+   {n:'Tas terlalu berat',e:'🎒',s:'Bahu Sinta pegal karena tasnya sangat berat. Ia sulit berjalan dari gerbang menuju kelas.',
+   st:[['Kenali masalah: apa masalahnya?',['Tas Sinta terlalu berat','Kelas Sinta terlalu dekat','Sinta tidak punya tas'],0],
+       ['Cari penyebab: mengapa itu terjadi?',['Sinta membawa semua buku, termasuk yang tidak ada pelajarannya hari ini','Tasnya terlalu bersih','Jalan menuju kelas terlalu rata'],0],
+       ['Pikirkan solusi: apa yang sebaiknya dilakukan?',['Hanya membawa buku sesuai jadwal pelajaran hari ini','Menambah isi tas supaya seimbang','Meninggalkan tas di gerbang'],0]]}];
+  const done=new Set(), prog=cases.map(()=>0);
+  function renderTabs(cur){
+    const t=$('#caseTabs');t.innerHTML='';
+    cases.forEach((c,i)=>{const b=el('button','btn '+(i===cur?'o':'ghost'),`${c.e} Kartu ${i+1}: ${c.n}${done.has(i)?' ✅':''}`);b.type='button';b.onclick=()=>showCase(i);t.appendChild(b)});
+  }
+  function showCase(i){
+    renderTabs(i);const c=cases[i],box=$('#caseBox');
+    const k=prog[i];
+    const labels=['① Kenali masalah','② Cari penyebab','③ Pikirkan solusi'];
+    box.innerHTML=`<h3>${c.e} ${c.n}</h3><p class="bubble">${c.s}</p>
+      <div class="row" style="margin:16px 0">${labels.map((l,j)=>`<span class="chip ${j<k?'meaningful':j===k?'joyful':'tp'}">${l}${j<k?' ✔':''}</span>`).join('')}</div>`;
+    if(k>=3){
+      box.innerHTML+=`<div class="fb show ok">🏅 Penyelidikan selesai! Masalah → penyebab → solusi sudah kamu temukan.</div>`;
+      return;
+    }
+    const [q,opts,ans]=c.st[k];
+    box.innerHTML+=`<div class="qt"><b>${q}</b></div>`;
+    const f=el('div','fb');
+    shuffle(opts.map((t,idx)=>({t,idx}))).forEach(o=>{
+      const b=el('button','opt',o.t);b.type='button';
+      b.onclick=()=>{
+        if(o.idx===ans){b.classList.add('right');prog[i]++;
+          if(prog[i]===3){done.add(i);if(done.size===3)earn('detektif')}
+          setTimeout(()=>showCase(i),650)}
+        else{b.classList.add('wrong');fb(f,'no','🤔 Hmm, belum cocok dengan ceritanya. Baca situasinya sekali lagi, lalu coba pilihan lain.')}
+      };
+      box.appendChild(b);
+    });
+    box.appendChild(f);
+  }
+  showCase(0);
+
+  /* --- Masalah atau bukan --- */
+  const mb=[['Terlambat ke sekolah karena bangun kesiangan',1],['Matahari terbit di timur',0],['Pensil tertinggal di rumah saat akan belajar',1],['Kamar berantakan sehingga sulit mencari buku',1],['Bumi mengelilingi matahari',0],['Tas terlalu berat sehingga bahu terasa pegal',1]];
+  let ok=0,n=0;
+  mb.forEach(([t,v])=>{
+    const r=el('div','row',`<div style="flex:1;min-width:220px;font-weight:700">${t}</div>`);
+    const a=el('button','btn ghost','Masalah'),b=el('button','btn ghost','Bukan masalah');a.type=b.type='button';
+    const res=el('span','mini', '', {style: 'font-weight: 700;'});
+    [[a,1],[b,0]].forEach(([x,val])=>x.onclick=()=>{
+      if(r.dataset.d)return;r.dataset.d=1;n++;
+      const right=val===v;if(right)ok++;
+      x.className='btn '+(right?'g':'o');res.textContent=right?'✅ Tepat':(v?'❌ Ini masalah: kegiatan terganggu':'❌ Ini fakta, bukan masalah');
+      if(n===mb.length){fb($('#mbFb'),ok>=5?'ok':'hint',`Skormu ${ok} dari ${mb.length}. Masalah sederhana adalah hal yang membuat kegiatan kita terganggu.`);earn('mb')}
+    });
+    r.append(a,b,res);r.style.margin='10px 0';$('#mb').appendChild(r);
+  });
+
+  /* --- Kuis --- */
+  Quiz($('#quiz'),[
+    {q:'Berpikir komputasional adalah cara berpikir untuk …',o:['bermain gim sepanjang hari','menyelesaikan masalah secara logis, runtut, dan sistematis','menggambar tanpa aturan'],a:1,why:'Berpikir komputasional menyelesaikan masalah dengan langkah yang jelas.'},
+    {q:'Contoh masalah sederhana dalam kehidupan sehari-hari adalah …',o:['terlambat ke sekolah karena bangun kesiangan','matahari terbit di timur','bumi mengelilingi matahari'],a:0,why:'Terlambat mengganggu kegiatan kita, jadi itu masalah.'},
+    {q:'Langkah pertama saat menghadapi masalah adalah …',o:['langsung marah','mengenali masalahnya','menyalahkan teman'],a:1,why:'Kenali masalah dulu, baru cari penyebab dan solusi.'}
+  ],{id:'kuis1',onDone:()=>$('#badge').classList.add('show')});
+}
+</script>
+</body>
+</html>
