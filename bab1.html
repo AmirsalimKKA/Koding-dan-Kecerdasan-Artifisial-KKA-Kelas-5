@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Bab 1 - Berpikir Komputasional</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#022050',
+                        teal: '#0B7C86',
+                        cyan: '#00D6D8',
+                        darkgray: '#333333',
+                        bglight: '#f4f9f9'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #f4f9f9; 
+            background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .level-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(11, 124, 134, 0.3);
+        }
+        .line-connect {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #0B7C86;
+            z-index: 0;
+            opacity: 0.2;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body class="font-nunito text-darkgray min-h-screen flex flex-col">
+
+    <!-- Navbar Section -->
+    <nav class="bg-navy px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
+        <div class="flex items-center gap-3">
+            <!-- Panggil logo langsung karena berada di folder yang sama -->
+            <img src="logo.png" alt="Logo KKA" class="h-10 w-auto bg-white rounded-full p-1">
+            <div class="hidden md:block">
+                <h1 class="font-fredoka text-cyan text-xl font-bold leading-none">KKA Kelas 5</h1>
+                <p class="text-gray-300 text-xs font-semibold">SDN 4 Tugusari</p>
+            </div>
+        </div>
+        
+        <!-- Tombol kembali ke Menu Utama -->
+        <a href="index.html" class="flex items-center gap-2 bg-teal text-white px-5 py-2.5 rounded-xl font-bold hover:bg-cyan hover:text-navy transition shadow-[0_4px_0_0_#085E66] hover:shadow-[0_2px_0_0_#085E66] hover:translate-y-[2px]">
+            <i class="fa-solid fa-house"></i> <span class="hidden sm:inline">Menu Utama</span>
+        </a>
+    </nav>
+
+    <!-- Header Dashboard -->
+    <header class="bg-white py-10 px-6 border-b-4 border-cyan text-center relative z-10 shadow-sm mb-12">
+        <span class="inline-block bg-navy text-white font-fredoka px-4 py-1 rounded-full text-sm font-semibold mb-3">Misi Bab 1</span>
+        <h1 class="font-fredoka text-3xl md:text-5xl font-bold text-navy mb-3">
+            Berpikir Komputasional <i class="fa-solid fa-laptop-code text-cyan"></i>
+        </h1>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg font-medium">
+            Peta petualanganmu sudah siap! Selesaikan level satu per satu dari pengantar dasar hingga menguasai 4 jurus pilar komputasional.
+        </p>
+    </header>
+
+    <!-- Main Content (Peta Level) -->
+    <main class="flex-grow max-w-6xl mx-auto px-6 pb-16 w-full relative z-10">
+        
+        <!-- Garis Penghubung antar level (Hanya terlihat di layar besar) -->
+        <div class="hidden md:block line-connect"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            
+            <!-- Level 1 Card -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 level-card flex flex-col h-full shadow-md relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-navy text-white font-fredoka px-6 py-2 rounded-full font-bold shadow-lg border-2 border-cyan text-lg">
+                    Level 1
+                </div>
+                
+                <div class="text-center mt-6 mb-4">
+                    <div class="w-20 h-20 mx-auto bg-teal/10 rounded-full flex items-center justify-center text-teal text-4xl mb-3 shadow-inner">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h2 class="font-fredoka text-xl font-bold text-navy">Pengantar Logika</h2>
+                </div>
+                <p class="text-gray-600 text-center mb-6 flex-grow text-sm">Pahami apa itu berpikir komputasional dan temukan contohnya dalam kegiatanmu sehari-hari.</p>
+                
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <!-- Link diarahkan ke folder bab1 -->
+                    <a href="bab1/materi1.html" class="text-center bg-navy text-white py-2 px-2 rounded-xl font-bold hover:bg-navy/90 transition text-sm">
+                        <i class="fa-solid fa-book-open block mb-1"></i> Materi
+                    </a>
+                    <a href="bab1/media1.html" class="text-center bg-teal text-white py-2 px-2 rounded-xl font-bold hover:bg-teal/90 transition shadow-[0_4px_0_0_#085E66] hover:translate-y-[2px] text-sm">
+                        <i class="fa-solid fa-gamepad block mb-1"></i> Game
+                    </a>
+                </div>
+            </div>
+
+            <!-- Level 2 Card -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 level-card flex flex-col h-full shadow-md relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-teal text-white font-fredoka px-6 py-2 rounded-full font-bold shadow-lg border-2 border-cyan text-lg">
+                    Level 2
+                </div>
+                
+                <div class="text-center mt-6 mb-4">
+                    <div class="w-20 h-20 mx-auto bg-cyan/10 rounded-full flex items-center justify-center text-cyan text-4xl mb-3 shadow-inner border border-cyan/20">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h2 class="font-fredoka text-xl font-bold text-navy">Mesin & Algoritma</h2>
+                </div>
+                <p class="text-gray-600 text-center mb-6 flex-grow text-sm">Mengenal urutan langkah (Algoritma) dan sistem Input-Proses-Output (IPO).</p>
+                
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <a href="bab1/materi2.html" class="text-center bg-navy text-white py-2 px-2 rounded-xl font-bold hover:bg-navy/90 transition text-sm">
+                        <i class="fa-solid fa-book-open block mb-1"></i> Materi
+                    </a>
+                    <a href="bab1/media2.html" class="text-center bg-teal text-white py-2 px-2 rounded-xl font-bold hover:bg-teal/90 transition shadow-[0_4px_0_0_#085E66] hover:translate-y-[2px] text-sm">
+                        <i class="fa-solid fa-gamepad block mb-1"></i> Game
+                    </a>
+                </div>
+            </div>
+
+            <!-- Level 3 Card -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 level-card flex flex-col h-full shadow-md relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-cyan text-navy font-fredoka px-6 py-2 rounded-full font-bold shadow-lg border-2 border-teal text-lg">
+                    Level 3
+                </div>
+                
+                <div class="text-center mt-6 mb-4">
+                    <div class="w-20 h-20 mx-auto bg-navy/10 rounded-full flex items-center justify-center text-navy text-4xl mb-3 shadow-inner border border-navy/20">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h2 class="font-fredoka text-xl font-bold text-navy">4 Pilar Utama</h2>
+                </div>
+                <p class="text-gray-600 text-center mb-6 flex-grow text-sm">Pelajari 4 pilar rahasia: Dekomposisi, Pengenalan Pola, Abstraksi, dan Algoritma.</p>
+                
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <a href="bab1/materi3.html" class="text-center bg-navy text-white py-2 px-2 rounded-xl font-bold hover:bg-navy/90 transition text-sm">
+                        <i class="fa-solid fa-book-open block mb-1"></i> Materi
+                    </a>
+                    <a href="bab1/media3.html" class="text-center bg-teal text-white py-2 px-2 rounded-xl font-bold hover:bg-teal/90 transition shadow-[0_4px_0_0_#085E66] hover:translate-y-[2px] text-sm">
+                        <i class="fa-solid fa-gamepad block mb-1"></i> Game
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
