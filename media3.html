@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pertemuan 3: Empat Pilar Berpikir Komputasional – Media Interaktif KKA Kelas V</title>
+<meta name="description" content="Media interaktif Pertemuan 3: empat pilar berpikir komputasional dan proyek poster STEAM.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9aa7'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E🤖%3C/text%3E%3C/svg%3E">
+<!-- Tailwind & FontAwesome for consistency -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>:root{
+  --bg: #f4f9f9; 
+  --card: #ffffff; 
+  --ink: #333333; 
+  --muted: #6b6880;
+  
+  /* VisualMath KKA Theme Colors */
+  --navy: #022050;
+  --teal: #0B7C86; 
+  --teal-d: #085E66;
+  --cyan: #00D6D8;
+  
+  --orange: #ff8a3d; 
+  --orange-d: #d4651a;
+  --yellow: #ffd34e; 
+  --pink: #ff6f91; 
+  --green: #2fb36d; 
+  --red: #e5484d; 
+
+  --line: #c3e2e5; 
+  --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
+  --r: 20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: 'Nunito', "Trebuchet MS", sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margin:0 0 .5em; color: var(--navy);}
+h2{font-size:1.55rem} h3{font-size:1.15rem}
+p{margin:.4em 0 .8em}
+button{font:inherit;cursor:pointer}
+.sr{position:absolute;left:-9999px}
+a{color:var(--teal-d)}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
+.top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.top .ttl{font-size:1.1rem;line-height:1.15; color: var(--cyan);}
+.top .ttl small{display:block;font-weight:600;opacity:.85;font-size:.78rem; color: #e2e8f0; font-family: 'Nunito', sans-serif;}
+.top .sp{flex:1}
+.stars{background:#fff;color:var(--navy);border-radius:99px;padding:5px 14px;font-weight:800;display:flex;gap:6px;align-items:center;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
+.home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
+
+/* step nav */
+.steps{display:flex;gap:8px;overflow-x:auto;padding:20px 20px 6px;max-width:1100px;margin:0 auto;scrollbar-width:thin}
+.steps button{flex:0 0 auto;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 14px;font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center;box-shadow:0 3px 0 var(--line)}
+.steps button .n{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem}
+.steps button.on{background:var(--teal);border-color:var(--teal-d);color:#fff;box-shadow:0 3px 0 var(--teal-d)}
+.steps button.on .n{background:#fff;color:var(--teal-d)}
+.steps button.done:not(.on) .n{background:var(--cyan);color:var(--navy)}
+
+main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
+.panel{display:none;animation:pop .35s ease}
+.panel.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.phead{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 6px}
+.phead h2{margin:0}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:800;border:2px solid}
+.chip.tp{background:#e3f6f7;color:var(--teal-d);border-color:var(--cyan)}
+.chip.mindful{background:#e8efff;color:#2c52c4;border-color:#c6d5ff}
+.chip.joyful{background:#fff1d6;color:#a8620a;border-color:#ffdca1}
+.chip.meaningful{background:#e2f7ea;color:#1c7d49;border-color:#b4e8ca}
+.chip.intro{background:#f0e9ff;color:#5b3bb5;border-color:#d9c9ff}
+
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);margin:16px 0; transition: transform 0.2s;}
+.card:hover { transform: translateY(-3px); }
+.card.tip{background:#f0fbff;border-color:var(--cyan)}
+.card.key{background:var(--navy);border-color:var(--navy); color: white;}
+.card.key h3, .card.key b { color: var(--cyan); }
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}.top .ttl small{display:none}}
+@media(min-width:821px) and (max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}}
+
+.btn{border:0;border-radius:14px;padding:12px 20px;font-weight:800;color:#fff;background:var(--teal);box-shadow:0 4px 0 var(--teal-d);transition:all .1s; font-family: 'Fredoka', sans-serif; font-size: 1.05rem;}
+.btn:hover { background: var(--navy); box-shadow:0 4px 0 #01122e; }
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--teal-d)}
+.btn.o{background:var(--orange);box-shadow:0 4px 0 var(--orange-d)}
+.btn.o:hover { background: #e87b32; box-shadow:0 4px 0 var(--orange-d); }
+.btn.g{background:var(--green);box-shadow:0 4px 0 #1f8a50}
+.btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
+.btn[disabled]{opacity:.45;cursor:not-allowed; transform: none; box-shadow:0 4px 0 var(--teal-d);}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
+
+.fb{min-height:2.2em;margin-top:14px;font-weight:700;border-radius:14px;padding:12px 16px;display:none}
+.fb.show{display:block; animation: pop 0.3s;}
+.fb.ok{background:#e2f7ea;color:#14663a; border: 2px solid #b4e8ca;}
+.fb.no{background:#ffe6e6;color:#a31d22; border: 2px solid #f2b0b2;}
+.fb.hint{background:#e9f8f9;color:var(--teal-d); border: 2px solid var(--line);}
+
+/* chips / option buttons */
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;font-weight:600;color:var(--ink);margin:8px 0;box-shadow:0 3px 0 var(--line); transition: all 0.2s;}
+.opt:hover{border-color:var(--teal); transform: translateY(-2px);}
+.opt.right{background:#e2f7ea;border-color:var(--green);box-shadow:0 3px 0 #8fd6b0}
+.opt.wrong{background:#ffe6e6;border-color:var(--red);box-shadow:0 3px 0 #f2b0b2}
+.opt.sel{border-color:var(--orange);background:#fff4e8}
+.word{display:inline-block;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 16px;font-weight:800;margin:6px;box-shadow:0 3px 0 var(--line); transition: transform 0.1s;}
+.word:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line);}
+.word.used{opacity:.35;pointer-events:none}
+.blank{display:inline-block;min-width:140px;border-bottom:4px dashed var(--teal);text-align:center;font-weight:800;color:var(--teal-d);padding:0 10px;cursor:pointer; font-size: 1.1rem;}
+.blank.ok{border-bottom-style:solid;border-color:var(--cyan);color:var(--navy)}
+
+/* sequencer */
+.seq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:820px){.seq{grid-template-columns:1fr}}
+.seq h4{margin:0 0 10px;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px; font-weight: 800;}
+.pool,.slots{display:flex;flex-direction:column;gap:10px;min-height:60px}
+.scard{border:2px solid var(--line);background:#fff;border-radius:16px;padding:12px 16px;font-weight:700;text-align:left;display:flex;gap:12px;align-items:center;box-shadow:0 3px 0 var(--line);color:var(--ink); transition: transform 0.1s;}
+.scard:active { transform: translateY(3px); box-shadow: none; }
+.scard .e{font-size:1.6rem}
+.slot{border:3px dashed var(--line);border-radius:16px;padding:10px 14px;min-height:60px;display:flex;align-items:center;gap:12px;background:#f8fbfc}
+.slot .no{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+.slot .scard{flex:1;box-shadow:none;border-color:var(--cyan);background:#e9f8f9}
+.slot.ok{border-color:var(--green);background:#eefaf3}.slot.ok .no{background:var(--green)}
+.slot.bad{border-color:var(--red);background:#fff2f2}.slot.bad .no{background:var(--red)}
+
+/* flip card */
+.flip{perspective:900px;min-height:180px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
+.flip .in{position:relative;width:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:20px;border:2px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-weight:700}
+.flip .f{background:#fff; color: var(--navy); border-color: var(--teal); border-width: 3px;}
+.flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg); border-color: var(--cyan); border-width: 3px;}
+.flip .big{font-size:2.8rem; margin-bottom: 10px;}
+
+/* quiz */
+.q{margin:16px 0 26px}
+.q .qt{font-weight:800;margin-bottom:8px; font-size: 1.1rem; color: var(--navy);}
+.score{display:flex;gap:10px;align-items:center;font-weight:800; background: var(--navy); color: white; padding: 10px 20px; border-radius: 16px; width: max-content; font-size: 1.1rem;}
+.score .v { color: var(--cyan); }
+.badge{display:none;text-align:center;padding:30px;border-radius:var(--r);background:linear-gradient(135deg,#e9f8f9,#c3e2e5);border:4px solid var(--teal);margin-top:20px}
+.badge.show{display:block;animation:pop .5s}
+.badge .big{font-size:3.5rem; margin-bottom: 10px;}
+textarea,input[type=text]{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;background:#fff;color:var(--ink); transition: border-color 0.2s;}
+textarea:focus,input:focus,button:focus-visible{outline:none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(11, 124, 134, 0.2);}
+table.t{border-collapse:collapse;width:100%;font-size:.95rem}
+table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.t th{background:#e9f8f9; color: var(--navy);}
+.mini{font-size:.9rem;color:var(--muted)}
+.kodi-say{display:flex;gap:16px;align-items:flex-start}
+.kodi-say img {width:90px;height:90px;flex:0 0 auto; object-fit: contain;}
+.bubble{background:#fff;border:2px solid var(--teal);border-radius:18px;padding:14px 20px;position:relative;box-shadow:0 4px 0 var(--teal);font-weight:600; color: var(--ink);}
+.card.key .bubble { background: var(--teal); color: white; border-color: var(--cyan); box-shadow: 0 4px 0 var(--navy); }
+.foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
+@media print{.top,.steps,.pn,.noprint{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="logo.png" alt="Logo KKA">
+    <div class="ttl">Pertemuan 3 · Empat Pilar &amp; Proyek STEAM<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
+  </div>
+  <div class="sp"></div>
+  <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
+</header>
+<nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
+<main>
+<style>
+@media print{body *{visibility:hidden}#poster,#poster *{visibility:visible}#poster{position:absolute;left:0;top:0;width:100%;box-shadow:none}}
+.pillbtn{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
+.pillbtn .e{font-size:1.8rem}
+#poster{--pc:#0e9aa7;border:4px solid var(--pc);border-radius:20px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
+#poster .ph{background:var(--pc);color:#fff;padding:14px 18px;text-align:center;font-size:1.35rem;font-weight:800;line-height:1.2}
+#poster .pb{padding:14px 18px;display:grid;gap:8px}
+#poster .ps{display:flex;gap:12px;align-items:center;border:2px solid var(--pc);border-radius:14px;padding:6px 12px;background:#fff}
+#poster .ps .n{width:30px;height:30px;border-radius:50%;background:var(--pc);color:#fff;font-weight:800;display:grid;place-items:center;flex:0 0 auto}
+#poster .ps .ic{font-size:1.8rem}
+#poster .pf{background:#f6f6f6;padding:10px 18px;font-size:.82rem;border-top:3px dashed var(--pc)}
+#poster .pf b{color:var(--pc)}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--line);cursor:pointer;padding:0}
+.sw.on{box-shadow:0 0 0 3px var(--ink)}
+.ck{display:flex;gap:8px;align-items:center;font-weight:700}.ck i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem;color:#fff}.ck.ok i{background:var(--green)}
+.skor label{display:inline-flex;gap:4px;align-items:center;margin-right:10px;font-weight:700}
+</style>
+<section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
+  <div class="card key kodi-say">
+    <img src="logo.png" alt="Kodi">
+    <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat kekuatan super</b> para pemikir komputasional dan buat <b>poster solusi</b>!</div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>🎯 Tujuan pertemuan ini</h3>
+      <ul><li><b>TP 5</b> – menyebutkan empat pilar berpikir komputasional beserta contohnya;</li>
+      <li><b>TP 6</b> – menyajikan solusi melalui kegiatan berbasis STEAM (poster “Langkah Pagi Hari Agar Siap Sekolah”).</li></ul></div>
+    <div class="card tip"><h3>💭 Pertanyaan pematik</h3>
+      <p><b>Bagaimana cara memecah masalah yang besar agar lebih mudah diselesaikan?</b></p>
+      <textarea rows="2" data-save="pematik" placeholder="Tuliskan dugaanmu dulu…"></textarea></div>
+  </div>
+</section>
+
+<section class="panel" id="p-pilar" data-title="Empat Pilar" data-icon="🧠" data-tp="5" data-sintaks="Mindful">
+  <div class="card">
+    <p>Pilih satu pilar, baca penjelasannya, lalu <b>coba mini-kegiatannya</b>.</p>
+    <div class="grid g4" id="pilTabs"></div>
+  </div>
+  <div class="card" id="pilBox"></div>
+</section>
+
+<section class="panel" id="p-cocok" data-title="Cocokkan Pilar" data-icon="🧩" data-tp="5" data-sintaks="Joyful">
+  <div class="card">
+    <h3>🎴 Cocokkan kartu pilar dengan contoh kegiatan</h3>
+    <p>Baca contoh kegiatan A–D, lalu pilih huruf yang cocok untuk setiap pilar.</p>
+    <table class="t" id="ctoh"></table>
+    <div id="match" style="margin-top:12px"></div>
+    <div class="row" style="margin-top:10px"><button class="btn g" type="button" id="mchk">✔ Periksa</button></div>
+    <div class="fb" id="mFb"></div>
+  </div>
+  <div class="card">
+    <h3>🔍 Pilar mana yang dipakai?</h3>
+    <div id="quiz4"></div>
+  </div>
+</section>
+
+<section class="panel" id="p-poster" data-title="Proyek: Poster" data-icon="🎨" data-tp="6,5" data-sintaks="Meaningful">
+  <div class="card tip">
+    <b>Tugas proyek:</b> buat poster berjudul <b>“Langkah Pagi Hari Agar Siap Sekolah”</b>. Poster harus memuat judul, urutan langkah yang jelas, gambar/ikon pendukung, warna menarik, dan keterangan singkat penerapan empat pilar.
+  </div>
+  <div class="grid g2" style="align-items:start">
+    <div>
+      <div class="card"><h3>1️⃣ Judul</h3><input type="text" id="pTitle" value="Langkah Pagi Hari Agar Siap Sekolah" maxlength="60"></div>
+      <div class="card"><h3>2️⃣ Pilih langkah <span class="mini">(maksimal 6)</span></h3>
+        <p class="mini">Abstraksi: pilih hanya yang penting! Ketuk untuk menambah.</p><div class="row" id="lib"></div>
+        <h4 style="margin:14px 0 6px">Urutan langkahmu (algoritma)</h4><div id="mine" style="display:flex;flex-direction:column;gap:6px"></div></div>
+      <div class="card"><h3>3️⃣ Warna poster</h3><div class="row" id="sws"></div></div>
+      <div class="card"><h3>4️⃣ Keterangan empat pilar</h3><div id="pnotes" style="display:grid;gap:8px"></div></div>
+    </div>
+    <div style="position:sticky;top:76px">
+      <div id="poster"><div class="ph" id="vT"></div><div class="pb" id="vS"></div><div class="pf" id="vF"></div></div>
+      <div class="card" style="margin-top:14px"><b>✅ Daftar periksa poster</b><div id="chk" style="display:grid;gap:4px;margin-top:6px"></div>
+        <div class="row" style="margin-top:10px"><button class="btn o" type="button" onclick="window.print()">🖨️ Cetak / simpan PDF</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="p-steam" data-title="STEAM & Presentasi" data-icon="🔬" data-tp="6" data-sintaks="Meaningful">
+  <div class="card"><h3>🌟 STEAM dalam proyek poster kita</h3><p>Ketuk setiap huruf untuk melihat perannya.</p>
+    <div class="grid g3" id="steam"></div></div>
+  <div class="grid g2">
+    <div class="card"><h3>🎤 Saat presentasi, jelaskan</h3><div id="pres" style="display:grid;gap:6px"></div><p class="mini">Centang setelah kelompokmu siap menjelaskan.</p></div>
+    <div class="card"><h3>📊 Penilaian diri kelompokku</h3><p class="mini">1 = perlu bimbingan • 2 = baik • 3 = sangat baik</p><div id="skor" class="skor"></div><div class="fb" id="skFb"></div></div>
+  </div>
+</section>
+
+<section class="panel" id="p-uji" data-title="Uji & Refleksi" data-icon="🏆" data-tp="5,6" data-sintaks="Meaningful">
+  <div class="card key"><h3>📌 Rangkuman</h3><ul>
+    <li>Empat pilar berpikir komputasional: <b>dekomposisi, pengenalan pola, abstraksi, dan algoritma</b>.</li>
+    <li>Dekomposisi memecah masalah, pola mencari kesamaan, abstraksi memilih yang penting, algoritma menyusun langkah.</li>
+    <li>Keempat pilar membantu kita menyelesaikan masalah di rumah dan di sekolah.</li></ul></div>
+  <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div>
+    <p class="qt" style="margin-top:14px">4. Tuliskan satu contoh penerapan salah satu pilar di kehidupan sehari-hari:</p><textarea rows="2" data-save="contoh"></textarea></div>
+  
+  <!-- Badge KELULUSAN + Navigasi Menu Bab & Menu Utama -->
+  <div class="badge" id="badge">
+    <div class="big">🎓🏅</div>
+    <h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu sudah menyelesaikan Bab 1</h3>
+    <div class="row" style="justify-content:center;margin:10px 0"><span class="chip tp">Pertemuan 1: Masalah</span>→<span class="chip joyful">Pertemuan 2: Algoritma &amp; IPO</span>→<span class="chip meaningful">Pertemuan 3: Empat Pilar</span></div>
+    <p>Berpikir komputasional adalah dasar untuk belajar koding dan kecerdasan artifisial di bab berikutnya.</p>
+    
+    <div class="row" style="justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-list-ul"></i> Menu Bab 1
+      </a>
+      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-house"></i> Menu Utama
+      </a>
+    </div>
+  </div>
+
+  <div class="card"><h3>🪞 Refleksi diriku</h3>
+    <p><span class="chip mindful">Mindful</span> Pilar mana yang paling mudah kamu pahami? Mengapa?</p><textarea rows="2" data-save="rf1"></textarea>
+    <p><span class="chip joyful">Joyful</span> Bagian proyek poster mana yang paling menyenangkan?</p><textarea rows="2" data-save="rf2"></textarea>
+    <p><span class="chip meaningful">Meaningful</span> Jika mengulang kegiatan ini, langkah mana yang ingin kamu perbaiki?</p><textarea rows="2" data-save="rf3"></textarea></div>
+</section>
+
+</main>
+<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si</div>
+<script>
+const PAGE='media3';
+const TPS={
+ 1:'Menjelaskan pengertian berpikir komputasional.',
+ 2:'Mengidentifikasi masalah sederhana di lingkungan sekitar.',
+ 3:'Memecah masalah menjadi langkah-langkah kecil dan menyusunnya menjadi urutan langkah (algoritma dasar) yang runtut.',
+ 4:'Menentukan input, proses, dan output (IPO) dari kegiatan sehari-hari.',
+ 5:'Menyebutkan empat pilar berpikir komputasional beserta contohnya.',
+ 6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
+};
+</script>
+<script>/* ===== Utilitas & komponen bersama – Media Interaktif KKA Kelas V Bab 1 ===== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={
+  get(k){try{return localStorage.getItem(PAGE+':'+k)}catch(e){return null}},
+  set(k,v){try{localStorage.setItem(PAGE+':'+k,v)}catch(e){}}
+};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+/* umpan balik */
+function fb(box,kind,msg){box.className='fb show '+kind;box.innerHTML=msg;box.setAttribute('role','status')}
+function fbClear(box){box.className='fb';box.innerHTML=''}
+
+/* bintang */
+const earned=new Set();
+function earn(id){
+  if(earned.has(id))return;earned.add(id);
+  store.set('stars',JSON.stringify([...earned]));
+  $('#starN').textContent=earned.size;
+  const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+}
+
+/* ===== navigasi panel ===== */
+function initNav(){
+  try{JSON.parse(store.get('stars')||'[]').forEach(x=>earned.add(x))}catch(e){}
+  $('#starN').textContent=earned.size;
+  const panels=$$('.panel'), nav=$('#steps');
+  panels.forEach((p,i)=>{
+    const b=el('button','',`<span class="n">${i+1}</span>${p.dataset.title}`);
+    b.type='button';b.onclick=()=>go(i);nav.appendChild(b);
+    // header
+    const tps=(p.dataset.tp||'').split(',').filter(Boolean);
+    const h=el('div','');
+    let chips='';
+    tps.forEach(n=>chips+=`<span class="chip tp" title="${TPS[n]}">🎯 TP ${n}</span>`);
+    if(p.dataset.sintaks)chips+=`<span class="chip ${p.dataset.sintaks.toLowerCase()}">${p.dataset.sintaks} Learning</span>`;
+    if(p.dataset.intro)chips+=`<span class="chip intro">Pembuka</span>`;
+    h.innerHTML=`<div class="phead"><h2>${p.dataset.icon||''} ${p.dataset.title}</h2>${chips}</div>`+
+      (tps.length?`<p class="mini" style="margin-top:0">${tps.map(n=>`<b>TP ${n}:</b> ${TPS[n]}`).join(' &nbsp;•&nbsp; ')}</p>`:'');
+    p.prepend(h);
+    const pn=el('div','pn noprint');
+    const prev=el('button','btn ghost','← Sebelumnya'),next=el('button','btn o','Lanjut →');
+    prev.type=next.type='button';
+    prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
+    if(i===0)prev.style.visibility='hidden';
+    if(i===panels.length-1)next.style.visibility='hidden';
+    pn.append(prev,next);p.append(pn);
+  });
+  function go(i){
+    i=Math.max(0,Math.min(panels.length-1,i));
+    panels.forEach((p,j)=>p.classList.toggle('on',j===i));
+    $$('button',nav).forEach((b,j)=>{b.classList.toggle('on',j===i);if(j<i)b.classList.add('done')});
+    const cur=$$('button',nav)[i];cur.scrollIntoView({inline:'center',block:'nearest'});
+    history.replaceState(null,'','#'+panels[i].id);
+    window.scrollTo({top:0});
+  }
+  window.go=go;
+  const h=location.hash.slice(1);
+  const idx=panels.findIndex(p=>p.id===h);
+  go(idx>=0?idx:0);
+}
+
+/* ===== Sequencer: ketuk kartu untuk menyusun urutan ===== */
+function Sequencer(root,cfg){
+  const byId=Object.fromEntries(cfg.items.map(i=>[i.id,i]));
+  let placed=Array(cfg.items.length).fill(null), pool=[];
+  root.innerHTML=`<div class="seq"><div><h4>Kartu langkah (ketuk untuk memilih)</h4><div class="pool"></div></div>
+  <div><h4>Urutanmu</h4><div class="slots"></div></div></div>
+  <div class="row" style="margin-top:12px"><button class="btn g chk" type="button">✔ Periksa urutan</button><button class="btn ghost rst" type="button">↺ Acak ulang</button></div><div class="fb"></div>`;
+  const P=$('.pool',root),S=$('.slots',root),F=$('.fb',root);
+  function card(id){const c=byId[id];const b=el('button','scard',`<span class="e">${c.e||''}</span><span>${c.t}</span>`);b.type='button';return b}
+  function draw(){
+    P.innerHTML='';S.innerHTML='';
+    pool.forEach(id=>{const b=card(id);b.onclick=()=>{const k=placed.indexOf(null);if(k<0)return;placed[k]=id;pool=pool.filter(x=>x!==id);fbClear(F);draw()};P.appendChild(b)});
+    placed.forEach((id,k)=>{
+      const s=el('div','slot',`<span class="no">${k+1}</span>`);s.dataset.k=k;
+      if(id){const b=card(id);b.title='Ketuk untuk mengembalikan';b.onclick=()=>{placed[k]=null;pool.push(id);fbClear(F);draw()};s.appendChild(b)}
+      S.appendChild(s);
+    });
+  }
+  function reset(){placed=Array(cfg.items.length).fill(null);pool=shuffle(cfg.items.map(i=>i.id));
+    if(cfg.order&&pool.join()===cfg.order.join())pool=shuffle(pool);
+    fbClear(F);draw()}
+  $('.rst',root).onclick=reset;
+  $('.chk',root).onclick=()=>{
+    if(placed.includes(null)){fb(F,'hint','Susun semua kartu dulu, ya. Masih ada kartu yang belum dipilih. 🙂');return}
+    let res;
+    if(cfg.validator)res=cfg.validator(placed);
+    else{const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});res={ok:!bad.length,bad,msg:'Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.'}}
+    $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(res.bad.includes(k)?'bad':'ok')});
+    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
+    else fb(F,'no','🤔 '+res.msg);
+  };
+  reset();
+  return {reset};
+}
+
+/* ===== Kuis pilihan ganda ===== */
+function Quiz(root,qs,cfg){
+  let score=0,done=0;
+  const sc=el('div','score',`Skor: <span class="v">0</span> / ${qs.length}`);
+  qs.forEach((q,qi)=>{
+    const d=el('div','q',`<div class="qt">${qi+1}. ${q.q}</div>`);
+    const f=el('div','fb');
+    q.o.forEach((t,oi)=>{
+      const b=el('button','opt',`<b>${'ABCD'[oi]}.</b> ${t}`);b.type='button';
+      b.onclick=()=>{
+        if(d.dataset.done)return;d.dataset.done=1;done++;
+        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('right')});
+        if(oi===q.a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
+        else{b.classList.add('wrong');fb(f,'no','❌ Belum tepat. '+q.why)}
+        $('.v',sc).textContent=score;
+        if(done===qs.length){earn(cfg.id);cfg.onDone&&cfg.onDone(score)}
+      };
+      d.appendChild(b);
+    });
+    d.appendChild(f);root.appendChild(d);
+  });
+  root.appendChild(sc);
+}
+
+/* ===== refleksi (disimpan di peramban) ===== */
+function initReflect(){
+  $$('textarea[data-save]').forEach(t=>{
+    const v=store.get('r:'+t.dataset.save);if(v)t.value=v;
+    t.addEventListener('input',()=>store.set('r:'+t.dataset.save,t.value));
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(window.main)main()});
+</script>
+<script>const PIL=[
+ {k:'dek',n:'Dekomposisi',e:'✂️',d:'Memecah masalah besar menjadi bagian-bagian kecil agar lebih mudah diselesaikan.',q:'Bagaimana cara memecah masalah ini menjadi bagian kecil?',ex:'Membereskan kamar dapat dipecah menjadi tiga tugas kecil.'},
+ {k:'pol',n:'Pengenalan Pola',e:'🔁',d:'Menemukan kesamaan atau kebiasaan yang berulang.',q:'Apa yang selalu sama atau berulang di sini?',ex:'Setiap hari sekolah, Andi bangun tidur, sarapan, lalu menyiapkan tas.'},
+ {k:'abs',n:'Abstraksi',e:'🎯',d:'Memilih hal yang penting dan mengabaikan yang tidak diperlukan.',q:'Mana yang penting, dan mana yang boleh diabaikan?',ex:'Untuk pelajaran KKA, Andi hanya membawa buku, pensil, penghapus, dan penggaris.'},
+ {k:'alg',n:'Algoritma',e:'📋',d:'Menyusun langkah-langkah yang berurutan untuk menyelesaikan masalah.',q:'Apa saja langkahnya, dan bagaimana urutannya?',ex:'Algoritma Andi agar siap berangkat sekolah.'}];
+
+function demoDek(box){
+  box.innerHTML=`<p><b>Masalah besar:</b> 🧹 “Membereskan kamar yang berantakan”</p>
+  <button class="btn o" type="button" id="dk">✂️ Pecah masalahnya!</button><div class="grid g3" id="dkc" style="margin-top:12px"></div><div class="fb"></div>`;
+  $('#dk').onclick=()=>{
+    const c=$('#dkc');c.innerHTML='';const F=$('.fb',box);let n=0;
+    [['🛏️','Merapikan tempat tidur'],['📚','Menyusun buku di rak'],['👕','Memasukkan baju kotor ke keranjang']].forEach(([e,t])=>{
+      const b=el('button','scard',`<span class="e">${e}</span>${t}`);b.type='button';
+      b.onclick=()=>{if(b.dataset.d)return;b.dataset.d=1;b.style.background='#e2f7ea';b.style.borderColor='var(--green)';b.querySelector('.e').textContent='✅';
+        if(++n===3){fb(F,'ok','🎉 Tiga tugas kecil selesai, kamar pun rapi! Masalah besar terasa ringan setelah dipecah.');earn('p-dek')}};
+      c.appendChild(b)});
+    fb(F,'hint','Ketuk setiap tugas kecil setelah “dikerjakan”.');
+  };
+}
+function demoPol(box){
+  const row=(d,last)=>`<div class="card" style="margin:0;text-align:center"><b>${d}</b><div style="font-size:1.8rem">🛌 → 🍚 → ${last}</div></div>`;
+  box.innerHTML=`<p>Perhatikan kebiasaan Andi di hari sekolah:</p><div class="grid g4">${row('Senin','🎒')}${row('Selasa','🎒')}${row('Rabu','🎒')}${row('Kamis','❓')}</div>
+  <p style="margin-top:12px"><b>Menurut pola tersebut, apa yang dilakukan Andi setelah sarapan pada hari Kamis?</b></p><div class="opts"></div><div class="fb"></div>`;
+  [['🎒 Menyiapkan tas',1],['🎮 Bermain gim',0],['🛁 Mandi lagi',0]].forEach(([t,v])=>{
+    const b=el('button','opt',t);b.type='button';b.onclick=()=>{if(v){b.classList.add('right');fb($('.fb',box),'ok','🎉 Tepat! Dengan mengenali pola, kita bisa menebak yang terjadi berikutnya dan membuat jadwal tetap.');earn('p-pol')}else{b.classList.add('wrong');fb($('.fb',box),'no','🤔 Lihat lagi: apa yang selalu muncul setelah sarapan?')}};
+    $('.opts',box).appendChild(b)});
+}
+function demoAbs(box){
+  const it=[['📘','Buku KKA',1],['✏️','Pensil',1],['🧽','Penghapus',1],['📏','Penggaris',1],['⚽','Bola',0],['🧸','Boneka',0],['🎮','Konsol gim',0],['🍬','Permen',0]];
+  box.innerHTML=`<p>Pelajaran hari ini: <b>KKA</b>. Ketuk benda yang <b>perlu</b> dimasukkan ke tas Andi.</p><div class="row" id="ab"></div><div class="row" style="margin-top:10px"><button class="btn g" type="button" id="abc">✔ Periksa tasku</button></div><div class="fb"></div>`;
+  const sel=new Set();
+  it.forEach(([e,t],i)=>{const b=el('button','scard',`<span class="e">${e}</span>${t}`);b.type='button';b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);b.style.background=sel.has(i)?'#fff4e8':'';b.style.borderColor=sel.has(i)?'var(--orange)':''};$('#ab',box).appendChild(b)});
+  $('#abc').onclick=()=>{
+    const need=it.map((x,i)=>x[2]?i:-1).filter(i=>i>=0),ok=need.every(i=>sel.has(i))&&[...sel].every(i=>it[i][2]);
+    if(ok){fb($('.fb',box),'ok','🎉 Tepat! Kamu memilih yang penting dan mengabaikan yang tidak diperlukan. Itulah abstraksi.');earn('p-abs')}
+    else fb($('.fb',box),'no','🤔 Belum tepat. Bawa hanya yang dibutuhkan untuk pelajaran KKA: buku, pensil, penghapus, dan penggaris.');
+  };
+}
+function demoAlg(box){
+  Sequencer(box,{id:'p-alg',items:[{id:'a',t:'Bangun tidur dan mandi',e:'🛁'},{id:'b',t:'Sarapan',e:'🍚'},{id:'c',t:'Menyiapkan tas sesuai jadwal',e:'🎒'},{id:'d',t:'Berangkat ke sekolah',e:'🚶'}],order:['a','b','c','d'],okMsg:'Inilah algoritma Andi agar siap berangkat sekolah!'});
+}
+
+function main(){
+  /* --- Empat pilar --- */
+  const demos={dek:demoDek,pol:demoPol,abs:demoAbs,alg:demoAlg};
+  const tabs=$('#pilTabs');
+  function showP(i){
+    $$('button',tabs).forEach((b,j)=>b.className='btn pillbtn '+(i===j?'o':'ghost'));
+    const p=PIL[i],box=$('#pilBox');
+    box.innerHTML=`<h3>${p.e} ${i+1}. ${p.n}</h3><p style="font-size:1.1rem"><b>${p.d}</b></p>
+      <div class="card key" style="margin:8px 0"><b>Pertanyaan kunci:</b> ${p.q}<br><span class="mini">Contoh: ${p.ex}</span></div><h4>🎮 Coba sendiri</h4><div id="demo"></div>`;
+    demos[p.k]($('#demo'));
+  }
+  PIL.forEach((p,i)=>{const b=el('button','btn pillbtn ghost',`<span class="e">${p.e}</span>${p.n}`);b.type='button';b.onclick=()=>showP(i);tabs.appendChild(b)});
+  showP(0);
+
+  /* --- Cocokkan --- */
+  const ex=[['A','Membagi tugas kerja kelompok menjadi: mencari gambar, menulis, dan mewarnai.','dek'],
+            ['B','Setiap hari sekolah, Andi selalu bangun tidur, sarapan, lalu menyiapkan tas.','pol'],
+            ['C','Membawa hanya buku, pensil, penghapus, dan penggaris untuk pelajaran KKA hari ini.','abs'],
+            ['D','Menyusun urutan: bangun, mandi, sarapan, menyiapkan tas, lalu berangkat.','alg']];
+  $('#ctoh').innerHTML='<tr><th>Huruf</th><th>Contoh kegiatan</th></tr>'+ex.map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td></tr>`).join('');
+  const m=$('#match'),ans={};
+  PIL.forEach(p=>{
+    const r=el('div','row',`<div style="flex:1;min-width:180px;font-weight:800">${p.e} ${p.n}</div>`);r.dataset.k=p.k;r.style.margin='6px 0';r.style.padding='4px 8px';r.style.borderRadius='12px';
+    'ABCD'.split('').forEach(L=>{const b=el('button','btn ghost',L);b.type='button';b.style.padding='6px 16px';
+      b.onclick=()=>{ans[p.k]=L;$$('button',r).forEach(x=>x.className='btn '+(x===b?'o':'ghost'));fbClear($('#mFb'))};r.appendChild(b)});
+    m.appendChild(r);
+  });
+  $('#mchk').onclick=()=>{
+    if(Object.keys(ans).length<4){fb($('#mFb'),'hint','Pilih huruf untuk keempat pilar dulu, ya.');return}
+    let ok=0;ex.forEach(([L,,k])=>{const r=$(`[data-k=${k}]`,m);const good=ans[k]===L;if(good)ok++;r.style.background=good?'#e2f7ea':'#ffe6e6'});
+    if(ok===4){fb($('#mFb'),'ok','🎉 Semua cocok! Dekomposisi = A, Pengenalan pola = B, Abstraksi = C, Algoritma = D.');earn('cocok')}
+    else fb($('#mFb'),'no',`🤔 ${ok} dari 4 sudah tepat. Perhatikan kata kunci: memecah, berulang, memilih yang penting, urutan langkah.`);
+  };
+  Quiz($('#quiz4'),[
+    {q:'Rani melihat bahwa setiap hari Jumat kelas paling kotor, sehingga piket Jumat dibuat lebih banyak orang. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:1,why:'Rani menemukan kebiasaan yang berulang: itu pengenalan pola.'},
+    {q:'Dewi menyiapkan pentas dengan membagi tugas: dekorasi, musik, dan naskah. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:0,why:'Pekerjaan besar dipecah menjadi bagian kecil: dekomposisi.'},
+    {q:'Pada denah sekolah untuk tamu, Budi hanya menggambar gerbang, kelas, dan toilet tanpa gambar pohon. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:2,why:'Budi memilih informasi yang penting: abstraksi.'},
+    {q:'Ibu menulis resep nasi goreng: ① siapkan bahan, ② panaskan minyak, ③ tumis, ④ sajikan. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:3,why:'Langkah disusun berurutan: algoritma.'}
+  ],{id:'quiz4'});
+
+  /* --- Poster --- */
+  const lib=[['🛌','Bangun tidur'],['🛁','Mandi'],['🪥','Menyikat gigi'],['👔','Memakai seragam'],['🍚','Sarapan'],['📅','Melihat jadwal pelajaran'],['🎒','Menyiapkan tas'],['🙏','Berdoa'],['🚶','Berangkat ke sekolah'],['🎮','Bermain gim']];
+  const cols=['#0e9aa7','#ff8a3d','#8a5cf6','#2fb36d','#e5484d'];
+  let mine=[],color=cols[0];
+  const notes={dek:'Masalah “siap sekolah” kupecah menjadi langkah-langkah kecil.',pol:'Setiap hari sekolah, aku melakukan kebiasaan yang sama.',abs:'Aku hanya memilih kegiatan yang penting untuk persiapan sekolah.',alg:'Semua langkah kususun berurutan dari bangun tidur sampai berangkat.'};
+  const L=$('#lib');
+  lib.forEach(([e,t],i)=>{const b=el('button','scard',`<span class="e">${e}</span>${t}`);b.type='button';b.onclick=()=>{
+    if(mine.includes(i)||mine.length>=6)return;mine.push(i);draw()};L.appendChild(b)});
+  cols.forEach(c=>{const b=el('button','sw');b.type='button';b.style.background=c;b.setAttribute('aria-label','Warna '+c);b.onclick=()=>{color=c;draw()};$('#sws').appendChild(b)});
+  PIL.forEach(p=>{const d=el('div','',`<label class="mini"><b>${p.e} ${p.n}</b></label><input type="text" data-k="${p.k}" value="${notes[p.k]}" maxlength="90">`);$('#pnotes').appendChild(d)});
+  $('#pTitle').oninput=draw;$$('#pnotes input').forEach(i=>i.oninput=draw);
+  const CK=['Judul poster','Urutan langkah yang jelas (minimal 3 langkah)','Gambar/ikon pendukung','Warna yang menarik','Keterangan penerapan empat pilar'];
+  function draw(){
+    const P=$('#poster');P.style.setProperty('--pc',color);
+    $('#vT').textContent=$('#pTitle').value||'(Judul poster)';
+    $('#vS').innerHTML=mine.length?'':'<div class="mini" style="text-align:center;padding:14px">Pilih langkah di sebelah kiri…</div>';
+    mine.forEach((i,k)=>$('#vS').insertAdjacentHTML('beforeend',`<div class="ps"><span class="n">${k+1}</span><span class="ic">${lib[i][0]}</span><b>${lib[i][1]}</b></div>`));
+    $('#vF').innerHTML=PIL.map(p=>`<div><b>${p.e} ${p.n}:</b> ${($(`#pnotes input[data-k=${p.k}]`).value||'')}</div>`).join('');
+    $$('button',L).forEach((b,i)=>{b.style.opacity=mine.includes(i)?.35:1});
+    $$('.sw').forEach((b,i)=>b.classList.toggle('on',cols[i]===color));
+    const M=$('#mine');M.innerHTML='';
+    mine.forEach((i,k)=>{
+      const r=el('div','scard',`<span class="e">${lib[i][0]}</span><span style="flex:1">${k+1}. ${lib[i][1]}</span>`);
+      [['↑',-1],['↓',1],['✖',0]].forEach(([s,d])=>{const b=el('button','btn ghost',s);b.type='button';b.style.padding='2px 10px';b.setAttribute('aria-label',{'↑':'Naikkan','↓':'Turunkan','✖':'Hapus'}[s]);
+        b.onclick=()=>{if(!d)mine.splice(k,1);else{const j=k+d;if(j<0||j>=mine.length)return;[mine[k],mine[j]]=[mine[j],mine[k]]}draw()};r.appendChild(b)});
+      M.appendChild(r)});
+    const st=[!!$('#pTitle').value.trim(),mine.length>=3,mine.length>=1,true,$$('#pnotes input').every(i=>i.value.trim())];
+    $('#chk').innerHTML=CK.map((t,i)=>`<div class="ck ${st[i]?'ok':''}"><i>${st[i]?'✓':''}</i>${t}</div>`).join('');
+    if(st.every(Boolean))earn('poster');
+  }
+  draw();
+
+  /* --- STEAM --- */
+  [['S','Science','🔭','Kebiasaan dan manajemen waktu'],['T','Technology','💻','Berpikir sistematis tanpa perangkat (unplugged)'],['E','Engineering','⚙️','Menyusun langkah solusi'],['A','Art','🎨','Visual/poster langkah'],['M','Mathematics','🔢','Urutan dan keteraturan']].forEach(([s,n,e,d])=>{
+    const f=el('button','flip',`<div class="in"><div class="f"><span class="big">${e}</span><span style="font-size:1.6rem">${s}</span>${n}</div><div class="b">${d}</div></div>`);f.type='button';f.onclick=()=>{f.classList.toggle('on');earn('steam')};$('#steam').appendChild(f)});
+  ['Masalah yang dipilih','Urutan langkah solusi','Mengapa langkah tersebut logis dan efektif'].forEach(t=>{
+    const l=el('label','ck',`<input type="checkbox"> ${t}`);$('#pres').appendChild(l)});
+  const asp=['Pemahaman Masalah','Urutan Langkah','Kerja Sama','Presentasi'],val={};
+  asp.forEach(a=>{const d=el('div','',`<p style="margin:8px 0 2px"><b>${a}</b></p>`);
+    [1,2,3].forEach(v=>{const l=el('label','',`<input type="radio" name="s-${a}" value="${v}"> ${v}`);l.querySelector('input').onchange=()=>{val[a]=v;
+      if(Object.keys(val).length===4){const avg=(Object.values(val).reduce((x,y)=>x+y,0)/4).toFixed(1);fb($('#skFb'),avg>=2.5?'ok':'hint',`Skor rata-rata kelompokmu: <b>${avg}</b>. ${avg>=2.5?'Sangat baik, pertahankan!':'Bagus! Diskusikan bagian mana yang bisa diperbaiki.'}`);earn('skor')}};d.appendChild(l)});
+    $('#skor').appendChild(d)});
+
+  /* --- Kuis --- */
+  Quiz($('#quiz'),[
+    {q:'Memecah masalah besar menjadi bagian-bagian kecil disebut …',o:['dekomposisi','abstraksi','pengenalan pola'],a:0,why:'Itulah dekomposisi.'},
+    {q:'Memilih informasi yang penting dan mengabaikan yang tidak perlu disebut …',o:['algoritma','abstraksi','dekomposisi'],a:1,why:'Itulah abstraksi.'},
+    {q:'Menemukan kegiatan yang berulang atau memiliki kesamaan disebut …',o:['algoritma','dekomposisi','pengenalan pola'],a:2,why:'Itulah pengenalan pola.'}
+  ],{id:'kuis3',onDone:()=>$('#badge').classList.add('show')});
+}
+</script>
+</body>
+</html>
