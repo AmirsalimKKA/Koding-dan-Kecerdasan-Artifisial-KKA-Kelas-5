@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Materi 3 – Empat Pilar Berpikir Komputasional</title>
+<!-- Tailwind & FontAwesome for consistency -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -12,16 +13,20 @@
   --card: #ffffff; 
   --ink: #333333; 
   --muted: #6b6880;
+  
+  /* VisualMath KKA Theme Colors */
   --navy: #022050;
   --teal: #0B7C86; 
   --teal-d: #085E66;
   --cyan: #00D6D8;
+  
   --orange: #ff8a3d; 
   --orange-d: #d4651a;
   --yellow: #ffd34e; 
   --pink: #ff6f91; 
   --green: #2fb36d; 
   --red: #e5484d; 
+
   --line: #c3e2e5; 
   --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
   --r: 20px;
@@ -46,6 +51,7 @@ p{margin:.4em 0 .8em}
 button{font:inherit;cursor:pointer}
 a{color:var(--teal-d)}
 
+/* top bar */
 .top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
 .top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -58,6 +64,7 @@ a{color:var(--teal-d)}
 .wrap{max-width:1100px;margin:0 auto;padding:20px}
 .toc{display:flex;flex-wrap:wrap;gap:8px}.toc a{text-decoration:none;font-weight:700;background:#fff;border:2px solid var(--line);border-radius:99px;padding:3px 14px;color:var(--ink); transition: all 0.2s;}
 .toc a:hover{background: var(--teal); color: white; border-color: var(--teal);}
+.def{background:#e9f8f9;border:3px solid var(--teal);border-radius:var(--r);padding:14px 18px;font-size:1.15rem;font-weight:700;margin:14px 0; color: var(--navy);}
 .tbl{overflow-x:auto}
 
 .art h2{margin-top:30px;border-bottom:4px solid var(--yellow);display:inline-block;padding-bottom:2px}
@@ -70,11 +77,12 @@ a{color:var(--teal-d)}
 .card.key{background:var(--navy);border-color:var(--navy); color: white;}
 .card.key h3, .card.key b { color: var(--cyan); }
 .grid{display:grid;gap:16px}
-.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
-@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}}
 
 .btn{border:0;border-radius:14px;padding:12px 20px;font-weight:800;color:#fff;background:var(--teal);box-shadow:0 4px 0 var(--teal-d);transition:all .1s; font-family: 'Fredoka', sans-serif; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 8px;}
 .btn:hover { background: var(--navy); box-shadow:0 4px 0 #01122e; }
+.btn.o{background:var(--orange);box-shadow:0 4px 0 var(--orange-d)}
 .btn.g{background:var(--green);box-shadow:0 4px 0 #1f8a50}
 .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
 .btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
@@ -83,6 +91,9 @@ a{color:var(--teal-d)}
 
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:4px 14px;font-size:.8rem;font-weight:800;border:2px solid}
 .chip.tp{background:#e3f6f7;color:var(--teal-d);border-color:var(--cyan)}
+.chip.mindful{background:#e8efff;color:#2c52c4;border-color:#c6d5ff}
+.chip.joyful{background:#fff1d6;color:#a8620a;border-color:#ffdca1}
+.chip.meaningful{background:#e2f7ea;color:#1c7d49;border-color:#b4e8ca}
 .chip.intro{background:#f0e9ff;color:#5b3bb5;border-color:#d9c9ff}
 
 .kodi-say{display:flex;gap:16px;align-items:flex-start}
@@ -95,6 +106,7 @@ table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:
 table.t th{background:#e9f8f9; color: var(--navy);}
 .foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
 
+/* Interactive Quiz Styles */
 .quiz-box { margin-bottom: 16px; }
 .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
 .opt-btn { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 10px 14px; text-align: left; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--ink); }
@@ -122,8 +134,8 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <span class="chip tp">🎯 TP 6</span>
     </div>
     <h1 style="margin:8px 0 4px; color: var(--cyan);">📖 Materi 3: Empat Pilar Berpikir Komputasional</h1>
-    <p style="margin:0">Pengenalan dekomposisi, pengenalan pola, abstraksi, dan algoritma.</p>
-    <p class="kw" style="margin:10px 0 0"><b>Kata kunci:</b> <span>dekomposisi</span><span>pengenalan pola</span><span>abstraksi</span><span>algoritma</span></p>
+    <p style="margin:0">Pengenalan dekomposisi, pengenalan pola, abstraksi, dan algoritma, serta penerapannya dalam proyek STEAM.</p>
+    <p class="kw" style="margin:10px 0 0"><b>Kata kunci:</b> <span>dekomposisi</span><span>pengenalan pola</span><span>abstraksi</span><span>algoritma</span><span>STEAM</span></p>
     <div class="row" style="margin-top:12px">
       <a class="btn ghost" href="index.html" style="text-decoration:none"><i class="fa-solid fa-house"></i> Beranda</a>
     </div>
@@ -134,7 +146,11 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <div class="toc" style="margin-top:6px">
       <a href="#pilar">Empat pilar</a>
       <a href="#cocok">Cocokkan pilar</a>
+      <a href="#proyek">Proyek STEAM</a>
+      <a href="#nilai">Penilaian diri</a>
       <a href="#rangkum">Rangkuman</a>
+      <a href="#uji">Uji Pemahaman</a>
+      <a href="#peta">Peta konsep</a>
       <a href="#glosarium">Glosarium</a>
     </div>
   </div>
@@ -142,80 +158,271 @@ table.t th{background:#e9f8f9; color: var(--navy);}
   <div class="art">
     <div class="card key kodi-say">
       <img src="logo.png" alt="Kodi">
-      <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat pilar utama</b> berpikir komputasional!</div>
+      <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat kekuatan super</b> para pemikir komputasional!</div>
+    </div>
+
+    <div class="card tip">
+      <h3 style="margin-bottom:4px"><i class="fa-solid fa-lightbulb"></i> Pertanyaan pematik</h3>
+      <p><b>Bagaimana cara memecah masalah yang besar agar lebih mudah diselesaikan?</b></p>
     </div>
 
     <h2 id="pilar">1. Empat Pilar Berpikir Komputasional</h2>
     
     <div class="card">
-      <h3>✂️ 1. Dekomposisi (Memecah Masalah)</h3>
-      <p>Masalah besar dipecah menjadi bagian-bagian kecil agar lebih mudah diselesaikan.</p>
-      <p><b>Contoh:</b> Membereskan kamar dipecah menjadi: merapikan tempat tidur, menyusun buku, dan menyapu lantai.</p>
+      <h3>✂️ 1. Dekomposisi: Memecah Masalah</h3>
+      <p>Masalah besar akan terasa berat jika dikerjakan sekaligus. Pecahlah menjadi bagian-bagian kecil agar lebih mudah.</p>
+      <p><b>Contoh:</b> Membereskan kamar dipecah menjadi tiga tugas kecil: merapikan tempat tidur, menyusun buku, memasukkan baju kotor ke keranjang.</p>
+      <p class="mini"><b>Pertanyaan kunci:</b> Bagaimana cara memecah masalah ini menjadi bagian kecil?</p>
     </div>
 
     <div class="card">
-      <h3>🔁 2. Pengenalan Pola (Menemukan Kesamaan)</h3>
-      <p>Mengenali kesamaan atau kebiasaan yang berulang.</p>
-      <p><b>Contoh:</b> Setiap hari sekolah, Andi selalu bangun jam 05.00 dan menyiapkan tas sesuai jadwal.</p>
+      <h3>🔁 2. Pengenalan Pola: Menemukan Kesamaan</h3>
+      <p>Pola adalah kesamaan atau kebiasaan yang berulang. Dengan mengenali pola, kita bisa membuat jadwal tetap dan tahu apa yang akan dilakukan berikutnya.</p>
+      <p><b>Contoh:</b> Setiap hari sekolah, Andi bangun tidur, sarapan, lalu menyiapkan tas.</p>
+      <p class="mini"><b>Pertanyaan kunci:</b> Apa yang berulang atau sama dari kegiatan ini?</p>
     </div>
 
     <div class="card">
-      <h3>🎯 3. Abstraksi (Memilih yang Penting)</h3>
-      <p>Memilih informasi penting dan mengabaikan yang tidak diperlukan.</p>
-      <p><b>Contoh:</b> Hanya membawa buku pelajaran hari ini dan meninggalkan komik di rumah.</p>
+      <h3>🎯 3. Abstraksi: Memilih yang Penting</h3>
+      <p>Tidak semua informasi atau benda perlu kita bawa. Abstraksi berarti memilih hal yang penting dan mengabaikan yang tidak diperlukan.</p>
+      <p><b>Contoh:</b> Untuk pelajaran KKA hari ini, Andi hanya perlu membawa buku, pensil, penghapus, dan penggaris.</p>
+      <p class="mini"><b>Pertanyaan kunci:</b> Apa yang penting, dan apa yang bisa diabaikan?</p>
     </div>
 
     <div class="card">
-      <h3>📋 4. Algoritma (Menyusun Langkah)</h3>
-      <p>Menyusun langkah-langkah berurutan untuk menyelesaikan masalah.</p>
-      <p><b>Contoh:</b> Langkah pagi Andi: Mandi → Sarapan → Cek Tas → Berangkat Sekolah.</p>
+      <h3>📋 4. Algoritma: Menyusun Langkah</h3>
+      <p>Setelah masalah dipecah, pola ditemukan, dan hal penting dipilih, saatnya menyusun langkah-langkah yang berurutan.</p>
+      <p><b>Contoh:</b> Algoritma Andi agar siap berangkat sekolah: bangun dan mandi → sarapan → siapkan tas sesuai jadwal → berangkat.</p>
+      <p class="mini"><b>Pertanyaan kunci:</b> Apa langkah-langkahnya, dan bagaimana urutannya?</p>
     </div>
 
-    <h2 id="cocok">2. Uji Pemahaman Pilar (Interaktif)</h2>
+    <div class="card tip">
+      <h3 style="margin-bottom:4px"><i class="fa-solid fa-star"></i> Tahukah kamu?</h3>
+      <p>Keempat pilar ini bekerja bersama-sama. Para pembuat aplikasi dan gim menggunakannya setiap hari untuk memecahkan masalah yang rumit. Kamu pun bisa melakukannya!</p>
+    </div>
+
+    <h2 id="cocok">2. Uji Detektif Pilar Interaktif</h2>
+    <p class="mini">Analisis 4 kegiatan di bawah ini dan tentukan pilar berpikir komputasional mana yang sedang digunakan!</p>
+
+    <!-- Soal Kasus A -->
+    <div class="card">
+      <div class="quiz-box" id="m3-c1">
+        <p><b>Kasus A: Membagi tugas kerja kelompok menjadi: mencari gambar, menulis teks, dan mewarnai poster.</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c1', true)">A. Dekomposisi (Memecah tugas besar)</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c1', false)">B. Abstraksi (Mengabaikan informasi)</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c1', false)">C. Pengenalan Pola (Menemukan kebiasaan)</button>
+        </div>
+        <div class="explanation" id="exp-m3-c1">
+          <b>Pembahasan Kasus A:</b> Jawaban A tepat. Membagi pekerjaan proyek kelompok menjadi tugas-tugas kecil adalah proses Dekomposisi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Soal Kasus B -->
+    <div class="card">
+      <div class="quiz-box" id="m3-c2">
+        <p><b>Kasus B: Setiap hari Sabtu pagi, piket kelas selalu bersama-sama membersihkan ruangan sekolah.</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c2', false)">A. Algoritma</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c2', true)">B. Pengenalan Pola (Rutinitas berulang)</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c2', false)">C. Dekomposisi</button>
+        </div>
+        <div class="explanation" id="exp-m3-c2">
+          <b>Pembahasan Kasus B:</b> Jawaban B tepat. Kegiatan rutin yang berulang setiap pekan merupakan contoh Pengenalan Pola.
+        </div>
+      </div>
+    </div>
+
+    <!-- Soal Kasus C -->
+    <div class="card">
+      <div class="quiz-box" id="m3-c3">
+        <p><b>Kasus C: Dari banyak benda di meja, kamu hanya mengambil buku pelajaran dan pensil untuk dimasukkan ke tas.</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c3', false)">A. Dekomposisi</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c3', true)">B. Abstraksi (Memilih yang penting)</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c3', false)">C. Algoritma</button>
+        </div>
+        <div class="explanation" id="exp-m3-c3">
+          <b>Pembahasan Kasus C:</b> Jawaban B tepat. Menyaring hal penting dan mengabaikan barang yang tidak diperlukan adalah Abstraksi.
+        </div>
+      </div>
+    </div>
+
+    <!-- Soal Kasus D -->
+    <div class="card">
+      <div class="quiz-box" id="m3-c4">
+        <p><b>Kasus D: Menuliskan resep roti isi: ambil roti → olesi selai → tutup roti → sajikan.</b></p>
+        <div class="quiz-options">
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c4', true)">A. Algoritma (Urutan langkah runtut)</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c4', false)">B. Pengenalan Pola</button>
+          <button class="opt-btn" onclick="checkAnswer(this, 'm3-c4', false)">C. Abstraksi</button>
+        </div>
+        <div class="explanation" id="exp-m3-c4">
+          <b>Pembahasan Kasus D:</b> Jawaban A tepat. Menyusun petunjuk langkah demi langkah secara urut adalah Algoritma.
+        </div>
+      </div>
+    </div>
+
+    <h2 id="proyek">3. Proyek STEAM: Poster Langkah Pagi Hari</h2>
+    <p>Dengan kelompokmu, buatlah poster visual berjudul <b>“Langkah Pagi Hari Agar Siap Sekolah”</b> dengan menggunakan keempat pilar.</p>
     
-    <div class="card">
-      <div class="quiz-box" id="m3-p1">
-        <p><b>1. Andi membagi tugas kelompok menjadi: mencari gambar, menulis teks, dan mewarnai poster. Pilar yang digunakan Andi adalah …</b></p>
-        <div class="quiz-options">
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p1', true)">A. Dekomposisi</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p1', false)">B. Abstraksi</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p1', false)">C. Pengenalan Pola</button>
-        </div>
-        <div class="explanation" id="exp-m3-p1">
-          <b>Pembahasan:</b> Membagi tugas besar menjadi tugas-tugas kecil adalah proses Dekomposisi.
-        </div>
+    <div class="grid g2">
+      <div class="card" style="margin:0">
+        <h3>Poster harus memuat</h3>
+        <ol>
+          <li>Judul yang menarik.</li>
+          <li>Urutan langkah yang jelas.</li>
+          <li>Gambar atau ikon pendukung.</li>
+          <li>Warna yang menarik.</li>
+          <li>Keterangan singkat penerapan empat pilar.</li>
+        </ol>
       </div>
-
-      <div class="quiz-box" id="m3-p2" style="margin-top:20px;">
-        <p><b>2. Dari banyak barang di atas meja, kamu hanya mengambil buku pelajaran dan tempat pensil untuk dimasukkan ke tas. Pilar yang digunakan adalah …</b></p>
-        <div class="quiz-options">
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p2', false)">A. Algoritma</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p2', true)">B. Abstraksi</button>
-          <button class="opt-btn" onclick="checkAnswer(this, 'm3-p2', false)">C. Dekomposisi</button>
-        </div>
-        <div class="explanation" id="exp-m3-p2">
-          <b>Pembahasan:</b> Memilih hal yang penting (buku pelajaran) dan mengabaikan yang tidak penting adalah Abstraksi.
-        </div>
+      <div class="card" style="margin:0">
+        <h3>STEAM dalam proyek ini</h3>
+        <table class="t">
+          <tr><th>S</th><td>Science: kebiasaan dan pengelolaan waktu</td></tr>
+          <tr><th>T</th><td>Technology: berpikir sistematis tanpa perangkat</td></tr>
+          <tr><th>E</th><td>Engineering: menyusun langkah solusi</td></tr>
+          <tr><th>A</th><td>Art: membuat poster visual yang menarik</td></tr>
+          <tr><th>M</th><td>Mathematics: urutan dan keteraturan</td></tr>
+        </table>
       </div>
     </div>
 
-    <h2 id="rangkum">3. Rangkuman</h2>
-    <div class="card key">
+    <div class="card tip" style="margin-top: 16px;">
+      <h3>🎤 Saat presentasi, jelaskan</h3>
       <ul>
-        <li>Empat pilar berpikir komputasional: Dekomposisi, Pengenalan Pola, Abstraksi, dan Algoritma.</li>
-        <li>Dekomposisi memecah masalah, Pola mencari kesamaan, Abstraksi memilih yang penting, Algoritma menyusun langkah.</li>
+        <li>Masalah yang kamu pilih.</li>
+        <li>Urutan langkah solusinya.</li>
+        <li>Mengapa langkah tersebut logis dan efektif.</li>
       </ul>
     </div>
 
-    <h2 id="glosarium">4. Glosarium Bab 1</h2>
+    <h2 id="nilai">4. Penilaian Diri Kelompokku</h2>
+    <p>Gunakan kriteria berikut untuk mengevaluasi proyek kelompokmu (1 = perlu bimbingan, 2 = baik, 3 = sangat baik).</p>
+    
+    <div class="tbl">
+      <table class="t">
+        <tr>
+          <th>Aspek Penilaian</th>
+          <th>Perlu Bimbingan (1)</th>
+          <th>Baik (2)</th>
+          <th>Sangat Baik (3)</th>
+        </tr>
+        <tr>
+          <td><b>Pemahaman Masalah</b></td>
+          <td>Belum dapat mengenali masalah dengan jelas.</td>
+          <td>Memahami masalah tetapi belum rinci.</td>
+          <td>Memahami masalah dan penyebabnya secara akurat.</td>
+        </tr>
+        <tr>
+          <td><b>Urutan Langkah</b></td>
+          <td>Langkah masih acak atau ada yang terlewat.</td>
+          <td>Langkah sudah berurutan namun kurang rinci.</td>
+          <td>Langkah sangat runtut, jelas, dan logis.</td>
+        </tr>
+        <tr>
+          <td><b>Kerja Sama</b></td>
+          <td>Hanya 1-2 orang yang aktif bekerja.</td>
+          <td>Sebagian besar anggota berpartisipasi.</td>
+          <td>Semua anggota kompak dan berbagi tugas secara adil.</td>
+        </tr>
+        <tr>
+          <td><b>Presentasi Poster</b></td>
+          <td>Malu-malu dan penjelasan kurang terdengar.</td>
+          <td>Menjelaskan dengan cukup baik dan jelas.</td>
+          <td>Percaya diri, sangat jelas, dan visual poster menarik.</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2 id="rangkum">5. Rangkuman</h2>
+    <div class="card key">
+      <ul>
+        <li>Empat pilar berpikir komputasional: dekomposisi, pengenalan pola, abstraksi, dan algoritma.</li>
+        <li>Dekomposisi memecah masalah, pola mencari kesamaan, abstraksi memilih yang penting, algoritma menyusun langkah.</li>
+        <li>Keempat pilar membantu kita menyelesaikan masalah di rumah dan di sekolah.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🪞 Refleksi Diriku</h3>
+      <ul>
+        <li><span class="chip mindful">Mindful</span> Pilar mana yang paling mudah kamu pahami? Mengapa?</li>
+        <li><span class="chip joyful">Joyful</span> Bagian proyek poster mana yang paling menyenangkan?</li>
+        <li><span class="chip meaningful">Meaningful</span> Jika mengulang kegiatan ini, langkah mana yang ingin kamu perbaiki?</li>
+      </ul>
+    </div>
+
+    <h2 id="uji">6. Ayo Uji Pemahamanmu</h2>
+    <p class="mini">Silakan jawab pertanyaan di bawah ini dengan mengklik pilihan jawaban yang paling tepat. Pembahasan dan kunci jawaban akan muncul secara otomatis!</p>
+    
+    <!-- Soal 1 -->
+    <div class="quiz-box" id="q1">
+      <p><b>1. Memecah masalah besar menjadi bagian-bagian kecil disebut …</b></p>
+      <div class="quiz-options">
+        <button class="opt-btn" onclick="checkAnswer(this, 'q1', true)">A. dekomposisi</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q1', false)">B. abstraksi</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q1', false)">C. pengenalan pola</button>
+      </div>
+      <div class="explanation" id="exp-q1">
+        <b>Pembahasan:</b> Pilihan A tepat. Dekomposisi adalah proses memecah masalah besar atau kompleks menjadi bagian-bagian kecil yang lebih mudah dikelola.
+      </div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="quiz-box" id="q2" style="margin-top: 20px;">
+      <p><b>2. Memilih informasi yang penting dan mengabaikan yang tidak perlu disebut …</b></p>
+      <div class="quiz-options">
+        <button class="opt-btn" onclick="checkAnswer(this, 'q2', false)">A. algoritma</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q2', true)">B. abstraksi</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q2', false)">C. dekomposisi</button>
+      </div>
+      <div class="explanation" id="exp-q2">
+        <b>Pembahasan:</b> Pilihan B tepat. Abstraksi berarti menyaring informasi yang relevan dan menyisihkan detail yang tidak diperlukan.
+      </div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div class="quiz-box" id="q3" style="margin-top: 20px;">
+      <p><b>3. Menemukan kegiatan yang berulang atau memiliki kesamaan disebut …</b></p>
+      <div class="quiz-options">
+        <button class="opt-btn" onclick="checkAnswer(this, 'q3', false)">A. algoritma</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q3', false)">B. dekomposisi</button>
+        <button class="opt-btn" onclick="checkAnswer(this, 'q3', true)">C. pengenalan pola</button>
+      </div>
+      <div class="explanation" id="exp-q3">
+        <b>Pembahasan:</b> Pilihan C tepat. Pengenalan pola adalah kemampuan melihat keteraturan, tren, atau kesamaan berulang pada suatu masalah.
+      </div>
+    </div>
+
+    <h2 id="peta">7. Peta Konsep Bab 1</h2>
+    <div class="grid g3">
+      <div class="card" style="margin:0"><span class="chip tp">Pertemuan 1</span><p>Berpikir komputasional dan masalah sederhana</p></div>
+      <div class="card" style="margin:0"><span class="chip joyful">Pertemuan 2</span><p>Urutan langkah (algoritma dasar) dan IPO</p></div>
+      <div class="card" style="margin:0"><span class="chip meaningful">Pertemuan 3</span><p>Empat pilar: dekomposisi, pola, abstraksi, algoritma; diterapkan dalam proyek poster</p></div>
+    </div>
+
+    <h2 id="glosarium">8. Glosarium Bab 1</h2>
     <div class="tbl">
       <table class="t">
         <tr><th style="width:28%">Istilah</th><th>Artinya</th></tr>
-        <tr><td><b>Berpikir Komputasional</b></td><td>Cara berpikir menyelesaikan masalah secara logis, runtut, dan sistematis.</td></tr>
-        <tr><td><b>Dekomposisi</b></td><td>Memecah masalah besar menjadi bagian-bagian kecil.</td></tr>
-        <tr><td><b>Pengenalan Pola</b></td><td>Kemampuan menemukan kesamaan atau kebiasaan berulang.</td></tr>
-        <tr><td><b>Abstraksi</b></td><td>Memilih informasi penting dan menyisihkan detail yang tidak perlu.</td></tr>
-        <tr><td><b>Algoritma</b></td><td>Urutan langkah-langkah terstruktur untuk mencapai tujuan.</td></tr>
+        <tr><td><b>Berpikir Komputasional</b></td><td>Cara berpikir untuk menyelesaikan masalah secara logis, runtut, dan sistematis dengan menyusun langkah yang jelas.</td></tr>
+        <tr><td><b>Masalah Sederhana</b></td><td>Permasalahan yang sering ditemui dalam kehidupan sehari-hari dan dapat diselesaikan dengan langkah-langkah dasar.</td></tr>
+        <tr><td><b>Urutan Langkah (Algoritma)</b></td><td>Susunan langkah-langkah yang dilakukan secara berurutan untuk mencapai tujuan tertentu.</td></tr>
+        <tr><td><b>Algoritma Sederhana</b></td><td>Langkah-langkah dasar yang disusun secara runtut tanpa menggunakan simbol atau bahasa pemrograman.</td></tr>
+        <tr><td><b>Dekomposisi</b></td><td>Cara memecah masalah besar menjadi bagian-bagian kecil agar lebih mudah diselesaikan.</td></tr>
+        <tr><td><b>Pengenalan Pola</b></td><td>Kemampuan menemukan kesamaan atau pola dalam beberapa kegiatan atau masalah.</td></tr>
+        <tr><td><b>Abstraksi</b></td><td>Kemampuan memilih informasi yang penting dan mengabaikan informasi yang tidak diperlukan.</td></tr>
+        <tr><td><b>Input</b></td><td>Bahan, data, atau informasi awal yang dibutuhkan untuk menyelesaikan suatu kegiatan atau masalah.</td></tr>
+        <tr><td><b>Proses</b></td><td>Langkah-langkah yang dilakukan untuk mengolah input agar menghasilkan sesuatu.</td></tr>
+        <tr><td><b>Output</b></td><td>Hasil akhir yang diperoleh setelah proses dilakukan.</td></tr>
+        <tr><td><b>Instruksi Linier</b></td><td>Instruksi yang dilakukan satu per satu dari awal sampai akhir tanpa pilihan lain.</td></tr>
+        <tr><td><b>Simbol dan Representasi</b></td><td>Gambar, tanda, atau bentuk sederhana yang digunakan untuk mempermudah pemahaman langkah atau urutan.</td></tr>
+        <tr><td><b>STEAM</b></td><td>Pendekatan pembelajaran yang mengintegrasikan Science, Technology, Engineering, Art, dan Mathematics.</td></tr>
+        <tr><td><b>Unplugged</b></td><td>Kegiatan berpikir komputasional tanpa perangkat digital.</td></tr>
+        <tr><td><b>Plugged</b></td><td>Kegiatan berpikir komputasional dengan perangkat digital atau aplikasi.</td></tr>
       </table>
     </div>
 
