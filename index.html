@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKA Kelas 5 - SDN 4 Tugusari</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#022050',
+                        teal: '#0B7C86',
+                        cyan: '#00D6D8',
+                        darkgray: '#333333',
+                        bglight: '#f4f9f9'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #f4f9f9; 
+            background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .card-hover:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px -5px rgba(11, 124, 134, 0.3); 
+        }
+        .semester-badge {
+            background: linear-gradient(135deg, #022050 0%, #0B7C86 100%);
+        }
+    </style>
+</head>
+<body class="font-nunito text-darkgray min-h-screen flex flex-col">
+
+    <!-- Header / Hero Section -->
+    <header class="bg-navy text-white pb-14 pt-6 px-6 rounded-b-[40px] shadow-lg relative overflow-hidden">
+        
+        <!-- Identitas Sekolah (Pojok Kiri Atas) -->
+        <div class="relative z-20 max-w-6xl mx-auto flex items-center justify-start mb-6">
+            <div class="inline-flex items-center gap-2 bg-navy/50 px-5 py-2.5 rounded-full border border-teal/30 backdrop-blur-sm shadow-sm">
+                <i class="fa-solid fa-school text-cyan text-lg"></i>
+                <span class="font-fredoka text-gray-100 text-sm font-semibold tracking-wide">SDN 4 Tugusari</span>
+            </div>
+        </div>
+
+        <!-- Dekorasi Latar Belakang Teknologi -->
+        <div class="absolute top-0 left-0 w-32 h-32 bg-cyan rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-40 h-40 bg-teal rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-x-1/2 translate-y-1/2"></div>
+        <i class="fa-solid fa-code text-9xl absolute -top-4 -right-4 text-white opacity-5"></i>
+        <i class="fa-solid fa-microchip text-9xl absolute -bottom-10 -left-4 text-white opacity-5"></i>
+        
+        <!-- Area Tengah (Logo Mata Pelajaran & Judul) -->
+        <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center mt-2">
+            
+            <!-- Logo KKA (Ditampilkan penuh tanpa dipotong) -->
+            <img src="logo.png" alt="Logo Koding dan Kecerdasan Artifisial (KKA)" class="w-[280px] md:w-[380px] h-auto mb-6 drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+            
+            <h1 class="font-fredoka text-3xl md:text-4xl font-bold mb-4 text-cyan drop-shadow-md">
+                Eksplorasi Digital Kelas 5
+            </h1>
+            
+            <p class="text-md text-cyan bg-navy/40 inline-block px-5 py-2.5 rounded-xl border border-teal/40 shadow-sm backdrop-blur-sm mt-1">
+                <i class="fa-solid fa-chalkboard-user mr-2"></i> Guru Pengampu: Amir Salim, S.Si.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-10 w-full relative z-10">
+        
+        <!-- ================= SEMESTER 1 ================= -->
+        <section class="mb-14">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="semester-badge text-white px-6 py-2 rounded-2xl shadow-md border-2 border-cyan/30 flex items-center gap-3">
+                    <i class="fa-solid fa-power-off text-cyan"></i>
+                    <h2 class="font-fredoka text-2xl font-bold tracking-wide">Semester 1</h2>
+                </div>
+                <div class="h-1 flex-grow bg-teal/20 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Bab 1 Card -->
+                <a href="bab1/materi.html" class="block bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 card-hover flex flex-col h-full relative overflow-hidden shadow-sm group">
+                    <div class="absolute top-0 right-0 bg-teal text-white font-fredoka px-4 py-1 rounded-bl-xl font-semibold">Bab 1</div>
+                    <div class="flex items-center mb-4 mt-2">
+                        <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center text-teal text-2xl mr-4 shadow-inner border border-teal/20 group-hover:bg-teal group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-fredoka text-2xl font-bold text-navy group-hover:text-teal transition-colors">Berpikir Komputasional</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex-grow">Belajar memecahkan masalah langkah demi langkah, mengenali pola, dan merancang algoritma seperti komputer.</p>
+                    <div class="mt-auto flex justify-end items-center text-teal font-bold group-hover:translate-x-2 transition-transform">
+                        Buka Bab <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Bab 2 Card -->
+                <a href="bab2/materi.html" class="block bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 card-hover flex flex-col h-full relative overflow-hidden shadow-sm group">
+                    <div class="absolute top-0 right-0 bg-teal text-white font-fredoka px-4 py-1 rounded-bl-xl font-semibold">Bab 2</div>
+                    <div class="flex items-center mb-4 mt-2">
+                        <div class="w-14 h-14 bg-cyan/10 rounded-2xl flex items-center justify-center text-teal text-2xl mr-4 shadow-inner border border-cyan/20 group-hover:bg-cyan group-hover:text-navy transition-colors">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-fredoka text-2xl font-bold text-navy group-hover:text-teal transition-colors">Literasi Digital</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex-grow">Menjadi warga digital yang cerdas, menjaga keamanan data, dan berinternet dengan aman serta bertanggung jawab.</p>
+                    <div class="mt-auto flex justify-end items-center text-teal font-bold group-hover:translate-x-2 transition-transform">
+                        Buka Bab <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= SEMESTER 2 ================= -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="semester-badge text-white px-6 py-2 rounded-2xl shadow-md border-2 border-cyan/30 flex items-center gap-3">
+                    <i class="fa-solid fa-network-wired text-cyan"></i>
+                    <h2 class="font-fredoka text-2xl font-bold tracking-wide">Semester 2</h2>
+                </div>
+                <div class="h-1 flex-grow bg-teal/20 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Bab 3 Card -->
+                <a href="bab3/materi.html" class="block bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 card-hover flex flex-col h-full relative overflow-hidden shadow-sm group">
+                    <div class="absolute top-0 right-0 bg-teal text-white font-fredoka px-4 py-1 rounded-bl-xl font-semibold">Bab 3</div>
+                    <div class="flex items-center mb-4 mt-2">
+                        <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center text-teal text-2xl mr-4 shadow-inner border border-teal/20 group-hover:bg-teal group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="font-fredoka text-2xl font-bold text-navy group-hover:text-teal transition-colors">Literasi & Etika AI</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex-grow">Mengenal apa itu AI (Kecerdasan Buatan), cara kerjanya, dan aturan beretika saat menggunakannya.</p>
+                    <div class="mt-auto flex justify-end items-center text-teal font-bold group-hover:translate-x-2 transition-transform">
+                        Buka Bab <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Bab 4 Card -->
+                <a href="bab4/materi.html" class="block bg-white rounded-3xl p-8 border-2 border-teal/20 transition-all duration-300 card-hover flex flex-col h-full relative overflow-hidden shadow-sm group">
+                    <div class="absolute top-0 right-0 bg-teal text-white font-fredoka px-4 py-1 rounded-bl-xl font-semibold">Bab 4</div>
+                    <div class="flex items-center mb-4 mt-2">
+                        <div class="w-14 h-14 bg-cyan/10 rounded-2xl flex items-center justify-center text-teal text-2xl mr-4 shadow-inner border border-cyan/20 group-hover:bg-cyan group-hover:text-navy transition-colors">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <h3 class="font-fredoka text-xl lg:text-2xl font-bold text-navy leading-tight group-hover:text-teal transition-colors">Peran Manusia dalam AI</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4 flex-grow">Memahami kolaborasi hebat antara manusia sebagai pencipta dan AI sebagai asisten untuk membangun masa depan.</p>
+                    <div class="mt-auto flex justify-end items-center text-teal font-bold group-hover:translate-x-2 transition-transform">
+                        Buka Bab <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
