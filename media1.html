@@ -176,12 +176,10 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 
 <header class="top">
   <div class="brand">
-    <!-- Diperbaiki: Langsung memanggil logo.png di folder yang sama -->
     <img src="logo.png" alt="Logo KKA">
     <div class="ttl">Pertemuan 1 · Mengenal Berpikir Komputasional<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
   </div>
   <div class="sp"></div>
-  <!-- Diperbaiki: Langsung mengarah ke index.html di folder yang sama -->
   <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
   <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
 </header>
@@ -190,7 +188,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <!-- 0 MULAI -->
 <section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
   <div class="card key kodi-say">
-    <!-- Diperbaiki: Langsung memanggil logo.png di folder yang sama -->
     <img src="logo.png" alt="Kodi">
     <div class="bubble"><b>Halo, teman-teman!</b> Aku Kodi, robot sahabat Andi. Hari ini kita akan <b>mengenal berpikir komputasional</b> dan menjadi <b>detektif masalah</b>. Siap?</div>
   </div>
@@ -261,7 +258,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <div class="fb" id="defFb"></div>
   </div>
   <div class="card key kodi-say" id="defExplain" style="display:none">
-    <!-- Diperbaiki: Langsung memanggil logo.png di folder yang sama -->
     <img src="logo.png" alt="Kodi">
     <div class="bubble">Kata “komputasional” berasal dari kata <b>komputer</b>. Komputer bekerja sangat teratur: ia tahu <b>apa masalahnya</b>, <b>apa langkah-langkahnya</b>, dan <b>apa hasilnya</b>. Cara berpikir ini <b>tidak harus memakai komputer</b>. Cukup dengan otak, kertas, dan pensil!</div>
   </div>
@@ -315,7 +311,26 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <!-- 5 UJI -->
 <section class="panel" id="p-uji" data-title="Uji Pemahaman & Refleksi" data-icon="🏆" data-tp="1,2" data-sintaks="Meaningful">
   <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div></div>
-  <div class="badge" id="badge"><div class="big">🕵️🏅</div><h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu Detektif Masalah!</h3><p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 1. Sampai jumpa di Pertemuan 2: <b>Urutan Langkah dan IPO</b>.</p><a class="btn o" href="media2.html" style="text-decoration:none;display:inline-block; margin-top: 10px; font-size: 1.2rem;">Ke Pertemuan 2 →</a></div>
+  
+  <!-- Badge KELULUSAN + Navigasi Menu Bab & Menu Utama -->
+  <div class="badge" id="badge">
+    <div class="big">🕵️🏅</div>
+    <h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu Detektif Masalah!</h3>
+    <p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 1. Sampai jumpa di Pertemuan 2: <b>Urutan Langkah dan IPO</b>.</p>
+    
+    <div class="row" style="justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-list-ul"></i> Menu Bab 1
+      </a>
+      <a class="btn" href="media2.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+        Ke Pertemuan 2 →
+      </a>
+      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-house"></i> Menu Utama
+      </a>
+    </div>
+  </div>
+
   <div class="card">
     <h3>🪞 Refleksi diriku</h3>
     <p><span class="chip mindful">Mindful</span> Apa yang kamu pelajari hari ini tentang berpikir komputasional?</p><textarea rows="2" data-save="rf1"></textarea>
@@ -402,7 +417,6 @@ function initNav(){
 
 /* ===== Sequencer: ketuk kartu untuk menyusun urutan ===== */
 function Sequencer(root,cfg){
-  // cfg: {id, items:[{id,t,e}], order:[id...], validator?(placed)->{ok,bad:[idx],msg}, okMsg, onOk}
   const byId=Object.fromEntries(cfg.items.map(i=>[i.id,i]));
   let placed=Array(cfg.items.length).fill(null), pool=[];
   root.innerHTML=`<div class="seq"><div><h4>Kartu langkah (ketuk untuk memilih)</h4><div class="pool"></div></div>
@@ -420,7 +434,6 @@ function Sequencer(root,cfg){
     });
   }
   function reset(){placed=Array(cfg.items.length).fill(null);pool=shuffle(cfg.items.map(i=>i.id));
-    // pastikan acakan tidak sama dengan jawaban
     if(cfg.order&&pool.join()===cfg.order.join())pool=shuffle(pool);
     fbClear(F);draw()}
   $('.rst',root).onclick=reset;
