@@ -203,7 +203,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 </style>
 <section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
   <div class="card key kodi-say">
-    <img src="logo.png" alt="Kodi">
+    <img src="logo.png" alt="Logo KKA">
     <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat kekuatan super</b> para pemikir komputasional dan buat <b>poster solusi</b>!</div>
   </div>
   <div class="grid g2">
@@ -309,7 +309,7 @@ const TPS={
  2:'Mengidentifikasi masalah sederhana di lingkungan sekitar.',
  3:'Memecah masalah menjadi langkah-langkah kecil dan menyusunnya menjadi urutan langkah (algoritma dasar) yang runtut.',
  4:'Menentukan input, proses, dan output (IPO) dari kegiatan sehari-hari.',
- 5:'Menyebutkan empat pilar berpikir komputasional beserta contohnya.',
+ 5:'Menyebutkan empat pilar berpikir komputasional (dekomposisi, pengenalan pola, abstraksi, algoritma) beserta contohnya.',
  6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
 };
 </script>
@@ -446,9 +446,9 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
 </script>
 <script>const PIL=[
  {k:'dek',n:'Dekomposisi',e:'✂️',d:'Memecah masalah besar menjadi bagian-bagian kecil agar lebih mudah diselesaikan.',q:'Bagaimana cara memecah masalah ini menjadi bagian kecil?',ex:'Membereskan kamar dapat dipecah menjadi tiga tugas kecil.'},
- {k:'pol',n:'Pengenalan Pola',e:'🔁',d:'Menemukan kesamaan atau kebiasaan yang berulang.',q:'Apa yang selalu sama atau berulang di sini?',ex:'Setiap hari sekolah, Andi bangun tidur, sarapan, lalu menyiapkan tas.'},
- {k:'abs',n:'Abstraksi',e:'🎯',d:'Memilih hal yang penting dan mengabaikan yang tidak diperlukan.',q:'Mana yang penting, dan mana yang boleh diabaikan?',ex:'Untuk pelajaran KKA, Andi hanya membawa buku, pensil, penghapus, dan penggaris.'},
- {k:'alg',n:'Algoritma',e:'📋',d:'Menyusun langkah-langkah yang berurutan untuk menyelesaikan masalah.',q:'Apa saja langkahnya, dan bagaimana urutannya?',ex:'Algoritma Andi agar siap berangkat sekolah.'}];
+ {k:'pol',n:'Pengenalan Pola',e:'🔁',d:'Menemukan kesamaan atau kebiasaan yang berulang.',q:'Apa yang berulang atau sama dari kegiatan ini?',ex:'Setiap hari sekolah, Andi bangun tidur, sarapan, lalu menyiapkan tas.'},
+ {k:'abs',n:'Abstraksi',e:'🎯',d:'Memilih hal yang penting dan mengabaikan yang tidak diperlukan.',q:'Apa yang penting, dan apa yang bisa diabaikan?',ex:'Untuk pelajaran KKA, Andi hanya membawa buku, pensil, penghapus, dan penggaris.'},
+ {k:'alg',n:'Algoritma',e:'📋',d:'Menyusun langkah-langkah yang berurutan untuk menyelesaikan masalah.',q:'Apa langkah-langkahnya, dan bagaimana urutannya?',ex:'Algoritma Andi agar siap berangkat sekolah.'}];
 
 function demoDek(box){
   box.innerHTML=`<p><b>Masalah besar:</b> 🧹 “Membereskan kamar yang berantakan”</p>
@@ -502,9 +502,9 @@ function main(){
 
   /* --- Cocokkan --- */
   const ex=[['A','Membagi tugas kerja kelompok menjadi: mencari gambar, menulis, dan mewarnai.','dek'],
-            ['B','Setiap hari sekolah, Andi selalu bangun tidur, sarapan, lalu menyiapkan tas.','pol'],
-            ['C','Membawa hanya buku, pensil, penghapus, dan penggaris untuk pelajaran KKA hari ini.','abs'],
-            ['D','Menyusun urutan: bangun, mandi, sarapan, menyiapkan tas, lalu berangkat.','alg']];
+            ['B','Setiap hari Sabtu, kelas membersihkan ruangan bersama-sama.','pol'],
+            ['C','Dari banyak benda di meja, kamu hanya memilih buku dan pensil untuk dibawa.','abs'],
+            ['D','Menulis langkah membuat roti isi: ambil roti, olesi selai, tutup, lalu sajikan.','alg']];
   $('#ctoh').innerHTML='<tr><th>Huruf</th><th>Contoh kegiatan</th></tr>'+ex.map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td></tr>`).join('');
   const m=$('#match'),ans={};
   PIL.forEach(p=>{
@@ -559,7 +559,7 @@ function main(){
   draw();
 
   /* --- STEAM --- */
-  [['S','Science','🔭','Kebiasaan dan manajemen waktu'],['T','Technology','💻','Berpikir sistematis tanpa perangkat (unplugged)'],['E','Engineering','⚙️','Menyusun langkah solusi'],['A','Art','🎨','Visual/poster langkah'],['M','Mathematics','🔢','Urutan dan keteraturan']].forEach(([s,n,e,d])=>{
+  [['S','Science','🔭','Kebiasaan dan pengelolaan waktu'],['T','Technology','💻','Berpikir sistematis tanpa perangkat'],['E','Engineering','⚙️','Menyusun langkah solusi'],['A','Art','🎨','Membuat poster visual yang menarik'],['M','Mathematics','🔢','Urutan dan keteraturan']].forEach(([s,n,e,d])=>{
     const f=el('button','flip',`<div class="in"><div class="f"><span class="big">${e}</span><span style="font-size:1.6rem">${s}</span>${n}</div><div class="b">${d}</div></div>`);f.type='button';f.onclick=()=>{f.classList.toggle('on');earn('steam')};$('#steam').appendChild(f)});
   ['Masalah yang dipilih','Urutan langkah solusi','Mengapa langkah tersebut logis dan efektif'].forEach(t=>{
     const l=el('label','ck',`<input type="checkbox"> ${t}`);$('#pres').appendChild(l)});
