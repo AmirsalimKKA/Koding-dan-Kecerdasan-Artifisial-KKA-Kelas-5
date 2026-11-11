@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Pertemuan 5 – Proyek STEAM: Produksi Konten Digital</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.2;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.84);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:0 14px 40px}
+.hero{color:#fff;text-align:center;margin:14px 0 10px}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.score{flex-wrap:wrap;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.18);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:1.5em;display:flex;gap:2px}.stars i{font-style:normal;filter:grayscale(1) opacity(.45);transition:.5s}
+.stars i.on{filter:drop-shadow(0 0 8px var(--sun));animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.2);border-radius:16px;padding:8px 4px;font-size:.88em;font-weight:800;transition:.2s;position:relative;min-height:56px}
+.tab .e{display:block;font-size:1.5em;line-height:1.2}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on,.card.s{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}.card.s{margin:16px 0}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}h4{font-size:1.15em;color:var(--indigo)}
+p{margin:6px 0}ul{padding-left:1.2em}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.b{background:#2f80ed}.btn.y{background:var(--sun);color:var(--ink)}
+.act{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.fb.wr{background:#ffe9e9;border-left:6px solid var(--red);color:#7a1010}.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:10px 0}
+.tile{background:#fff;border:3px solid var(--soft);border-radius:18px;padding:12px;font-weight:700}.tile .em{font-size:2.2em;display:block;animation:bob 3s infinite}
+.pw{font-family:ui-monospace,monospace;background:var(--ink);color:var(--sun);padding:2px 10px;border-radius:9px;word-break:break-all}
+.msg{background:#e8eef9;border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;font-weight:700;margin:8px 0}
+.stage{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;min-height:150px;background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0}
+.kid,.sh{font-size:3.6em}.kid.think{animation:wob .6s 3}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.bubx{max-width:270px;background:#ffe9e9;border:3px solid var(--coral);border-radius:16px;padding:8px 12px;font-weight:700;opacity:0;transform:translateX(30px);transition:.5s}
+.bubx.show,.sh.show{opacity:1;transform:none}.sh{opacity:0;transform:scale(.2);transition:.5s}
+.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:100px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.lst{list-style:none;padding:0}.lst li{padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}.lst li.d{background:#e6f9f2;border-color:var(--mint)}
+.badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
+.badge .em{font-size:4em;line-height:1;display:block}.badge b{font-family:"Baloo 2",Nunito,sans-serif;font-size:1.4em}
+.nv{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.chat{background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:120px;margin:10px 0}
+.cm{max-width:86%;padding:8px 12px;border-radius:16px;font-weight:700;animation:in .4s;cursor:pointer;border:3px solid transparent;background:#e8eef9;border-bottom-left-radius:4px}
+.cm small{display:block;font-weight:800;color:var(--teal);font-size:.78em}.cm.me{align-self:flex-end;background:#d9f7e4;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.cm.pick{border-color:var(--sun)}.cm.rude small{color:var(--red)}
+textarea{width:100%;font:inherit;border:3px solid var(--soft);border-radius:16px;padding:10px;min-height:110px;resize:vertical;color:var(--ink)}
+.ck{list-style:none;padding:0}.ck li{padding:4px 0;font-weight:700}.ck li.y{color:#0b6b52}
+
+.mp{width:min(250px,100%);aspect-ratio:3/4;background:var(--indigo);border-radius:18px;padding:14px;color:#fff;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;margin:10px auto;position:relative;overflow:hidden}
+.mp>*{opacity:0}.mp.go>.s1{animation:pp .6s both}.mp.go>.s2{animation:pp .6s 1.3s both}.mp.go>.s3{animation:pp .6s 2.6s both}.mp.go>.s4{animation:pp .6s 3.9s both}
+.mp.still>*{opacity:1}.mp .s2{font-size:3.6em}.mp .s1{font-family:"Baloo 2",sans-serif;font-size:1.4em;line-height:1.1}.mp .s3{background:#fff;color:var(--ink);border-radius:12px;padding:8px;font-weight:700;font-size:.85em}.mp .s4{position:absolute;top:6px;right:10px;font-size:1.6em}
+@keyframes pp{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:none}}
+canvas{width:min(100%,360px);height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:block;margin:auto;background:#fff}
+.pm{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}
+.sw,.ic{display:inline-block;width:44px;height:44px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 2px #cfd3ee;cursor:pointer;padding:0;vertical-align:middle;margin:2px}
+.ic{background:#fff;font-size:1.4em;line-height:1;border-radius:14px}.sw.on,.ic.on{box-shadow:0 0 0 4px var(--sun)}
+input[type=text]{width:100%;font:inherit;border:3px solid var(--soft);border-radius:14px;padding:8px 12px;color:var(--ink);margin:4px 0 8px}
+input[type=range]{width:100%}.lbl{font-weight:800;display:block;margin-top:6px}
+.ckx label{display:flex;gap:10px;align-items:center;background:#fff;border:3px solid var(--soft);border-radius:14px;padding:10px;margin:6px 0;font-weight:700;cursor:pointer;min-height:44px}.ckx input{width:22px;height:22px}
+.hab{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.hab button{font:inherit;font-weight:700;cursor:pointer;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:99px;padding:8px 14px;min-height:44px}.hab button.on{background:var(--sun);border-color:#e8a21a}
+@media(prefers-reduced-motion:reduce){.mp>*{opacity:1!important}}
+</style></head><body>
+<div class="bg" id="bg" aria-hidden="true"></div><header><div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 5 · Materi</b><nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_media5.html">🎮 Media Interaktif</a></nav></div><div class="crumb"><span class="mt2" aria-label="Pertemuan 5 dari 5"><i>1</i><i>2</i><i>3</i><i>4</i><i class="on">5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 5 › Materi</div></header>
+<div class="wrap" id="wr"><div class="hero"><h1>🎨 Proyek STEAM: Konten Digital</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Hai, aku <b>Robo-KKA</b>! Hari ini kita membuat <b>poster digital</b> tentang menjadi pengguna internet yang aman dan sopan. Ayo berkarya! 🌈</div></div></div>
+<section class="card s"><h3>🎯 Tujuan Pembelajaran</h3><p>Aku mampu membuat konten digital sederhana berupa poster secara aman dan bertanggung jawab.</p></section>
+<section class="card s"><h3>A. Apa itu Konten Digital?</h3><p><b>Konten digital</b> adalah informasi atau karya yang dibuat dan dibagikan melalui media digital, seperti teks, gambar, atau poster.</p>
+<h4>Bentuk konten digital</h4><div class="grid"><div class="tile"><span class="em">✍️</span>Teks pendek</div><div class="tile"><span class="em">🖼️</span>Poster digital</div><div class="tile"><span class="em">🎨</span>Gambar atau ilustrasi pendukung</div></div></section>
+<section class="card s"><h3>B. Unsur Poster</h3><div class="grid"><div class="tile"><span class="em">🔤</span><b>1. Judul</b><br>Singkat dan menarik.</div><div class="tile"><span class="em">📣</span><b>2. Pesan utama</b><br>Mudah dipahami.</div><div class="tile"><span class="em">🖼️</span><b>3. Gambar atau ikon</b><br>Mendukung pesan.</div><div class="tile"><span class="em">🌈</span><b>4. Warna</b><br>Menarik dan terbaca jelas.</div><div class="tile"><span class="em">📐</span><b>5. Tata letak</b><br>Rapi dan jelas.</div></div></section>
+<section class="card s"><h3>C. Tahapan Membuat Poster</h3><ol><li>Menentukan tema.</li><li>Menentukan pesan.</li><li>Membuat judul.</li><li>Memilih gambar.</li><li>Mengatur warna dan tata letak.</li><li>Memeriksa hasil.</li><li>Menampilkan poster.</li></ol></section>
+<section class="card s"><h3>D. Tema Proyek</h3><div class="fb ok" style="text-align:center;font-size:1.15em">⭐ <b>"AKU PENGGUNA INTERNET YANG AMAN DAN SOPAN"</b> ⭐</div>
+<h4>Keterkaitan dengan STEAM</h4><div class="grid"><div class="tile"><b>🔬 Science</b><br>Memahami perilaku dan kebiasaan manusia.</div><div class="tile"><b>💻 Technology</b><br>Menggunakan teknologi untuk membuat konten.</div><div class="tile"><b>⚙️ Engineering</b><br>Merancang pesan yang jelas dan teratur.</div><div class="tile"><b>🎨 Art</b><br>Mendesain tampilan poster.</div><div class="tile"><b>📐 Mathematics</b><br>Mengatur ukuran, posisi, dan keseimbangan tata letak.</div></div></section>
+<section class="card s"><h3>E. Tanggung Jawab Pembuat Konten</h3><ul><li>Tidak menggunakan informasi pribadi dalam poster.</li><li>Gunakan gambar yang layak.</li><li>Gunakan bahasa yang santun.</li><li>Cantumkan sumber jika memakai bahan milik orang lain.</li></ul><div class="fb wr">🚨 Jangan menulis nama lengkap, alamat, nomor telepon, atau password di posterku.</div></section>
+<section class="card s"><h3>📝 Ringkasan</h3><ul><li>Poster punya judul, pesan utama, gambar atau ikon, warna, dan tata letak yang jelas.</li><li>Buat poster dengan tahapan, dari tema sampai ditampilkan.</li><li>Konten yang baik aman, santun, dan bertanggung jawab.</li></ul><p style="text-align:center;margin-top:12px"><a class="btn g" href="bab2_media5.html">🎨 Buka Poster Maker</a></p></section>
+<div class="nv"><a class="btn" href="bab2_media4.html">◀ Sebelumnya</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_media5.html">Selanjutnya ▶</a></div></div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Poster dibuat di perangkatmu dan tidak dikirim ke internet</footer>
+<script src="bab2_audio.js"></script><script>
+const $=id=>document.getElementById(id);$("bg").innerHTML=["🎨","🖼️","✨","⭐","🤖","📐","🖌️","🌈","📝","💡"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.wrap').cloneNode(true);c.querySelectorAll('button,a,.nv,.kk-aud').forEach(x=>x.remove());return c.textContent}});
+(function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.card.s');if(a&&s)s.parentNode.insertBefore(a,s)})();
+</script></body></html>
