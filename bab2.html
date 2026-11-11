@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dasbor Bab 2 – Literasi Digital (Kesadaran Digital)</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>:root{
+  --bg: #f4f9f9; 
+  --card: #ffffff; 
+  --ink: #333333; 
+  --muted: #6b6880;
+  
+  /* VisualMath KKA Theme Colors */
+  --navy: #022050;
+  --teal: #0B7C86; 
+  --teal-d: #085E66;
+  --cyan: #00D6D8;
+  
+  --orange: #ff8a3d; 
+  --orange-d: #d4651a;
+  --yellow: #ffd34e; 
+  --pink: #ff6f91; 
+  --green: #2fb36d; 
+  --green-d: #1f8a50;
+  --purple: #7c3aed;
+
+  --line: #c3e2e5; 
+  --shadow: 0 4px 0 rgba(43,42,58,.06), 0 10px 24px rgba(11, 124, 134, 0.10);
+  --r: 20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Nunito', "Trebuchet MS", sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  background-image:radial-gradient(#0B7C86 0.5px, transparent 0.5px);
+  background-size:20px 20px;
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.25;margin:0 0 .45em;color:var(--navy)}
+p{margin:.3em 0 .8em}
+
+/* Top Bar */
+.top{display:flex;align-items:center;gap:14px;padding:12px 24px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.top .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-family:'Fredoka', sans-serif}
+.top .brand img{height:46px;width:46px;background:#fff;border-radius:50%;padding:4px;object-fit:contain;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.top .ttl{font-size:1.12rem;line-height:1.15;color:var(--cyan)}
+.top .ttl small{display:block;font-weight:600;font-size:.8rem;color:#e2e8f0;font-family:'Nunito', sans-serif}
+.top .sp{flex:1}
+.nav-link{
+  color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;
+  background:var(--teal);border:2px solid var(--teal);border-radius:12px;
+  padding:6px 14px;transition:.2s;display:inline-flex;align-items:center;gap:6px;
+}
+.nav-link:hover{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+
+.wrap{max-width:1140px;margin:0 auto;padding:24px 20px 50px}
+
+/* Hero Section Bab 2 */
+.hero{
+  background:linear-gradient(135deg, var(--navy) 0%, #05326d 55%, var(--teal-d) 100%);
+  color:#fff;border-radius:24px;padding:28px 32px;box-shadow:var(--shadow);
+  display:flex;gap:24px;align-items:center;flex-wrap:wrap;border:3px solid var(--cyan);
+  margin-bottom:26px;
+}
+.hero img{
+  width:108px;height:108px;background:#fff;border-radius:50%;padding:8px;
+  object-fit:contain;box-shadow:0 6px 16px rgba(0,0,0,.28);flex:0 0 auto;
+}
+.hero .chap-badge{
+  display:inline-block;background:var(--orange);color:#fff;font-family:'Fredoka', sans-serif;
+  font-weight:700;font-size:.85rem;padding:4px 14px;border-radius:99px;margin-bottom:8px;
+  box-shadow:0 2px 0 var(--orange-d);
+}
+.hero h1{color:var(--cyan);font-size:1.85rem;margin-bottom:6px}
+.hero p{color:#f1f5f9;font-size:1.03rem;max-width:740px;margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.meta-pill{
+  background:rgba(255,255,255,.13);border:1.5px solid rgba(0,214,216,.55);
+  color:#fff;padding:4px 14px;border-radius:99px;font-size:.84rem;font-weight:700;
+}
+
+/* Guide Bar */
+.guide{
+  background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 20px;
+  margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;box-shadow:0 3px 0 var(--line);
+}
+.guide-steps{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-weight:700;font-size:.95rem;color:var(--navy)}
+.g-step{background:#e9f8f9;border:1.5px solid var(--teal);color:var(--teal-d);padding:4px 12px;border-radius:99px}
+
+/* Grid Cards Pertemuan */
+.grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(330px, 1fr));gap:20px}
+
+.pcard{
+  background:var(--card);border:2px solid var(--line);border-radius:var(--r);
+  padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  justify-content:space-between;position:relative;overflow:hidden;
+  transition:transform .2s, border-color .2s;
+}
+.pcard:hover{transform:translateY(-5px);border-color:var(--teal)}
+.pcard::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:7px;background:var(--teal);
+}
+.pcard.c1::before{background:var(--teal)}
+.pcard.c2::before{background:var(--cyan)}
+.pcard.c3::before{background:var(--orange)}
+.pcard.c4::before{background:var(--purple)}
+.pcard.c5::before{background:var(--green)}
+
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.p-badge{
+  display:inline-flex;align-items:center;gap:6px;background:#fff1d6;color:var(--orange-d);
+  border:1.5px solid #ffdca1;border-radius:99px;padding:4px 12px;font-size:.82rem;font-weight:800;
+}
+.p-icon{
+  width:44px;height:44px;border-radius:14px;background:#e9f8f9;color:var(--teal);
+  display:grid;place-items:center;font-size:1.25rem;border:2px solid var(--line);flex:0 0 auto;
+}
+.pcard h2{font-size:1.25rem;margin-bottom:8px;color:var(--navy)}
+.pcard p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
+
+.kw-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.kw-list span{
+  background:#f0f9fa;border:1px solid #bfe3e6;color:var(--teal-d);
+  font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;
+}
+
+/* Action Buttons */
+.btn-group{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+@media(max-width:420px){.btn-group{grid-template-columns:1fr}}
+
+.btn{
+  text-decoration:none;border-radius:14px;padding:11px 14px;
+  font-family:'Fredoka', sans-serif;font-weight:700;font-size:.96rem;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:transform .1s, background .15s;text-align:center;
+}
+.btn:active{transform:translateY(2px)}
+.btn.materi{
+  background:var(--navy);color:#fff;box-shadow:0 4px 0 #01122e;
+}
+.btn.materi:hover{background:var(--teal);box-shadow:0 4px 0 var(--teal-d)}
+.btn.media{
+  background:var(--orange);color:#fff;box-shadow:0 4px 0 var(--orange-d);
+}
+.btn.media:hover{background:#e87b32}
+.btn.steam{
+  background:var(--green);color:#fff;box-shadow:0 4px 0 var(--green-d);
+}
+.btn.steam:hover{background:#269b5d}
+
+.foot{max-width:1140px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center;border-top:2px dashed var(--line);font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <img src="logo.png" alt="Logo KKA">
+    <div class="ttl">Bab 2 · Literasi Digital (Kesadaran Digital)<small>Koding &amp; Kecerdasan Artifisial • Kelas V</small></div>
+  </div>
+  <div class="sp"></div>
+  <a class="nav-link" href="materi1.html"><i class="fa-solid fa-layer-group"></i> Bab 1</a>
+</header>
+
+<div class="wrap">
+  <!-- Hero Bab 2 -->
+  <section class="hero">
+    <img src="logo.png" alt="Maskot Kodi">
+    <div>
+      <span class="chap-badge">🌐 BAB 2 • KESADARAN DIGITAL</span>
+      <h1>Literasi Digital: Cerdas, Aman, dan Santun di Dunia Maya</h1>
+      <p>Mari belajar bersama <b>Kodi</b> cara memanfaatkan teknologi digital, berselancar di internet dengan sehat, menjaga rahasia kata sandi, berkomunikasi sopan, hingga berkarya lewat poster STEAM!</p>
+      <div class="hero-meta">
+        <span class="meta-pill"><i class="fa-solid fa-book-open"></i> 5 Pertemuan Lengkap</span>
+        <span class="meta-pill"><i class="fa-solid fa-gamepad"></i> 5 Media Interaktif</span>
+        <span class="meta-pill"><i class="fa-solid fa-palette"></i> Proyek Poster STEAM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panduan Alur Belajar -->
+  <div class="guide">
+    <div class="guide-steps">
+      <span><i class="fa-solid fa-compass" style="color:var(--orange)"></i> Alur Belajar:</span>
+      <span class="g-step">1. Klik <b>Materi</b> untuk membaca</span>
+      <i class="fa-solid fa-arrow-right" style="color:var(--muted)"></i>
+      <span class="g-step">2. Klik <b>Media Interaktif</b> untuk bermain &amp; berlatih</span>
+    </div>
+  </div>
+
+  <!-- Grid 5 Pertemuan Bab 2 -->
+  <section class="grid">
+
+    <!-- Pertemuan 1 -->
+    <article class="pcard c1">
+      <div>
+        <div class="card-top">
+          <span class="p-badge">Pertemuan 1 • 2 JP</span>
+          <div class="p-icon"><i class="fa-solid fa-laptop"></i></div>
+        </div>
+        <h2>1. Mengenal Teknologi Digital: Manfaat dan Dampaknya</h2>
+        <p>Mengenal berbagai perangkat digital di sekitar kita, manfaatnya untuk memudahkan belajar, serta cara mencegah dampak negatif penggunaan gawai berlebihan.</p>
+        <div class="kw-list">
+          <span>teknologi digital</span>
+          <span>manfaat gawai</span>
+          <span>waktu layar sehat</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a class="btn materi" href="bab2_materi1.html"><i class="fa-solid fa-book-open"></i> Materi 1</a>
+        <a class="btn media" href="bab2_media1.html"><i class="fa-solid fa-gamepad"></i> Media 1</a>
+      </div>
+    </article>
+
+    <!-- Pertemuan 2 -->
+    <article class="pcard c2">
+      <div>
+        <div class="card-top">
+          <span class="p-badge">Pertemuan 2 • 2 JP</span>
+          <div class="p-icon"><i class="fa-solid fa-globe"></i></div>
+        </div>
+        <h2>2. Mengenal Internet dan Penggunaan Internet Sehat</h2>
+        <p>Memahami cara kerja internet secara sederhana, memilih tayangan atau situs edukatif yang aman, serta menerapkan aturan berinternet sehat untuk anak.</p>
+        <div class="kw-list">
+          <span>internet sehat</span>
+          <span>konten edukatif</span>
+          <span>pendampingan</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a class="btn materi" href="bab2_materi2.html"><i class="fa-solid fa-book-open"></i> Materi 2</a>
+        <a class="btn media" href="bab2_media2.html"><i class="fa-solid fa-gamepad"></i> Media 2</a>
+      </div>
+    </article>
+
+    <!-- Pertemuan 3 -->
+    <article class="pcard c3">
+      <div>
+        <div class="card-top">
+          <span class="p-badge">Pertemuan 3 • 2 JP</span>
+          <div class="p-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+        <h2>3. Keamanan Informasi Pribadi dan Password</h2>
+        <p>Membedakan informasi umum dan data pribadi yang wajib dirahasiakan, waspada tautan mencurigakan, serta cara merancang password yang kuat dan aman.</p>
+        <div class="kw-list">
+          <span>data pribadi</span>
+          <span>password kuat</span>
+          <span>keamanan akun</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a class="btn materi" href="bab2_materi3.html"><i class="fa-solid fa-book-open"></i> Materi 3</a>
+        <a class="btn media" href="bab2_media3.html"><i class="fa-solid fa-gamepad"></i> Media 3</a>
+      </div>
+    </article>
+
+    <!-- Pertemuan 4 -->
+    <article class="pcard c4">
+      <div>
+        <div class="card-top">
+          <span class="p-badge">Pertemuan 4 • 2 JP</span>
+          <div class="p-icon"><i class="fa-solid fa-comments"></i></div>
+        </div>
+        <h2>4. Etika Komunikasi Daring dan Teks Pendek</h2>
+        <p>Belajar menyusun pesan teks pendek yang sopan kepada guru maupun teman, mencegah perundungan siber (cyberbullying), dan mengenali berita bohong (hoaks).</p>
+        <div class="kw-list">
+          <span>etika daring</span>
+          <span>teks pendek santun</span>
+          <span>anti hoaks</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a class="btn materi" href="bab2_materi4.html"><i class="fa-solid fa-book-open"></i> Materi 4</a>
+        <a class="btn media" href="bab2_media4.html"><i class="fa-solid fa-gamepad"></i> Media 4</a>
+      </div>
+    </article>
+
+    <!-- Pertemuan 5 -->
+    <article class="pcard c5">
+      <div>
+        <div class="card-top">
+          <span class="p-badge">Pertemuan 5 • 2 JP</span>
+          <div class="p-icon"><i class="fa-solid fa-palette"></i></div>
+        </div>
+        <h2>5. Proyek STEAM: Membuat Poster Literasi Digital</h2>
+        <p>Merancang poster kampanye visual bertema Sahabat Digital Bijak dengan memadukan unsur Science, Technology, Engineering, Art, dan Mathematics.</p>
+        <div class="kw-list">
+          <span>proyek STEAM</span>
+          <span>poster kampanye</span>
+          <span>kreativitas visual</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a class="btn materi" href="bab2_materi5.html"><i class="fa-solid fa-book-open"></i> Materi 5</a>
+        <a class="btn steam" href="bab2_media5.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Media 5</a>
+      </div>
+    </article>
+
+  </section>
+</div>
+
+<div class="foot">SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si • Tahun Ajaran 2026/2027</div>
+
+</body>
+</html>
