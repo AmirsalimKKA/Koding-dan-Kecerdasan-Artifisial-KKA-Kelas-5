@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Materi Pertemuan 2 – Internet Sehat</title><link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h2,h3,.tag,.btn,.pill{font-family:"Baloo 2",Nunito,sans-serif}
+.bg i{position:fixed;border-radius:50%;opacity:.13;background:#fff;animation:fl 14s ease-in-out infinite;pointer-events:none}
+.bg i:nth-child(1){width:240px;height:240px;left:-80px;top:14%}
+.bg i:nth-child(2){width:150px;height:150px;right:-40px;top:58%;background:var(--sun);animation-delay:-5s}
+.bg i:nth-child(3){width:90px;height:90px;left:62%;top:6%;background:var(--mint);animation-delay:-9s}
+@keyframes fl{50%{transform:translateY(-34px) scale(1.06)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.82);backdrop-filter:blur(10px);padding:env(safe-area-inset-top) 0 0}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.05em;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}
+.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.prog{height:5px;background:rgba(255,255,255,.18)}
+.prog div{height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:0 5px 5px 0;transition:width .5s cubic-bezier(.4,1.4,.5,1)}
+main{position:relative;max-width:980px;margin:auto;padding:0 14px 120px}
+.slides{margin-top:14px}
+.pg{display:none;background:var(--paper);border-radius:28px;padding:clamp(18px,4vw,40px);box-shadow:0 20px 50px rgba(10,10,60,.35);border:4px solid #fff}
+.pg.on{display:block}
+.pg.r{animation:inR .55s cubic-bezier(.2,.9,.3,1)}.pg.l{animation:inL .55s cubic-bezier(.2,.9,.3,1)}
+@keyframes inR{from{opacity:0;transform:translateX(60px) rotate(1.5deg)}}
+@keyframes inL{from{opacity:0;transform:translateX(-60px) rotate(-1.5deg)}}
+.tag{display:inline-block;background:var(--sun);color:var(--ink);padding:2px 16px;border-radius:99px;font-weight:800;font-size:.9em}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:10px 0 14px;color:var(--indigo)}
+h2{font-size:clamp(1.4em,3.6vw,2em);line-height:1.2;color:var(--indigo);margin-bottom:12px}
+h3{font-size:1.15em;color:var(--indigo)}
+p{margin:8px 0}
+.maskot{display:flex;gap:14px;align-items:center;margin:14px 0}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.2))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:var(--soft);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:var(--soft);border-left:0}
+.box{border-left:8px solid var(--c,var(--coral));background:var(--bg,#fff1f1);border-radius:16px;padding:12px 16px;margin:14px 0}
+.box .t{display:block;font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.1em;color:var(--c,var(--coral))}
+.box ol,.box ul{margin:6px 0 0 20px}
+.sep{background:var(--soft);padding:12px 16px;border-radius:16px;margin:10px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.two>div{border-radius:20px;padding:14px 16px;background:#fff;border:3px solid var(--soft)}
+.two h3{margin-bottom:4px}
+/* ilustrasi jaringan */
+.net{width:100%;max-width:420px;display:block;margin:6px auto}
+.net .ln line{stroke-dasharray:7 9;animation:dash 1.1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.net .core{transform-origin:180px 100px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.net text{font-family:Nunito,sans-serif;font-weight:800}
+/* kartu ketuk */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+.mt{border:0;color:#fff;text-align:left;font:inherit;border-radius:22px;padding:16px;cursor:pointer;background:var(--k);box-shadow:0 6px 0 rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s}
+.mt:hover{transform:translateY(-3px)}.mt:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.mt .em{font-size:2.4em;display:block;transition:transform .4s}.mt.open .em{transform:rotate(360deg) scale(1.15)}
+.mt b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.2em;line-height:1.2;display:block}.mt small{display:block;opacity:.95}
+.mt .d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s}.mt.open .d{grid-template-rows:1fr}
+.mt .d>div{overflow:hidden}
+.mt.open .d>div{margin-top:8px;padding:10px;background:rgba(255,255,255,.22);border-radius:12px;font-weight:600}
+.mt .bk{display:inline-block;margin-top:6px;font-size:.78em;background:rgba(0,0,0,.22);padding:2px 10px;border-radius:99px}
+/* ponsel palsu */
+.hp{max-width:430px;margin:12px auto;background:#222;border-radius:30px;padding:14px 12px 18px;box-shadow:0 12px 0 rgba(0,0,0,.18)}
+.hp .scr{background:#fff;border-radius:18px;padding:12px;font-weight:700;line-height:1.7}
+.hp .from{font-size:.78em;color:#667}
+.hot{font:inherit;font-weight:800;border:0;border-radius:8px;padding:0 6px;cursor:pointer;background:#fff3b0;color:#222;border-bottom:3px dashed var(--red);animation:blink 1.8s ease-in-out infinite}
+.hot.f{background:#ffd6d6;color:var(--red);animation:none;border-bottom-style:solid}
+.fake{display:inline-block;background:#e0e8ff;color:#355;border-radius:8px;padding:2px 10px;text-decoration:underline;font-weight:800}
+@keyframes blink{50%{background:#ffe27a}}
+.warn{border-left:8px solid var(--red);background:#ffecec;border-radius:16px;padding:12px 16px;margin:14px 0}
+.warn .t{display:block;font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.15em;color:var(--red)}
+#why{min-height:3.2em}
+.tiga{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:10px}
+.tiga>div{background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px 14px}
+.tiga .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-weight:800}
+/* kartu kebiasaan */
+.kb{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:12px}
+.kb button{font:inherit;text-align:left;cursor:pointer;background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px 14px;transition:.25s;color:var(--ink)}
+.kb button:hover{border-color:var(--sun);transform:rotate(-1deg) scale(1.02)}
+.kb button .i{font-size:2em;display:block}
+.kb button b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.05em;line-height:1.2;display:block}
+.kb button .x{display:none;margin-top:6px;font-weight:600;font-size:.93em}
+.kb button.open{border-color:var(--mint);background:#effcf8}
+.kb button.open .x{display:block}
+/* stepper kisah */
+.st{background:#fff;border:3px solid var(--soft);border-radius:22px;padding:14px 16px;margin-top:10px}
+.stp{height:10px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.stp i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--teal));border-radius:9px;transition:width .5s}
+.sc{display:flex;gap:12px;align-items:flex-start;animation:inR .45s}
+.sc .e{font-size:2.6em;line-height:1}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}
+.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}
+.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.quote{font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:clamp(1.2em,3.5vw,1.7em);text-align:center;color:#fff;background:linear-gradient(135deg,var(--indigo),var(--teal));border-radius:22px;padding:18px;margin:14px 0}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.y{background:var(--sun);color:var(--ink)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(29,27,76,.88);backdrop-filter:blur(10px)}
+.dock>div{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dots{display:flex;gap:7px}
+.dots button{width:14px;height:14px;border-radius:99px;border:0;background:rgba(255,255,255,.35);cursor:pointer;transition:.3s;padding:0}
+.dots button.on{width:30px;background:var(--sun)}
+.dock .btn:disabled{opacity:.35;cursor:default}
+.pill{color:#fff;font-weight:800;font-size:.9em}
+.cf{position:fixed;top:-30px;z-index:50;pointer-events:none;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.8}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px 100px}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.two{grid-template-columns:1fr}.bar b{width:100%;order:3}.dock .btn{padding:8px 14px}.pill{display:none}.crumb .mt2{display:none}}
+@media(max-width:600px){header{position:static}}
+@media(max-width:400px){.dots{gap:4px}.dots button{width:9px;height:9px}.dots button.on{width:20px}.dock .btn{padding:8px 10px;font-size:.9em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<header>
+  <div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 2 · Materi</b>
+    <nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_media2.html">🎮 Media Interaktif</a></nav></div>
+  <div class="crumb"><span class="mt2" aria-label="Pertemuan 2 dari 5"><i>1</i><i class="on">2</i><i>3</i><i>4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 2 › Materi</div>
+  <div class="prog" role="progressbar" aria-label="Kemajuan membaca" aria-valuemin="0" aria-valuemax="100"><div id="pb"></div></div>
+</header>
+<main id="mn">
+<div class="slides">
+
+<!-- 1. Pembuka -->
+<section class="pg"><span class="tag">Pertemuan 2</span><h1>🌐 Mengenal Internet dan Penggunaan Internet Sehat</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Halo! Aku <b>Robo-KKA</b>. Hari ini kita menjelajah internet, dan aku akan menjaga kita tetap aman!</div></div>
+<div class="box" style="--c:#1fa37f;--bg:#e6f9f2"><b class="t">🎯 Tujuanmu hari ini</b>Menjelaskan pengertian dan fungsi dasar internet, serta mengenali contoh penggunaan internet yang sehat dan sesuai kebutuhan.</div>
+<div class="box" style="--c:#e08a00;--bg:#fff6dc"><b class="t">👀 Ayo Mengamati</b>Dewi mencari gambar lebah untuk tugas IPAS. Di layar muncul kotak berkedip: “Selamat! Kamu terpilih!”. Di sebelahnya ada video tentang lebah dari sebuah museum sains. <i>Mana yang sebaiknya dibuka Dewi? Mengapa?</i></div>
+<div class="box" style="--c:#2b2a7a;--bg:#e8eef9"><b class="t">💭 Pertanyaan Pemantik</b><ol><li>Apa yang dapat kita lakukan menggunakan internet?</li><li>Mengapa internet dapat membantu kegiatan belajar?</li><li>Apakah semua informasi di internet boleh langsung kita percaya?</li></ol></div>
+<p style="text-align:center"><button class="btn o" id="mulai">🚀 Mulai Belajar</button></p></section>
+
+<!-- 2. Pengertian -->
+<section class="pg"><h2>1️⃣ Apa itu internet?</h2>
+<div class="sep"><p><b>Internet</b> adalah jaringan yang menghubungkan berbagai perangkat di seluruh dunia, sehingga manusia dapat <b>bertukar informasi</b> dan <b>berkomunikasi</b>.</p></div>
+<svg class="net" viewBox="0 0 360 250" role="img" aria-label="Ilustrasi HP, laptop, dan tablet yang terhubung ke internet lewat garis putus-putus yang bergerak">
+ <g class="ln" stroke="#0fa3b1" stroke-width="3.5" stroke-linecap="round"><line x1="180" y1="100" x2="62" y2="52"/><line x1="180" y1="100" x2="298" y2="52"/><line x1="180" y1="100" x2="180" y2="186"/></g>
+ <g class="core"><circle cx="180" cy="100" r="44" fill="#0fa3b1"/><circle cx="180" cy="100" r="44" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="4 6"/><text x="180" y="112" text-anchor="middle" font-size="36">🌐</text></g>
+ <g transform="translate(62,52)"><rect x="-15" y="-27" width="30" height="54" rx="7" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-10" y="-20" width="20" height="32" rx="2" fill="#cfe0fb"/><circle cy="19" r="2.8" fill="#2b2a7a"/></g>
+ <text x="62" y="98" text-anchor="middle" font-size="15" fill="#1d1b4c">HP</text>
+ <g transform="translate(298,52)"><rect x="-32" y="-24" width="64" height="42" rx="5" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-26" y="-18" width="52" height="30" rx="2" fill="#cfe0fb"/><path d="M-42 26H42L35 18H-35Z" fill="#2b2a7a"/></g>
+ <text x="298" y="98" text-anchor="middle" font-size="15" fill="#1d1b4c">Laptop</text>
+ <g transform="translate(180,190)"><rect x="-22" y="-26" width="44" height="52" rx="7" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-16" y="-20" width="32" height="38" rx="2" fill="#cfe0fb"/><circle cy="22" r="2.2" fill="#2b2a7a"/></g>
+ <text x="180" y="240" text-anchor="middle" font-size="15" fill="#1d1b4c">Tablet</text>
+</svg>
+<div class="two"><div><h3>📚 Seperti perpustakaan raksasa</h3><p>Tulisan, gambar, dan video tersimpan di banyak komputer di seluruh dunia. Lewat internet, kita bisa membukanya.</p></div><div><h3>✉️ Seperti kantor pos</h3><p>Pesan dari satu perangkat diantar ke perangkat lain, bahkan yang berada di kota atau negara berbeda.</p></div></div></section>
+
+<!-- 3. Fungsi -->
+<section class="pg"><h2>2️⃣ Fungsi internet</h2><p>Ketuk kartu untuk melihat contohnya! 👇</p><div class="grid" id="fg"></div>
+<div class="box" style="--c:#2b2a7a;--bg:#e8eef9"><b class="t">📖 Cocokkan dengan Buku Siswa</b>Di Buku Siswa, fungsi internet ditulis: <b>belajar, mencari informasi, berkomunikasi, berkreasi, dan hiburan sehat</b>. Semuanya saling berkaitan dengan lima kartu di atas. Contohnya, membuat poster digital berarti <b>berkreasi</b> sekaligus <b>berbagi</b> hasil karya.</div></section>
+
+<!-- 4. Internet sehat -->
+<section class="pg"><h2>3️⃣ Enam kebiasaan internet sehat</h2><p>Internet sehat artinya memakai internet dengan bijak dan tidak berlebihan. Ketuk setiap kartu untuk melihat contohnya.</p><div class="kb" id="kbg"></div></section>
+
+<!-- 5. Waspada -->
+<section class="pg"><h2>4️⃣ Waspada tautan mencurigakan!</h2>
+<div class="warn"><b class="t">⚠️ Peringatan penting</b>Jangan membuka tautan (link) dari orang tidak dikenal, apalagi yang menjanjikan hadiah. Segera tanyakan kepada orang tua atau guru.</div>
+<p>Ayo cari <b>tanda bahaya</b> pada pesan fiktif ini. Ketuk bagian yang berkedip! <span id="hc" class="pill" style="background:var(--indigo);padding:2px 12px;border-radius:99px">0 / 4</span></p>
+<div class="hp"><div class="scr"><div class="from">Dari: <button class="hot" data-w="0">nomor tidak dikenal</button></div>
+<button class="hot" data-w="1">SELAMAT!!!</button> Kamu <button class="hot" data-w="2">terpilih</button> menjadi pemenang ponsel baru! <button class="hot" data-w="3">Klik sekarang sebelum hadiah hilang!</button> <span class="fake">www.hadiah-contoh.example</span></div></div>
+<div class="sep" id="why" aria-live="polite">Ketuk bagian yang berkedip untuk mengetahui mengapa ia mencurigakan.</div>
+<h3 style="margin-top:14px">🔎 Tiga langkah memeriksa informasi</h3>
+<div class="tiga"><div><span class="n">1</span><p><b>Siapa pembuatnya?</b> Adakah nama penulis, lembaga, atau tanggal yang jelas?</p></div><div><span class="n">2</span><p><b>Apa buktinya?</b> Bandingkan dengan sumber lain atau buku pelajaran.</p></div><div><span class="n">3</span><p><b>Tanya orang dewasa.</b> Guru atau orang tua dapat membantu memastikan.</p></div></div></section>
+
+<!-- 6. Contoh -->
+<section class="pg"><h2>5️⃣ Contoh sehari-hari: Fajar dan tanaman cabai</h2><p>Ikuti langkah Fajar mengerjakan tugas sekolah dengan internet.</p>
+<div class="st"><div class="stp"><i id="sp"></i></div><div id="sv"></div></div></section>
+
+<!-- 7. Ringkasan -->
+<section class="pg"><div class="maskot"><div class="r">🏆</div><div class="s"><b>Hebat!</b> Kamu sudah sampai di akhir materi.</div></div>
+<div class="box" style="--c:#2b2a7a;--bg:#e8eef9"><b class="t">📝 Ringkasan</b><ul><li>Internet menghubungkan banyak perangkat sehingga kita dapat bertukar informasi dan berkomunikasi.</li><li>Fungsi internet: mencari informasi, belajar, berkomunikasi, mengakses sumber edukasi, dan berbagi informasi secara tepat.</li><li>Internet sehat: sesuai kebutuhan, sumber yang sesuai, ada pendampingan, waspada tautan, atur waktu, dan tidak mudah percaya.</li><li>Jika ragu, berhenti dan tanyakan kepada guru atau orang tua.</li></ul></div>
+<div class="quote">“Gunakan Internet untuk Belajar, Berkarya, dan Melakukan Hal Positif.”</div>
+<div class="cta"><a class="btn" href="bab2_materi1.html">◀ Sebelumnya: Pertemuan 1</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_media2.html">🎮 Selanjutnya: Media Interaktif</a></div></section>
+</div>
+</main>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027</footer>
+<div class="dock"><div><button class="btn y" id="pv">◀ Kembali</button><div class="dots" id="dt"></div><span class="pill" id="pc"></span><button class="btn o" id="nx">Lanjut ▶</button></div></div>
+<script src="bab2_audio.js"></script>
+<script>
+const $=s=>document.querySelector(s),P=[...document.querySelectorAll('.pg')];let cur=0;
+const snd=n=>{try{KKA.sfx(n)}catch(e){}};
+/* Fungsi internet */
+const F=[["🔍","Mencari informasi","#2f80ed","Dewi mencari gambar dan keterangan tentang lebah untuk tugas IPAS.","Buku: mencari informasi"],
+["📚","Mendukung pembelajaran","#1fa37f","Putri mengerjakan latihan daring dari aplikasi pelajaran yang dipilih gurunya.","Buku: belajar"],
+["💬","Berkomunikasi","#e8772e","Fajar mengirim pesan sopan kepada guru untuk menanyakan jadwal ulangan.","Buku: berkomunikasi"],
+["🎬","Mengakses sumber edukasi","#9b51e0","Raka menonton video museum sains dan membaca buku di perpustakaan digital.","Buku: belajar dan hiburan sehat"],
+["🤝","Berbagi informasi secara tepat","#d6336c","Kelompok Dewi mengirim hasil tugas kepada guru. Mereka hanya membagikan kabar yang sudah dicek.","Buku: berkreasi dan berbagi"]];
+$('#fg').innerHTML=F.map(m=>`<button class="mt" aria-expanded="false" style="--k:${m[2]}"><span class="em">${m[0]}</span><b>${m[1]}</b><small>👆 ketuk aku</small><span class="d"><div><p>${m[3]}</p><span class="bk">${m[4]}</span></div></span></button>`).join('');
+document.querySelectorAll('.mt').forEach(b=>b.onclick=()=>{b.classList.toggle('open');b.setAttribute('aria-expanded',b.classList.contains('open'));snd('pop')});
+/* Kebiasaan sehat */
+const K=[["🎯","Gunakan sesuai kebutuhan","Sebelum membuka internet, tanyakan: “Aku mau mencari apa?” Setelah selesai, tutup."],
+["📖","Pilih sumber yang sesuai","Pilih situs sekolah, perpustakaan, museum, atau yang disarankan guru, bukan situs yang asal terkenal."],
+["👩‍🏫","Minta pendampingan","Tanya orang tua atau guru sebelum mengunduh aplikasi atau membuka situs baru."],
+["🚫","Jangan buka tautan mencurigakan","Pesan hadiah atau “kamu terpilih” dari orang tidak dikenal tidak perlu diklik."],
+["⏰","Atur waktu penggunaan","Buat jadwal dan istirahatkan mata. Belajar, bermain, dan beristirahat harus seimbang."],
+["🧐","Jangan mudah percaya","Periksa dulu pembuat dan buktinya sebelum percaya atau membagikan."]];
+$('#kbg').innerHTML=K.map((k,i)=>`<button aria-expanded="false"><span class="i">${k[0]}</span><b>${i+1}. ${k[1]}</b><span class="x">${k[2]}</span></button>`).join('');
+document.querySelectorAll('.kb button').forEach(b=>b.onclick=()=>{b.classList.toggle('open');b.setAttribute('aria-expanded',b.classList.contains('open'));snd('pop')});
+/* Tanda bahaya */
+const W=["Pengirim yang tidak kamu kenal bukan alasan untuk percaya. Jangan balas dan jangan klik apa pun.","Tanda seru berlebihan dipakai untuk membuatmu kaget dan cepat bertindak tanpa berpikir.","Kamu tidak mengikuti lomba apa pun, jadi “terpilih” itu janggal. Hadiah tanpa alasan adalah umpan.","Kata “sekarang” dan “sebelum hilang” membuatmu terburu-buru. Pesan yang aman tidak memaksa kamu cepat."];
+let fnd=new Set();
+document.querySelectorAll('.hot').forEach(b=>b.onclick=()=>{const i=+b.dataset.w;b.classList.add('f');fnd.add(i);$('#why').innerHTML=`<b>Tanda bahaya ${i+1}:</b> ${W[i]}`;$('#hc').textContent=fnd.size+' / 4';
+ if(fnd.size==4){$('#why').innerHTML+='<br>🎉 <b>Hebat!</b> Kamu menemukan semua tanda bahaya. Sikap yang tepat: abaikan pesan, jangan klik, dan tunjukkan kepada orang tua atau guru.';snd('win')}else snd('ok')});
+/* Kisah Fajar */
+const S=[["📝","Tugas dari guru","Bu Guru meminta Fajar menulis cara menanam cabai di pot untuk tugas IPAS. Fajar menentukan tujuannya dulu: mencari langkah menanam, bukan membuka hal lain."],
+["🔎","Memilih sumber","Hasil pencarian menampilkan dua pilihan: situs lembaga pertanian yang mencantumkan nama penulis dan tanggal, dan sebuah blog berjudul “Cabai Ajaib, Panen Seminggu!” tanpa penulis. Fajar memilih situs pertama."],
+["📖","Membaca dan mencatat","Fajar mencatat langkahnya: siapkan pot dan tanah gembur, tanam biji, letakkan di tempat yang kena sinar matahari, lalu siram secukupnya."],
+["🤔","Menemukan hal yang meragukan","Di salah satu halaman tertulis bahwa cabai bisa dipanen dalam tiga hari. Fajar merasa janggal.","Q"],
+["🙋","Bertanya kepada guru","Fajar bertanya kepada Bu Guru. Bersama-sama mereka membandingkan dengan buku IPAS. Fajar memakai informasi yang sama di dua sumber tepercaya dan menuliskan sumbernya. Tugasnya selesai dengan baik."]];
+let si=0,ans=false;
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function RS(){const s=S[si];$('#sp').style.width=((si+1)/S.length*100)+'%';
+ let h=`<div class="sc"><div class="e">${s[0]}</div><div><h3>Langkah ${si+1}: ${s[1]}</h3><p>${s[2]}</p></div></div>`;
+ if(s[3]&&!ans){const O=shuf([["Menulisnya saja karena kalimatnya menarik.",0,"Belum tepat. Kalimat yang terdengar menakjubkan perlu dicek dulu. Kalau salah, tugasmu bisa berisi informasi keliru."],["Membandingkan dengan sumber lain dan bertanya kepada Bu Guru.",1,"Tepat! Informasi yang janggal harus diperiksa. Membandingkan sumber dan bertanya kepada orang dewasa adalah langkah yang bijak."],["Mengirim kalimat itu ke grup kelas agar teman-teman terkejut.",0,"Jangan! Informasi yang belum dicek tidak boleh disebarkan karena bisa membuat orang lain ikut salah paham."]]);
+  h+='<p><b>Apa yang sebaiknya Fajar lakukan?</b></p><div id="op">'+O.map((o,i)=>`<button class="opt" data-nosfx data-i="${i}">${o[0]}</button>`).join('')+'</div><div id="of"></div>';
+  $('#sv').innerHTML=h;
+  document.querySelectorAll('#op .opt').forEach((b,i)=>b.onclick=()=>{const o=O[i];document.querySelectorAll('#op .opt').forEach((x,k)=>{x.disabled=true;if(O[k][1])x.classList.add('ok')});if(!o[1])b.classList.add('no');
+   $('#of').innerHTML=`<div class="fb ${o[1]?'ok':'no'}">${o[1]?'✅':'💡'} ${o[2]}</div><p><button class="btn g" id="sx">Lanjutkan ▶</button></p>`;snd(o[1]?'ok':'no');ans=true;$('#sx').onclick=()=>{si++;RS()}});return}
+ h+='<p style="margin-top:8px">'+(si>0?'<button class="btn y" id="sb">◀ Ulangi langkah sebelumnya</button> ':'')+(si<S.length-1?'<button class="btn g" id="sn">Langkah berikutnya ▶</button>':'<span class="fb ok" style="display:inline-block">🎉 Kisah selesai! Lanjut ke ringkasan.</span>')+'</p>';
+ $('#sv').innerHTML=h;
+ if($('#sn'))$('#sn').onclick=()=>{si++;RS()};
+ if($('#sb'))$('#sb').onclick=()=>{si--;RS()}}
+RS();
+/* Halaman */
+$('#dt').innerHTML=P.map((_,i)=>`<button aria-label="Halaman ${i+1}"></button>`).join('');
+const D=[...document.querySelectorAll('#dt button')];D.forEach((d,i)=>d.onclick=()=>go(i));
+function go(n){n=Math.max(0,Math.min(P.length-1,n));const dir=n>=cur?'r':'l';try{KKA.stop()}catch(e){}P[cur].className='pg';cur=n;P[cur].className='pg on '+dir;
+ D.forEach((d,i)=>d.classList.toggle('on',i==cur));$('#pb').style.width=((cur+1)/P.length*100)+'%';$('#pb').parentNode.setAttribute('aria-valuenow',Math.round((cur+1)/P.length*100));$('#pc').textContent=(cur+1)+' / '+P.length;
+ $('#pv').disabled=cur==0;$('#nx').disabled=cur==P.length-1;scrollTo({top:0,behavior:'smooth'});
+ if(cur==P.length-1){confetti();snd('win');try{localStorage.setItem('bab2_materi2_selesai','1')}catch(e){}}
+ try{history.replaceState(null,'','#'+(cur+1))}catch(e){}}
+function confetti(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<28;i++){const e=document.createElement('span');e.className='cf';e.textContent=['🎉','⭐','✨','🎈','💛'][i%5];e.style.left=Math.random()*100+'vw';e.style.fontSize=(16+Math.random()*18)+'px';e.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),3600)}}
+$('#pv').onclick=()=>go(cur-1);$('#nx').onclick=()=>go(cur+1);$('#mulai').onclick=()=>go(1);
+addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key=='ArrowRight')go(cur+1);if(e.key=='ArrowLeft')go(cur-1)});
+let x0=null;addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(x0===null)return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>70&&!e.target.closest('input,select'))go(cur+(d<0?1:-1));x0=null});
+/* Audio: narasi membaca halaman yang sedang tampil */
+KKA.mount({target:$('#mn'),getText:()=>{const c=P[cur].cloneNode(true);c.querySelectorAll('button.opt,#sx,#sb,#sn,.dots,svg').forEach(x=>x.remove());return c.textContent}});
+go(Math.max(0,(parseInt(location.hash.slice(1))||1)-1));
+</script></body></html>
