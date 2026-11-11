@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 3 – Keamanan Informasi Pribadi</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.2;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.84);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:0 14px 40px}
+.hero{color:#fff;text-align:center;margin:14px 0 10px}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.score{flex-wrap:wrap;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.18);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:1.5em;display:flex;gap:2px}.stars i{font-style:normal;filter:grayscale(1) opacity(.45);transition:.5s}
+.stars i.on{filter:drop-shadow(0 0 8px var(--sun));animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.2);border-radius:16px;padding:8px 4px;font-size:.88em;font-weight:800;transition:.2s;position:relative;min-height:56px}
+.tab .e{display:block;font-size:1.5em;line-height:1.2}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on,.card.s{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}.card.s{margin:16px 0}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}h4{font-size:1.15em;color:var(--indigo)}
+p{margin:6px 0}ul{padding-left:1.2em}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.b{background:#2f80ed}.btn.y{background:var(--sun);color:var(--ink)}
+.act{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.fb.wr{background:#ffe9e9;border-left:6px solid var(--red);color:#7a1010}.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:10px 0}
+.tile{background:#fff;border:3px solid var(--soft);border-radius:18px;padding:12px;font-weight:700}.tile .em{font-size:2.2em;display:block;animation:bob 3s infinite}
+.pw{font-family:ui-monospace,monospace;background:var(--ink);color:var(--sun);padding:2px 10px;border-radius:9px;word-break:break-all}
+.msg{background:#e8eef9;border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;font-weight:700;margin:8px 0}
+.stage{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;min-height:150px;background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0}
+.kid,.sh{font-size:3.6em}.kid.think{animation:wob .6s 3}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.bubx{max-width:270px;background:#ffe9e9;border:3px solid var(--coral);border-radius:16px;padding:8px 12px;font-weight:700;opacity:0;transform:translateX(30px);transition:.5s}
+.bubx.show,.sh.show{opacity:1;transform:none}.sh{opacity:0;transform:scale(.2);transition:.5s}
+.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:100px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.lst{list-style:none;padding:0}.lst li{padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}.lst li.d{background:#e6f9f2;border-color:var(--mint)}
+.badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
+.badge .em{font-size:4em;line-height:1;display:block}.badge b{font-family:"Baloo 2",Nunito,sans-serif;font-size:1.4em}
+.nv{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<header><div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 3 · Media Interaktif</b><nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_materi3.html">📖 Materi</a></nav></div>
+<div class="crumb"><span class="mt2" aria-label="Pertemuan 3 dari 5"><i>1</i><i>2</i><i class="on">3</i><i>4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 3 › Media</div></header>
+<div class="wrap" id="wr">
+<div class="hero"><h1>🛡️ Jadi Penjaga Data Digital!</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Digital Safety Guardian</b>. Semua tokoh dan pesan di sini fiktif, jadi jangan ketik data atau password aslimu. Boleh mencoba lagi! ⭐</div></div></div>
+<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 5 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip">0 poin</b></div>
+<div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
+<button class="tab on" onclick="T(1)" role="tab"><span class="e">🎬</span>Animasi</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🗂️</span>Pilah</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🔑</span>Password</button><button class="tab" onclick="T(4)" role="tab"><span class="e">📩</span>Pesan</button><button class="tab" onclick="T(5)" role="tab"><span class="e">📝</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
+
+<section id="t1" class="card on"><h3>🎬 Aktivitas 1: Melindungi Data Pribadi</h3><p>Lihat apa yang dilakukan Rani saat orang tak dikenal meminta data pribadinya.</p>
+<div class="stage" aria-live="polite"><div class="kid" id="kid">🧒</div><div class="bubx" id="bub">📩 Orang tak dikenal: "Halo! Kirim alamat rumah dan nomor HP-mu, ada hadiah!"</div><div class="sh" id="sh">🛡️</div></div>
+<div class="fb ok" id="anitx">Tekan tombol untuk memulai.</div><p><button class="btn g" id="anibtn">▶ Putar Animasi</button></p></section>
+
+<section id="t2" class="card"><h3>🗂️ Aktivitas 2: Rahasia, Hati-hati, atau Aman?</h3><p>Pilih tingkat privasinya. Ingat, jawabannya bergantung pada jenis informasi dan kepada siapa dibagikan. <span class="chip" id="p2"></span></p><div id="q2"></div></section>
+<section id="t3" class="card"><h3>🔑 Aktivitas 3: Simulasi Password Kuat</h3><p>Semua password di sini fiktif.</p><div id="q3"></div></section>
+<section id="t4" class="card"><h3>📩 Aktivitas 4: Simulasi Pesan Mencurigakan</h3><div id="q4"></div></section>
+<section id="t5" class="card"><h3>📝 Aktivitas 5: Evaluasi Interaktif</h3><div id="q5"></div></section>
+<section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
+
+<div class="nv"><a class="btn" href="bab2_materi3.html">◀ Kembali ke Materi 3</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi4.html">Selanjutnya: Pertemuan 4 ▶</a></div></div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh fiktif dan tidak ada data yang dikirim ke internet</footer>
+<script src="bab2_audio.js"></script><script>
+const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
+const NAMA=["Animasi","Pilah","Password","Pesan","Evaluasi"],N=5,KEY='bab2_p3_done';
+let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+
+$("bg").innerHTML=["🔐","📱","🔑","🛡️","⭐","🤖","🪪","🔒","📍","💬"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+$("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
+function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🛡️','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
+function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();scrollTo({top:0,behavior:"smooth"})}
+const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
+function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p3','1')}catch(e){}}
+function fin(n){if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
+/* 1 animasi */
+$("anibtn").onclick=()=>{const t=$("anitx"),k=$("kid"),b=$("bub"),s=$("sh");b.classList.remove('show');s.classList.remove('show');k.classList.remove('think');
+t.className="fb no";t.textContent="📩 Pesan dari orang tak dikenal muncul dan meminta alamat serta nomor HP Rani.";b.classList.add('show');snd('no');
+setTimeout(()=>{t.className="fb tp";t.textContent='🤔 Rani berpikir: "Aku tidak mengenalnya. Data pribadiku tidak boleh dikirim."';k.classList.add('think')},2000);
+setTimeout(()=>{t.className="fb ok";t.textContent="🛡️ Rani tidak membalas dan memberi tahu gurunya. Data Rani aman! Ingat: berhenti, jangan jawab, beri tahu orang dewasa.";s.classList.add('show');snd('ok');fin(1)},4200)};
+/* mesin kuis */
+function quiz(box,id,items,labels){let i=0,sc=0,el=$(box);
+function show(){const it=items[i],o=labels||it.o;if(box=='q2')$("p2").textContent=(i+1)+" / "+items.length;
+el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="msg">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABC"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
+const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==it.a;bs.forEach(x=>x.disabled=true);bs[it.a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
+el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
+function end(){fin(+id);const g=sc==items.length?'Luar biasa! Kamu penjaga data yang hebat! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 3, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
+$("p2").textContent=box=='q2'?'':'';el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn" onclick="this.dispatchEvent(new CustomEvent('again',{bubbles:true}))">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=()=>{i=0;sc=0;show()}}
+show()}
+const R=['Rahasia 🔒','Hati-hati ⚠️','Aman 😊'];
+quiz('q2',2,[
+{q:'Kata sandi akun gim-mu',a:0,e:'Kata sandi adalah kunci akunmu. Tidak dibagikan kepada teman maupun orang asing.'},
+{q:'Lokasi langsungmu saat ini',a:0,e:'Orang asing bisa tahu keberadaanmu. Lokasi langsung termasuk rahasia.'},
+{q:'Kode verifikasi (OTP) yang masuk ke HP',a:0,e:'Kode ini bisa membuka akun. Siapa pun yang memintanya, jangan diberikan.'},
+{q:'Nama lengkap + nama sekolah + hobi digabung',a:1,e:'Sendiri-sendiri terlihat biasa, tetapi digabung bisa menunjukkan siapa dan di mana kamu. Bagikan hati-hati dan hanya kepada orang yang tepat.'},
+{q:'Nama sekolah',a:1,e:'Guru dan teman boleh tahu, tetapi hati-hati jika orang asing menanyakannya.'},
+{q:'Warna kesukaan',a:2,e:'Informasi umum yang jarang disalahgunakan. Tetap bijak, ya.'},
+{q:'Makanan favorit',a:2,e:'Informasi umum dan relatif aman, selama tidak digabung dengan data pribadi lain.'}],R);
+quiz('q3',3,[
+{q:'Mana password fiktif yang paling kuat?',o:['kucing123','Dimas2014','TehManis#83Kapal'],a:2,e:'<span class="pw">TehManis#83Kapal</span> panjang, bercampur huruf, angka, dan simbol, serta tidak memuat data pribadi.'},
+{q:'Rani ingin membuat password. Ide mana yang terbaik?',o:['Nama + tanggal lahir','Tiga kata acak + angka + simbol','Nama hewan peliharaan'],a:1,e:'Kata acak digabung angka dan simbol sulit ditebak. Nama dan tanggal lahir mudah diketahui orang lain.'},
+{q:'Cara memakai password yang paling aman?',o:['Satu password sama untuk semua akun','Password berbeda tiap akun dan dirahasiakan','Memberi tahu sahabat dekat'],a:1,e:'Jika satu password bocor, akun lain tetap aman. Rahasiakan dari semua teman.'}]);
+quiz('q4',4,[
+{m:'📩 "Halo! Aku dari toko gim. Kirim kode OTP yang baru masuk ke HP-mu agar hadiah cair."',q:'Apa tindakan yang aman?',o:['Kirim kodenya agar dapat hadiah','Tidak membalas, lalu tunjukkan kepada orang tua atau guru','Balas dan tanya nama lengkapnya'],a:1,e:'Kode OTP tidak boleh diberikan. Tidak membalas dan melapor kepada orang dewasa adalah langkah aman.'},
+{m:'📩 "Akun belajarmu akan dikunci! Klik tautan ini dan masukkan password sekarang."',q:'Apa yang sebaiknya dilakukan?',o:['Klik cepat sebelum terkunci','Tidak klik, tanyakan kepada guru','Teruskan ke semua teman'],a:1,e:'Pesan yang membuat panik adalah ciri penipuan. Jangan klik, jangan teruskan, tanyakan guru.'},
+{m:'💬 Teman sekelas: "Pinjam password akun belajarmu, punyaku lupa."',q:'Jawaban terbaikmu?',o:['Kuberi, dia temanku','Maaf, password itu rahasia. Yuk minta bantuan guru','Kuberi tapi minta dirahasiakan'],a:1,e:'Password tidak dibagikan, bahkan kepada teman. Mengajaknya meminta bantuan guru adalah sikap baik.'}]);
+quiz('q5',5,[
+{q:'Informasi pribadi adalah ....',o:['Informasi tentang cuaca','Informasi yang berkaitan dengan identitas dan kehidupan seseorang','Semua berita di internet'],a:1,e:'Informasi pribadi berkaitan dengan identitas dan kehidupan kita, sehingga perlu dijaga.'},
+{q:'Pasangan yang HARUS dilindungi adalah ....',o:['Password dan alamat rumah','Warna kesukaan dan lagu','Nama kota dan hari'],a:0,e:'Password dan alamat rumah dapat disalahgunakan.'},
+{q:'Mengapa nama sekolah + nama lengkap perlu hati-hati?',o:['Karena namanya panjang','Digabung bisa membuat orang asing tahu di mana kita','Karena tidak penting'],a:1,e:'Gabungan informasi bisa mengungkap identitas dan tempat kita.'},
+{q:'Ciri password yang lebih kuat adalah ....',o:['Pendek dan mudah diingat','Panjang dan sulit ditebak','Memakai tanggal lahir'],a:1,e:'Panjang dan sulit ditebak membuat password sukar dibuka orang lain.'},
+{q:'Setelah memakai komputer perpustakaan, kamu sebaiknya ....',o:['Menutup layar saja','Keluar (logout) dari akunmu','Membiarkan akun terbuka'],a:1,e:'Akun yang terbuka bisa dipakai orang berikutnya.'},
+{q:'Ada pesan aneh meminta data akunmu. Langkah pertama?',o:['Membalas cepat','Berhenti dan minta bantuan orang tua atau guru','Menyebarkan ke grup'],a:1,e:'Berhenti, jangan jawab, dan minta bantuan orang dewasa tepercaya.'}]);
+/* hasil */
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Digital Safety Guardian</b><p>Selamat! Kamu tahu cara menjaga data pribadi dan password.</p></div>':'<div class="badge lock"><span class="em">🔒</span><b>Digital Safety Guardian</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Satu hal yang akan kamu lakukan agar data dan passwordmu aman? Ceritakan kepada gurumu atau temanmu.</div>'}
+prog();
+KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('button,.stage').forEach(x=>x.remove());return c.textContent}});
+(function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
+</script></body></html>
