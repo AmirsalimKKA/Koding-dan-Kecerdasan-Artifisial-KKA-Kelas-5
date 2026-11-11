@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 4 – Etika Komunikasi Daring</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.2;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.84);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:0 14px 40px}
+.hero{color:#fff;text-align:center;margin:14px 0 10px}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.score{flex-wrap:wrap;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.18);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:1.5em;display:flex;gap:2px}.stars i{font-style:normal;filter:grayscale(1) opacity(.45);transition:.5s}
+.stars i.on{filter:drop-shadow(0 0 8px var(--sun));animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.2);border-radius:16px;padding:8px 4px;font-size:.88em;font-weight:800;transition:.2s;position:relative;min-height:56px}
+.tab .e{display:block;font-size:1.5em;line-height:1.2}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on,.card.s{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}.card.s{margin:16px 0}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}h4{font-size:1.15em;color:var(--indigo)}
+p{margin:6px 0}ul{padding-left:1.2em}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.b{background:#2f80ed}.btn.y{background:var(--sun);color:var(--ink)}
+.act{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.fb.wr{background:#ffe9e9;border-left:6px solid var(--red);color:#7a1010}.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:10px 0}
+.tile{background:#fff;border:3px solid var(--soft);border-radius:18px;padding:12px;font-weight:700}.tile .em{font-size:2.2em;display:block;animation:bob 3s infinite}
+.pw{font-family:ui-monospace,monospace;background:var(--ink);color:var(--sun);padding:2px 10px;border-radius:9px;word-break:break-all}
+.msg{background:#e8eef9;border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;font-weight:700;margin:8px 0}
+.stage{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;min-height:150px;background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0}
+.kid,.sh{font-size:3.6em}.kid.think{animation:wob .6s 3}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.bubx{max-width:270px;background:#ffe9e9;border:3px solid var(--coral);border-radius:16px;padding:8px 12px;font-weight:700;opacity:0;transform:translateX(30px);transition:.5s}
+.bubx.show,.sh.show{opacity:1;transform:none}.sh{opacity:0;transform:scale(.2);transition:.5s}
+.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:100px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.lst{list-style:none;padding:0}.lst li{padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}.lst li.d{background:#e6f9f2;border-color:var(--mint)}
+.badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
+.badge .em{font-size:4em;line-height:1;display:block}.badge b{font-family:"Baloo 2",Nunito,sans-serif;font-size:1.4em}
+.nv{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.chat{background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:120px;margin:10px 0}
+.cm{max-width:86%;padding:8px 12px;border-radius:16px;font-weight:700;animation:in .4s;cursor:pointer;border:3px solid transparent;background:#e8eef9;border-bottom-left-radius:4px}
+.cm small{display:block;font-weight:800;color:var(--teal);font-size:.78em}.cm.me{align-self:flex-end;background:#d9f7e4;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.cm.pick{border-color:var(--sun)}.cm.rude small{color:var(--red)}
+textarea{width:100%;font:inherit;border:3px solid var(--soft);border-radius:16px;padding:10px;min-height:110px;resize:vertical;color:var(--ink)}
+.ck{list-style:none;padding:0}.ck li{padding:4px 0;font-weight:700}.ck li.y{color:#0b6b52}
+</style></head><body>
+<div class="bg" id="bg" aria-hidden="true"></div><header><div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 4 · Media Interaktif</b><nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_materi4.html">📖 Materi</a></nav></div><div class="crumb"><span class="mt2" aria-label="Pertemuan 4 dari 5"><i>1</i><i>2</i><i>3</i><i class="on">4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 4 › Media Interaktif</div></header>
+<div class="wrap" id="wr"><div class="hero"><h1>💬 Jadi Komunikator yang Baik!</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Kind Communicator</b>. Semua percakapan fiktif, dan tulisanmu tidak disimpan atau dikirim ke mana pun. ⭐</div></div></div>
+<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite"></small></div><b id="poin" class="chip">0 poin</b></div>
+<div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas"><button class="tab on" onclick="T(1)" role="tab"><span class="e">👥</span>Grup</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🎯</span>Respons</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🛠️</span>Perbaiki</button><button class="tab" onclick="T(4)" role="tab"><span class="e">✍️</span>Menulis</button><button class="tab" onclick="T(5)" role="tab"><span class="e">📝</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
+
+<section id="t1" class="card on"><h3>👥 Aktivitas 1: Percakapan Grup Kelas</h3><p>Putar percakapan fiktif ini, lalu <b>ketuk</b> minimal 2 pesan untuk melihat apakah pesan itu sopan. <span class="chip" id="c1">0 / 2</span></p>
+<div class="chat" id="chat" aria-live="polite"></div><div id="cf"></div><p><button class="btn g" id="play">▶ Putar Percakapan</button></p></section>
+<section id="t2" class="card"><h3>🎯 Aktivitas 2: Pilih Respons yang Tepat</h3><div id="q2"></div></section>
+<section id="t3" class="card"><h3>🛠️ Aktivitas 3: Perbaiki Pesan</h3><p>Pilih versi pesan yang lebih baik.</p><div id="q3"></div></section>
+<section id="t4" class="card"><h3>✍️ Aktivitas 4: Menulis Pesan Santun</h3><p>Tulis pesan singkat kepada gurumu. Tulisan hanya tampil di layar ini, <b>tidak disimpan dan tidak dikirim</b>. Jangan menulis data pribadi.</p>
+<div class="act"><button class="btn b" data-t="Bu Guru">Kepada Bu Guru</button><button class="btn b" data-t="teman">Kepada teman</button></div>
+<label for="ta"><b>Tulis pesanmu:</b></label><textarea id="ta" maxlength="300" placeholder="Contoh: Selamat pagi, Bu Guru. Saya ingin bertanya ..."></textarea>
+<p><button class="btn g" id="cek">👀 Periksa dan Lihat Preview</button></p><div id="pv" aria-live="polite"></div></section>
+<section id="t5" class="card"><h3>📝 Aktivitas 5: Evaluasi Interaktif</h3><div id="q5"></div></section>
+<section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
+<div class="nv"><a class="btn" href="bab2_materi4.html">◀ Kembali ke Materi 4</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi5.html">Selanjutnya: Pertemuan 5 ▶</a></div></div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif</footer>
+<script src="bab2_audio.js"></script><script>
+const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
+const NAMA=["Grup","Respons","Perbaiki","Menulis","Evaluasi"],N=5,KEY='bab2_p4_done';
+let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+$("bg").innerHTML=["💬","📱","😊","🤝","⭐","🤖","✉️","👍","📝","💌"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+$("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
+function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','💬','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
+function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();scrollTo({top:0,behavior:"smooth"})}
+const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
+function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p4','1')}catch(e){}}
+function fin(n){if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
+/* 1 grup */
+const CH=[["Putri","Teman-teman, PR matematika halaman berapa ya?",1,"Sopan dan jelas. Putri bertanya dengan tujuan yang baik."],["Fajar","Dasar lemot! PR gampang gitu aja nggak tahu, bodoh!",0,"Kata kasar menyakiti perasaan. Sebaiknya Fajar menjawab dengan sopan atau tidak usah membalas."],["Dewi","Halaman 24 ya, Putri. Semoga membantu 😊",1,"Menjawab dengan ramah dan membantu. Contoh respons yang baik."],["Raka","Teman-teman, mari kita saling menghargai. Kalau ada yang kasar, kita laporkan ke Bu Guru.",1,"Raka mengingatkan dengan sopan dan menyarankan melapor kepada guru. Tepat!"]];
+let seen=new Set(),shown=0;
+$("play").onclick=()=>{$("chat").innerHTML="";$("cf").innerHTML="";shown=0;$("play").disabled=true;CH.forEach((m,i)=>setTimeout(()=>{const d=document.createElement('div');d.className='cm'+(m[2]?'':' rude');d.tabIndex=0;d.innerHTML='<small>'+m[0]+'</small>'+m[1];d.onclick=()=>{d.classList.add('pick');$("cf").innerHTML='<div class="fb '+(m[2]?'ok':'no')+'">'+(m[2]?'✅ <b>Sopan.</b> ':'💡 <b>Kurang sopan.</b> ')+m[3]+'</div>';snd(m[2]?'ok':'no');seen.add(i);$("c1").textContent=Math.min(seen.size,2)+" / 2";if(seen.size>=2)fin(1)};d.onkeydown=e=>{if(e.key=='Enter')d.click()};$("chat").appendChild(d);snd('pop');if(++shown==CH.length){$("play").disabled=false;$("play").textContent="🔄 Putar Lagi"}},i*1300))};
+/* kuis */
+function quiz(box,id,items){let i=0,sc=0,el=$(box);
+function show(){const it=items[i];el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="chat">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+it.o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABC"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
+const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==it.a;bs.forEach(x=>x.disabled=true);bs[it.a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
+el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
+function end(){fin(id);const g=sc==items.length?'Luar biasa! Kamu komunikator yang santun! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 4, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
+el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=()=>{i=0;sc=0;show()}}
+show()}
+const M=t=>'<div class="cm"><small>Pesan di grup</small>'+t+'</div>';
+quiz('q2',2,[
+{m:M('Kamu payah banget, tugas begini saja salah!'),q:'Pesan itu ditujukan kepadamu. Apa respons terbaik?',o:['Membalas dengan kata kasar juga','Tidak membalas kasar, lalu melapor kepada guru jika berlanjut','Menyebarkan pesan itu ke grup lain'],a:1,e:'Membalas kasar hanya memperbesar masalah. Tetap tenang dan lapor kepada guru jika diperlukan.'},
+{m:M('Sebarkan! Besok sekolah libur karena ada pengumuman rahasia!'),q:'Kabar itu belum jelas. Apa yang sebaiknya kamu lakukan?',o:['Langsung membagikan ke semua teman','Bertanya kepada guru sebelum menyebarkan','Menambah cerita agar lebih seru'],a:1,e:'Kabar yang belum terbukti bisa menyesatkan banyak orang. Cek dulu kebenarannya.'},
+{m:M('Lihat chat pribadi Dewi ini, lucu sekali! (tangkapan layar)'),q:'Kamu diminta meneruskannya. Sikap yang tepat adalah ....',o:['Meneruskannya ke banyak teman','Tidak meneruskan karena pesan pribadi tidak boleh disebar tanpa izin','Meneruskannya sambil menertawakan'],a:1,e:'Pesan pribadi tidak boleh disebarkan tanpa izin pemiliknya, karena bisa membuat orang malu dan sedih.'}]);
+quiz('q3',3,[
+{m:M('Heh, mana tugasmu? Cepat kirim!'),q:'Versi mana yang lebih baik?',o:['Cepat kirim, jangan lelet!','Hai, boleh minta tolong kirim tugasnya? Terima kasih.','Kirim sekarang atau aku marah!'],a:1,e:'Kata "tolong" dan "terima kasih" membuat permintaan terdengar sopan.'},
+{m:M('Pendapatmu salah semua!'),q:'Versi yang lebih menghargai pendapat adalah ....',o:['Aku punya pendapat lain, boleh kujelaskan?','Kamu tidak paham apa-apa.','Jangan ikut bicara lagi.'],a:0,e:'Kita boleh berbeda pendapat dengan cara yang menghargai orang lain.'},
+{m:M('Bu, tugasnya apa? Jawab cepat!'),q:'Versi yang tepat untuk guru adalah ....',o:['Bu, jawab cepat dong!','Selamat siang, Bu. Boleh saya tahu tugas hari ini? Terima kasih.','Tugasnya apa sih?'],a:1,e:'Kepada guru, gunakan salam, kalimat jelas, dan ucapan terima kasih.'}]);
+/* 4 menulis */
+let tj="Bu Guru";document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{tj=b.dataset.t;snd('click');$("ta").placeholder=tj=="Bu Guru"?"Contoh: Selamat pagi, Bu Guru. Saya ingin bertanya ...":"Contoh: Halo, boleh minta tolong ...";document.querySelectorAll('[data-t]').forEach(x=>x.style.outline=x==b?'4px solid var(--sun)':'none')});
+$("cek").onclick=()=>{const t=$("ta").value.trim();if(t.length<10){$("pv").innerHTML='<div class="fb tp">✍️ Tulis dulu pesanmu minimal satu kalimat, ya.</div>';snd('no');return}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const C=[["Ada salam atau sapaan",/\b(selamat|halo|hai|assalamu|permisi)/i.test(t)],["Ada kata sopan (tolong, maaf, terima kasih)",/(tolong|maaf|terima kasih|terimakasih)/i.test(t)],["Tujuan jelas dan tidak terlalu panjang",t.length>=20&&t.length<=250],["Tidak ada data pribadi (nomor, alamat, surel)",!/(\d{6,}|@|\bjl\.|\bjalan\b)/i.test(t)]];
+const n=C.filter(c=>c[1]).length;
+$("pv").innerHTML='<h4>👀 Preview pesanmu</h4><div class="chat"><div class="cm me"><small>Kepada '+tj+'</small>'+esc(t)+'</div></div><ul class="ck">'+C.map(c=>'<li class="'+(c[1]?'y':'')+'">'+(c[1]?'✅ ':'💡 ')+c[0]+'</li>').join('')+'</ul><div class="fb '+(n==4?'ok':'tp')+'">'+(n==4?'🌟 <b>Hebat!</b> Pesanmu sopan, jelas, dan aman.':'👍 Bagus sudah mencoba! Tambahkan poin yang bertanda 💡, lalu periksa lagi.')+'</div>';snd(n==4?'ok':'pop');fin(4)};
+quiz('q5',5,[
+{q:'Komunikasi daring adalah ....',o:['Berkomunikasi melalui internet','Berkomunikasi hanya dengan tatap muka','Menulis di buku'],a:0,e:'Komunikasi daring memakai internet, misalnya pesan, grup kelas, dan video call.'},
+{q:'Di grup kelas ada pesan berisi kata kasar. Tindakan yang tepat adalah ....',o:['Membalas lebih kasar','Tidak ikut menyebarkan dan melapor kepada guru jika perlu','Membagikan ke grup lain'],a:1,e:'Tetap tenang, jangan menyebarkan, dan minta bantuan orang dewasa tepercaya.'},
+{q:'Mengapa perlu berpikir sebelum mengirim pesan?',o:['Pesan terkirim sulit ditarik dan bisa berdampak pada orang lain','Supaya pesannya panjang','Supaya cepat terkirim'],a:0,e:'Dampak pesan bisa luas, jadi pikirkan dulu isi dan perasaan penerimanya.'},
+{q:'Ciri pesan singkat yang baik adalah ....',o:['Tujuan jelas dan bahasa sopan','Penuh singkatan dan perintah','Memuat alamat rumah'],a:0,e:'Pesan yang baik jelas tujuannya, sopan, singkat, dan tidak memuat data pribadi.'},
+{q:'Temanmu membagikan kabar yang belum jelas benar atau tidak. Sebaiknya kamu ....',o:['Ikut membagikannya','Memeriksa atau bertanya kepada guru dulu','Menambahkan cerita seru'],a:1,e:'Informasi yang belum terbukti tidak boleh disebarkan.'},
+{q:'Pesan pribadi temanmu boleh dibagikan ke grup jika ....',o:['Pemiliknya memberi izin','Pesannya lucu','Banyak yang meminta'],a:0,e:'Pesan pribadi hanya boleh dibagikan atas izin pemiliknya, dan sebaiknya tidak disebar jika bisa membuat malu.'}]);
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Kind Communicator</b><p>Selamat! Kamu berkomunikasi dengan sopan dan bertanggung jawab.</p></div>':'<div class="badge lock"><span class="em">🔒</span><b>Kind Communicator</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Apa yang akan kamu lakukan jika menerima pesan tidak sopan di grup? Ceritakan kepada gurumu atau temanmu.</div>'}
+prog();
+KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('button,textarea').forEach(x=>x.remove());return c.textContent}});
+(function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
+</script></body></html>
