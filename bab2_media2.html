@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 1</title><link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#1b6fa8 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.22;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.8);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff}
+.bar b{font-family:"Baloo 2";margin-right:auto}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s}
+nav a:hover{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:18px 14px 40px}
+.hero{color:#fff;text-align:center;margin-bottom:10px}
+h1{font-size:clamp(1.7em,5vw,2.6em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.box{border-left:8px solid #e08a00;background:#fff6dc;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}
+.box b.t{display:block;font-family:"Baloo 2";color:#e08a00}
+.score{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.16);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:2em;display:flex;gap:4px;filter:grayscale(1) opacity(.45)}
+.stars i{font-style:normal;transition:.5s}
+.stars i.on{filter:none;animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.stars{filter:none}.stars i{filter:grayscale(1) opacity(.45)}.stars i.on{filter:drop-shadow(0 0 8px var(--sun))}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.18);border-radius:16px;padding:8px 4px;font-size:.95em;font-weight:800;transition:.2s;position:relative}
+.tab .e{display:block;font-size:1.5em}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:14px 0}
+.dv{font-size:2.6em;background:#fff;border:4px solid #cfe0fb;border-radius:22px;padding:12px 6px;cursor:pointer;text-align:center;transition:.2s;line-height:1.3}
+.dv:hover{transform:scale(1.07) rotate(-2deg);border-color:var(--teal)}
+.dv.v{background:#d9f7e4;border-color:var(--mint)}
+.dv small{display:block;font-size:.35em;font-weight:800;font-family:Nunito}
+.fc{perspective:1000px;max-width:340px;height:250px;margin:14px auto}
+.fci{position:relative;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.5,1)}
+.fc.f .fci{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;box-shadow:0 10px 0 rgba(0,0,0,.15)}
+.front{background:#fff;border:5px solid #cfe0fb;animation:in .45s}
+.front .em{font-size:5em;line-height:1.1;animation:bob 2.4s ease-in-out infinite}
+.front b{font-family:"Baloo 2";font-size:1.5em}
+.back{transform:rotateY(180deg);color:#fff;font-weight:700}
+.back.y{background:linear-gradient(135deg,#1fa37f,#0fa3b1)}.back.n{background:linear-gradient(135deg,#e8772e,#ff6b6b)}
+.back .em{font-size:2.6em}.back h4{font-family:"Baloo 2";font-size:1.4em}
+.sit{font-size:1.2em;text-align:center;padding:22px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:120px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.sit.sw{animation:in .4s}
+.act{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.o{background:var(--coral)}.btn.g{background:var(--mint)}.btn.b{background:#2f80ed}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}
+.fb.no{background:#ffecec;border-left:6px solid var(--coral);color:#a02d2d}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}
+.opt.ok{background:#d9f7e4;border-color:var(--mint)}
+.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+textarea{width:100%;font:inherit;padding:12px;border:3px solid var(--soft);border-radius:16px;resize:vertical}
+textarea:focus{outline:0;border-color:var(--teal)}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:560px){.bar b{width:100%;order:3}.tab{font-size:.78em}.maskot .r{font-size:2.6em}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(6,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="bg" id="bg"></div>
+<header><div class="bar"><img src="logo.png" alt="Logo"><b>Media Interaktif · Pertemuan 1</b><nav><a href="index.html">🏠 Beranda</a><a href="bab2.html">📘 Dashboard</a><a href="bab2_materi1.html">📖 Materi</a></nav></div></header>
+<div class="wrap">
+<div class="hero"><h1>🎮 Ayo Jelajahi Teknologi Digital!</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 3 tantangan, lalu catat <b>satu hal baru</b> ya! ⭐</div></div>
+<div class="box"><b class="t">👩‍🏫 Buka bersama gurumu!</b>Amati dan jelajahi bagaimana teknologi digital membantu manusia menyelesaikan masalah. Pecahkan tantangan di bawah, lalu <b>catat satu hal baru</b> yang kamu temukan.</div></div>
+<div class="score"><div class="stars" id="st"><i>⭐</i><i>⭐</i><i>⭐</i></div><div style="flex:1"><div class="bar2"><i id="pg"></i></div><small id="pt">Selesaikan 3 tantangan untuk mendapat bintang ⭐</small></div></div>
+<div class="tabs" id="tb"><button class="tab on" onclick="T(1)"><span class="e">🃏</span>Kartu</button><button class="tab" onclick="T(2)"><span class="e">🧩</span>Sortir</button><button class="tab" onclick="T(3)"><span class="e">❓</span>Kuis</button><button class="tab" onclick="T(4)"><span class="e">📝</span>Catatan</button></div>
+
+<div id="t1" class="card on"><h3>🃏 Tantangan 1: Kartu Teknologi atau Bukan?</h3><p>Lihat kartunya, lalu tebak: <b>teknologi digital</b> atau <b>bukan</b>? <span class="chip" id="fcn"></span></p><div id="fcw"></div></div>
+
+<div id="t2" class="card"><h3>🧩 Tantangan 2: Manfaat atau Kurang Bijak?</h3><p>Skor: <b id="sc" class="chip">0</b> dari 8</p><div class="sit" id="sit"></div><div class="act"><button class="btn g" onclick="A(true)">✅ Manfaat</button><button class="btn o" onclick="A(false)">⚠️ Kurang Bijak</button></div><div id="sfb"></div></div>
+
+<div id="t3" class="card"><h3>❓ Tantangan 3: Kuis Kilat</h3><div id="qz"></div></div>
+
+<div id="t4" class="card"><h3>📝 Catatan Penjelajah</h3><p>Tuliskan <b>satu hal baru</b> yang kamu temukan hari ini:</p><textarea id="note" rows="4" placeholder="Hal baru yang kutemukan..."></textarea><p style="margin-top:10px"><button class="btn" onclick="try{localStorage.setItem('bab2_note1',note.value)}catch(e){};this.textContent='✅ Tersimpan!'">💾 Simpan</button></p><div id="fin"></div></div>
+</div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V</footer>
+<script>
+const $=id=>document.getElementById(id);let done={1:0,2:0,3:0};
+$("bg").innerHTML=["📱","💻","📺","⌚","📷","💡","🚀","⭐","🤖","🎧"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+function boom(){for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎈','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
+function T(n){[1,2,3,4].forEach(i=>{$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n)});if(n==4)fin();scrollTo({top:0,behavior:"smooth"})}
+function prog(){const c=done[1]+done[2]+done[3];$("pg").style.width=c/3*100+"%";[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));[1,2,3].forEach(i=>$("tb").children[i-1].classList.toggle("ok",!!done[i]));$("pt").textContent=c==3?"🎉 Semua tantangan selesai! Tulis catatanmu di tab Catatan.":c+" dari 3 tantangan selesai";if(c==3){try{localStorage.setItem("bab2_p1","1")}catch(e){};boom()}}
+function fin(){const c=done[1]+done[2]+done[3];$("fin").innerHTML=c==3?'<div class="fb ok">🌟🌟🌟 Hebat! Kamu menyelesaikan Pertemuan 1!</div><p><a class="btn b" href="bab2.html">📘 Kembali ke Dashboard</a></p>':'<div class="fb no">Masih ada tantangan yang belum selesai. Ayo lengkapi dulu ya! 💪</div>'}
+const D=[["📱","Ponsel",1,"Memakai komputer dan internet untuk menelepon, mengirim pesan, dan video call."],["📏","Penggaris kayu",0,"Hanya alat ukur biasa, tidak memakai komputer atau internet."],["💻","Laptop",1,"Komputer untuk mengetik tugas, presentasi, dan belajar daring."],["✏️","Pensil",0,"Alat tulis biasa tanpa komputer atau listrik."],["⌚","Jam pintar",1,"Menunjukkan waktu dan menghitung langkah kaki dengan komputer kecil."],["📒","Buku tulis",0,"Alat mencatat dari kertas, bukan teknologi digital."],["🏧","Mesin ATM",1,"Menyimpan dan mengambil uang lewat sistem komputer."],["🧹","Sapu",0,"Alat kebersihan sederhana tanpa komputer."],["📷","Kamera digital",1,"Menyimpan foto dan video dalam bentuk data digital."],["🪑","Kursi kayu",0,"Perabot biasa, tidak memakai komputer atau internet."]];let fi=0,fs=0;
+function RF(){$("fcn").textContent=Math.min(fi+1,D.length)+" / "+D.length;
+if(fi>=D.length){$("fcw").innerHTML=`<div class="big">${fs>=8?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${fs}/${D.length}</b></p><p style="text-align:center"><button class="btn" onclick="fi=0;fs=0;RF()">🔄 Main lagi</button></p>`;if(!done[1]){done[1]=1;prog()}return}
+const d=D[fi];$("fcw").innerHTML=`<div class="fc" id="fc"><div class="fci"><div class="face front"><span class="em">${d[0]}</span><b>${d[1]}</b><small>Teknologi digital atau bukan?</small></div><div class="face back" id="bk"></div></div></div><div class="act" id="fa"><button class="btn g" onclick="F(true)">📱 Teknologi</button><button class="btn o" onclick="F(false)">🚫 Bukan</button></div><div id="fn"></div>`}
+function F(v){const d=D[fi],ok=(!!d[2])==v;if(ok)fs++;$("bk").className="face back "+(ok?"y":"n");$("bk").innerHTML=`<span class="em">${ok?"✅":"❌"}</span><h4>${d[1]}: ${d[2]?"Teknologi digital":"Bukan teknologi digital"}</h4><p>${d[3]}</p>`;$("fc").classList.add("f");$("fa").innerHTML=`<button class="btn b" style="grid-column:1/3" onclick="fi++;RF()">${fi==D.length-1?"Lihat skor 🏁":"Kartu berikutnya ▶"}</button>`}
+RF();
+const S=[["Raka menonton video cara melipat origami lalu mempraktikkannya.",1,"Belajar hal baru dengan video."],["Dewi video call dengan kakeknya yang tinggal di luar kota.",1,"Berkomunikasi dengan keluarga."],["Fajar bermain gim sampai pukul 11 malam.",0,"Kurang tidur dan sulit fokus esok hari."],["Putri memakai ponsel saat makan bersama keluarga.",0,"Mengurangi kebersamaan dan sopan santun."],["Raka mencari arti kata sulit di kamus digital.",1,"Mencari informasi untuk belajar."],["Dewi menonton video tiga jam tanpa istirahat.",0,"Mata lelah; perlu istirahat."],["Fajar membuat kartu ucapan digital untuk gurunya.",1,"Berkreasi dengan teknologi."],["Putri menunda PR karena asyik bermain gawai.",0,"Tugas terbengkalai; atur waktu."]];let si=0,sc=0,lock=false;
+function show(){if(si>=S.length){$("sit").innerHTML="🏁 Selesai! Skormu "+sc+"/8";$("sfb").innerHTML="";if(sc>=5&&!done[2]){done[2]=1;prog()}else if(sc<5)$("sfb").innerHTML='<button class="btn" onclick="si=0;sc=0;$(\'sc\').textContent=0;show()">🔄 Coba lagi (butuh minimal 5)</button>';return}$("sit").textContent=S[si][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
+function A(v){if(lock||si>=S.length)return;lock=true;const ok=(!!S[si][1])==v;if(ok)sc++;$("sc").textContent=sc;$("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Benar!":"❌ Belum tepat."} ${S[si][2]}</div>`;si++;setTimeout(show,1600)}
+show();
+const Q=[["Berikut yang termasuk teknologi digital adalah ....",["Penggaris kayu","Jam pintar","Buku tulis","Pensil"],1,"Jam pintar memakai teknologi komputer."],["Dewi video call dengan kakek. Ini manfaat teknologi untuk ....",["Berkomunikasi","Menghindari tugas","Bermain gim","Membuang waktu"],0,"Video call membantu berkomunikasi walau berjauhan."],["Fajar bermain gim sampai larut malam. Dampak yang paling mungkin ....",["Makin pintar memasak","Mengantuk dan sulit fokus esok hari","Tubuh makin sehat","Nilai pasti naik"],1,"Kurang tidur mengganggu konsentrasi."],["Sebelum memakai tablet, sikap bijak yang pertama adalah ....",["Memakai sebanyak mungkin","Menentukan tujuan dan lama waktu","Meminjamkan ke semua teman","Memakai tanpa izin"],1,"Tahu tujuan dan batas waktu."],["Raka belajar origami dari video, lalu mengerjakan PR dulu sebelum bermain. Sikap Raka disebut ....",["Seimbang dan bijak","Malas","Lupa waktu","Boros"],0,"Ia mengatur waktu belajar, main, dan istirahat."]];let qi=0,qs=0;
+function Rq(){if(qi>=Q.length){$("qz").innerHTML=`<div class="big">${qs>=4?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${qs}/5</b></p>`+(qs>=3?"":'<p style="text-align:center"><button class="btn" onclick="qi=0;qs=0;Rq()">🔄 Ulangi</button></p>');if(qs>=3&&!done[3]){done[3]=1;prog()}return}
+const q=Q[qi];$("qz").innerHTML=`<p><span class="chip">Soal ${qi+1} dari ${Q.length}</span></p><p><b>${q[0]}</b></p>`+q[1].map((o,i)=>`<button class="opt" onclick="Pk(${i},this)">${"ABCD"[i]}. ${o}</button>`).join("")+'<div id="qf"></div>'}
+function Pk(i,b){const q=Q[qi];document.querySelectorAll(".opt").forEach((x,k)=>{x.disabled=true;if(k==q[2])x.classList.add("ok")});if(i==q[2])qs++;else b.classList.add("no");$("qf").innerHTML=`<div class="fb ${i==q[2]?"ok":"no"}">${i==q[2]?"✅ Benar!":"❌ Kurang tepat."} ${q[3]}</div><p><button class="btn b" onclick="qi++;Rq()">Lanjut ▶</button></p>`}
+Rq();try{$("note").value=localStorage.getItem("bab2_note1")||""}catch(e){}
+</script></body></html>
