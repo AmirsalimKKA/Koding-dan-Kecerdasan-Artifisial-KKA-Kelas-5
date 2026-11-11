@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 2 – Internet Sehat</title><link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.2;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.84);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}
+.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:0 14px 40px}
+.hero{color:#fff;text-align:center;margin:14px 0 10px}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.score{flex-wrap:wrap;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.18);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:1.5em;display:flex;gap:2px}
+.stars i{font-style:normal;filter:grayscale(1) opacity(.45);transition:.5s}
+.stars i.on{filter:drop-shadow(0 0 8px var(--sun));animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.2);border-radius:16px;padding:8px 4px;font-size:.88em;font-weight:800;transition:.2s;position:relative;min-height:56px}
+.tab .e{display:block;font-size:1.5em;line-height:1.2}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}
+h4{font-size:1.15em;color:var(--indigo)}
+p{margin:6px 0}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.b{background:#2f80ed}.btn.y{background:var(--sun);color:var(--ink)}
+.btn.sel{outline:4px solid var(--sun);outline-offset:2px}
+.btn:disabled{opacity:.4;cursor:default}
+.act{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.row b{min-width:48px}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}
+.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}
+.opt.ok{background:#d9f7e4;border-color:var(--mint)}
+.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+/* jaringan */
+.net{width:100%;max-width:440px;display:block;margin:6px auto}
+.net .ln line{stroke-dasharray:7 9;animation:dash 1.1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.net text{font-family:Nunito,sans-serif;font-weight:800}
+.net .dv rect,.net .dv path{transition:.3s}
+.net .dv.from rect:first-child{stroke:#ff6b6b;stroke-width:5}
+.net .dv.arr{animation:rcv .8s}
+@keyframes rcv{40%{transform:scale(1.25)}}
+.net .dv{transform-box:fill-box;transform-origin:center}
+/* fungsi */
+.fn{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:12px 0}
+.fn button{font:inherit;font-weight:800;cursor:pointer;background:#fff;border:4px solid #cfe0fb;border-radius:22px;padding:10px 6px;transition:.2s;color:var(--ink);min-height:44px}
+.fn button .em{display:block;font-size:2.2em;line-height:1.2}
+.fn button:hover{transform:scale(1.05) rotate(-1.5deg);border-color:var(--teal)}
+.fn button.v{background:#d9f7e4;border-color:var(--mint)}
+.fn button.on{border-color:var(--sun);box-shadow:0 0 0 4px rgba(255,201,60,.4)}
+.scene{background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0;min-height:130px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;overflow:hidden}
+.scene .a1{animation:pp .6s both}.scene .a2{animation:pp .6s .7s both}.scene .a3{animation:pp .6s 1.4s both}.scene .a4{animation:pp .6s 2.1s both}
+@keyframes pp{from{opacity:0;transform:translateY(14px) scale(.7)}}
+.typ{display:inline-block;overflow:hidden;white-space:nowrap;border-right:3px solid var(--ink);animation:typ 1.4s steps(11) both,cur .7s step-end infinite;vertical-align:bottom}
+@keyframes typ{from{width:0}to{width:11ch}}
+@keyframes cur{50%{border-color:transparent}}
+.sb{background:#fff;border:3px solid var(--indigo);border-radius:99px;padding:6px 16px;font-family:monospace;font-weight:800}
+.res{background:#eef6ff;border-radius:10px;padding:4px 12px;width:min(320px,100%);font-weight:700;font-size:.9em}
+.bub{padding:8px 14px;border-radius:16px;max-width:290px;font-weight:700}
+.bub.l{background:#e8eef9;align-self:flex-start;border-bottom-left-radius:4px}.bub.r{background:#d9f7e4;align-self:flex-end;border-bottom-right-radius:4px}
+.vid{width:min(280px,100%);aspect-ratio:16/9;background:#1d1b4c;border-radius:14px;display:grid;place-items:center;font-size:3em;position:relative}
+.vid i{position:absolute;left:8px;right:8px;bottom:8px;height:6px;background:rgba(255,255,255,.3);border-radius:9px;overflow:hidden}
+.vid i:after{content:"";display:block;height:100%;background:var(--sun);animation:vp 4s linear both}
+@keyframes vp{from{width:0}to{width:100%}}
+.mini{width:min(220px,100%);background:#fff7d6;border:4px solid var(--indigo);border-radius:14px;padding:10px;text-align:center}
+/* game */
+.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:120px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.sit.sw{animation:in .4s}
+/* periksa */
+.info2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.inf{font:inherit;text-align:left;cursor:pointer;color:var(--ink);background:#fff;border:4px solid var(--soft);border-radius:20px;padding:12px 14px;transition:.2s}
+.inf:hover:not(:disabled){border-color:var(--teal);transform:translateY(-3px)}
+.inf h4{margin-bottom:4px}
+.inf .m{font-size:.82em;color:#556;font-weight:700;display:block;margin-bottom:4px}
+.inf.ok{background:#d9f7e4;border-color:var(--mint)}.inf.no{background:#ffe1e1;border-color:var(--coral)}
+table.cmp{width:100%;border-collapse:collapse;margin:8px 0;font-size:.92em}
+table.cmp th,table.cmp td{border:2px solid var(--soft);padding:6px 8px;text-align:left;vertical-align:top}
+table.cmp th{background:var(--soft)}
+/* aturan */
+.rl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.rl h4{margin-bottom:6px}
+.pool,.zone{border-radius:20px;padding:10px;min-height:150px}
+.pool{background:#fff;border:3px solid var(--soft)}
+.zone{background:#effcf8;border:4px dashed var(--mint)}
+.zone.over{background:#d9f7e4;border-style:solid}
+.rc{display:block;width:100%;text-align:left;font:inherit;font-weight:700;color:var(--ink);background:#fff6dc;border:3px solid #f0d27a;border-radius:14px;padding:8px 12px;margin:6px 0;cursor:grab;min-height:44px}
+.rc:active{cursor:grabbing}
+.rc.bounce{animation:sh .4s;background:#ffe1e1;border-color:var(--coral)}
+.zone .rc{cursor:default;background:#fff;border-color:var(--mint)}
+.zone .rc:before{content:"✅ "}
+/* hasil */
+.lst{list-style:none;padding:0;margin:8px 0}
+.lst li{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}
+.lst li.d{background:#e6f9f2;border-color:var(--mint)}
+.badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}
+.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
+.badge .em{font-size:4em;line-height:1;display:block}
+.badge b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;font-size:1.4em}
+.hab{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.hab button{font:inherit;font-weight:700;cursor:pointer;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:99px;padding:8px 14px;min-height:44px}
+.hab button.on{background:var(--sun);border-color:#e8a21a}
+.nv{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.info2,.rl{grid-template-columns:1fr}.tab{font-size:.78em}}
+@media(max-width:600px){header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<header>
+  <div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 2 · Media Interaktif</b>
+    <nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_materi2.html">📖 Materi</a></nav></div>
+  <div class="crumb"><span class="mt2" aria-label="Pertemuan 2 dari 5"><i>1</i><i class="on">2</i><i>3</i><i>4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 2 › Media</div>
+</header>
+<div class="wrap" id="wr">
+<div class="hero"><h1>🎮 Ayo Jelajahi Internet Sehat!</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 6 aktivitas untuk meraih badge <b>Internet Smart User</b>. Tidak ada yang gagal, kamu boleh mencoba lagi! ⭐</div></div></div>
+<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="6" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 6 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip" title="Poin aktivitas">0 poin</b></div>
+<div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
+<button class="tab on" onclick="T(1)" role="tab"><span class="e">🌐</span>Jaringan</button>
+<button class="tab" onclick="T(2)" role="tab"><span class="e">🧭</span>Fungsi</button>
+<button class="tab" onclick="T(3)" role="tab"><span class="e">🚦</span>Game</button>
+<button class="tab" onclick="T(4)" role="tab"><span class="e">🔎</span>Periksa</button>
+<button class="tab" onclick="T(5)" role="tab"><span class="e">📋</span>Aturan</button>
+<button class="tab" onclick="T(6)" role="tab"><span class="e">📝</span>Evaluasi</button>
+<button class="tab" onclick="T(7)" role="tab"><span class="e">🏅</span>Hasil</button></div>
+
+<section id="t1" class="card on"><h3>🌐 Aktivitas 1: Animasi Mengenal Internet</h3>
+<p>HP, laptop, dan tablet terhubung oleh internet. Pilih pengirim, penerima, dan jenis kiriman, lalu tekan <b>Kirim</b>. Kirim minimal 3 kali ya! <span class="chip" id="nc">0 / 3</span></p>
+<svg class="net" viewBox="0 0 360 250" role="img" aria-label="HP, laptop, dan tablet terhubung ke internet">
+ <g class="ln" stroke="#0fa3b1" stroke-width="3.5" stroke-linecap="round"><line x1="180" y1="100" x2="62" y2="52"/><line x1="180" y1="100" x2="298" y2="52"/><line x1="180" y1="100" x2="180" y2="186"/></g>
+ <circle cx="180" cy="100" r="44" fill="#0fa3b1"/><text x="180" y="112" text-anchor="middle" font-size="36">🌐</text>
+ <g class="dv" id="d0" transform="translate(62,52)"><rect x="-15" y="-27" width="30" height="54" rx="7" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-10" y="-20" width="20" height="32" rx="2" fill="#cfe0fb"/><circle cy="19" r="2.8" fill="#2b2a7a"/></g>
+ <text x="62" y="98" text-anchor="middle" font-size="15" fill="#1d1b4c">HP</text>
+ <g class="dv" id="d1" transform="translate(298,52)"><rect x="-32" y="-24" width="64" height="42" rx="5" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-26" y="-18" width="52" height="30" rx="2" fill="#cfe0fb"/><path d="M-42 26H42L35 18H-35Z" fill="#2b2a7a"/></g>
+ <text x="298" y="98" text-anchor="middle" font-size="15" fill="#1d1b4c">Laptop</text>
+ <g class="dv" id="d2" transform="translate(180,190)"><rect x="-22" y="-26" width="44" height="52" rx="7" fill="#fff" stroke="#2b2a7a" stroke-width="3.5"/><rect x="-16" y="-20" width="32" height="38" rx="2" fill="#cfe0fb"/><circle cy="22" r="2.2" fill="#2b2a7a"/></g>
+ <text x="180" y="240" text-anchor="middle" font-size="15" fill="#1d1b4c">Tablet</text>
+ <text id="pk" x="0" y="0" font-size="26" text-anchor="middle" visibility="hidden">✉️</text>
+</svg>
+<div class="row"><b>Dari:</b><span id="fr"></span></div>
+<div class="row"><b>Ke:</b><span id="to"></span></div>
+<div class="row"><b>Kirim:</b><span id="ty"></span></div>
+<p><button class="btn o" id="kirim">🚀 Kirim</button></p>
+<div id="ncap" class="fb ok" aria-live="polite">Pilih dulu perangkatnya, lalu tekan Kirim.</div></section>
+
+<section id="t2" class="card"><h3>🧭 Aktivitas 2: Fungsi Internet</h3>
+<p>Ketuk setiap ikon untuk melihat penjelasan dan animasinya. Lihat semua ikon ya! <span class="chip" id="fcn">0 / 5</span></p>
+<div class="fn" id="fni"></div><div id="fnp"></div></section>
+
+<section id="t3" class="card"><h3>🚦 Aktivitas 3: Game Pilih Internet Sehat</h3>
+<p>Baca situasinya. Apakah itu kebiasaan <b>sehat</b> atau perlu <b>diperbaiki</b>? <span class="chip" id="gp"></span> Skor: <b class="chip" id="sc">0</b></p>
+<div class="sit" id="sit"></div><div class="act" id="gb"><button class="btn g" data-nosfx onclick="A(true)">✅ Sehat</button><button class="btn o" data-nosfx onclick="A(false)">🛠️ Perlu diperbaiki</button></div><div id="sfb" aria-live="polite"></div></section>
+
+<section id="t4" class="card"><h3>🔎 Aktivitas 4: Simulasi Memeriksa Informasi</h3>
+<p>Dua tulisan fiktif ini membahas lebah. Periksa <b>pembuat</b> dan <b>buktinya</b>, lalu pilih yang <b>lebih layak dipercaya</b>.</p>
+<div class="info2" id="inf"></div><div id="ifb" aria-live="polite"></div></section>
+
+<section id="t5" class="card"><h3>📋 Aktivitas 5: Susun Aturan Internet Sehat</h3>
+<p>Pilih lima aturan yang menjadi aturan internet sehat kelas kita. <b>Seret</b> kartu ke kotak hijau, atau <b>ketuk</b> kartunya. <span class="chip" id="rn">0 / 5</span></p>
+<div class="rl"><div><h4>🃏 Kartu aturan</h4><div class="pool" id="pool"></div></div><div><h4>🏫 Aturan Internet Sehat Kelas</h4><div class="zone" id="zone" aria-label="Kotak aturan internet sehat"></div></div></div><div id="rfb" aria-live="polite"></div></section>
+
+<section id="t6" class="card"><h3>📝 Aktivitas 6: Evaluasi Interaktif</h3><div id="qz"></div></section>
+
+<section id="t7" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
+
+<div class="nv"><a class="btn" href="bab2_materi2.html">◀ Sebelumnya: Materi 2</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi3.html">Selanjutnya: Pertemuan 3 ▶</a></div>
+</div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif dan tidak ada data yang dikirim ke internet</footer>
+<script src="bab2_audio.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const snd=n=>{try{KKA.sfx(n)}catch(e){}};
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const NAMA=["Jaringan","Fungsi","Game","Periksa","Aturan","Evaluasi"];
+let done={};try{done=JSON.parse(localStorage.getItem('bab2_p2_done')||'{}')||{}}catch(e){}
+$("bg").innerHTML=["🌐","📱","💻","🔍","🛡️","⭐","🤖","💬","📚","🐝"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+$("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
+function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎈','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
+function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=7;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==7)hasil();scrollTo({top:0,behavior:"smooth"})}
+function cnt(){return NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0)}
+function prog(){const c=cnt();$("pg").style.width=c/6*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";
+ $("pt").textContent=c==6?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari 6 aktivitas selesai";
+ try{localStorage.setItem('bab2_p2_done',JSON.stringify(done));if(c==6)localStorage.setItem('bab2_p2','1')}catch(e){}}
+function fin(n){if(done[n])return;done[n]=1;const all=cnt()==6;prog();snd(all?'win':'ok');if(all)boom()}
+
+/* ===== 1. Jaringan ===== */
+const DV=[{n:"HP",x:62,y:52},{n:"Laptop",x:298,y:52},{n:"Tablet",x:180,y:190}],CORE={x:180,y:100};
+const TY=[{e:"✉️",n:"pesan",t:"Pesan teks dipecah menjadi bagian-bagian kecil, melewati jaringan internet, lalu disusun kembali di perangkat tujuan."},{e:"📷",n:"gambar",t:"Gambar dikirim sebagai data digital. Semakin besar gambarnya, semakin banyak data yang harus dikirim."},{e:"🎬",n:"video",t:"Video berisi banyak data, jadi butuh jaringan yang baik. Itu sebabnya video kadang tersendat."}];
+let nf=0,nt=1,nty=0,sent=0,busy=false;
+function drawN(){const mk=(arr,cur,fn)=>arr.map((d,i)=>`<button class="btn ${i==cur?'sel b':''}" data-nosfx onclick="${fn}(${i})" aria-pressed="${i==cur}">${d.n||d.e+' '+d.n}</button>`).join(' ');
+ $("fr").innerHTML=mk(DV,nf,'sf');$("to").innerHTML=mk(DV,nt,'st2');$("ty").innerHTML=TY.map((d,i)=>`<button class="btn ${i==nty?'sel b':''}" data-nosfx onclick="sty(${i})" aria-pressed="${i==nty}">${d.e} ${d.n}</button>`).join(' ');
+ DV.forEach((_,i)=>$("d"+i).classList.toggle('from',i==nf))}
+function sf(i){nf=i;snd('click');drawN()}function st2(i){nt=i;snd('click');drawN()}function sty(i){nty=i;snd('click');drawN()}
+function mv(a,b,ms,cb){const pk=$("pk"),red=matchMedia('(prefers-reduced-motion:reduce)').matches;if(red){pk.setAttribute('x',b.x);pk.setAttribute('y',b.y);return setTimeout(cb,150)}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/ms);pk.setAttribute('x',a.x+(b.x-a.x)*k);pk.setAttribute('y',a.y+(b.y-a.y)*k+8);if(k<1)requestAnimationFrame(f);else cb()})(t0)}
+$("kirim").onclick=()=>{if(busy)return;if(nf==nt){$("ncap").className="fb no";$("ncap").textContent="Pilih perangkat tujuan yang berbeda dari pengirim ya. Satu perangkat tidak mengirim kepada dirinya sendiri.";snd('no');return}
+ busy=true;const T0=TY[nty],a=DV[nf],b=DV[nt],pk=$("pk");pk.textContent=T0.e;pk.setAttribute('visibility','visible');snd('pop');$("ncap").className="fb ok";$("ncap").textContent="Mengirim "+T0.n+" dari "+a.n+" lewat internet...";
+ mv(a,CORE,700,()=>mv(CORE,b,700,()=>{pk.setAttribute('visibility','hidden');const g=$("d"+nt);g.classList.remove('arr');void g.getBBox();g.classList.add('arr');
+  $("ncap").innerHTML="<b>"+T0.e+" Sampai!</b> "+T0.n[0].toUpperCase()+T0.n.slice(1)+" dari "+a.n+" tiba di "+b.n+". "+T0.t;sent++;$("nc").textContent=Math.min(sent,3)+" / 3";snd('ok');busy=false;if(sent>=3)fin(1)}))};
+drawN();
+
+/* ===== 2. Fungsi ===== */
+const FN=[
+{e:"📚",n:"Belajar",d:"Internet membantu kita belajar dari video pelajaran, latihan daring, dan buku digital.",ex:"Putri mengerjakan latihan IPAS dari aplikasi yang dipilih gurunya.",s:()=>`<div class="a1" style="font-size:3em">📖</div><div class="a2" style="font-size:3em">💡</div><div class="a3" style="font-size:3em">⭐</div>`,tip:"Pilih tempat belajar yang disarankan guru."},
+{e:"🔍",n:"Mencari informasi",d:"Dengan kata kunci yang tepat, kita menemukan bahan tugas dan jawaban dari rasa ingin tahu.",ex:"Dewi mengetik “lebah madu” untuk mencari bahan tugas.",s:()=>`<div class="sb a1">🔍 <span class="typ">lebah madu</span></div><div class="res a2">🐝 Mengenal lebah madu (situs museum sains)</div><div class="res a3">📘 Peran lebah bagi bunga (artikel sekolah)</div>`,tip:"Setelah menemukan hasil, periksa sumbernya."},
+{e:"💬",n:"Berkomunikasi",d:"Kita dapat mengirim pesan dan melakukan video call dengan guru, teman, dan keluarga.",ex:"Fajar menanyakan jadwal ulangan kepada Bu Guru dengan sopan.",s:()=>`<div class="bub l a1">Selamat siang, Bu. Apakah ulangan hari Senin?</div><div class="bub r a2">Benar, Fajar. Selamat belajar!</div><div class="bub l a3">Terima kasih, Bu. 😊</div>`,tip:"Gunakan bahasa yang sopan."},
+{e:"🎬",n:"Menonton konten edukasi",d:"Video, siaran pelajaran, dan perpustakaan digital membuat belajar lebih seru.",ex:"Raka menonton video museum sains tentang gunung berapi.",s:()=>`<div class="vid a1">▶️🌋<i></i></div><div class="a3">Pilih tontonan yang sesuai usia.</div>`,tip:"Atur waktu menonton dan istirahatkan mata."},
+{e:"🎨",n:"Berkreasi",d:"Internet dan perangkat digital membantu kita membuat gambar, tulisan, atau poster dan membagikannya dengan tepat.",ex:"Dewi membuat poster tentang menjaga kebersihan lingkungan.",s:()=>`<div class="mini"><div class="a1"><b>🌱 Jaga Bumi</b></div><div class="a2" style="font-size:2.4em">♻️</div><div class="a3">Pilah sampah, yuk!</div></div>`,tip:"Berbagi karya hanya dengan izin dan tanpa data pribadi."}];
+let fv=new Set();
+$("fni").innerHTML=FN.map((f,i)=>`<button data-i="${i}" aria-label="${f.n}"><span class="em">${f.e}</span>${f.n}</button>`).join('');
+document.querySelectorAll('#fni button').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,f=FN[i];document.querySelectorAll('#fni button').forEach(x=>x.classList.remove('on'));b.classList.add('on','v');fv.add(i);$("fcn").textContent=fv.size+" / 5";
+ $("fnp").innerHTML=`<h4>${f.e} ${f.n}</h4><div class="scene" aria-hidden="true">${f.s()}</div><p>${f.d}</p><div class="fb ok"><b>Contoh:</b> ${f.ex}<br><b>Ingat:</b> ${f.tip}</div>`;snd('pop');if(fv.size==5)fin(2)});
+
+/* ===== 3. Game ===== */
+const G0=[["Dewi mencari gambar lebah di situs museum sains untuk tugas IPAS.",1,"Dewi punya tujuan jelas dan memilih sumber yang sesuai. Tetap periksa pembuat informasinya."],
+["Raka mendapat pesan dari nomor tak dikenal: “Kamu terpilih! Klik untuk ponsel gratis!” Ia langsung mengkliknya.",0,"Pesan hadiah dari orang tak dikenal sering dipakai untuk menjebak. Sebaiknya jangan diklik. Tunjukkan kepada orang tua atau guru."],
+["Putri ingin mengunduh gim baru. Ia meminta izin ayahnya dan memeriksanya bersama.",1,"Minta izin dan pendampingan sebelum mengunduh membuat kita lebih aman."],
+["Fajar menonton video sampai lewat jam tidur karena “tinggal satu video lagi”.",0,"Terlalu lama memakai perangkat membuat kurang tidur dan sulit fokus. Buat batas waktu dan taati."],
+["Raka menonton video gunung berapi yang disarankan Pak Guru, lalu berhenti setelah 20 menit.",1,"Sumber sesuai, sesuai kebutuhan, dan ada batas waktu. Itu kebiasaan sehat."],
+["Putri membagikan kabar “air sumur sekolah berbahaya” ke grup karena temannya berkata begitu. Ia belum mengeceknya.",0,"Kabar yang belum dicek bisa membuat orang panik. Periksa dulu pembuat dan buktinya, atau tanyakan kepada guru."],
+["Dewi menemukan halaman yang meminta isian data untuk “hadiah”. Ia menutup halaman dan memberi tahu ibunya.",1,"Tepat! Menutup halaman mencurigakan dan melapor kepada orang dewasa adalah langkah bijak."],
+["Fajar membuka banyak situs secara acak tanpa tahu apa yang dicari, lalu lupa tugasnya.",0,"Tanpa tujuan, kita mudah tersesat dan membuang waktu. Tentukan dulu apa yang ingin dicari."]];
+let G,gi=0,gs=0,lock=false;
+function gstart(){G=shuf(G0);gi=0;gs=0;lock=false;$("sc").textContent=0;$("gb").hidden=false;sh()}
+function sh(){if(gi>=G.length){$("sit").innerHTML="🏁 Selesai! Kamu menjawab tepat "+gs+" dari "+G.length+".";$("gb").hidden=true;$("gp").textContent="";
+  $("sfb").innerHTML=`<div class="fb ok">${gs>=6?"🌟 Hebat sekali! Kamu sudah paham kebiasaan internet sehat.":"👍 Terima kasih sudah berlatih! Baca lagi pembahasannya, lalu coba lagi untuk menguatkan pemahamanmu."}</div><p><button class="btn" onclick="gstart();$('sfb').innerHTML=''">🔄 Main lagi</button></p>`;fin(3);return}
+ $("gp").textContent=(gi+1)+" / "+G.length;$("sit").textContent=G[gi][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
+function A(v){if(lock||gi>=G.length)return;lock=true;const g=G[gi],ok=(!!g[1])==v;if(ok)gs++;$("sc").textContent=gs;
+ $("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Tepat!":"💡 Ayo perbaiki."} ${g[2]}</div><p><button class="btn b" id="gn" data-nosfx>${gi==G.length-1?"Lihat hasil 🏁":"Situasi berikutnya ▶"}</button></p>`;snd(ok?'ok':'no');gi++;$("gn").onclick=()=>{$("sfb").innerHTML='';sh()}}
+gstart();
+
+/* ===== 4. Periksa informasi ===== */
+const IF=[{h:"Mengapa Lebah Penting bagi Tanaman?",m:"Penulis: Dr. Sari Wulandari (peneliti serangga) · Lembaga: Balai Penelitian Serangga Nusantara · 12 Maret 2026",b:"Lebah berpindah dari bunga ke bunga dan membantu penyerbukan sehingga bunga dapat menjadi buah. Tulisan ini dilengkapi foto dan daftar rujukan buku IPAS.",ok:1,pb:"Jelas: nama dan lembaga",bk:"Ada: foto dan rujukan buku",tg:"Tanggal jelas, bisa dicek"},
+{h:"RAHASIA! Lihat Lebah 1 Menit, Nilaimu Langsung 100!!!",m:"Penulis: tidak ada · Sumber: “katanya temanku” · Tanggal: tidak ada",b:"Cukup memandangi lebah selama satu menit dan nilai ulanganmu langsung sempurna! Bagikan tulisan ini ke 10 temanmu agar berhasil.",ok:0,pb:"Tidak ada penulis",bk:"Tidak ada bukti",tg:"Menyuruh disebarkan ke 10 teman"}];
+let ifd=false;
+function ifr(){ifd=false;$("ifb").innerHTML="";$("inf").innerHTML=shuf([0,1]).map(i=>`<button class="inf" data-nosfx data-i="${i}"><h4>${IF[i].h}</h4><span class="m">${IF[i].m}</span>${IF[i].b}</button>`).join('');
+ document.querySelectorAll('.inf').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,o=IF[i];document.querySelectorAll('.inf').forEach(x=>x.disabled=true);
+  if(o.ok){b.classList.add('ok');snd('ok');$("ifb").innerHTML=`<div class="fb ok"><b>✅ Pilihan tepat!</b> Tulisan ini lebih layak dipercaya karena pembuatnya jelas dan ada bukti yang bisa dicek.</div>${tbl()}<h4>Pertanyaan terakhir</h4><p>Tulisan satunya menyuruhmu membagikannya ke 10 teman. Apa yang sebaiknya kamu lakukan?</p><div id="iq"></div>`;iq()}
+  else{b.classList.add('no');snd('no');$("ifb").innerHTML=`<div class="fb no"><b>💡 Hampir!</b> Tulisan ini terdengar seru, tetapi tidak ada penulis, tidak ada bukti, dan menyuruh disebarkan. Itu tanda informasi yang perlu dicurigai. Bandingkan lagi dengan tabel di bawah, lalu coba kembali.</div>${tbl()}<p><button class="btn" onclick="ifr()">🔄 Coba lagi</button></p>`}})}
+function tbl(){return `<table class="cmp"><tr><th>Langkah</th><th>${IF[0].h.slice(0,24)}…</th><th>${IF[1].h.slice(0,24)}…</th></tr><tr><td>1. Siapa pembuatnya?</td><td>✅ ${IF[0].pb}</td><td>❌ ${IF[1].pb}</td></tr><tr><td>2. Apa buktinya?</td><td>✅ ${IF[0].bk}</td><td>❌ ${IF[1].bk}</td></tr><tr><td>3. Aman disebarkan?</td><td>✅ ${IF[0].tg}</td><td>❌ ${IF[1].tg}</td></tr></table>`}
+function iq(){const O=shuf([["Mengabaikan dan menunjukkannya kepada guru atau orang tua.",1,"Tepat! Tulisan yang menyuruh disebarkan tanpa bukti sebaiknya tidak dibagikan. Orang dewasa dapat membantu memeriksanya."],["Membagikannya ke 10 teman supaya nilai mereka naik.",0,"Menyebarkan informasi yang belum terbukti dapat membuat banyak orang percaya hal yang salah."],["Membagikannya dulu, nanti dicek belakangan.",0,"Sebaiknya dicek sebelum dibagikan, karena pesan yang sudah menyebar sulit ditarik kembali."]]);
+ $("iq").innerHTML=O.map((o,i)=>`<button class="opt" data-nosfx data-k="${i}">${o[0]}</button>`).join('')+'<div id="iqf"></div>';
+ document.querySelectorAll('#iq .opt').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#iq .opt').forEach((x,k)=>{x.disabled=true;if(O[k][1])x.classList.add('ok')});if(!O[i][1])b.classList.add('no');snd(O[i][1]?'ok':'no');$("iqf").innerHTML=`<div class="fb ${O[i][1]?'ok':'no'}">${O[i][1]?'✅':'💡'} ${O[i][2]}</div>`;fin(4)})}
+ifr();
+
+/* ===== 5. Susun aturan ===== */
+const RL=[["Aku menentukan tujuan sebelum membuka internet.",1,"Dengan tujuan yang jelas, kita tidak tersesat dan tidak membuang waktu."],["Aku meminta izin sebelum mengunduh aplikasi.",1,"Izin dan pendampingan membuat kita terhindar dari aplikasi yang tidak aman."],["Aku tidak membuka tautan hadiah dari orang tidak dikenal.",1,"Tautan hadiah sering dipakai untuk menjebak."],["Aku mengatur waktu dan beristirahat setelah memakai perangkat.",1,"Mata dan tubuh perlu istirahat, dan waktu belajar tetap terjaga."],["Aku memeriksa pembuat dan bukti sebelum mempercayai informasi.",1,"Tidak semua informasi di internet benar."],
+["Aku membuka semua situs yang muncul supaya tidak penasaran.",0,"Belum tepat. Situs yang muncul belum tentu aman atau sesuai kebutuhan."],["Aku memakai internet sampai larut malam kalau sedang seru.",0,"Belum tepat. Tanpa batas waktu, kita kurang tidur dan sulit fokus."],["Aku langsung membagikan kabar menarik tanpa dicek.",0,"Belum tepat. Kabar yang belum dicek bisa menyesatkan orang lain."]];
+let placed=new Set();
+function rdraw(){$("pool").innerHTML=shuf(RL.map((r,i)=>i)).filter(i=>!placed.has(i)).map(i=>`<button class="rc" draggable="true" data-nosfx data-i="${i}">${RL[i][0]}</button>`).join('');
+ $("zone").innerHTML=[...placed].map(i=>`<div class="rc">${RL[i][0]}</div>`).join('')||'<p style="color:#667">Taruh kartu aturan yang tepat di sini.</p>';$("rn").textContent=placed.size+" / 5";
+ document.querySelectorAll('#pool .rc').forEach(b=>{b.onclick=()=>put(+b.dataset.i,b);b.ondragstart=e=>{e.dataTransfer.setData('text/plain',b.dataset.i)}})}
+function put(i,el){const r=RL[i];if(r[1]){placed.add(i);snd('ok');$("rfb").innerHTML=`<div class="fb ok">✅ <b>Aturan tepat!</b> ${r[2]}</div>`;rdraw();if(placed.size==5){$("rfb").innerHTML+='<div class="fb ok">🎉 <b>Lengkap!</b> Kelas kita punya 5 aturan internet sehat. Ayo terapkan di rumah dan sekolah.</div>';fin(5)}}
+ else{snd('no');if(el){el.classList.remove('bounce');void el.offsetWidth;el.classList.add('bounce')}$("rfb").innerHTML=`<div class="fb no">💡 ${r[2]} Cari kartu lain ya.</div>`}}
+$("zone").ondragover=e=>{e.preventDefault();$("zone").classList.add('over')};$("zone").ondragleave=()=>$("zone").classList.remove('over');
+$("zone").ondrop=e=>{e.preventDefault();$("zone").classList.remove('over');const i=parseInt(e.dataTransfer.getData('text/plain'));if(!isNaN(i)&&RL[i]&&!placed.has(i))put(i,document.querySelector('#pool .rc[data-i="'+i+'"]'))};
+rdraw();
+
+/* ===== 6. Evaluasi ===== */
+const Q0=[{q:"Fajar ingin tahu cara lebah membuat madu untuk tugas. Langkah pertama yang paling bijak adalah ....",o:[["Menentukan kata kunci dan memilih sumber yang jelas pembuatnya",1],["Menyalin tulisan dari situs pertama yang muncul",0],["Meminta teman mengerjakannya lewat pesan",0],["Menunggu sampai ada pesan hadiah",0]],w:"Dengan kata kunci dan sumber yang jelas, informasinya lebih mudah dipercaya dan diperiksa."},
+{q:"Internet disebut jaringan karena ....",o:[["Menghubungkan banyak perangkat sehingga dapat bertukar informasi",1],["Hanya berada di dalam satu HP",0],["Hanya dipakai untuk bermain gim",0],["Menggantikan semua buku",0]],w:"Perangkat-perangkat terhubung seperti jaring sehingga informasi bisa berpindah di antaranya."},
+{q:"Saat belajar, muncul tulisan “Unduh aplikasi ini agar nilaimu naik!” dari situs yang tidak dikenal. Sikap yang tepat adalah ....",o:[["Menutup halaman dan bertanya kepada guru atau orang tua",1],["Mengunduhnya agar nilai naik",0],["Mengirim tautannya ke seluruh kelas",0],["Mengisi data diri agar cepat selesai",0]],w:"Janji yang berlebihan adalah tanda bahaya. Tutup halaman dan minta pendapat orang dewasa."},
+{q:"Raka memakai tablet 30 menit untuk belajar, lalu beristirahat dan bermain di luar. Kebiasaan Raka menunjukkan ....",o:[["Mengatur waktu penggunaan perangkat",1],["Tidak punya tujuan",0],["Terlalu percaya semua informasi",0],["Membuka tautan mencurigakan",0]],w:"Ada batas waktu dan keseimbangan dengan kegiatan lain. Itu bagian dari internet sehat."},
+{q:"Artikel A punya nama penulis, tanggal, dan rujukan. Artikel B tanpa penulis dan menyuruh dibagikan ke 10 orang. Mana yang lebih layak dipercaya?",o:[["Artikel A, karena pembuat dan buktinya bisa diperiksa",1],["Artikel B, karena menyuruh dibagikan",0],["Keduanya sama saja",0],["Yang paling banyak gambarnya",0]],w:"Informasi yang jelas pembuat dan buktinya lebih mudah diuji kebenarannya."},
+{q:"Pernyataan: “Semua yang ada di internet pasti benar karena banyak orang membacanya.” Tanggapan yang tepat adalah ....",o:[["Salah, karena banyaknya pembaca tidak membuktikan kebenaran",1],["Benar, karena internet selalu akurat",0]],w:"Informasi tersebar luas belum tentu benar. Tetap periksa pembuat dan buktinya."}];
+let Q,qi=0,qs=0;
+function qstart(){Q=shuf(Q0).map(q=>({...q,o:q.o.length>2?shuf(q.o):q.o}));qi=0;qs=0;Rq()}
+function Rq(){if(qi>=Q.length){const full=qs==Q.length;$("qz").innerHTML=`<div class="big">${qs>=5?"🏆":"🌟"}</div><p style="text-align:center"><b>Skor ${qs} dari ${Q.length}</b></p><div class="fb ok">${qs>=5?"Luar biasa! Kamu paham internet sehat.":qs>=3?"Bagus! Pemahamanmu sudah baik. Baca lagi pembahasan yang masih keliru, lalu coba lagi kalau mau.":"Terima kasih sudah mencoba! Buka lagi Materi 2, lalu ulangi evaluasi ini. Kamu pasti bisa."}</div><p style="text-align:center"><button class="btn" onclick="qstart()">🔄 Ulangi evaluasi</button></p>`;fin(6);return}
+ const q=Q[qi];$("qz").innerHTML=`<p><span class="chip">Soal ${qi+1} dari ${Q.length}</span> <span class="chip">Skor ${qs}</span></p><p><b>${q.q}</b></p>`+q.o.map((o,i)=>`<button class="opt" data-nosfx data-i="${i}">${"ABCD"[i]}. ${o[0]}</button>`).join('')+'<div id="qf" aria-live="polite"></div>';
+ document.querySelectorAll('#qz .opt').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#qz .opt').forEach((x,k)=>{x.disabled=true;if(q.o[k][1])x.classList.add('ok')});const ok=q.o[i][1];if(ok)qs++;else b.classList.add('no');snd(ok?'ok':'no');
+  $("qf").innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ Tepat!':'💡 Belum tepat.'} ${q.w}</div><p><button class="btn b" data-nosfx onclick="qi++;Rq()">${qi==Q.length-1?'Lihat skor 🏁':'Lanjut ▶'}</button></p>`})}
+qstart();
+
+/* ===== 7. Hasil & refleksi ===== */
+const HB=["Menentukan tujuan sebelum membuka internet","Mengatur waktu dan beristirahat","Tidak membuka tautan mencurigakan","Memeriksa informasi sebelum percaya","Meminta pendampingan orang dewasa"];
+let hb=-1;try{hb=parseInt(localStorage.getItem('bab2_p2_refleksi'));if(isNaN(hb))hb=-1}catch(e){}
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>`<li class="${done[i+1]?'d':''}">${done[i+1]?'✅':'⏳'} Aktivitas ${i+1}: ${n}</li>`).join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (poin diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+
+ (c==6?`<div class="badge"><span class="em">🏅</span><b>Internet Smart User</b><p>Selamat! Kamu paham cara memakai internet dengan sehat.</p></div>`:`<div class="badge lock"><span class="em">🔒</span><b>Internet Smart User</b><p>Selesaikan ${6-c} aktivitas lagi untuk membuka badge ini.</p></div>`)+
+ `<h4>🪞 Refleksi</h4><p>Kebiasaan digital apa yang ingin kamu perbaiki setelah belajar hari ini? Pilih satu.</p><div class="hab">${HB.map((h,i)=>`<button data-h="${i}" class="${i==hb?'on':''}" aria-pressed="${i==hb}">${h}</button>`).join('')}</div><div id="hf" aria-live="polite">${hb>=0?'<div class="fb ok">🌟 Hebat! Mulai hari ini kamu akan berlatih: <b>'+HB[hb]+'</b>. Pilihan ini hanya tersimpan di perangkat ini.</div>':''}</div>`;
+ document.querySelectorAll('.hab button').forEach(b=>b.onclick=()=>{hb=+b.dataset.h;try{localStorage.setItem('bab2_p2_refleksi',hb)}catch(e){}snd('ok');hasil()})}
+prog();
+
+/* ===== Audio ===== */
+KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('svg,button,.scene,table').forEach(x=>x.remove());return c.textContent}});
+(function(){const a=document.querySelector('#wr .kk-aud');const s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
+</script></body></html>
