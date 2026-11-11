@@ -48,18 +48,21 @@ h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.25;marg
 p{margin:.3em 0 .8em}
 
 /* Top Bar */
-.top{display:flex;align-items:center;gap:14px;padding:12px 24px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.top{display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.15);flex-wrap:wrap}
 .top .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-family:'Fredoka', sans-serif}
 .top .brand img{height:46px;width:46px;background:#fff;border-radius:50%;padding:4px;object-fit:contain;box-shadow:0 2px 5px rgba(0,0,0,.25)}
 .top .ttl{font-size:1.12rem;line-height:1.15;color:var(--cyan)}
 .top .ttl small{display:block;font-weight:600;font-size:.8rem;color:#e2e8f0;font-family:'Nunito', sans-serif}
 .top .sp{flex:1}
+.nav-group{display:flex;gap:8px;align-items:center}
 .nav-link{
   color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;
   background:var(--teal);border:2px solid var(--teal);border-radius:12px;
   padding:6px 14px;transition:.2s;display:inline-flex;align-items:center;gap:6px;
 }
 .nav-link:hover{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.nav-link.alt{background:transparent;border-color:rgba(255,255,255,.45)}
+.nav-link.alt:hover{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
 
 .wrap{max-width:1140px;margin:0 auto;padding:24px 20px 50px}
 
@@ -156,6 +159,12 @@ p{margin:.3em 0 .8em}
   background:var(--green);color:#fff;box-shadow:0 4px 0 var(--green-d);
 }
 .btn.steam:hover{background:#269b5d}
+.btn.ghost{
+  background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line);
+}
+.btn.ghost:hover{background:#f0f9fa;border-color:var(--teal);color:var(--teal)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:28px}
 
 .foot{max-width:1140px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center;border-top:2px dashed var(--line);font-weight:600}
 </style>
@@ -168,7 +177,10 @@ p{margin:.3em 0 .8em}
     <div class="ttl">Bab 2 · Literasi Digital (Kesadaran Digital)<small>Koding &amp; Kecerdasan Artifisial • Kelas V</small></div>
   </div>
   <div class="sp"></div>
-  <a class="nav-link" href="materi1.html"><i class="fa-solid fa-layer-group"></i> Bab 1</a>
+  <div class="nav-group">
+    <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+    <a class="nav-link alt" href="bab1.html"><i class="fa-solid fa-layer-group"></i> Bab 1</a>
+  </div>
 </header>
 
 <div class="wrap">
@@ -195,6 +207,7 @@ p{margin:.3em 0 .8em}
       <i class="fa-solid fa-arrow-right" style="color:var(--muted)"></i>
       <span class="g-step">2. Klik <b>Media Interaktif</b> untuk bermain &amp; berlatih</span>
     </div>
+    <a class="btn ghost" href="index.html" style="padding:7px 14px;font-size:.9rem"><i class="fa-solid fa-house"></i> Ke Beranda Utama</a>
   </div>
 
   <!-- Grid 5 Pertemuan Bab 2 -->
@@ -306,6 +319,12 @@ p{margin:.3em 0 .8em}
     </article>
 
   </section>
+
+  <!-- Navigasi Bawah -->
+  <div class="bottom-nav">
+    <a class="btn ghost" href="bab1.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke Bab 1</a>
+    <a class="btn materi" href="bab2_materi1.html">Mulai Pertemuan 1 <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
 </div>
 
 <div class="foot">SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si • Tahun Ajaran 2026/2027</div>
