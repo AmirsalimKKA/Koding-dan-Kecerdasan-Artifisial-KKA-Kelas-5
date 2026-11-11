@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 5 – Poster Maker</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
+*{box-sizing:border-box;margin:0}
+body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
+h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.bg span{position:absolute;bottom:-60px;font-size:34px;opacity:.2;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(360deg)}}
+header{position:sticky;top:0;z-index:20;background:rgba(29,27,76,.84);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;padding:8px 14px;color:#fff;flex-wrap:wrap}
+.bar img{width:34px;height:34px;border-radius:9px;background:#fff;object-fit:contain}
+.bar b{font-family:"Baloo 2",Nunito,system-ui,sans-serif;margin-right:auto}
+nav.m{display:flex;gap:6px;flex-wrap:wrap}
+nav.m a{color:#fff;text-decoration:none;font-weight:700;font-size:.82em;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.14);transition:.2s;min-height:36px;display:inline-flex;align-items:center}
+nav.m a:hover{background:var(--sun);color:var(--ink)}
+.crumb{max-width:980px;margin:auto;padding:0 14px 6px;font-size:.78em;color:#dbe6ff;font-weight:700}.crumb a{color:#fff}
+.crumb .mt2{display:inline-flex;gap:4px;float:right}
+.crumb .mt2 i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8em}
+.crumb .mt2 i.on{background:var(--sun);color:var(--ink)}
+.wrap{position:relative;max-width:980px;margin:auto;padding:0 14px 40px}
+.hero{color:#fff;text-align:center;margin:14px 0 10px}
+h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.maskot{display:flex;gap:14px;align-items:center;margin:12px 0;text-align:left}
+.maskot .r{font-size:3.4em;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-6deg)}}
+.maskot .s{position:relative;background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;flex:1}
+.maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+.score{flex-wrap:wrap;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.18);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
+.stars{font-size:1.5em;display:flex;gap:2px}.stars i{font-style:normal;filter:grayscale(1) opacity(.45);transition:.5s}
+.stars i.on{filter:drop-shadow(0 0 8px var(--sun));animation:star .7s}
+@keyframes star{40%{transform:scale(1.8) rotate(25deg)}}
+.bar2{flex:1;height:12px;background:rgba(255,255,255,.25);border-radius:9px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:9px;transition:width .6s cubic-bezier(.4,1.4,.5,1)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin:12px 0}
+.tab{border:0;cursor:pointer;color:#fff;background:rgba(255,255,255,.2);border-radius:16px;padding:8px 4px;font-size:.88em;font-weight:800;transition:.2s;position:relative;min-height:56px}
+.tab .e{display:block;font-size:1.5em;line-height:1.2}
+.tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
+.card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
+.card.on,.card.s{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}.card.s{margin:16px 0}
+@keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
+h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}h4{font-size:1.15em;color:var(--indigo)}
+p{margin:6px 0}ul{padding-left:1.2em}
+.chip{display:inline-block;background:var(--soft);padding:2px 12px;border-radius:99px;font-weight:800;font-size:.9em}
+.btn{display:inline-block;border:0;cursor:pointer;text-decoration:none;font-weight:800;font-size:1em;padding:10px 20px;border-radius:99px;color:#fff;background:var(--indigo);box-shadow:0 4px 0 rgba(0,0,0,.25);transition:.15s;text-align:center;min-height:44px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}.btn.o{background:var(--coral)}.btn.g{background:#1fa37f}.btn.b{background:#2f80ed}.btn.y{background:var(--sun);color:var(--ink)}
+.act{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
+.fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
+.fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
+.fb.wr{background:#ffe9e9;border-left:6px solid var(--red);color:#7a1010}.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.big{font-size:4em;text-align:center;animation:bob 2s infinite}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:10px 0}
+.tile{background:#fff;border:3px solid var(--soft);border-radius:18px;padding:12px;font-weight:700}.tile .em{font-size:2.2em;display:block;animation:bob 3s infinite}
+.pw{font-family:ui-monospace,monospace;background:var(--ink);color:var(--sun);padding:2px 10px;border-radius:9px;word-break:break-all}
+.msg{background:#e8eef9;border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;font-weight:700;margin:8px 0}
+.stage{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;min-height:150px;background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0}
+.kid,.sh{font-size:3.6em}.kid.think{animation:wob .6s 3}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.bubx{max-width:270px;background:#ffe9e9;border:3px solid var(--coral);border-radius:16px;padding:8px 12px;font-weight:700;opacity:0;transform:translateX(30px);transition:.5s}
+.bubx.show,.sh.show{opacity:1;transform:none}.sh{opacity:0;transform:scale(.2);transition:.5s}
+.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:100px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
+.lst{list-style:none;padding:0}.lst li{padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}.lst li.d{background:#e6f9f2;border-color:var(--mint)}
+.badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
+.badge .em{font-size:4em;line-height:1;display:block}.badge b{font-family:"Baloo 2",Nunito,sans-serif;font-size:1.4em}
+.nv{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 6px}
+.conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.chat{background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:120px;margin:10px 0}
+.cm{max-width:86%;padding:8px 12px;border-radius:16px;font-weight:700;animation:in .4s;cursor:pointer;border:3px solid transparent;background:#e8eef9;border-bottom-left-radius:4px}
+.cm small{display:block;font-weight:800;color:var(--teal);font-size:.78em}.cm.me{align-self:flex-end;background:#d9f7e4;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.cm.pick{border-color:var(--sun)}.cm.rude small{color:var(--red)}
+textarea{width:100%;font:inherit;border:3px solid var(--soft);border-radius:16px;padding:10px;min-height:110px;resize:vertical;color:var(--ink)}
+.ck{list-style:none;padding:0}.ck li{padding:4px 0;font-weight:700}.ck li.y{color:#0b6b52}
+
+.mp{width:min(250px,100%);aspect-ratio:3/4;background:var(--indigo);border-radius:18px;padding:14px;color:#fff;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;margin:10px auto;position:relative;overflow:hidden}
+.mp>*{opacity:0}.mp.go>.s1{animation:pp .6s both}.mp.go>.s2{animation:pp .6s 1.3s both}.mp.go>.s3{animation:pp .6s 2.6s both}.mp.go>.s4{animation:pp .6s 3.9s both}
+.mp.still>*{opacity:1}.mp .s2{font-size:3.6em}.mp .s1{font-family:"Baloo 2",sans-serif;font-size:1.4em;line-height:1.1}.mp .s3{background:#fff;color:var(--ink);border-radius:12px;padding:8px;font-weight:700;font-size:.85em}.mp .s4{position:absolute;top:6px;right:10px;font-size:1.6em}
+@keyframes pp{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:none}}
+canvas{width:min(100%,360px);height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:block;margin:auto;background:#fff}
+.pm{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}
+.sw,.ic{display:inline-block;width:44px;height:44px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 2px #cfd3ee;cursor:pointer;padding:0;vertical-align:middle;margin:2px}
+.ic{background:#fff;font-size:1.4em;line-height:1;border-radius:14px}.sw.on,.ic.on{box-shadow:0 0 0 4px var(--sun)}
+input[type=text]{width:100%;font:inherit;border:3px solid var(--soft);border-radius:14px;padding:8px 12px;color:var(--ink);margin:4px 0 8px}
+input[type=range]{width:100%}.lbl{font-weight:800;display:block;margin-top:6px}
+.ckx label{display:flex;gap:10px;align-items:center;background:#fff;border:3px solid var(--soft);border-radius:14px;padding:10px;margin:6px 0;font-weight:700;cursor:pointer;min-height:44px}.ckx input{width:22px;height:22px}
+.hab{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.hab button{font:inherit;font-weight:700;cursor:pointer;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:99px;padding:8px 14px;min-height:44px}.hab button.on{background:var(--sun);border-color:#e8a21a}
+@media(prefers-reduced-motion:reduce){.mp>*{opacity:1!important}}
+</style></head><body>
+<div class="bg" id="bg" aria-hidden="true"></div><header><div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 5 · Media Interaktif</b><nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_materi5.html">📖 Materi</a></nav></div><div class="crumb"><span class="mt2" aria-label="Pertemuan 5 dari 5"><i>1</i><i>2</i><i>3</i><i>4</i><i class="on">5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 5 › Media Interaktif</div></header>
+<div class="wrap" id="wr"><div class="hero"><h1>🎨 Poster Maker Literasi Digital</h1>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Creative Digital Creator</b>. Posterku dibuat di perangkatmu saja. Jangan menulis data pribadi ya! ⭐</div></div></div>
+<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite"></small></div><b id="poin" class="chip">0 poin</b></div>
+<div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas"><button class="tab on" onclick="T(1)" role="tab"><span class="e">🎬</span>Animasi</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🖌️</span>Poster</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🎤</span>Presentasi</button><button class="tab" onclick="T(4)" role="tab"><span class="e">🪞</span>Refleksi</button><button class="tab" onclick="T(5)" role="tab"><span class="e">✅</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
+
+<section id="t1" class="card on"><h3>🎬 Aktivitas 1: Poster Terbentuk</h3><p>Perhatikan unsur poster muncul satu per satu.</p>
+<div class="mp" id="mp"><div class="s1">JAGA DATA PRIBADI</div><div class="s2">🔐</div><div class="s3">Password itu rahasia. Jangan dibagikan!</div><div class="s4">✨</div></div>
+<div class="fb ok" id="mc" aria-live="polite">Tekan tombol untuk memulai.</div><p><button class="btn g" id="mgo">▶ Putar Animasi</button></p></section>
+
+<section id="t2" class="card"><h3>🖌️ Aktivitas 2: Poster Maker</h3><p>Pilih template, ubah sesuai idemu, lalu <b>unduh</b> posternya.</p>
+<div class="pm"><div><span class="lbl">Template</span><div class="hab" id="tp"></div>
+<label class="lbl" for="jd">Judul</label><input type="text" id="jd" maxlength="40">
+<label class="lbl" for="ps">Pesan utama</label><input type="text" id="ps" maxlength="100">
+<span class="lbl">Warna latar</span><div id="sw"></div><span class="lbl">Ikon</span><div id="ik"></div>
+<label class="lbl" for="uk">Ukuran teks</label><input type="range" id="uk" min="28" max="50" value="38">
+<div id="pf" aria-live="polite"></div><p><button class="btn o" id="unduh">⬇️ Unduh PNG</button></p></div>
+<div><canvas id="cv" width="600" height="800" role="img" aria-label="Preview poster"></canvas></div></div></section>
+
+<section id="t3" class="card"><h3>🎤 Aktivitas 3: Simulasi Presentasi</h3><p>Ketuk tiga langkah untuk melihat cara menyampaikan pesan poster. <span class="chip" id="c3">0 / 3</span></p>
+<div class="mp still"><div class="s1">BERKOMUNIKASI SOPAN</div><div class="s2">💬</div><div class="s3">Berpikir dulu sebelum mengirim pesan.</div></div>
+<div class="act"><button class="btn b" data-p="0">1. Pesan utama</button><button class="btn b" data-p="1">2. Alasan</button><button class="btn b" data-p="2">3. Manfaat</button></div><div id="pp" aria-live="polite"></div></section>
+
+<section id="t4" class="card"><h3>🪞 Aktivitas 4: Refleksi</h3><p>Kebiasaan digital apa yang ingin kamu perbaiki setelah belajar? Pilih satu.</p><div class="hab" id="hb"></div><div id="hf" aria-live="polite"></div></section>
+
+<section id="t5" class="card"><h3>✅ Aktivitas 5: Evaluasi Proyek</h3><p>Periksa posterku. Centang yang sudah terpenuhi. <span class="chip" id="c5">0 / 5</span></p><div class="ckx" id="ev"></div><div id="ef" aria-live="polite"></div></section>
+<section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
+<div class="nv"><a class="btn" href="bab2_materi5.html">◀ Kembali ke Materi 5</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a></div></div>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Poster dibuat di perangkatmu dan tidak dikirim ke internet</footer>
+<script src="bab2_audio.js"></script><script>
+const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
+const NAMA=["Animasi","Poster","Presentasi","Refleksi","Evaluasi"],N=5,KEY='bab2_p5_done';
+let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+$("bg").innerHTML=["🎨","🖼️","✨","⭐","🤖","📐","🖌️","🌈","📝","💡"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
+$("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
+function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎨','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
+function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();if(n==2)draw();scrollTo({top:0,behavior:"smooth"})}
+const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
+function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p5','1')}catch(e){}}
+function fin(n){if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
+/* 1 animasi */
+$("mgo").onclick=()=>{const m=$("mp");m.classList.remove('go');void m.offsetWidth;m.classList.add('go');const L=["1️⃣ Judul muncul: singkat dan menarik.","2️⃣ Ilustrasi muncul: gambar mendukung pesan.","3️⃣ Pesan utama muncul: jelas dan mudah dipahami.","4️⃣ Dekorasi ditambahkan: poster siap dilihat! 🎉"];L.forEach((t,i)=>setTimeout(()=>{$("mc").textContent=t;snd('pop');if(i==3)fin(1)},i*1300+300))};
+/* 2 poster maker */
+const TP=[{n:"Jaga Data Pribadi",t:"JAGA DATA PRIBADI",m:"Password dan alamat rumah itu rahasia. Jangan dibagikan sembarangan!",bg:"#2b2a7a",ic:"🔐"},{n:"Gunakan Internet dengan Bijak",t:"INTERNET BIJAK",m:"Pakai internet untuk belajar, atur waktu, dan periksa informasi.",bg:"#0fa3b1",ic:"🌐"},{n:"Berkomunikasi dengan Sopan",t:"BERKOMUNIKASI SOPAN",m:"Berpikir dulu sebelum mengirim pesan. Gunakan kata yang baik.",bg:"#1fa37f",ic:"💬"},{n:"Hindari Tautan Mencurigakan",t:"HINDARI TAUTAN ANEH",m:"Ada hadiah dari orang tak dikenal? Jangan klik, tanya guru!",bg:"#d62828",ic:"🚫"}];
+const COL=["#2b2a7a","#0fa3b1","#1fa37f","#d62828","#ffc93c","#0070f8"],ICO=["🔐","🌐","💬","🚫","🛡️","📚","😊","⭐"];
+let P={t:TP[0].t,m:TP[0].m,bg:TP[0].bg,ic:TP[0].ic};
+$("tp").innerHTML=TP.map((t,i)=>`<button data-i="${i}">${t.n}</button>`).join('');
+$("sw").innerHTML=COL.map(c=>`<button class="sw" data-c="${c}" style="background:${c}" aria-label="Warna ${c}"></button>`).join('');
+$("ik").innerHTML=ICO.map(c=>`<button class="ic" data-e="${c}" aria-label="Ikon ${c}">${c}</button>`).join('');
+function sync(){$("jd").value=P.t;$("ps").value=P.m;document.querySelectorAll('#sw .sw').forEach(b=>b.classList.toggle('on',b.dataset.c==P.bg));document.querySelectorAll('#ik .ic').forEach(b=>b.classList.toggle('on',b.dataset.e==P.ic));draw()}
+document.querySelectorAll('#tp button').forEach(b=>b.onclick=()=>{const t=TP[+b.dataset.i];P={t:t.t,m:t.m,bg:t.bg,ic:t.ic};snd('click');sync()});
+document.querySelectorAll('#sw .sw').forEach(b=>b.onclick=()=>{P.bg=b.dataset.c;sync()});
+document.querySelectorAll('#ik .ic').forEach(b=>b.onclick=()=>{P.ic=b.dataset.e;sync()});
+$("jd").oninput=()=>{P.t=$("jd").value;draw()};$("ps").oninput=()=>{P.m=$("ps").value;draw()};$("uk").oninput=draw;
+function wrapT(c,t,x,y,w,lh){const ws=t.split(' ');let l='',yy=y;for(const q of ws){const tt=l?l+' '+q:q;if(c.measureText(tt).width>w&&l){c.fillText(l,x,yy);l=q;yy+=lh}else l=tt}c.fillText(l,x,yy);return yy}
+function dark(h){const n=parseInt(h.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;return (0.299*r+0.587*g+0.114*b)<150}
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function draw(){const cv=$("cv"),c=cv.getContext('2d'),s=+$("uk").value,tc=dark(P.bg)?'#ffffff':'#1d1b4c';
+c.clearRect(0,0,600,800);c.fillStyle=P.bg;c.fillRect(0,0,600,800);
+c.fillStyle='rgba(255,255,255,.14)';[[70,70,90],[540,230,60],[60,700,70],[560,720,50]].forEach(a=>{c.beginPath();c.arc(a[0],a[1],a[2],0,7);c.fill()});
+c.textAlign='center';c.textBaseline='alphabetic';c.fillStyle=tc;c.font='800 '+s+'px "Baloo 2",Nunito,Arial,sans-serif';const ty=wrapT(c,(P.t||'').trim()||'JUDUL POSTER',300,95,520,s*1.1);
+const cy=Math.max(ty+150,330);c.fillStyle='rgba(255,255,255,.28)';c.beginPath();c.arc(300,cy,100,0,7);c.fill();c.font='110px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';c.fillStyle='#000';c.fillText(P.ic,300,cy+38);
+const py=Math.max(cy+130,500);c.fillStyle='#ffffff';rr(c,45,py,510,Math.min(215,740-py),28);c.fill();c.fillStyle='#1d1b4c';c.font='700 '+Math.round(s*.58)+'px Nunito,Arial,sans-serif';wrapT(c,(P.m||'').trim()||'Tulis pesan utamamu di sini.',300,py+52,460,s*.74);
+c.fillStyle=tc;c.font='700 20px Nunito,Arial,sans-serif';c.fillText('#InternetAmanDanSopan',300,775)}
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
+$("unduh").onclick=()=>{const t=P.t+' '+P.m;if(/(\d{6,}|@)/.test(t)){$("pf").innerHTML='<div class="fb wr">🚨 Posternya tampak memuat nomor atau surel. Hapus dulu data pribadi ya.</div>';snd('no');return}
+if(P.t.trim().length<3||P.m.trim().length<5){$("pf").innerHTML='<div class="fb tp">✍️ Isi judul dan pesan utama dulu, ya.</div>';snd('no');return}
+$("cv").toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='poster-literasi-digital.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1500);$("pf").innerHTML='<div class="fb ok">🌟 <b>Posternya berhasil diunduh!</b> Tampilkan karyamu kepada guru dan teman.</div>';snd('ok');fin(2)},'image/png')};
+sync();
+/* 3 presentasi */
+const PR=["Pesan utama posterku: <b>berpikir dulu sebelum mengirim pesan</b>.","Aku memilih pesan ini karena <b>kata yang kasar bisa menyakiti perasaan</b> orang lain.","Manfaatnya bagi teman: <b>grup kelas jadi nyaman</b> dan semua merasa dihargai. Terima kasih!"];let sp=new Set();
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{const i=+b.dataset.p;sp.add(i);$("pp").innerHTML='<div class="fb ok">🎤 <b>Contoh kalimat:</b> '+PR[i]+'<br><small>Sampaikan dengan suara jelas, tersenyum, dan lihat teman-temanmu.</small></div>';snd('pop');$("c3").textContent=sp.size+" / 3";if(sp.size==3)fin(3)});
+/* 4 refleksi */
+const HB=["Menjaga data pribadi dan password","Menggunakan internet sesuai kebutuhan","Berkomunikasi dengan sopan","Memeriksa informasi sebelum percaya","Mengatur waktu memakai perangkat"];let hb=-1;try{hb=parseInt(localStorage.getItem('bab2_p5_refleksi'));if(isNaN(hb))hb=-1}catch(e){}
+function hr(){$("hb").innerHTML=HB.map((h,i)=>`<button data-h="${i}" class="${i==hb?'on':''}" aria-pressed="${i==hb}">${h}</button>`).join('');$("hf").innerHTML=hb>=0?'<div class="fb ok">🌟 Hebat! Mulai hari ini kamu akan berlatih: <b>'+HB[hb]+'</b>. Pilihan ini hanya tersimpan di perangkat ini.</div>':'';document.querySelectorAll('#hb button').forEach(b=>b.onclick=()=>{hb=+b.dataset.h;try{localStorage.setItem('bab2_p5_refleksi',hb)}catch(e){}snd('ok');hr();fin(4)})}hr();
+/* 5 evaluasi */
+const EV=["Judul jelas","Pesan utama mudah dipahami","Ada gambar atau ikon","Warna menarik","Pesan aman dan bertanggung jawab"],ET=["Judul singkat membantu orang cepat paham.","Gunakan kalimat pendek dan mudah.","Ikon membantu pesan lebih mudah diingat.","Pilih warna yang membuat tulisan tetap terbaca.","Tidak ada data pribadi dan bahasanya santun."];
+$("ev").innerHTML=EV.map((e,i)=>`<label><input type="checkbox" data-e="${i}"> ${e}</label>`).join('');
+document.querySelectorAll('#ev input').forEach(b=>b.onchange=()=>{const k=[...document.querySelectorAll('#ev input')].filter(x=>x.checked).length;$("c5").textContent=k+" / 5";snd('click');
+$("ef").innerHTML=k==5?'<div class="fb ok">🎉 <b>Luar biasa!</b> Posterku memenuhi semua kriteria.</div>':'<div class="fb tp">💡 '+(b.checked?'Bagus! ':'Periksa lagi: ')+ET[+b.dataset.e]+' Belum terpenuhi? Perbaiki posternya di tab Poster, lalu centang lagi.</div>';if(k==5)fin(5)});
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Creative Digital Creator</b><p>Selamat! Kamu membuat poster yang aman, sopan, dan kreatif. Bab 2 selesai!</p></div>':'<div class="badge lock"><span class="em">🔒</span><b>Creative Digital Creator</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')}
+prog();
+KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('button,input,canvas').forEach(x=>x.remove());return c.textContent}});
+(function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
+</script></body></html>
