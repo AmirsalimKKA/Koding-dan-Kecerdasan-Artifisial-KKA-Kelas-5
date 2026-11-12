@@ -25,6 +25,10 @@ h1{font-size:clamp(1.7em,5vw,2.6em);line-height:1.15;margin:4px 0 8px;text-shado
 .maskot .s:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fff;border-left:0}
 .box{border-left:8px solid #e08a00;background:#fff6dc;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}
 .box b.t{display:block;font-family:"Baloo 2";color:#e08a00}
+.box.nm{border-left-color:var(--mint);background:#e6f9f2}
+.box.nm b.t{color:#0b6b52}
+input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}
+input.in:focus{outline:0;border-color:var(--teal)}
 .score{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.16);border-radius:20px;padding:10px 16px;color:#fff;margin:12px 0}
 .stars{font-size:2em;display:flex;gap:4px;filter:grayscale(1) opacity(.45)}
 .stars i{font-style:normal;transition:.5s}
@@ -78,7 +82,7 @@ textarea:focus{outline:0;border-color:var(--teal)}
 .conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}
 @keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
 footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
-button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 @media(max-width:560px){.bar b{width:100%;order:3}.tab{font-size:.78em}.maskot .r{font-size:2.6em}}
 @media(min-width:900px){.grid{grid-template-columns:repeat(6,1fr)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -88,7 +92,8 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid va
 <div class="wrap">
 <div class="hero"><h1>🎮 Ayo Jelajahi Teknologi Digital!</h1>
 <div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 3 tantangan, lalu catat <b>satu hal baru</b> ya! ⭐</div></div>
-<div class="box"><b class="t">👩‍🏫 Buka bersama gurumu!</b>Amati dan jelajahi bagaimana teknologi digital membantu manusia menyelesaikan masalah. Pecahkan tantangan di bawah, lalu <b>catat satu hal baru</b> yang kamu temukan.</div></div>
+<div class="box"><b class="t">👩‍🏫 Buka bersama gurumu!</b>Amati dan jelajahi bagaimana teknologi digital membantu manusia menyelesaikan masalah. Pecahkan tantangan di bawah, lalu <b>catat satu hal baru</b> yang kamu temukan.</div>
+<div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7" oninput="try{localStorage.setItem('bab2_nama',this.value)}catch(e){}"></div></div>
 <div class="score"><div class="stars" id="st"><i>⭐</i><i>⭐</i><i>⭐</i></div><div style="flex:1"><div class="bar2"><i id="pg"></i></div><small id="pt">Selesaikan 3 tantangan untuk mendapat bintang ⭐</small></div></div>
 <div class="tabs" id="tb"><button class="tab on" onclick="T(1)"><span class="e">🃏</span>Kartu</button><button class="tab" onclick="T(2)"><span class="e">🧩</span>Sortir</button><button class="tab" onclick="T(3)"><span class="e">❓</span>Kuis</button><button class="tab" onclick="T(4)"><span class="e">📝</span>Catatan</button></div>
 
@@ -103,6 +108,8 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid va
 <footer>SD Negeri 04 Tugusari · KKA Kelas V</footer>
 <script>
 const $=id=>document.getElementById(id);let done={1:0,2:0,3:0};
+const URL_SHEET='https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec';
+function kirimHasil(kuis,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",kuis:kuis,skor:skor,total:total})}).catch(function(){})}catch(e){}}
 $("bg").innerHTML=["📱","💻","📺","⌚","📷","💡","🚀","⭐","🤖","🎧"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
 function boom(){for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎈','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
 function T(n){[1,2,3,4].forEach(i=>{$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n)});if(n==4)fin();scrollTo({top:0,behavior:"smooth"})}
@@ -110,17 +117,17 @@ function prog(){const c=done[1]+done[2]+done[3];$("pg").style.width=c/3*100+"%";
 function fin(){const c=done[1]+done[2]+done[3];$("fin").innerHTML=c==3?'<div class="fb ok">🌟🌟🌟 Hebat! Kamu menyelesaikan Pertemuan 1!</div><p><a class="btn b" href="bab2.html">📘 Kembali ke Dashboard</a></p>':'<div class="fb no">Masih ada tantangan yang belum selesai. Ayo lengkapi dulu ya! 💪</div>'}
 const D=[["📱","Ponsel",1,"Memakai komputer dan internet untuk menelepon, mengirim pesan, dan video call."],["📏","Penggaris kayu",0,"Hanya alat ukur biasa, tidak memakai komputer atau internet."],["💻","Laptop",1,"Komputer untuk mengetik tugas, presentasi, dan belajar daring."],["✏️","Pensil",0,"Alat tulis biasa tanpa komputer atau listrik."],["⌚","Jam pintar",1,"Menunjukkan waktu dan menghitung langkah kaki dengan komputer kecil."],["📒","Buku tulis",0,"Alat mencatat dari kertas, bukan teknologi digital."],["🏧","Mesin ATM",1,"Menyimpan dan mengambil uang lewat sistem komputer."],["🧹","Sapu",0,"Alat kebersihan sederhana tanpa komputer."],["📷","Kamera digital",1,"Menyimpan foto dan video dalam bentuk data digital."],["🪑","Kursi kayu",0,"Perabot biasa, tidak memakai komputer atau internet."]];let fi=0,fs=0;
 function RF(){$("fcn").textContent=Math.min(fi+1,D.length)+" / "+D.length;
-if(fi>=D.length){$("fcw").innerHTML=`<div class="big">${fs>=8?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${fs}/${D.length}</b></p><p style="text-align:center"><button class="btn" onclick="fi=0;fs=0;RF()">🔄 Main lagi</button></p>`;if(!done[1]){done[1]=1;prog()}return}
+if(fi>=D.length){$("fcw").innerHTML=`<div class="big">${fs>=8?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${fs}/${D.length}</b></p><p style="text-align:center"><button class="btn" onclick="fi=0;fs=0;RF()">🔄 Main lagi</button></p>`;if(!done[1]){done[1]=1;kirimHasil("Bab 2 P1 - Kartu Teknologi",fs,D.length);prog()}return}
 const d=D[fi];$("fcw").innerHTML=`<div class="fc" id="fc"><div class="fci"><div class="face front"><span class="em">${d[0]}</span><b>${d[1]}</b><small>Teknologi digital atau bukan?</small></div><div class="face back" id="bk"></div></div></div><div class="act" id="fa"><button class="btn g" onclick="F(true)">📱 Teknologi</button><button class="btn o" onclick="F(false)">🚫 Bukan</button></div><div id="fn"></div>`}
 function F(v){const d=D[fi],ok=(!!d[2])==v;if(ok)fs++;$("bk").className="face back "+(ok?"y":"n");$("bk").innerHTML=`<span class="em">${ok?"✅":"❌"}</span><h4>${d[1]}: ${d[2]?"Teknologi digital":"Bukan teknologi digital"}</h4><p>${d[3]}</p>`;$("fc").classList.add("f");$("fa").innerHTML=`<button class="btn b" style="grid-column:1/3" onclick="fi++;RF()">${fi==D.length-1?"Lihat skor 🏁":"Kartu berikutnya ▶"}</button>`}
 RF();
 const S=[["Raka menonton video cara melipat origami lalu mempraktikkannya.",1,"Belajar hal baru dengan video."],["Dewi video call dengan kakeknya yang tinggal di luar kota.",1,"Berkomunikasi dengan keluarga."],["Fajar bermain gim sampai pukul 11 malam.",0,"Kurang tidur dan sulit fokus esok hari."],["Putri memakai ponsel saat makan bersama keluarga.",0,"Mengurangi kebersamaan dan sopan santun."],["Raka mencari arti kata sulit di kamus digital.",1,"Mencari informasi untuk belajar."],["Dewi menonton video tiga jam tanpa istirahat.",0,"Mata lelah; perlu istirahat."],["Fajar membuat kartu ucapan digital untuk gurunya.",1,"Berkreasi dengan teknologi."],["Putri menunda PR karena asyik bermain gawai.",0,"Tugas terbengkalai; atur waktu."]];let si=0,sc=0,lock=false;
-function show(){if(si>=S.length){$("sit").innerHTML="🏁 Selesai! Skormu "+sc+"/8";$("sfb").innerHTML="";if(sc>=5&&!done[2]){done[2]=1;prog()}else if(sc<5)$("sfb").innerHTML='<button class="btn" onclick="si=0;sc=0;$(\'sc\').textContent=0;show()">🔄 Coba lagi (butuh minimal 5)</button>';return}$("sit").textContent=S[si][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
+function show(){if(si>=S.length){$("sit").innerHTML="🏁 Selesai! Skormu "+sc+"/8";$("sfb").innerHTML="";if(sc>=5&&!done[2]){done[2]=1;kirimHasil("Bab 2 P1 - Manfaat atau Kurang Bijak",sc,S.length);prog()}else if(sc<5)$("sfb").innerHTML='<button class="btn" onclick="si=0;sc=0;$(\'sc\').textContent=0;show()">🔄 Coba lagi (butuh minimal 5)</button>';return}$("sit").textContent=S[si][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
 function A(v){if(lock||si>=S.length)return;lock=true;const ok=(!!S[si][1])==v;if(ok)sc++;$("sc").textContent=sc;$("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Benar!":"❌ Belum tepat."} ${S[si][2]}</div>`;si++;setTimeout(show,1600)}
 show();
 const Q=[["Berikut yang termasuk teknologi digital adalah ....",["Penggaris kayu","Jam pintar","Buku tulis","Pensil"],1,"Jam pintar memakai teknologi komputer."],["Dewi video call dengan kakek. Ini manfaat teknologi untuk ....",["Berkomunikasi","Menghindari tugas","Bermain gim","Membuang waktu"],0,"Video call membantu berkomunikasi walau berjauhan."],["Fajar bermain gim sampai larut malam. Dampak yang paling mungkin ....",["Makin pintar memasak","Mengantuk dan sulit fokus esok hari","Tubuh makin sehat","Nilai pasti naik"],1,"Kurang tidur mengganggu konsentrasi."],["Sebelum memakai tablet, sikap bijak yang pertama adalah ....",["Memakai sebanyak mungkin","Menentukan tujuan dan lama waktu","Meminjamkan ke semua teman","Memakai tanpa izin"],1,"Tahu tujuan dan batas waktu."],["Raka belajar origami dari video, lalu mengerjakan PR dulu sebelum bermain. Sikap Raka disebut ....",["Seimbang dan bijak","Malas","Lupa waktu","Boros"],0,"Ia mengatur waktu belajar, main, dan istirahat."]];let qi=0,qs=0;
-function Rq(){if(qi>=Q.length){$("qz").innerHTML=`<div class="big">${qs>=4?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${qs}/5</b></p>`+(qs>=3?"":'<p style="text-align:center"><button class="btn" onclick="qi=0;qs=0;Rq()">🔄 Ulangi</button></p>');if(qs>=3&&!done[3]){done[3]=1;prog()}return}
+function Rq(){if(qi>=Q.length){$("qz").innerHTML=`<div class="big">${qs>=4?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${qs}/5</b></p>`+(qs>=3?"":'<p style="text-align:center"><button class="btn" onclick="qi=0;qs=0;Rq()">🔄 Ulangi</button></p>');if(qs>=3&&!done[3]){done[3]=1;kirimHasil("Bab 2 P1 - Kuis Kilat",qs,Q.length);prog()}return}
 const q=Q[qi];$("qz").innerHTML=`<p><span class="chip">Soal ${qi+1} dari ${Q.length}</span></p><p><b>${q[0]}</b></p>`+q[1].map((o,i)=>`<button class="opt" onclick="Pk(${i},this)">${"ABCD"[i]}. ${o}</button>`).join("")+'<div id="qf"></div>'}
 function Pk(i,b){const q=Q[qi];document.querySelectorAll(".opt").forEach((x,k)=>{x.disabled=true;if(k==q[2])x.classList.add("ok")});if(i==q[2])qs++;else b.classList.add("no");$("qf").innerHTML=`<div class="fb ${i==q[2]?"ok":"no"}">${i==q[2]?"✅ Benar!":"❌ Kurang tepat."} ${q[3]}</div><p><button class="btn b" onclick="qi++;Rq()">Lanjut ▶</button></p>`}
-Rq();try{$("note").value=localStorage.getItem("bab2_note1")||""}catch(e){}
+Rq();try{$("note").value=localStorage.getItem("bab2_note1")||"";$("nama").value=localStorage.getItem("bab2_nama")||""}catch(e){}
 </script></body></html>
