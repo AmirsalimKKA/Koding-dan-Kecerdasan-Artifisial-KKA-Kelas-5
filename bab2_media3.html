@@ -68,6 +68,7 @@ p{margin:6px 0}ul{padding-left:1.2em}
 .conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
 footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
 button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.box.nm{border-left:8px solid var(--mint);background:#e6f9f2;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}.box.nm b.t{display:block;font-family:"Baloo 2",Nunito,sans-serif;color:#0b6b52}input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}input.in:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 @media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
@@ -76,7 +77,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <div class="crumb"><span class="mt2" aria-label="Pertemuan 3 dari 5"><i>1</i><i>2</i><i class="on">3</i><i>4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 3 › Media</div></header>
 <div class="wrap" id="wr">
 <div class="hero"><h1>🛡️ Jadi Penjaga Data Digital!</h1>
-<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Digital Safety Guardian</b>. Semua tokoh dan pesan di sini fiktif, jadi jangan ketik data atau password aslimu. Boleh mencoba lagi! ⭐</div></div></div>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Digital Safety Guardian</b>. Semua tokoh dan pesan di sini fiktif, jadi jangan ketik data atau password aslimu. Boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"></div></div>
 <div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 5 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip">0 poin</b></div>
 <div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
 <button class="tab on" onclick="T(1)" role="tab"><span class="e">🎬</span>Animasi</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🗂️</span>Pilah</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🔑</span>Password</button><button class="tab" onclick="T(4)" role="tab"><span class="e">📩</span>Pesan</button><button class="tab" onclick="T(5)" role="tab"><span class="e">📝</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
@@ -92,9 +93,12 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
 
 <div class="nv"><a class="btn" href="bab2_materi3.html">◀ Kembali ke Materi 3</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi4.html">Selanjutnya: Pertemuan 4 ▶</a></div></div>
-<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh fiktif dan tidak ada data yang dikirim ke internet</footer>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh fiktif · Hasil aktivitas (nama panggilan dan skor) dikirim ke guru</footer>
 <script src="bab2_audio.js"></script><script>
 const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
+const URL_SHEET="https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec";
+const BAB="Bab 2",PERTEMUAN="Pertemuan 3";
+function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total})}).catch(function(){})}catch(e){}}
 const NAMA=["Animasi","Pilah","Password","Pesan","Evaluasi"],N=5,KEY='bab2_p3_done';
 let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
 
@@ -104,7 +108,8 @@ function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();scrollTo({top:0,behavior:"smooth"})}
 const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
 function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p3','1')}catch(e){}}
-function fin(n){if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
+const SENT=new Set();
+function fin(n,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama",k=n+"|"+nm;if(!SENT.has(k)){SENT.add(k);kirimHasil("Aktivitas "+n+": "+NAMA[n-1],skor===undefined?1:skor,total===undefined?1:total)}if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
 /* 1 animasi */
 $("anibtn").onclick=()=>{const t=$("anitx"),k=$("kid"),b=$("bub"),s=$("sh");b.classList.remove('show');s.classList.remove('show');k.classList.remove('think');
 t.className="fb no";t.textContent="📩 Pesan dari orang tak dikenal muncul dan meminta alamat serta nomor HP Rani.";b.classList.add('show');snd('no');
@@ -116,7 +121,7 @@ function show(){const it=items[i],o=labels||it.o;if(box=='q2')$("p2").textConten
 el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="msg">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABC"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
 const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==it.a;bs.forEach(x=>x.disabled=true);bs[it.a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
 el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
-function end(){fin(+id);const g=sc==items.length?'Luar biasa! Kamu penjaga data yang hebat! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 3, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
+function end(){fin(+id,sc,items.length);const g=sc==items.length?'Luar biasa! Kamu penjaga data yang hebat! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 3, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
 $("p2").textContent=box=='q2'?'':'';el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn" onclick="this.dispatchEvent(new CustomEvent('again',{bubbles:true}))">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=()=>{i=0;sc=0;show()}}
 show()}
 const R=['Rahasia 🔒','Hati-hati ⚠️','Aman 😊'];
