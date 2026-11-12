@@ -64,6 +64,7 @@ p{margin:6px 0}
 .opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
 @keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .big{font-size:4em;text-align:center;animation:bob 2s infinite}
+.box.nm{border-left:8px solid var(--mint);background:#e6f9f2;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}.box.nm b.t{display:block;font-family:"Baloo 2",Nunito,sans-serif;color:#0b6b52}input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}input.in:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 /* jaringan */
 .net{width:100%;max-width:440px;display:block;margin:6px auto}
 .net .ln line{stroke-dasharray:7 9;animation:dash 1.1s linear infinite}
@@ -149,7 +150,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 </header>
 <div class="wrap" id="wr">
 <div class="hero"><h1>🎮 Ayo Jelajahi Internet Sehat!</h1>
-<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 6 aktivitas untuk meraih badge <b>Internet Smart User</b>. Tidak ada yang gagal, kamu boleh mencoba lagi! ⭐</div></div></div>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 6 aktivitas untuk meraih badge <b>Internet Smart User</b>. Tidak ada yang gagal, kamu boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"></div></div>
 <div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="6" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 6 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip" title="Poin aktivitas">0 poin</b></div>
 <div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
 <button class="tab on" onclick="T(1)" role="tab"><span class="e">🌐</span>Jaringan</button>
@@ -201,10 +202,13 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 
 <div class="nv"><a class="btn" href="bab2_materi2.html">◀ Sebelumnya: Materi 2</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi3.html">Selanjutnya: Pertemuan 3 ▶</a></div>
 </div>
-<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif dan tidak ada data yang dikirim ke internet</footer>
+<footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif · Hasil aktivitas (nama panggilan dan skor) dikirim ke guru</footer>
 <script src="bab2_audio.js"></script>
 <script>
 const $=id=>document.getElementById(id);
+const URL_SHEET="https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec";
+const BAB="Bab 2",PERTEMUAN="Pertemuan 2";
+function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total})}).catch(function(){})}catch(e){}}
 const snd=n=>{try{KKA.sfx(n)}catch(e){}};
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const NAMA=["Jaringan","Fungsi","Game","Periksa","Aturan","Evaluasi"];
@@ -217,7 +221,8 @@ function cnt(){return NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0)}
 function prog(){const c=cnt();$("pg").style.width=c/6*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";
  $("pt").textContent=c==6?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari 6 aktivitas selesai";
  try{localStorage.setItem('bab2_p2_done',JSON.stringify(done));if(c==6)localStorage.setItem('bab2_p2','1')}catch(e){}}
-function fin(n){if(done[n])return;done[n]=1;const all=cnt()==6;prog();snd(all?'win':'ok');if(all)boom()}
+const SENT=new Set();
+function fin(n,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama",k=n+"|"+nm;if(!SENT.has(k)){SENT.add(k);kirimHasil("Aktivitas "+n+": "+NAMA[n-1],skor===undefined?1:skor,total===undefined?1:total)}if(done[n])return;done[n]=1;const all=cnt()==6;prog();snd(all?'win':'ok');if(all)boom()}
 
 /* ===== 1. Jaringan ===== */
 const DV=[{n:"HP",x:62,y:52},{n:"Laptop",x:298,y:52},{n:"Tablet",x:180,y:190}],CORE={x:180,y:100};
@@ -258,7 +263,7 @@ const G0=[["Dewi mencari gambar lebah di situs museum sains untuk tugas IPAS.",1
 let G,gi=0,gs=0,lock=false;
 function gstart(){G=shuf(G0);gi=0;gs=0;lock=false;$("sc").textContent=0;$("gb").hidden=false;sh()}
 function sh(){if(gi>=G.length){$("sit").innerHTML="🏁 Selesai! Kamu menjawab tepat "+gs+" dari "+G.length+".";$("gb").hidden=true;$("gp").textContent="";
-  $("sfb").innerHTML=`<div class="fb ok">${gs>=6?"🌟 Hebat sekali! Kamu sudah paham kebiasaan internet sehat.":"👍 Terima kasih sudah berlatih! Baca lagi pembahasannya, lalu coba lagi untuk menguatkan pemahamanmu."}</div><p><button class="btn" onclick="gstart();$('sfb').innerHTML=''">🔄 Main lagi</button></p>`;fin(3);return}
+  $("sfb").innerHTML=`<div class="fb ok">${gs>=6?"🌟 Hebat sekali! Kamu sudah paham kebiasaan internet sehat.":"👍 Terima kasih sudah berlatih! Baca lagi pembahasannya, lalu coba lagi untuk menguatkan pemahamanmu."}</div><p><button class="btn" onclick="gstart();$('sfb').innerHTML=''">🔄 Main lagi</button></p>`;fin(3,gs,G.length);return}
  $("gp").textContent=(gi+1)+" / "+G.length;$("sit").textContent=G[gi][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
 function A(v){if(lock||gi>=G.length)return;lock=true;const g=G[gi],ok=(!!g[1])==v;if(ok)gs++;$("sc").textContent=gs;
  $("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Tepat!":"💡 Ayo perbaiki."} ${g[2]}</div><p><button class="btn b" id="gn" data-nosfx>${gi==G.length-1?"Lihat hasil 🏁":"Situasi berikutnya ▶"}</button></p>`;snd(ok?'ok':'no');gi++;$("gn").onclick=()=>{$("sfb").innerHTML='';sh()}}
@@ -300,7 +305,7 @@ const Q0=[{q:"Fajar ingin tahu cara lebah membuat madu untuk tugas. Langkah pert
 {q:"Pernyataan: “Semua yang ada di internet pasti benar karena banyak orang membacanya.” Tanggapan yang tepat adalah ....",o:[["Salah, karena banyaknya pembaca tidak membuktikan kebenaran",1],["Benar, karena internet selalu akurat",0]],w:"Informasi tersebar luas belum tentu benar. Tetap periksa pembuat dan buktinya."}];
 let Q,qi=0,qs=0;
 function qstart(){Q=shuf(Q0).map(q=>({...q,o:q.o.length>2?shuf(q.o):q.o}));qi=0;qs=0;Rq()}
-function Rq(){if(qi>=Q.length){const full=qs==Q.length;$("qz").innerHTML=`<div class="big">${qs>=5?"🏆":"🌟"}</div><p style="text-align:center"><b>Skor ${qs} dari ${Q.length}</b></p><div class="fb ok">${qs>=5?"Luar biasa! Kamu paham internet sehat.":qs>=3?"Bagus! Pemahamanmu sudah baik. Baca lagi pembahasan yang masih keliru, lalu coba lagi kalau mau.":"Terima kasih sudah mencoba! Buka lagi Materi 2, lalu ulangi evaluasi ini. Kamu pasti bisa."}</div><p style="text-align:center"><button class="btn" onclick="qstart()">🔄 Ulangi evaluasi</button></p>`;fin(6);return}
+function Rq(){if(qi>=Q.length){const full=qs==Q.length;$("qz").innerHTML=`<div class="big">${qs>=5?"🏆":"🌟"}</div><p style="text-align:center"><b>Skor ${qs} dari ${Q.length}</b></p><div class="fb ok">${qs>=5?"Luar biasa! Kamu paham internet sehat.":qs>=3?"Bagus! Pemahamanmu sudah baik. Baca lagi pembahasan yang masih keliru, lalu coba lagi kalau mau.":"Terima kasih sudah mencoba! Buka lagi Materi 2, lalu ulangi evaluasi ini. Kamu pasti bisa."}</div><p style="text-align:center"><button class="btn" onclick="qstart()">🔄 Ulangi evaluasi</button></p>`;fin(6,qs,Q.length);return}
  const q=Q[qi];$("qz").innerHTML=`<p><span class="chip">Soal ${qi+1} dari ${Q.length}</span> <span class="chip">Skor ${qs}</span></p><p><b>${q.q}</b></p>`+q.o.map((o,i)=>`<button class="opt" data-nosfx data-i="${i}">${"ABCD"[i]}. ${o[0]}</button>`).join('')+'<div id="qf" aria-live="polite"></div>';
  document.querySelectorAll('#qz .opt').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#qz .opt').forEach((x,k)=>{x.disabled=true;if(q.o[k][1])x.classList.add('ok')});const ok=q.o[i][1];if(ok)qs++;else b.classList.add('no');snd(ok?'ok':'no');
   $("qf").innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ Tepat!':'💡 Belum tepat.'} ${q.w}</div><p><button class="btn b" data-nosfx onclick="qi++;Rq()">${qi==Q.length-1?'Lihat skor 🏁':'Lanjut ▶'}</button></p>`})}
