@@ -6,55 +6,32 @@
 <title>Pertemuan 3: Empat Pilar Berpikir Komputasional – Media Interaktif KKA Kelas V</title>
 <meta name="description" content="Media interaktif Pertemuan 3: empat pilar berpikir komputasional dan proyek poster STEAM.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9aa7'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E🤖%3C/text%3E%3C/svg%3E">
-<!-- Tailwind & FontAwesome for consistency -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>:root{
-  --bg: #f4f9f9; 
-  --card: #ffffff; 
-  --ink: #333333; 
-  --muted: #6b6880;
-  
-  /* VisualMath KKA Theme Colors */
-  --navy: #022050;
-  --teal: #0B7C86; 
-  --teal-d: #085E66;
-  --cyan: #00D6D8;
-  
-  --orange: #ff8a3d; 
-  --orange-d: #d4651a;
-  --yellow: #ffd34e; 
-  --pink: #ff6f91; 
-  --green: #2fb36d; 
-  --red: #e5484d; 
-
+  --bg: #f4f9f9; --card: #ffffff; --ink: #333333; --muted: #6b6880;
+  --navy: #022050; --teal: #0B7C86; --teal-d: #085E66; --cyan: #00D6D8;
+  --orange: #ff8a3d; --orange-d: #d4651a; --yellow: #ffd34e; --pink: #ff6f91; --green: #2fb36d; --red: #e5484d; 
   --line: #c3e2e5; 
   --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
   --r: 20px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family: 'Nunito', "Trebuchet MS", sans-serif;
-  font-size:17px;
-  line-height:1.55;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family: 'Nunito', "Trebuchet MS", sans-serif;font-size:17px;line-height:1.55;
   background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-  background-attachment:fixed;
+  background-size: 20px 20px;background-position: 0 0, 10px 10px;background-attachment:fixed;
 }
 h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margin:0 0 .5em; color: var(--navy);}
 h2{font-size:1.55rem} h3{font-size:1.15rem}
 p{margin:.4em 0 .8em}
 button{font:inherit;cursor:pointer}
-.sr{position:absolute;left:-9999px}
 a{color:var(--teal-d)}
 
-/* top bar */
 .top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
 .top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -65,7 +42,6 @@ a{color:var(--teal-d)}
 .home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
 .home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
 
-/* step nav */
 .steps{display:flex;gap:8px;overflow-x:auto;padding:20px 20px 6px;max-width:1100px;margin:0 auto;scrollbar-width:thin}
 .steps button{flex:0 0 auto;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 14px;font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center;box-shadow:0 3px 0 var(--line)}
 .steps button .n{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem}
@@ -74,6 +50,7 @@ a{color:var(--teal-d)}
 .steps button.done:not(.on) .n{background:var(--cyan);color:var(--navy)}
 
 main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
+.namewrap{max-width:1100px;margin:0 auto;padding:8px 20px 0}
 .panel{display:none;animation:pop .35s ease}
 .panel.on{display:block}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -104,7 +81,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .btn.g{background:var(--green);box-shadow:0 4px 0 #1f8a50}
 .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
 .btn.ghost:hover { background: #f0f9fa; border-color: var(--teal); color: var(--teal); }
-.btn[disabled]{opacity:.45;cursor:not-allowed; transform: none; box-shadow:0 4px 0 var(--teal-d);}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
 
@@ -114,19 +90,11 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .fb.no{background:#ffe6e6;color:#a31d22; border: 2px solid #f2b0b2;}
 .fb.hint{background:#e9f8f9;color:var(--teal-d); border: 2px solid var(--line);}
 
-/* chips / option buttons */
 .opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;font-weight:600;color:var(--ink);margin:8px 0;box-shadow:0 3px 0 var(--line); transition: all 0.2s;}
 .opt:hover{border-color:var(--teal); transform: translateY(-2px);}
 .opt.right{background:#e2f7ea;border-color:var(--green);box-shadow:0 3px 0 #8fd6b0}
 .opt.wrong{background:#ffe6e6;border-color:var(--red);box-shadow:0 3px 0 #f2b0b2}
-.opt.sel{border-color:var(--orange);background:#fff4e8}
-.word{display:inline-block;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 16px;font-weight:800;margin:6px;box-shadow:0 3px 0 var(--line); transition: transform 0.1s;}
-.word:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line);}
-.word.used{opacity:.35;pointer-events:none}
-.blank{display:inline-block;min-width:140px;border-bottom:4px dashed var(--teal);text-align:center;font-weight:800;color:var(--teal-d);padding:0 10px;cursor:pointer; font-size: 1.1rem;}
-.blank.ok{border-bottom-style:solid;border-color:var(--cyan);color:var(--navy)}
 
-/* sequencer */
 .seq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:820px){.seq{grid-template-columns:1fr}}
 .seq h4{margin:0 0 10px;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px; font-weight: 800;}
@@ -140,7 +108,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .slot.ok{border-color:var(--green);background:#eefaf3}.slot.ok .no{background:var(--green)}
 .slot.bad{border-color:var(--red);background:#fff2f2}.slot.bad .no{background:var(--red)}
 
-/* flip card */
 .flip{perspective:900px;min-height:180px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
 .flip .in{position:relative;width:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
 .flip.on .in{transform:rotateY(180deg)}
@@ -149,7 +116,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg); border-color: var(--cyan); border-width: 3px;}
 .flip .big{font-size:2.8rem; margin-bottom: 10px;}
 
-/* quiz */
 .q{margin:16px 0 26px}
 .q .qt{font-weight:800;margin-bottom:8px; font-size: 1.1rem; color: var(--navy);}
 .score{display:flex;gap:10px;align-items:center;font-weight:800; background: var(--navy); color: white; padding: 10px 20px; border-radius: 16px; width: max-content; font-size: 1.1rem;}
@@ -168,24 +134,8 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 .bubble{background:#fff;border:2px solid var(--teal);border-radius:18px;padding:14px 20px;position:relative;box-shadow:0 4px 0 var(--teal);font-weight:600; color: var(--ink);}
 .card.key .bubble { background: var(--teal); color: white; border-color: var(--cyan); box-shadow: 0 4px 0 var(--navy); }
 .foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
-@media print{.top,.steps,.pn,.noprint{display:none!important}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
-</head>
-<body>
-<header class="top">
-  <div class="brand">
-    <img src="logo.png" alt="Logo KKA">
-    <div class="ttl">Pertemuan 3 · Empat Pilar &amp; Proyek STEAM<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
-  </div>
-  <div class="sp"></div>
-  <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
-  <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
-</header>
-<nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
-<main>
-<style>
 @media print{body *{visibility:hidden}#poster,#poster *{visibility:visible}#poster{position:absolute;left:0;top:0;width:100%;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .pillbtn{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .pillbtn .e{font-size:1.8rem}
 #poster{--pc:#0e9aa7;border:4px solid var(--pc);border-radius:20px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
@@ -201,10 +151,36 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 .ck{display:flex;gap:8px;align-items:center;font-weight:700}.ck i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem;color:#fff}.ck.ok i{background:var(--green)}
 .skor label{display:inline-flex;gap:4px;align-items:center;margin-right:10px;font-weight:700}
 </style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="logo.png" alt="Logo KKA">
+    <div class="ttl">Pertemuan 3 · Empat Pilar &amp; Proyek STEAM<small>Koding &amp; Kecerdasan Artifisial • Kelas V • Bab 1</small></div>
+  </div>
+  <div class="sp"></div>
+  <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
+</header>
+
+<div class="namewrap">
+  <div class="card tip">
+    <h3>🙋 Tulis namamu dulu ya!</h3>
+    <label for="nama" style="font-weight:700">Nama panggilan atau nomor absen (jangan tulis data pribadi lain):</label>
+    <input id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7" style="margin-top:6px">
+    <div class="row" style="margin-top:12px"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn ghost" id="ganti" type="button" hidden>🔄 Ganti murid</button></div>
+    <div id="nmsg" class="fb no show" role="alert" hidden></div>
+    <div id="cfm" class="fb no show" role="alert" hidden>Yakin ganti murid? Progres di perangkat ini akan dihapus.<div class="row" style="margin-top:10px"><button class="btn o" id="cya" type="button">Ya, ganti</button><button class="btn ghost" id="cbt" type="button">Batal</button></div></div>
+  </div>
+</div>
+
+<div id="app" hidden>
+<nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
+<main>
 <section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
   <div class="card key kodi-say">
     <img src="logo.png" alt="Logo KKA">
-    <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat kekuatan super</b> para pemikir komputasional dan buat <b>poster solusi</b>!</div>
+    <div class="bubble">Pada pertemuan sebelumnya kita sudah belajar algoritma dan IPO. Hari ini, kenalan dengan <b>empat kekuatan super</b> para pemikir komputasional dan buat <b>poster solusi</b>! Selesaikan 6 kegiatan: Pilar, Cocok, Kuis Pilar, Poster, STEAM, dan Kuis.</div>
   </div>
   <div class="grid g2">
     <div class="card"><h3>🎯 Tujuan pertemuan ini</h3>
@@ -218,7 +194,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 
 <section class="panel" id="p-pilar" data-title="Empat Pilar" data-icon="🧠" data-tp="5" data-sintaks="Mindful">
   <div class="card">
-    <p>Pilih satu pilar, baca penjelasannya, lalu <b>coba mini-kegiatannya</b>.</p>
+    <p>Pilih satu pilar, baca penjelasannya, lalu <b>coba mini-kegiatannya</b>. <span class="mini">(Kegiatan ini selesai setelah keempat mini-kegiatan berhasil.)</span></p>
     <div class="grid g4" id="pilTabs"></div>
   </div>
   <div class="card" id="pilBox"></div>
@@ -227,7 +203,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <section class="panel" id="p-cocok" data-title="Cocokkan Pilar" data-icon="🧩" data-tp="5" data-sintaks="Joyful">
   <div class="card">
     <h3>🎴 Cocokkan kartu pilar dengan contoh kegiatan</h3>
-    <p>Baca contoh kegiatan A–D, lalu pilih huruf yang cocok untuk setiap pilar.</p>
+    <p>Baca contoh kegiatan A–D, lalu pilih huruf yang cocok untuk setiap pilar. <span class="mini">(Skor dihitung dari percobaan pertamamu.)</span></p>
     <table class="t" id="ctoh"></table>
     <div id="match" style="margin-top:12px"></div>
     <div class="row" style="margin-top:10px"><button class="btn g" type="button" id="mchk">✔ Periksa</button></div>
@@ -241,7 +217,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 
 <section class="panel" id="p-poster" data-title="Proyek: Poster" data-icon="🎨" data-tp="6,5" data-sintaks="Meaningful">
   <div class="card tip">
-    <b>Tugas proyek:</b> buat poster berjudul <b>“Langkah Pagi Hari Agar Siap Sekolah”</b>. Poster harus memuat judul, urutan langkah yang jelas, gambar/ikon pendukung, warna menarik, dan keterangan singkat penerapan empat pilar.
+    <b>Tugas proyek:</b> buat poster berjudul <b>“Langkah Pagi Hari Agar Siap Sekolah”</b>. Poster harus memuat judul, urutan langkah yang jelas, gambar/ikon pendukung, warna menarik, dan keterangan singkat penerapan empat pilar. Isi poster hanya tampil di layar ini dan tidak dikirim.
   </div>
   <div class="grid g2" style="align-items:start">
     <div>
@@ -265,7 +241,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <div class="grid g3" id="steam"></div></div>
   <div class="grid g2">
     <div class="card"><h3>🎤 Saat presentasi, jelaskan</h3><div id="pres" style="display:grid;gap:6px"></div><p class="mini">Centang setelah kelompokmu siap menjelaskan.</p></div>
-    <div class="card"><h3>📊 Penilaian diri kelompokku</h3><p class="mini">1 = perlu bimbingan • 2 = baik • 3 = sangat baik</p><div id="skor" class="skor"></div><div class="fb" id="skFb"></div></div>
+    <div class="card"><h3>📊 Penilaian diri kelompokku</h3><p class="mini">1 = perlu bimbingan • 2 = baik • 3 = sangat baik. Kegiatan STEAM selesai setelah keempat aspek dinilai.</p><div id="skor" class="skor"></div><div class="fb" id="skFb"></div></div>
   </div>
 </section>
 
@@ -275,22 +251,19 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <li>Dekomposisi memecah masalah, pola mencari kesamaan, abstraksi memilih yang penting, algoritma menyusun langkah.</li>
     <li>Keempat pilar membantu kita menyelesaikan masalah di rumah dan di sekolah.</li></ul></div>
   <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div>
-    <p class="qt" style="margin-top:14px">4. Tuliskan satu contoh penerapan salah satu pilar di kehidupan sehari-hari:</p><textarea rows="2" data-save="contoh"></textarea></div>
-  
-  <!-- Badge KELULUSAN + Navigasi Menu Bab & Menu Utama -->
+    <p class="qt" style="margin-top:14px;font-weight:800">Tantangan (tidak dinilai): tuliskan satu contoh penerapan salah satu pilar di kehidupan sehari-hari:</p><textarea rows="2" data-save="contoh"></textarea></div>
+
+  <div class="fb hint show" id="remain" role="status" hidden></div>
+
   <div class="badge" id="badge">
     <div class="big">🎓🏅</div>
     <h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu sudah menyelesaikan Bab 1</h3>
     <div class="row" style="justify-content:center;margin:10px 0"><span class="chip tp">Pertemuan 1: Masalah</span>→<span class="chip joyful">Pertemuan 2: Algoritma &amp; IPO</span>→<span class="chip meaningful">Pertemuan 3: Empat Pilar</span></div>
-    <p>Berpikir komputasional adalah dasar untuk belajar koding dan kecerdasan artifisial di bab berikutnya.</p>
-    
+    <p>Berpikir komputasional adalah dasar untuk belajar koding dan kecerdasan artifisial di bab berikutnya. Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus.</p>
     <div class="row" style="justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
-      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-list-ul"></i> Menu Bab 1
-      </a>
-      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-house"></i> Menu Utama
-      </a>
+      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-list-ul"></i> Menu Bab 1</a>
+      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-house"></i> Menu Utama</a>
+      <button class="btn g" type="button" onclick="resetAll()">👋 Murid berikutnya</button>
     </div>
   </div>
 
@@ -299,9 +272,9 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <p><span class="chip joyful">Joyful</span> Bagian proyek poster mana yang paling menyenangkan?</p><textarea rows="2" data-save="rf2"></textarea>
     <p><span class="chip meaningful">Meaningful</span> Jika mengulang kegiatan ini, langkah mana yang ingin kamu perbaiki?</p><textarea rows="2" data-save="rf3"></textarea></div>
 </section>
-
 </main>
-<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si</div>
+</div>
+<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si<br>Hasil kegiatan (nama panggilan dan skor) dikirim ke guru. Tulisan dan poster tidak dikirim.</div>
 <script>
 const PAGE='media3';
 const TPS={
@@ -313,28 +286,50 @@ const TPS={
  6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
 };
 </script>
-<script>/* ===== Utilitas & komponen bersama – Media Interaktif KKA Kelas V Bab 1 ===== */
+<script>/* ===== Utilitas & komponen bersama ===== */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const store={
   get(k){try{return localStorage.getItem(PAGE+':'+k)}catch(e){return null}},
   set(k,v){try{localStorage.setItem(PAGE+':'+k,v)}catch(e){}}
 };
+function clearAll(){try{Object.keys(localStorage).filter(k=>k.indexOf(PAGE+':')===0).forEach(k=>localStorage.removeItem(k))}catch(e){}}
+let NM=store.get('nama')||'';
+if(!NM)clearAll(); /* tanpa nama = murid baru, buang sisa data lama */
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-/* umpan balik */
+/* ===== Kirim hasil ke Google Sheet ===== */
+const URL_SHEET="https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec";
+const BAB="Bab 1",PERTEMUAN="Pertemuan 3";
+const ACT={pilar:[1,'Pilar'],cocok:[2,'Cocok'],kuispilar:[3,'Kuis Pilar'],poster:[4,'Poster'],steam:[5,'STEAM'],kuis3:[6,'Kuis']};
+const SENT=new Set();
+function kirim(id,skor,total){
+  const a=ACT[id],nm=($('#nama').value||'').trim()||'Tanpa nama',k=id+'|'+nm;
+  if(!a||SENT.has(k))return;SENT.add(k);
+  try{fetch(URL_SHEET,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({nama:nm,kelas:'V',bab:BAB,pertemuan:PERTEMUAN,aktivitas:'Aktivitas '+a[0]+': '+a[1],skor:skor,total:total,persen:total>0?Math.round(skor/total*100):0})}).catch(function(){})}catch(e){}
+}
+
 function fb(box,kind,msg){box.className='fb show '+kind;box.innerHTML=msg;box.setAttribute('role','status')}
 function fbClear(box){box.className='fb';box.innerHTML=''}
 
-/* bintang */
+/* bintang & penyelesaian */
 const earned=new Set();
 function earn(id){
-  if(earned.has(id))return;earned.add(id);
-  store.set('stars',JSON.stringify([...earned]));
-  $('#starN').textContent=earned.size;
-  const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  if(!earned.has(id)){
+    earned.add(id);
+    store.set('stars',JSON.stringify([...earned]));
+    $('#starN').textContent=earned.size;
+    const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  }
+  checkAll();
 }
+function checkAll(){
+  const miss=Object.keys(ACT).filter(k=>!earned.has(k)).map(k=>ACT[k][1]);
+  const b=$('#badge'),rm=$('#remain');
+  if(!miss.length){b.classList.add('show');rm.hidden=true;clearAll();return}
+  if(earned.has('kuis3')){rm.hidden=false;rm.innerHTML='🌟 Hampir selesai! Kegiatan yang belum selesai: <b>'+miss.join(', ')+'</b>.'}
+}
+function resetAll(){clearAll();location.replace(location.pathname)}
 
 /* ===== navigasi panel ===== */
 function initNav(){
@@ -344,7 +339,6 @@ function initNav(){
   panels.forEach((p,i)=>{
     const b=el('button','',`<span class="n">${i+1}</span>${p.dataset.title}`);
     b.type='button';b.onclick=()=>go(i);nav.appendChild(b);
-    // header
     const tps=(p.dataset.tp||'').split(',').filter(Boolean);
     const h=el('div','');
     let chips='';
@@ -366,7 +360,7 @@ function initNav(){
     i=Math.max(0,Math.min(panels.length-1,i));
     panels.forEach((p,j)=>p.classList.toggle('on',j===i));
     $$('button',nav).forEach((b,j)=>{b.classList.toggle('on',j===i);if(j<i)b.classList.add('done')});
-    const cur=$$('button',nav)[i];cur.scrollIntoView({inline:'center',block:'nearest'});
+    const cur=$$('button',nav)[i];try{cur.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}
     history.replaceState(null,'','#'+panels[i].id);
     window.scrollTo({top:0});
   }
@@ -376,7 +370,7 @@ function initNav(){
   go(idx>=0?idx:0);
 }
 
-/* ===== Sequencer: ketuk kartu untuk menyusun urutan ===== */
+/* ===== Sequencer ===== */
 function Sequencer(root,cfg){
   const byId=Object.fromEntries(cfg.items.map(i=>[i.id,i]));
   let placed=Array(cfg.items.length).fill(null), pool=[];
@@ -400,33 +394,31 @@ function Sequencer(root,cfg){
   $('.rst',root).onclick=reset;
   $('.chk',root).onclick=()=>{
     if(placed.includes(null)){fb(F,'hint','Susun semua kartu dulu, ya. Masih ada kartu yang belum dipilih. 🙂');return}
-    let res;
-    if(cfg.validator)res=cfg.validator(placed);
-    else{const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});res={ok:!bad.length,bad,msg:'Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.'}}
-    $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(res.bad.includes(k)?'bad':'ok')});
-    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
-    else fb(F,'no','🤔 '+res.msg);
+    const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});
+    $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(bad.includes(k)?'bad':'ok')});
+    if(!bad.length){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
+    else fb(F,'no','🤔 Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.');
   };
   reset();
-  return {reset};
 }
 
-/* ===== Kuis pilihan ganda ===== */
+/* ===== Kuis pilihan ganda (urutan pilihan diacak) ===== */
 function Quiz(root,qs,cfg){
   let score=0,done=0;
   const sc=el('div','score',`Skor: <span class="v">0</span> / ${qs.length}`);
   qs.forEach((q,qi)=>{
+    const p=shuffle(q.o.map((t,k)=>[t,k===q.a])),o=p.map(x=>x[0]),a=p.findIndex(x=>x[1]);
     const d=el('div','q',`<div class="qt">${qi+1}. ${q.q}</div>`);
     const f=el('div','fb');
-    q.o.forEach((t,oi)=>{
+    o.forEach((t,oi)=>{
       const b=el('button','opt',`<b>${'ABCD'[oi]}.</b> ${t}`);b.type='button';
       b.onclick=()=>{
         if(d.dataset.done)return;d.dataset.done=1;done++;
-        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('right')});
-        if(oi===q.a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
+        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===a)x.classList.add('right')});
+        if(oi===a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
         else{b.classList.add('wrong');fb(f,'no','❌ Belum tepat. '+q.why)}
         $('.v',sc).textContent=score;
-        if(done===qs.length){earn(cfg.id);cfg.onDone&&cfg.onDone(score)}
+        if(done===qs.length){cfg.onDone&&cfg.onDone(score);earn(cfg.id)}
       };
       d.appendChild(b);
     });
@@ -435,20 +427,38 @@ function Quiz(root,qs,cfg){
   root.appendChild(sc);
 }
 
-/* ===== refleksi (disimpan di peramban) ===== */
+/* ===== refleksi (disimpan di peramban, tidak dikirim) ===== */
 function initReflect(){
   $$('textarea[data-save]').forEach(t=>{
     const v=store.get('r:'+t.dataset.save);if(v)t.value=v;
     t.addEventListener('input',()=>store.set('r:'+t.dataset.save,t.value));
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(window.main)main()});
+
+/* ===== Nama wajib ===== */
+function unlock(){$('#nama').value=NM;$('#nama').readOnly=true;$('#app').hidden=false;$('#mulai').hidden=true;$('#ganti').hidden=false;$('#nmsg').hidden=true}
+function mulai(){
+  const v=($('#nama').value||'').trim();
+  if(v.length<2){$('#nmsg').textContent='Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.';$('#nmsg').hidden=false;$('#nama').focus();return}
+  NM=v;store.set('nama',NM);unlock();
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  initNav();initReflect();if(window.main)main();
+  $('#mulai').onclick=mulai;
+  $('#nama').addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+  $('#ganti').onclick=()=>{if(Object.keys(ACT).every(k=>earned.has(k))){resetAll();return}$('#cfm').hidden=false};
+  $('#cya').onclick=resetAll;$('#cbt').onclick=()=>{$('#cfm').hidden=true};
+  if(NM)unlock();
+});
 </script>
 <script>const PIL=[
  {k:'dek',n:'Dekomposisi',e:'✂️',d:'Memecah masalah besar menjadi bagian-bagian kecil agar lebih mudah diselesaikan.',q:'Bagaimana cara memecah masalah ini menjadi bagian kecil?',ex:'Membereskan kamar dapat dipecah menjadi tiga tugas kecil.'},
  {k:'pol',n:'Pengenalan Pola',e:'🔁',d:'Menemukan kesamaan atau kebiasaan yang berulang.',q:'Apa yang berulang atau sama dari kegiatan ini?',ex:'Setiap hari sekolah, Andi bangun tidur, sarapan, lalu menyiapkan tas.'},
  {k:'abs',n:'Abstraksi',e:'🎯',d:'Memilih hal yang penting dan mengabaikan yang tidak diperlukan.',q:'Apa yang penting, dan apa yang bisa diabaikan?',ex:'Untuk pelajaran KKA, Andi hanya membawa buku, pensil, penghapus, dan penggaris.'},
  {k:'alg',n:'Algoritma',e:'📋',d:'Menyusun langkah-langkah yang berurutan untuk menyelesaikan masalah.',q:'Apa langkah-langkahnya, dan bagaimana urutannya?',ex:'Algoritma Andi agar siap berangkat sekolah.'}];
+
+/* kegiatan Pilar selesai bila keempat mini-kegiatan berhasil */
+function ep(id){earn(id);if(['p-dek','p-pol','p-abs','p-alg'].every(x=>earned.has(x))){kirim('pilar',1,1);earn('pilar')}}
 
 function demoDek(box){
   box.innerHTML=`<p><b>Masalah besar:</b> 🧹 “Membereskan kamar yang berantakan”</p>
@@ -458,7 +468,7 @@ function demoDek(box){
     [['🛏️','Merapikan tempat tidur'],['📚','Menyusun buku di rak'],['👕','Memasukkan baju kotor ke keranjang']].forEach(([e,t])=>{
       const b=el('button','scard',`<span class="e">${e}</span>${t}`);b.type='button';
       b.onclick=()=>{if(b.dataset.d)return;b.dataset.d=1;b.style.background='#e2f7ea';b.style.borderColor='var(--green)';b.querySelector('.e').textContent='✅';
-        if(++n===3){fb(F,'ok','🎉 Tiga tugas kecil selesai, kamar pun rapi! Masalah besar terasa ringan setelah dipecah.');earn('p-dek')}};
+        if(++n===3){fb(F,'ok','🎉 Tiga tugas kecil selesai, kamar pun rapi! Masalah besar terasa ringan setelah dipecah.');ep('p-dek')}};
       c.appendChild(b)});
     fb(F,'hint','Ketuk setiap tugas kecil setelah “dikerjakan”.');
   };
@@ -467,8 +477,8 @@ function demoPol(box){
   const row=(d,last)=>`<div class="card" style="margin:0;text-align:center"><b>${d}</b><div style="font-size:1.8rem">🛌 → 🍚 → ${last}</div></div>`;
   box.innerHTML=`<p>Perhatikan kebiasaan Andi di hari sekolah:</p><div class="grid g4">${row('Senin','🎒')}${row('Selasa','🎒')}${row('Rabu','🎒')}${row('Kamis','❓')}</div>
   <p style="margin-top:12px"><b>Menurut pola tersebut, apa yang dilakukan Andi setelah sarapan pada hari Kamis?</b></p><div class="opts"></div><div class="fb"></div>`;
-  [['🎒 Menyiapkan tas',1],['🎮 Bermain gim',0],['🛁 Mandi lagi',0]].forEach(([t,v])=>{
-    const b=el('button','opt',t);b.type='button';b.onclick=()=>{if(v){b.classList.add('right');fb($('.fb',box),'ok','🎉 Tepat! Dengan mengenali pola, kita bisa menebak yang terjadi berikutnya dan membuat jadwal tetap.');earn('p-pol')}else{b.classList.add('wrong');fb($('.fb',box),'no','🤔 Lihat lagi: apa yang selalu muncul setelah sarapan?')}};
+  shuffle([['🎒 Menyiapkan tas',1],['🎮 Bermain gim',0],['🛁 Mandi lagi',0]]).forEach(([t,v])=>{
+    const b=el('button','opt',t);b.type='button';b.onclick=()=>{if(v){b.classList.add('right');fb($('.fb',box),'ok','🎉 Tepat! Dengan mengenali pola, kita bisa menebak yang terjadi berikutnya dan membuat jadwal tetap.');ep('p-pol')}else{b.classList.add('wrong');fb($('.fb',box),'no','🤔 Lihat lagi: apa yang selalu muncul setelah sarapan?')}};
     $('.opts',box).appendChild(b)});
 }
 function demoAbs(box){
@@ -478,12 +488,12 @@ function demoAbs(box){
   it.forEach(([e,t],i)=>{const b=el('button','scard',`<span class="e">${e}</span>${t}`);b.type='button';b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);b.style.background=sel.has(i)?'#fff4e8':'';b.style.borderColor=sel.has(i)?'var(--orange)':''};$('#ab',box).appendChild(b)});
   $('#abc').onclick=()=>{
     const need=it.map((x,i)=>x[2]?i:-1).filter(i=>i>=0),ok=need.every(i=>sel.has(i))&&[...sel].every(i=>it[i][2]);
-    if(ok){fb($('.fb',box),'ok','🎉 Tepat! Kamu memilih yang penting dan mengabaikan yang tidak diperlukan. Itulah abstraksi.');earn('p-abs')}
+    if(ok){fb($('.fb',box),'ok','🎉 Tepat! Kamu memilih yang penting dan mengabaikan yang tidak diperlukan. Itulah abstraksi.');ep('p-abs')}
     else fb($('.fb',box),'no','🤔 Belum tepat. Bawa hanya yang dibutuhkan untuk pelajaran KKA: buku, pensil, penghapus, dan penggaris.');
   };
 }
 function demoAlg(box){
-  Sequencer(box,{id:'p-alg',items:[{id:'a',t:'Bangun tidur dan mandi',e:'🛁'},{id:'b',t:'Sarapan',e:'🍚'},{id:'c',t:'Menyiapkan tas sesuai jadwal',e:'🎒'},{id:'d',t:'Berangkat ke sekolah',e:'🚶'}],order:['a','b','c','d'],okMsg:'Inilah algoritma Andi agar siap berangkat sekolah!'});
+  Sequencer(box,{id:'p-alg',items:[{id:'a',t:'Bangun tidur dan mandi',e:'🛁'},{id:'b',t:'Sarapan',e:'🍚'},{id:'c',t:'Menyiapkan tas sesuai jadwal',e:'🎒'},{id:'d',t:'Berangkat ke sekolah',e:'🚶'}],order:['a','b','c','d'],okMsg:'Inilah algoritma Andi agar siap berangkat sekolah!',onOk:()=>ep('p-alg')});
 }
 
 function main(){
@@ -516,15 +526,19 @@ function main(){
   $('#mchk').onclick=()=>{
     if(Object.keys(ans).length<4){fb($('#mFb'),'hint','Pilih huruf untuk keempat pilar dulu, ya.');return}
     let ok=0;ex.forEach(([L,,k])=>{const r=$(`[data-k=${k}]`,m);const good=ans[k]===L;if(good)ok++;r.style.background=good?'#e2f7ea':'#ffe6e6'});
+    kirim('cocok',ok,4); /* skor dari percobaan pertama */
     if(ok===4){fb($('#mFb'),'ok','🎉 Semua cocok! Dekomposisi = A, Pengenalan pola = B, Abstraksi = C, Algoritma = D.');earn('cocok')}
-    else fb($('#mFb'),'no',`🤔 ${ok} dari 4 sudah tepat. Perhatikan kata kunci: memecah, berulang, memilih yang penting, urutan langkah.`);
+    else fb($('#mFb'),'no',`🤔 ${ok} dari 4 sudah tepat. Perhatikan kata kunci: memecah, berulang, memilih yang penting, urutan langkah. Coba lagi sampai semuanya cocok.`);
   };
-  Quiz($('#quiz4'),[
-    {q:'Rani melihat bahwa setiap hari Jumat kelas paling kotor, sehingga piket Jumat dibuat lebih banyak orang. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:1,why:'Rani menemukan kebiasaan yang berulang: itu pengenalan pola.'},
-    {q:'Dewi menyiapkan pentas dengan membagi tugas: dekorasi, musik, dan naskah. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:0,why:'Pekerjaan besar dipecah menjadi bagian kecil: dekomposisi.'},
-    {q:'Pada denah sekolah untuk tamu, Budi hanya menggambar gerbang, kelas, dan toilet tanpa gambar pohon. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:2,why:'Budi memilih informasi yang penting: abstraksi.'},
-    {q:'Ibu menulis resep nasi goreng: ① siapkan bahan, ② panaskan minyak, ③ tumis, ④ sajikan. Pilar yang dipakai adalah …',o:['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'],a:3,why:'Langkah disusun berurutan: algoritma.'}
-  ],{id:'quiz4'});
+  const OP=['Dekomposisi','Pengenalan pola','Abstraksi','Algoritma'];
+  const BQ=[
+    {q:'Rani melihat bahwa setiap hari Jumat kelas paling kotor, sehingga piket Jumat dibuat lebih banyak orang. Pilar yang dipakai adalah …',o:OP,a:1,why:'Rani menemukan kebiasaan yang berulang: itu pengenalan pola.'},
+    {q:'Dewi menyiapkan pentas dengan membagi tugas: dekorasi, musik, dan naskah. Pilar yang dipakai adalah …',o:OP,a:0,why:'Pekerjaan besar dipecah menjadi bagian kecil: dekomposisi.'},
+    {q:'Pada denah sekolah untuk tamu, Budi hanya menggambar gerbang, kelas, dan toilet tanpa gambar pohon. Pilar yang dipakai adalah …',o:OP,a:2,why:'Budi memilih informasi yang penting: abstraksi.'},
+    {q:'Ibu menulis resep nasi goreng: ① siapkan bahan, ② panaskan minyak, ③ tumis, ④ sajikan. Pilar yang dipakai adalah …',o:OP,a:3,why:'Langkah disusun berurutan: algoritma.'},
+    {q:'Maya membuat peta rumah yang hanya memuat ruangan penting tanpa gambar perabot. Pilar yang dipakai adalah …',o:OP,a:2,why:'Maya memilih yang penting dan mengabaikan detail lain: abstraksi.'},
+    {q:'Sinta menulis cara membuat teh manis dalam lima langkah berurutan. Pilar yang dipakai adalah …',o:OP,a:3,why:'Langkah yang berurutan adalah algoritma.'}];
+  Quiz($('#quiz4'),shuffle(BQ).slice(0,4),{id:'kuispilar',onDone:s=>kirim('kuispilar',s,4)});
 
   /* --- Poster --- */
   const lib=[['🛌','Bangun tidur'],['🛁','Mandi'],['🪥','Menyikat gigi'],['👔','Memakai seragam'],['🍚','Sarapan'],['📅','Melihat jadwal pelajaran'],['🎒','Menyiapkan tas'],['🙏','Berdoa'],['🚶','Berangkat ke sekolah'],['🎮','Bermain gim']];
@@ -554,27 +568,31 @@ function main(){
       M.appendChild(r)});
     const st=[!!$('#pTitle').value.trim(),mine.length>=3,mine.length>=1,true,$$('#pnotes input').every(i=>i.value.trim())];
     $('#chk').innerHTML=CK.map((t,i)=>`<div class="ck ${st[i]?'ok':''}"><i>${st[i]?'✓':''}</i>${t}</div>`).join('');
-    if(st.every(Boolean))earn('poster');
+    if(st.every(Boolean)){kirim('poster',1,1);earn('poster')}
   }
   draw();
 
-  /* --- STEAM --- */
+  /* --- STEAM: selesai bila kartu dibuka dan penilaian diri lengkap --- */
+  function cekSteam(){if(earned.has('steamflip')&&earned.has('steamskor')){kirim('steam',1,1);earn('steam')}}
   [['S','Science','🔭','Kebiasaan dan pengelolaan waktu'],['T','Technology','💻','Berpikir sistematis tanpa perangkat'],['E','Engineering','⚙️','Menyusun langkah solusi'],['A','Art','🎨','Membuat poster visual yang menarik'],['M','Mathematics','🔢','Urutan dan keteraturan']].forEach(([s,n,e,d])=>{
-    const f=el('button','flip',`<div class="in"><div class="f"><span class="big">${e}</span><span style="font-size:1.6rem">${s}</span>${n}</div><div class="b">${d}</div></div>`);f.type='button';f.onclick=()=>{f.classList.toggle('on');earn('steam')};$('#steam').appendChild(f)});
+    const f=el('button','flip',`<div class="in"><div class="f"><span class="big">${e}</span><span style="font-size:1.6rem">${s}</span>${n}</div><div class="b">${d}</div></div>`);f.type='button';f.onclick=()=>{f.classList.toggle('on');earn('steamflip');cekSteam()};$('#steam').appendChild(f)});
   ['Masalah yang dipilih','Urutan langkah solusi','Mengapa langkah tersebut logis dan efektif'].forEach(t=>{
     const l=el('label','ck',`<input type="checkbox"> ${t}`);$('#pres').appendChild(l)});
   const asp=['Pemahaman Masalah','Urutan Langkah','Kerja Sama','Presentasi'],val={};
   asp.forEach(a=>{const d=el('div','',`<p style="margin:8px 0 2px"><b>${a}</b></p>`);
     [1,2,3].forEach(v=>{const l=el('label','',`<input type="radio" name="s-${a}" value="${v}"> ${v}`);l.querySelector('input').onchange=()=>{val[a]=v;
-      if(Object.keys(val).length===4){const avg=(Object.values(val).reduce((x,y)=>x+y,0)/4).toFixed(1);fb($('#skFb'),avg>=2.5?'ok':'hint',`Skor rata-rata kelompokmu: <b>${avg}</b>. ${avg>=2.5?'Sangat baik, pertahankan!':'Bagus! Diskusikan bagian mana yang bisa diperbaiki.'}`);earn('skor')}};d.appendChild(l)});
+      if(Object.keys(val).length===4){const avg=(Object.values(val).reduce((x,y)=>x+y,0)/4).toFixed(1);fb($('#skFb'),avg>=2.5?'ok':'hint',`Skor rata-rata kelompokmu: <b>${avg}</b>. ${avg>=2.5?'Sangat baik, pertahankan!':'Bagus! Diskusikan bagian mana yang bisa diperbaiki.'}`);earn('steamskor');cekSteam()}};d.appendChild(l)});
     $('#skor').appendChild(d)});
 
-  /* --- Kuis --- */
-  Quiz($('#quiz'),[
+  /* --- Kuis akhir: 4 soal diacak dari 6 --- */
+  const BK=[
     {q:'Memecah masalah besar menjadi bagian-bagian kecil disebut …',o:['dekomposisi','abstraksi','pengenalan pola'],a:0,why:'Itulah dekomposisi.'},
     {q:'Memilih informasi yang penting dan mengabaikan yang tidak perlu disebut …',o:['algoritma','abstraksi','dekomposisi'],a:1,why:'Itulah abstraksi.'},
-    {q:'Menemukan kegiatan yang berulang atau memiliki kesamaan disebut …',o:['algoritma','dekomposisi','pengenalan pola'],a:2,why:'Itulah pengenalan pola.'}
-  ],{id:'kuis3',onDone:()=>$('#badge').classList.add('show')});
+    {q:'Menemukan kegiatan yang berulang atau memiliki kesamaan disebut …',o:['algoritma','dekomposisi','pengenalan pola'],a:2,why:'Itulah pengenalan pola.'},
+    {q:'Menyusun langkah-langkah berurutan untuk menyelesaikan masalah disebut …',o:['algoritma','abstraksi','dekomposisi'],a:0,why:'Itulah algoritma.'},
+    {q:'Empat pilar berpikir komputasional adalah …',o:['dekomposisi, pengenalan pola, abstraksi, dan algoritma','membaca, menulis, menghitung, dan menggambar','sains, seni, olahraga, dan musik'],a:0,why:'Itulah empat pilar berpikir komputasional.'},
+    {q:'Membagi poster menjadi tugas mencari gambar, menulis, dan mewarnai adalah contoh …',o:['dekomposisi','pengenalan pola','abstraksi'],a:0,why:'Pekerjaan besar dipecah menjadi bagian kecil: dekomposisi.'}];
+  Quiz($('#quiz'),shuffle(BK).slice(0,4),{id:'kuis3',onDone:s=>kirim('kuis3',s,4)});
 }
 </script>
 </body>
