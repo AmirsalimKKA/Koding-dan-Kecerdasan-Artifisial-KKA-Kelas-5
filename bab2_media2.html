@@ -141,6 +141,10 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.info2,.rl{grid-template-columns:1fr}.tab{font-size:.78em}}
 @media(max-width:600px){header{position:static}.stars{font-size:1.15em}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* revisi: nama wajib */
+[hidden]{display:none!important}
+.box.nm .row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#nmsg{color:#b3261e;font-weight:700;margin-top:6px}
 </style></head><body>
 <div class="bg" id="bg" aria-hidden="true"></div>
 <header>
@@ -150,7 +154,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 </header>
 <div class="wrap" id="wr">
 <div class="hero"><h1>🎮 Ayo Jelajahi Internet Sehat!</h1>
-<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 6 aktivitas untuk meraih badge <b>Internet Smart User</b>. Tidak ada yang gagal, kamu boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"></div></div>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 6 aktivitas untuk meraih badge <b>Internet Smart User</b>. Tidak ada yang gagal, kamu boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"><div class="row2"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn y" id="ganti" type="button" hidden>🔄 Ganti murid</button></div><p id="nmsg" role="alert" hidden></p></div></div>
+<div id="app" hidden>
 <div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="6" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 6 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip" title="Poin aktivitas">0 poin</b></div>
 <div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
 <button class="tab on" onclick="T(1)" role="tab"><span class="e">🌐</span>Jaringan</button>
@@ -199,7 +204,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <section id="t6" class="card"><h3>📝 Aktivitas 6: Evaluasi Interaktif</h3><div id="qz"></div></section>
 
 <section id="t7" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
-
+</div>
 <div class="nv"><a class="btn" href="bab2_materi2.html">◀ Sebelumnya: Materi 2</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi3.html">Selanjutnya: Pertemuan 3 ▶</a></div>
 </div>
 <footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif · Hasil aktivitas (nama panggilan dan skor) dikirim ke guru</footer>
@@ -212,7 +217,8 @@ function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()|
 const snd=n=>{try{KKA.sfx(n)}catch(e){}};
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const NAMA=["Jaringan","Fungsi","Game","Periksa","Aturan","Evaluasi"];
-let done={};try{done=JSON.parse(localStorage.getItem('bab2_p2_done')||'{}')||{}}catch(e){}
+let NM="";try{NM=localStorage.getItem('bab2_p2_nama')||''}catch(e){}
+let done={};try{if(NM)done=JSON.parse(localStorage.getItem('bab2_p2_done')||'{}')||{}}catch(e){}
 $("bg").innerHTML=["🌐","📱","💻","🔍","🛡️","⭐","🤖","💬","📚","🐝"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
 $("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
 function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎈','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
@@ -220,7 +226,7 @@ function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=7;i++){$("t"+i).classList.
 function cnt(){return NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0)}
 function prog(){const c=cnt();$("pg").style.width=c/6*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";
  $("pt").textContent=c==6?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari 6 aktivitas selesai";
- try{localStorage.setItem('bab2_p2_done',JSON.stringify(done));if(c==6)localStorage.setItem('bab2_p2','1')}catch(e){}}
+ try{if(c==6){['bab2_p2_done','bab2_p2_nama','bab2_p2','bab2_p2_refleksi'].forEach(k=>localStorage.removeItem(k))}else if(NM)localStorage.setItem('bab2_p2_done',JSON.stringify(done))}catch(e){}}
 const SENT=new Set();
 function fin(n,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama",k=n+"|"+nm;if(!SENT.has(k)){SENT.add(k);kirimHasil("Aktivitas "+n+": "+NAMA[n-1],skor===undefined?1:skor,total===undefined?1:total)}if(done[n])return;done[n]=1;const all=cnt()==6;prog();snd(all?'win':'ok');if(all)boom()}
 
@@ -252,14 +258,14 @@ document.querySelectorAll('#fni button').forEach(b=>b.onclick=()=>{const i=+b.da
  $("fnp").innerHTML=`<h4>${f.e} ${f.n}</h4><div class="scene" aria-hidden="true">${f.s()}</div><p>${f.d}</p><div class="fb ok"><b>Contoh:</b> ${f.ex}<br><b>Ingat:</b> ${f.tip}</div>`;snd('pop');if(fv.size==5)fin(2)});
 
 /* ===== 3. Game ===== */
-const G0=[["Dewi mencari gambar lebah di situs museum sains untuk tugas IPAS.",1,"Dewi punya tujuan jelas dan memilih sumber yang sesuai. Tetap periksa pembuat informasinya."],
-["Raka mendapat pesan dari nomor tak dikenal: “Kamu terpilih! Klik untuk ponsel gratis!” Ia langsung mengkliknya.",0,"Pesan hadiah dari orang tak dikenal sering dipakai untuk menjebak. Sebaiknya jangan diklik. Tunjukkan kepada orang tua atau guru."],
-["Putri ingin mengunduh gim baru. Ia meminta izin ayahnya dan memeriksanya bersama.",1,"Minta izin dan pendampingan sebelum mengunduh membuat kita lebih aman."],
-["Fajar menonton video sampai lewat jam tidur karena “tinggal satu video lagi”.",0,"Terlalu lama memakai perangkat membuat kurang tidur dan sulit fokus. Buat batas waktu dan taati."],
-["Raka menonton video gunung berapi yang disarankan Pak Guru, lalu berhenti setelah 20 menit.",1,"Sumber sesuai, sesuai kebutuhan, dan ada batas waktu. Itu kebiasaan sehat."],
-["Putri membagikan kabar “air sumur sekolah berbahaya” ke grup karena temannya berkata begitu. Ia belum mengeceknya.",0,"Kabar yang belum dicek bisa membuat orang panik. Periksa dulu pembuat dan buktinya, atau tanyakan kepada guru."],
-["Dewi menemukan halaman yang meminta isian data untuk “hadiah”. Ia menutup halaman dan memberi tahu ibunya.",1,"Tepat! Menutup halaman mencurigakan dan melapor kepada orang dewasa adalah langkah bijak."],
-["Fajar membuka banyak situs secara acak tanpa tahu apa yang dicari, lalu lupa tugasnya.",0,"Tanpa tujuan, kita mudah tersesat dan membuang waktu. Tentukan dulu apa yang ingin dicari."]];
+const G0=[["Dewi mengetik “lebah madu” di mesin pencari, lalu memakai hasil paling atas karena “pasti paling benar”.",0,"Urutan hasil pencarian bukan bukti kebenaran. Periksa pembuat dan bandingkan dengan sumber lain."],
+["Raka menonton video pelajaran yang disarankan guru selama 2 jam tanpa jeda karena “videonya bermanfaat”.",0,"Sumbernya baik, tetapi pemakaian tanpa jeda tetap melelahkan. Kebiasaan sehat butuh batas waktu."],
+["Teman akrab Putri mengirim tautan “undian sekolah”. Putri tidak mengklik, menanyakan langsung kepada temannya lewat cara lain, lalu melapor ke guru.",1,"Tepat! Akun teman bisa saja diretas. Memastikan lewat jalur lain dan melapor adalah langkah bijak."],
+["Fajar mengunduh gim dengan izin ibunya, tetapi tidak membaca akses apa saja yang diminta aplikasi.",0,"Izin saja belum cukup. Baca juga akses yang diminta dan bahas bersama orang tua."],
+["Dewi mencatat nama pembuat dan tanggal sebuah artikel, lalu mencocokkannya dengan buku IPAS untuk tugasnya.",1,"Tepat! Mencatat sumber dan membandingkannya dengan sumber lain membuat tugas lebih dapat dipercaya."],
+["Raka membagikan foto karyanya ke grup kelas. Di foto itu terlihat jelas nama lengkap dan alamat rumahnya.",0,"Karya boleh dibagikan, tetapi data pribadi harus disamarkan atau tidak ikut terlihat."],
+["Putri melihat temannya dikomentari kasar di grup. Ia tidak ikut berkomentar, menyimpan tangkapan layar, dan melapor ke guru.",1,"Tepat! Tidak ikut menyakiti, menyimpan bukti, dan melapor kepada orang dewasa adalah langkah yang benar."],
+["Fajar berkata, “Aku sudah izin ayah, jadi boleh membuka situs apa saja.”",0,"Izin biasanya ada tujuan dan batasnya. Tetap pilih situs yang sesuai kebutuhan dan aman."]];
 let G,gi=0,gs=0,lock=false;
 function gstart(){G=shuf(G0);gi=0;gs=0;lock=false;$("sc").textContent=0;$("gb").hidden=false;sh()}
 function sh(){if(gi>=G.length){$("sit").innerHTML="🏁 Selesai! Kamu menjawab tepat "+gs+" dari "+G.length+".";$("gb").hidden=true;$("gp").textContent="";
@@ -296,13 +302,14 @@ $("zone").ondragover=e=>{e.preventDefault();$("zone").classList.add('over')};$("
 $("zone").ondrop=e=>{e.preventDefault();$("zone").classList.remove('over');const i=parseInt(e.dataTransfer.getData('text/plain'));if(!isNaN(i)&&RL[i]&&!placed.has(i))put(i,document.querySelector('#pool .rc[data-i="'+i+'"]'))};
 rdraw();
 
-/* ===== 6. Evaluasi ===== */
-const Q0=[{q:"Fajar ingin tahu cara lebah membuat madu untuk tugas. Langkah pertama yang paling bijak adalah ....",o:[["Menentukan kata kunci dan memilih sumber yang jelas pembuatnya",1],["Menyalin tulisan dari situs pertama yang muncul",0],["Meminta teman mengerjakannya lewat pesan",0],["Menunggu sampai ada pesan hadiah",0]],w:"Dengan kata kunci dan sumber yang jelas, informasinya lebih mudah dipercaya dan diperiksa."},
-{q:"Internet disebut jaringan karena ....",o:[["Menghubungkan banyak perangkat sehingga dapat bertukar informasi",1],["Hanya berada di dalam satu HP",0],["Hanya dipakai untuk bermain gim",0],["Menggantikan semua buku",0]],w:"Perangkat-perangkat terhubung seperti jaring sehingga informasi bisa berpindah di antaranya."},
-{q:"Saat belajar, muncul tulisan “Unduh aplikasi ini agar nilaimu naik!” dari situs yang tidak dikenal. Sikap yang tepat adalah ....",o:[["Menutup halaman dan bertanya kepada guru atau orang tua",1],["Mengunduhnya agar nilai naik",0],["Mengirim tautannya ke seluruh kelas",0],["Mengisi data diri agar cepat selesai",0]],w:"Janji yang berlebihan adalah tanda bahaya. Tutup halaman dan minta pendapat orang dewasa."},
-{q:"Raka memakai tablet 30 menit untuk belajar, lalu beristirahat dan bermain di luar. Kebiasaan Raka menunjukkan ....",o:[["Mengatur waktu penggunaan perangkat",1],["Tidak punya tujuan",0],["Terlalu percaya semua informasi",0],["Membuka tautan mencurigakan",0]],w:"Ada batas waktu dan keseimbangan dengan kegiatan lain. Itu bagian dari internet sehat."},
-{q:"Artikel A punya nama penulis, tanggal, dan rujukan. Artikel B tanpa penulis dan menyuruh dibagikan ke 10 orang. Mana yang lebih layak dipercaya?",o:[["Artikel A, karena pembuat dan buktinya bisa diperiksa",1],["Artikel B, karena menyuruh dibagikan",0],["Keduanya sama saja",0],["Yang paling banyak gambarnya",0]],w:"Informasi yang jelas pembuat dan buktinya lebih mudah diuji kebenarannya."},
-{q:"Pernyataan: “Semua yang ada di internet pasti benar karena banyak orang membacanya.” Tanggapan yang tepat adalah ....",o:[["Salah, karena banyaknya pembaca tidak membuktikan kebenaran",1],["Benar, karena internet selalu akurat",0]],w:"Informasi tersebar luas belum tentu benar. Tetap periksa pembuat dan buktinya."}];
+/* ===== 6. Evaluasi (HOTS) ===== */
+const Q0=[
+{q:"Dewi mencari umur lebah dan menemukan tiga hasil: (1) blog tanpa penulis yang menulis “lebah hidup 100 tahun”, (2) artikel museum sains dengan nama peneliti dan rujukan, (3) video berjudul “WOW! Rahasia Lebah” yang ditonton jutaan kali. Langkah paling tepat untuk memastikan umur lebah adalah ....",o:[["Membandingkan artikel museum sains dengan satu sumber lain yang jelas pembuatnya, misalnya buku IPAS",1],["Memakai video itu karena paling banyak ditonton, jadi pasti diperiksa banyak orang",0],["Memakai blog itu karena angkanya paling lengkap dan menarik",0],["Mengambil angka tengah dari ketiga sumber supaya adil",0]],w:"Informasi dipercaya karena pembuat dan buktinya bisa diperiksa dan cocok dengan sumber lain, bukan karena populer atau lengkap."},
+{q:"Ibu dari teman sekelas mengirim pesan ke grup: “Besok sekolah libur karena banjir, tolong sebarkan!” Belum ada pengumuman dari sekolah. Tindakan yang paling bijak adalah ....",o:[["Menanyakan kepada guru atau memeriksa pengumuman resmi sekolah sebelum meneruskan",1],["Meneruskan pesan itu karena pengirimnya orang yang dikenal",0],["Mengabaikan pesan dan tidak memberi tahu siapa pun",0],["Meneruskan sambil menulis “belum tentu benar” agar tidak disalahkan",0]],w:"Pengirim yang dikenal pun bisa keliru. Pesan yang belum dicek tetap bisa menyebar dan membuat orang salah bertindak."},
+{q:"Fajar belajar daring 3 jam tanpa jeda. Ia mulai pusing, mata perih, dan banyak salah mengerjakan soal. Penyebab paling mungkin dan perbaikan yang paling tepat adalah ....",o:[["Tidak ada jeda istirahat, sehingga perlu jadwal istirahat berkala dan selingan kegiatan di luar layar",1],["Soalnya terlalu sulit, sehingga perlu belajar lebih lama lagi sampai paham",0],["Layarnya terlalu kecil, sehingga cukup mengganti perangkat",0],["Internetnya lambat, sehingga cukup pindah ke jaringan lain",0]],w:"Gejalanya menunjukkan kelelahan. Yang perlu diperbaiki adalah pola pemakaian, bukan perangkat atau jaringannya."},
+{q:"Putri sudah mendapat izin ayahnya mengunduh gim puzzle. Saat dipasang, gim meminta akses kontak, kamera, dan lokasi. Sikap yang paling tepat adalah ....",o:[["Menunda dan menunjukkan permintaan akses itu kepada ayah, karena tidak sesuai kebutuhan gim puzzle",1],["Melanjutkan karena izin dari ayah sudah cukup",0],["Mengizinkan semua akses agar gim berjalan lancar",0],["Mengizinkan kamera saja karena yang lain tidak terlalu penting",0]],w:"Izin orang tua belum cukup bila aplikasi meminta akses yang tidak berkaitan dengan fungsinya. Itu perlu dipertanyakan dulu."},
+{q:"Raka berkata, “Artikel ini pasti benar karena sudah dibagikan 5.000 kali.” Mengapa alasan Raka kurang kuat?",o:[["Jumlah dibagikan hanya menunjukkan popularitas, bukan bukti kebenaran",1],["Karena 5.000 kali masih terlalu sedikit untuk dipercaya",0],["Karena hanya artikel bergambar yang boleh dipercaya",0],["Karena artikel yang dibagikan orang biasa pasti salah",0]],w:"Informasi salah pun bisa menyebar luas. Kebenaran diuji lewat pembuat, bukti, dan sumber pembanding."},
+{q:"Kelas V akan membuat poster digital “Jaga Sungai”. Rencana yang paling sesuai dengan prinsip internet sehat adalah ....",o:[["Mengambil data dari sumber yang jelas dan menuliskannya, memakai foto buatan sendiri, serta tidak mencantumkan nama lengkap atau alamat teman",1],["Mengambil foto terbaik dari mana saja asal poster terlihat bagus",0],["Memasang foto dan alamat rumah teman agar terlihat nyata dan dekat",0],["Menyalin poster kelas lain lalu mengganti judulnya supaya cepat selesai",0]],w:"Karya yang baik memakai sumber yang jelas, menghargai hak cipta, dan menjaga data pribadi."}];
 let Q,qi=0,qs=0;
 function qstart(){Q=shuf(Q0).map(q=>({...q,o:q.o.length>2?shuf(q.o):q.o}));qi=0;qs=0;Rq()}
 function Rq(){if(qi>=Q.length){const full=qs==Q.length;$("qz").innerHTML=`<div class="big">${qs>=5?"🏆":"🌟"}</div><p style="text-align:center"><b>Skor ${qs} dari ${Q.length}</b></p><div class="fb ok">${qs>=5?"Luar biasa! Kamu paham internet sehat.":qs>=3?"Bagus! Pemahamanmu sudah baik. Baca lagi pembahasan yang masih keliru, lalu coba lagi kalau mau.":"Terima kasih sudah mencoba! Buka lagi Materi 2, lalu ulangi evaluasi ini. Kamu pasti bisa."}</div><p style="text-align:center"><button class="btn" onclick="qstart()">🔄 Ulangi evaluasi</button></p>`;fin(6,qs,Q.length);return}
@@ -313,12 +320,20 @@ qstart();
 
 /* ===== 7. Hasil & refleksi ===== */
 const HB=["Menentukan tujuan sebelum membuka internet","Mengatur waktu dan beristirahat","Tidak membuka tautan mencurigakan","Memeriksa informasi sebelum percaya","Meminta pendampingan orang dewasa"];
-let hb=-1;try{hb=parseInt(localStorage.getItem('bab2_p2_refleksi'));if(isNaN(hb))hb=-1}catch(e){}
+let hb=-1;
 function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>`<li class="${done[i+1]?'d':''}">${done[i+1]?'✅':'⏳'} Aktivitas ${i+1}: ${n}</li>`).join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (poin diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+
- (c==6?`<div class="badge"><span class="em">🏅</span><b>Internet Smart User</b><p>Selamat! Kamu paham cara memakai internet dengan sehat.</p></div>`:`<div class="badge lock"><span class="em">🔒</span><b>Internet Smart User</b><p>Selesaikan ${6-c} aktivitas lagi untuk membuka badge ini.</p></div>`)+
- `<h4>🪞 Refleksi</h4><p>Kebiasaan digital apa yang ingin kamu perbaiki setelah belajar hari ini? Pilih satu.</p><div class="hab">${HB.map((h,i)=>`<button data-h="${i}" class="${i==hb?'on':''}" aria-pressed="${i==hb}">${h}</button>`).join('')}</div><div id="hf" aria-live="polite">${hb>=0?'<div class="fb ok">🌟 Hebat! Mulai hari ini kamu akan berlatih: <b>'+HB[hb]+'</b>. Pilihan ini hanya tersimpan di perangkat ini.</div>':''}</div>`;
- document.querySelectorAll('.hab button').forEach(b=>b.onclick=()=>{hb=+b.dataset.h;try{localStorage.setItem('bab2_p2_refleksi',hb)}catch(e){}snd('ok');hasil()})}
+ (c==6?`<div class="badge"><span class="em">🏅</span><b>Internet Smart User</b><p>Selamat! Kamu paham cara memakai internet dengan sehat.</p></div><div class="fb ok">Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus. Tekan tombol di bawah agar teman berikutnya bisa mengerjakan.</div><p style="text-align:center"><button class="btn o" onclick="resetAll()">👋 Murid berikutnya</button></p>`:`<div class="badge lock"><span class="em">🔒</span><b>Internet Smart User</b><p>Selesaikan ${6-c} aktivitas lagi untuk membuka badge ini.</p></div>`)+
+ `<h4>🪞 Refleksi</h4><p>Kebiasaan digital apa yang ingin kamu perbaiki setelah belajar hari ini? Pilih satu.</p><div class="hab">${HB.map((h,i)=>`<button data-h="${i}" class="${i==hb?'on':''}" aria-pressed="${i==hb}">${h}</button>`).join('')}</div><div id="hf" aria-live="polite">${hb>=0?'<div class="fb ok">🌟 Hebat! Mulai hari ini kamu akan berlatih: <b>'+HB[hb]+'</b>.</div>':''}</div>`;
+ document.querySelectorAll('.hab button').forEach(b=>b.onclick=()=>{hb=+b.dataset.h;snd('ok');hasil()})}
 prog();
+
+/* ===== Nama wajib & reset ===== */
+function unlock(){$("nama").value=NM;$("nama").readOnly=true;$("app").hidden=false;$("mulai").hidden=true;$("ganti").hidden=false;$("nmsg").hidden=true}
+function mulai(){const v=($("nama").value||"").trim();if(v.length<2){$("nmsg").textContent="Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.";$("nmsg").hidden=false;$("nama").focus();snd('no');return}NM=v;try{localStorage.setItem('bab2_p2_nama',NM)}catch(e){}unlock();snd('ok')}
+function resetAll(){try{['bab2_p2_done','bab2_p2_nama','bab2_p2','bab2_p2_refleksi'].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload()}
+$("mulai").onclick=mulai;$("nama").addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+$("ganti").onclick=()=>{if(confirm("Ganti murid? Progres di perangkat ini akan dihapus."))resetAll()};
+if(NM)unlock();
 
 /* ===== Audio ===== */
 KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('svg,button,.scene,table').forEach(x=>x.remove());return c.textContent}});
