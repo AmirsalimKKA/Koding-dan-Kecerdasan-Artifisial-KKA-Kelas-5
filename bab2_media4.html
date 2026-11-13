@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 4 – Etika Komunikasi Daring</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
 :root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
 *{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
 h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
 .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
@@ -37,7 +38,7 @@ h1{font-size:clamp(1.7em,5vw,2.5em);line-height:1.15;margin:4px 0 8px;text-shado
 .tab.on{background:var(--sun);color:var(--ink);transform:translateY(-4px);box-shadow:0 6px 0 rgba(0,0,0,.2)}
 .tab.ok:after{content:"✔";position:absolute;top:-6px;right:-4px;background:var(--mint);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8em;line-height:22px}
 .card{display:none;background:var(--paper);border-radius:28px;padding:clamp(16px,4vw,34px);border:4px solid #fff;box-shadow:0 20px 50px rgba(10,10,60,.35)}
-.card.on,.card.s{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}.card.s{margin:16px 0}
+.card.on{display:block;animation:in .5s cubic-bezier(.2,.9,.3,1)}
 @keyframes in{from{opacity:0;transform:translateY(30px) scale(.97)}}
 h3{font-size:1.5em;color:var(--indigo);line-height:1.2;margin-bottom:6px}h4{font-size:1.15em;color:var(--indigo)}
 p{margin:6px 0}ul{padding-left:1.2em}
@@ -47,20 +48,11 @@ p{margin:6px 0}ul{padding-left:1.2em}
 .act{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
 .fb{border-radius:14px;padding:10px 14px;margin:10px 0;animation:in .35s}
 .fb.ok{background:#e6f9f2;border-left:6px solid var(--mint);color:#0b6b52}.fb.no{background:#fff1e6;border-left:6px solid #e8772e;color:#8a4210}
-.fb.wr{background:#ffe9e9;border-left:6px solid var(--red);color:#7a1010}.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
+.fb.tp{background:#fff6dc;border-left:6px solid var(--sun);color:#6b4a00}
 .opt{display:block;width:100%;text-align:left;font:inherit;font-weight:700;background:#fff;color:var(--ink);border:3px solid var(--soft);border-radius:16px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.2s;min-height:44px}
 .opt:hover:not(:disabled){border-color:var(--teal);transform:translateX(6px)}.opt.ok{background:#d9f7e4;border-color:var(--mint)}.opt.no{background:#ffe1e1;border-color:var(--coral);animation:sh .4s}
 @keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .big{font-size:4em;text-align:center;animation:bob 2s infinite}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:10px 0}
-.tile{background:#fff;border:3px solid var(--soft);border-radius:18px;padding:12px;font-weight:700}.tile .em{font-size:2.2em;display:block;animation:bob 3s infinite}
-.pw{font-family:ui-monospace,monospace;background:var(--ink);color:var(--sun);padding:2px 10px;border-radius:9px;word-break:break-all}
-.msg{background:#e8eef9;border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;font-weight:700;margin:8px 0}
-.stage{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;min-height:150px;background:#fff;border:3px dashed #cfe0fb;border-radius:20px;padding:14px;margin:10px 0}
-.kid,.sh{font-size:3.6em}.kid.think{animation:wob .6s 3}@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-.bubx{max-width:270px;background:#ffe9e9;border:3px solid var(--coral);border-radius:16px;padding:8px 12px;font-weight:700;opacity:0;transform:translateX(30px);transition:.5s}
-.bubx.show,.sh.show{opacity:1;transform:none}.sh{opacity:0;transform:scale(.2);transition:.5s}
-.sit{font-size:1.15em;text-align:center;padding:20px;background:#fff6dc;border-radius:20px;border:4px dashed #e8a21a;min-height:100px;display:flex;align-items:center;justify-content:center;margin:12px 0;font-weight:700}
 .lst{list-style:none;padding:0}.lst li{padding:8px 12px;border-radius:14px;background:#fff;border:3px solid var(--soft);margin:6px 0;font-weight:700}.lst li.d{background:#e6f9f2;border-color:var(--mint)}
 .badge{text-align:center;border-radius:24px;padding:18px;margin:12px 0;background:linear-gradient(135deg,var(--indigo),var(--teal));color:#fff}.badge.lock{background:#e5e7f2;color:#667;filter:grayscale(1)}
 .badge .em{font-size:4em;line-height:1;display:block}.badge b{font-family:"Baloo 2",Nunito,sans-serif;font-size:1.4em}
@@ -68,21 +60,25 @@ p{margin:6px 0}ul{padding-left:1.2em}
 .conf{position:fixed;top:-40px;z-index:60;pointer-events:none;font-size:26px;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
 footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
 button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
-@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-
 .chat{background:#fff;border:3px solid var(--soft);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:120px;margin:10px 0}
 .cm{max-width:86%;padding:8px 12px;border-radius:16px;font-weight:700;animation:in .4s;cursor:pointer;border:3px solid transparent;background:#e8eef9;border-bottom-left-radius:4px}
 .cm small{display:block;font-weight:800;color:var(--teal);font-size:.78em}.cm.me{align-self:flex-end;background:#d9f7e4;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
 .cm.pick{border-color:var(--sun)}.cm.rude small{color:var(--red)}
 textarea{width:100%;font:inherit;border:3px solid var(--soft);border-radius:16px;padding:10px;min-height:110px;resize:vertical;color:var(--ink)}
 .ck{list-style:none;padding:0}.ck li{padding:4px 0;font-weight:700}.ck li.y{color:#0b6b52}
-.box.nm{border-left:8px solid var(--mint);background:#e6f9f2;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}.box.nm b.t{display:block;font-family:"Baloo 2",Nunito,sans-serif;color:#0b6b52}input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}input.in:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.box.nm{border-left:8px solid var(--mint);background:#e6f9f2;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}.box.nm b.t{display:block;font-family:"Baloo 2",Nunito,sans-serif;color:#0b6b52}
+input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}input.in:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.box.nm .row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#nmsg{color:#b3261e;font-weight:700;margin-top:6px}
+@media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <div class="bg" id="bg" aria-hidden="true"></div><header><div class="bar"><img src="logo.png" alt="Logo VisualMath.Lim"><b>Bab 2 · Pertemuan 4 · Media Interaktif</b><nav class="m" aria-label="Navigasi utama"><a href="index.html">🏠 Home</a><a href="bab2.html">📘 Dashboard Bab 2</a><a href="bab2_materi4.html">📖 Materi</a></nav></div><div class="crumb"><span class="mt2" aria-label="Pertemuan 4 dari 5"><i>1</i><i>2</i><i>3</i><i class="on">4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 4 › Media Interaktif</div></header>
 <div class="wrap" id="wr"><div class="hero"><h1>💬 Jadi Komunikator yang Baik!</h1>
-<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Kind Communicator</b>. Semua percakapan fiktif, dan tulisanmu tidak disimpan atau dikirim ke mana pun. Yang dikirim ke gurumu hanya nama panggilan dan skor aktivitas. ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"></div></div>
-<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite"></small></div><b id="poin" class="chip">0 poin</b></div>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Kind Communicator</b>. Semua percakapan fiktif, dan tulisanmu tidak disimpan atau dikirim ke mana pun. Yang dikirim ke gurumu hanya nama panggilan dan skor aktivitas. Boleh mencoba lagi! ⭐</div></div>
+<div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"><div class="row2"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn y" id="ganti" type="button" hidden>🔄 Ganti murid</button></div><p id="nmsg" role="alert" hidden></p><div id="cfm" class="fb no" role="alert" hidden>Yakin ganti murid? Progres di perangkat ini akan dihapus.<div class="row2"><button class="btn o" id="cya" type="button">Ya, ganti</button><button class="btn" id="cbt" type="button">Batal</button></div></div></div></div>
+<div id="app" hidden>
+<div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 5 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip">0 poin</b></div>
 <div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas"><button class="tab on" onclick="T(1)" role="tab"><span class="e">👥</span>Grup</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🎯</span>Respons</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🛠️</span>Perbaiki</button><button class="tab" onclick="T(4)" role="tab"><span class="e">✍️</span>Menulis</button><button class="tab" onclick="T(5)" role="tab"><span class="e">📝</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
 
 <section id="t1" class="card on"><h3>👥 Aktivitas 1: Percakapan Grup Kelas</h3><p>Putar percakapan fiktif ini, lalu <b>ketuk</b> minimal 2 pesan untuk melihat apakah pesan itu sopan. <span class="chip" id="c1">0 / 2</span></p>
@@ -95,60 +91,95 @@ textarea{width:100%;font:inherit;border:3px solid var(--soft);border-radius:16px
 <p><button class="btn g" id="cek">👀 Periksa dan Lihat Preview</button></p><div id="pv" aria-live="polite"></div></section>
 <section id="t5" class="card"><h3>📝 Aktivitas 5: Evaluasi Interaktif</h3><div id="q5"></div></section>
 <section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
+</div>
 <div class="nv"><a class="btn" href="bab2_materi4.html">◀ Kembali ke Materi 4</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi5.html">Selanjutnya: Pertemuan 5 ▶</a></div></div>
 <footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh bersifat fiktif · Hasil aktivitas (nama panggilan dan skor) dikirim ke guru</footer>
 <script src="bab2_audio.js"></script><script>
 const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
-const URL_SHEET="https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec";
+const URL_SHEET="https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec";
 const BAB="Bab 2",PERTEMUAN="Pertemuan 4";
-function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total})}).catch(function(){})}catch(e){}}
-const NAMA=["Grup","Respons","Perbaiki","Menulis","Evaluasi"],N=5,KEY='bab2_p4_done';
-let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(a,n)=>shuf(a).slice(0,n);
+function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total,persen:(total>0?Math.round(skor/total*100):0)})}).catch(function(){})}catch(e){}}
+const NAMA=["Grup","Respons","Perbaiki","Menulis","Evaluasi"],N=5,KEY='bab2_p4_done',KN='bab2_p4_nama',KALL=[KEY,KN,'bab2_p4'];
+let gen=0,NM="";try{NM=localStorage.getItem(KN)||''}catch(e){}
+let done={};try{if(NM)done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
 $("bg").innerHTML=["💬","📱","😊","🤝","⭐","🤖","✉️","👍","📝","💌"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
 $("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
 function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','💬','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
 function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();scrollTo({top:0,behavior:"smooth"})}
 const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
-function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p4','1')}catch(e){}}
+function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";
+ try{if(c==N){KALL.forEach(k=>localStorage.removeItem(k))}else if(NM)localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
 const SENT=new Set();
 function fin(n,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama",k=n+"|"+nm;if(!SENT.has(k)){SENT.add(k);kirimHasil("Aktivitas "+n+": "+NAMA[n-1],skor===undefined?1:skor,total===undefined?1:total)}if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
 /* 1 grup */
 const CH=[["Putri","Teman-teman, PR matematika halaman berapa ya?",1,"Sopan dan jelas. Putri bertanya dengan tujuan yang baik."],["Fajar","Dasar lemot! PR gampang gitu aja nggak tahu, bodoh!",0,"Kata kasar menyakiti perasaan. Sebaiknya Fajar menjawab dengan sopan atau tidak usah membalas."],["Dewi","Halaman 24 ya, Putri. Semoga membantu 😊",1,"Menjawab dengan ramah dan membantu. Contoh respons yang baik."],["Raka","Teman-teman, mari kita saling menghargai. Kalau ada yang kasar, kita laporkan ke Bu Guru.",1,"Raka mengingatkan dengan sopan dan menyarankan melapor kepada guru. Tepat!"]];
 let seen=new Set(),shown=0;
-$("play").onclick=()=>{$("chat").innerHTML="";$("cf").innerHTML="";shown=0;$("play").disabled=true;CH.forEach((m,i)=>setTimeout(()=>{const d=document.createElement('div');d.className='cm'+(m[2]?'':' rude');d.tabIndex=0;d.innerHTML='<small>'+m[0]+'</small>'+m[1];d.onclick=()=>{d.classList.add('pick');$("cf").innerHTML='<div class="fb '+(m[2]?'ok':'no')+'">'+(m[2]?'✅ <b>Sopan.</b> ':'💡 <b>Kurang sopan.</b> ')+m[3]+'</div>';snd(m[2]?'ok':'no');seen.add(i);$("c1").textContent=Math.min(seen.size,2)+" / 2";if(seen.size>=2)fin(1)};d.onkeydown=e=>{if(e.key=='Enter')d.click()};$("chat").appendChild(d);snd('pop');if(++shown==CH.length){$("play").disabled=false;$("play").textContent="🔄 Putar Lagi"}},i*1300))};
-/* kuis */
-function quiz(box,id,items){let i=0,sc=0,el=$(box);
-function show(){const it=items[i];el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="chat">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+it.o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABC"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
-const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==it.a;bs.forEach(x=>x.disabled=true);bs[it.a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
-el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
+function resetChat(){$("chat").innerHTML="";$("cf").innerHTML="";seen=new Set();shown=0;$("c1").textContent="0 / 2";$("play").disabled=false;$("play").textContent="▶ Putar Percakapan"}
+$("play").onclick=()=>{const g0=gen;$("chat").innerHTML="";$("cf").innerHTML="";shown=0;$("play").disabled=true;CH.forEach((m,i)=>setTimeout(()=>{if(g0!==gen)return;const d=document.createElement('div');d.className='cm'+(m[2]?'':' rude');d.tabIndex=0;d.innerHTML='<small>'+m[0]+'</small>'+m[1];d.onclick=()=>{d.classList.add('pick');$("cf").innerHTML='<div class="fb '+(m[2]?'ok':'no')+'">'+(m[2]?'✅ <b>Sopan.</b> ':'💡 <b>Kurang sopan.</b> ')+m[3]+'</div>';snd(m[2]?'ok':'no');seen.add(i);$("c1").textContent=Math.min(seen.size,2)+" / 2";if(seen.size>=2)fin(1)};d.onkeydown=e=>{if(e.key=='Enter')d.click()};$("chat").appendChild(d);snd('pop');if(++shown==CH.length){$("play").disabled=false;$("play").textContent="🔄 Putar Lagi"}},i*1300))};
+/* mesin kuis: soal diacak dari bank, urutan pilihan diacak */
+function quiz(box,id,bank,n){const el=$(box);let items,i,sc;
+function init(){items=pick(bank,n);i=0;sc=0;show()}
+function show(){const it=items[i],p=shuf(it.o.map((t,k)=>[t,k==it.a])),o=p.map(x=>x[0]),a=p.findIndex(x=>x[1]);
+ el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="chat">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABCD"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
+ const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==a;bs.forEach(x=>x.disabled=true);bs[a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
+ el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
 function end(){fin(id,sc,items.length);const g=sc==items.length?'Luar biasa! Kamu komunikator yang santun! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 4, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
-el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=()=>{i=0;sc=0;show()}}
-show()}
+ el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=init}
+init();return init}
 const M=t=>'<div class="cm"><small>Pesan di grup</small>'+t+'</div>';
-quiz('q2',2,[
+const B2=[
 {m:M('Kamu payah banget, tugas begini saja salah!'),q:'Pesan itu ditujukan kepadamu. Apa respons terbaik?',o:['Membalas dengan kata kasar juga','Tidak membalas kasar, lalu melapor kepada guru jika berlanjut','Menyebarkan pesan itu ke grup lain'],a:1,e:'Membalas kasar hanya memperbesar masalah. Tetap tenang dan lapor kepada guru jika diperlukan.'},
 {m:M('Sebarkan! Besok sekolah libur karena ada pengumuman rahasia!'),q:'Kabar itu belum jelas. Apa yang sebaiknya kamu lakukan?',o:['Langsung membagikan ke semua teman','Bertanya kepada guru sebelum menyebarkan','Menambah cerita agar lebih seru'],a:1,e:'Kabar yang belum terbukti bisa menyesatkan banyak orang. Cek dulu kebenarannya.'},
-{m:M('Lihat chat pribadi Dewi ini, lucu sekali! (tangkapan layar)'),q:'Kamu diminta meneruskannya. Sikap yang tepat adalah ....',o:['Meneruskannya ke banyak teman','Tidak meneruskan karena pesan pribadi tidak boleh disebar tanpa izin','Meneruskannya sambil menertawakan'],a:1,e:'Pesan pribadi tidak boleh disebarkan tanpa izin pemiliknya, karena bisa membuat orang malu dan sedih.'}]);
-quiz('q3',3,[
+{m:M('Lihat chat pribadi Dewi ini, lucu sekali! (tangkapan layar)'),q:'Kamu diminta meneruskannya. Sikap yang tepat adalah ....',o:['Meneruskannya ke banyak teman','Tidak meneruskan karena pesan pribadi tidak boleh disebar tanpa izin','Meneruskannya sambil menertawakan'],a:1,e:'Pesan pribadi tidak boleh disebarkan tanpa izin pemiliknya, karena bisa membuat orang malu dan sedih.'},
+{m:M('Fotomu jelek, jangan ikut main bareng kami lagi!'),q:'Kamu merasa sedih membaca pesan itu. Langkah terbaik adalah ....',o:['Membalas dengan ejekan juga','Menyimpan pesannya sebagai bukti dan menceritakannya kepada guru atau orang tua','Menghapus akun dan diam saja'],a:1,e:'Menyimpan bukti dan bercerita kepada orang dewasa tepercaya membantu masalah diselesaikan dengan baik.'},
+{m:M('Ayo kita ejek Rani ramai-ramai di grup ini!'),q:'Kamu diajak ikut. Sikap yang tepat adalah ....',o:['Ikut agar tidak dijauhi','Menolak dengan sopan dan mengajak teman berhenti, atau melapor kepada guru','Diam dan menonton saja sambil tertawa'],a:1,e:'Ikut mengejek berarti ikut menyakiti. Menolak dan melapor adalah sikap yang berani dan baik.'}];
+const B3=[
 {m:M('Heh, mana tugasmu? Cepat kirim!'),q:'Versi mana yang lebih baik?',o:['Cepat kirim, jangan lelet!','Hai, boleh minta tolong kirim tugasnya? Terima kasih.','Kirim sekarang atau aku marah!'],a:1,e:'Kata "tolong" dan "terima kasih" membuat permintaan terdengar sopan.'},
 {m:M('Pendapatmu salah semua!'),q:'Versi yang lebih menghargai pendapat adalah ....',o:['Aku punya pendapat lain, boleh kujelaskan?','Kamu tidak paham apa-apa.','Jangan ikut bicara lagi.'],a:0,e:'Kita boleh berbeda pendapat dengan cara yang menghargai orang lain.'},
-{m:M('Bu, tugasnya apa? Jawab cepat!'),q:'Versi yang tepat untuk guru adalah ....',o:['Bu, jawab cepat dong!','Selamat siang, Bu. Boleh saya tahu tugas hari ini? Terima kasih.','Tugasnya apa sih?'],a:1,e:'Kepada guru, gunakan salam, kalimat jelas, dan ucapan terima kasih.'}]);
+{m:M('Bu, tugasnya apa? Jawab cepat!'),q:'Versi yang tepat untuk guru adalah ....',o:['Bu, jawab cepat dong!','Selamat siang, Bu. Boleh saya tahu tugas hari ini? Terima kasih.','Tugasnya apa sih?'],a:1,e:'Kepada guru, gunakan salam, kalimat jelas, dan ucapan terima kasih.'},
+{m:M('Kamu kok lama balasnya! Males banget!'),q:'Versi yang lebih sabar dan sopan adalah ....',o:['Kamu pasti sengaja tidak membalas.','Kalau sudah sempat, kabari aku ya. Terima kasih.','Balas sekarang!!!'],a:1,e:'Bersabar dan memakai kata santun membuat penerima nyaman membalas.'},
+{m:M('Gambarmu jelek, ulang saja!'),q:'Versi yang memberi saran dengan baik adalah ....',o:['Gambarmu bagus. Mungkin warnanya bisa ditambah supaya lebih cerah.','Gambar begitu saja bangga.','Sudah, jangan menggambar lagi.'],a:0,e:'Saran yang baik menghargai usaha orang lain sambil memberi masukan yang membangun.'}];
+const B5=[
+{q:'Komunikasi daring adalah ....',o:['Berkomunikasi melalui internet','Berkomunikasi hanya dengan tatap muka','Menulis di buku'],a:0,e:'Komunikasi daring memakai internet, misalnya pesan, grup kelas, dan video call.'},
+{q:'Di grup kelas ada pesan berisi kata kasar. Tindakan yang tepat adalah ....',o:['Membalas lebih kasar','Tidak ikut menyebarkan dan melapor kepada guru jika perlu','Membagikan ke grup lain'],a:1,e:'Tetap tenang, jangan menyebarkan, dan minta bantuan orang dewasa tepercaya.'},
+{q:'Mengapa perlu berpikir sebelum mengirim pesan?',o:['Pesan terkirim sulit ditarik dan bisa berdampak pada orang lain','Supaya pesannya panjang','Supaya cepat terkirim'],a:0,e:'Dampak pesan bisa luas, jadi pikirkan dulu isi dan perasaan penerimanya.'},
+{q:'Ciri pesan singkat yang baik adalah ....',o:['Tujuan jelas dan bahasa sopan','Penuh singkatan dan perintah','Memuat alamat rumah'],a:0,e:'Pesan yang baik jelas tujuannya, sopan, singkat, dan tidak memuat data pribadi.'},
+{q:'Temanmu membagikan kabar yang belum jelas benar atau tidak. Sebaiknya kamu ....',o:['Ikut membagikannya','Memeriksa atau bertanya kepada guru dulu','Menambahkan cerita seru'],a:1,e:'Informasi yang belum terbukti tidak boleh disebarkan.'},
+{q:'Pesan pribadi temanmu boleh dibagikan ke grup jika ....',o:['Pemiliknya memberi izin','Pesannya lucu','Banyak yang meminta'],a:0,e:'Pesan pribadi hanya boleh dibagikan atas izin pemiliknya, dan sebaiknya tidak disebar jika bisa membuat malu.'},
+{q:'Menulis pesan kepada guru sebaiknya diawali dengan ....',o:['Salam atau sapaan yang sopan','Perintah langsung','Emoji saja'],a:0,e:'Salam membuat pesan terasa hormat dan ramah.'},
+{q:'Menulis seluruh kalimat dengan HURUF BESAR di pesan terkesan seperti ....',o:['Sedang berteriak atau marah','Sangat sopan','Hemat kuota'],a:0,e:'Huruf besar semua sering terbaca seperti berteriak. Pakai huruf biasa agar nyaman dibaca.'}];
+const RS=[quiz('q2',2,B2,3),quiz('q3',3,B3,3),quiz('q5',5,B5,6)];
 /* 4 menulis */
 let tj="Bu Guru";document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{tj=b.dataset.t;snd('click');$("ta").placeholder=tj=="Bu Guru"?"Contoh: Selamat pagi, Bu Guru. Saya ingin bertanya ...":"Contoh: Halo, boleh minta tolong ...";document.querySelectorAll('[data-t]').forEach(x=>x.style.outline=x==b?'4px solid var(--sun)':'none')});
 $("cek").onclick=()=>{const t=$("ta").value.trim();if(t.length<10){$("pv").innerHTML='<div class="fb tp">✍️ Tulis dulu pesanmu minimal satu kalimat, ya.</div>';snd('no');return}
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const C=[["Ada salam atau sapaan",/\b(selamat|halo|hai|assalamu|permisi)/i.test(t)],["Ada kata sopan (tolong, maaf, terima kasih)",/(tolong|maaf|terima kasih|terimakasih)/i.test(t)],["Tujuan jelas dan tidak terlalu panjang",t.length>=20&&t.length<=250],["Tidak ada data pribadi (nomor, alamat, surel)",!/(\d{6,}|@|\bjl\.|\bjalan\b)/i.test(t)]];
 const n=C.filter(c=>c[1]).length;
-$("pv").innerHTML='<h4>👀 Preview pesanmu</h4><div class="chat"><div class="cm me"><small>Kepada '+tj+'</small>'+esc(t)+'</div></div><ul class="ck">'+C.map(c=>'<li class="'+(c[1]?'y':'')+'">'+(c[1]?'✅ ':'💡 ')+c[0]+'</li>').join('')+'</ul><div class="fb '+(n==4?'ok':'tp')+'">'+(n==4?'🌟 <b>Hebat!</b> Pesanmu sopan, jelas, dan aman.':'👍 Bagus sudah mencoba! Tambahkan poin yang bertanda 💡, lalu periksa lagi.')+'</div>';snd(n==4?'ok':'pop');fin(4)};
-quiz('q5',5,[
-{q:'Komunikasi daring adalah ....',o:['Berkomunikasi melalui internet','Berkomunikasi hanya dengan tatap muka','Menulis di buku'],a:0,e:'Komunikasi daring memakai internet, misalnya pesan, grup kelas, dan video call.'},
-{q:'Di grup kelas ada pesan berisi kata kasar. Tindakan yang tepat adalah ....',o:['Membalas lebih kasar','Tidak ikut menyebarkan dan melapor kepada guru jika perlu','Membagikan ke grup lain'],a:1,e:'Tetap tenang, jangan menyebarkan, dan minta bantuan orang dewasa tepercaya.'},
-{q:'Mengapa perlu berpikir sebelum mengirim pesan?',o:['Pesan terkirim sulit ditarik dan bisa berdampak pada orang lain','Supaya pesannya panjang','Supaya cepat terkirim'],a:0,e:'Dampak pesan bisa luas, jadi pikirkan dulu isi dan perasaan penerimanya.'},
-{q:'Ciri pesan singkat yang baik adalah ....',o:['Tujuan jelas dan bahasa sopan','Penuh singkatan dan perintah','Memuat alamat rumah'],a:0,e:'Pesan yang baik jelas tujuannya, sopan, singkat, dan tidak memuat data pribadi.'},
-{q:'Temanmu membagikan kabar yang belum jelas benar atau tidak. Sebaiknya kamu ....',o:['Ikut membagikannya','Memeriksa atau bertanya kepada guru dulu','Menambahkan cerita seru'],a:1,e:'Informasi yang belum terbukti tidak boleh disebarkan.'},
-{q:'Pesan pribadi temanmu boleh dibagikan ke grup jika ....',o:['Pemiliknya memberi izin','Pesannya lucu','Banyak yang meminta'],a:0,e:'Pesan pribadi hanya boleh dibagikan atas izin pemiliknya, dan sebaiknya tidak disebar jika bisa membuat malu.'}]);
-function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Kind Communicator</b><p>Selamat! Kamu berkomunikasi dengan sopan dan bertanggung jawab.</p></div>':'<div class="badge lock"><span class="em">🔒</span><b>Kind Communicator</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Apa yang akan kamu lakukan jika menerima pesan tidak sopan di grup? Ceritakan kepada gurumu atau temanmu.</div>'}
+$("pv").innerHTML='<h4>👀 Preview pesanmu</h4><div class="chat"><div class="cm me"><small>Kepada '+tj+'</small>'+esc(t)+'</div></div><ul class="ck">'+C.map(c=>'<li class="'+(c[1]?'y':'')+'">'+(c[1]?'✅ ':'💡 ')+c[0]+'</li>').join('')+'</ul><div class="fb '+(n==4?'ok':'tp')+'">'+(n==4?'🌟 <b>Hebat!</b> Pesanmu sopan, jelas, dan aman.':'👍 Bagus sudah mencoba! Tambahkan poin yang bertanda 💡, lalu periksa lagi.')+'</div>';snd(n==4?'ok':'pop');fin(4,n,4)};
+/* hasil */
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Kind Communicator</b><p>Selamat! Kamu berkomunikasi dengan sopan dan bertanggung jawab.</p></div><div class="fb ok">Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus. Tekan tombol di bawah agar teman berikutnya bisa mengerjakan.</div><p style="text-align:center"><button class="btn o" onclick="resetAll()">👋 Murid berikutnya</button></p>':'<div class="badge lock"><span class="em">🔒</span><b>Kind Communicator</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Apa yang akan kamu lakukan jika menerima pesan tidak sopan di grup? Ceritakan kepada gurumu atau temanmu.</div>'}
 prog();
+
+/* ===== Nama wajib & reset ===== */
+function unlock(){$("nama").value=NM;$("nama").readOnly=true;$("app").hidden=false;$("mulai").hidden=true;$("ganti").hidden=false;$("nmsg").hidden=true}
+function mulai(){const v=($("nama").value||"").trim();if(v.length<2){$("nmsg").textContent="Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.";$("nmsg").hidden=false;$("nama").focus();snd('no');return}NM=v;try{localStorage.setItem(KN,NM)}catch(e){}unlock();snd('ok')}
+function resetAll(){
+ try{KALL.forEach(k=>localStorage.removeItem(k))}catch(e){}
+ try{KKA.stop()}catch(e){}
+ gen++;NM="";done={};SENT.clear();
+ resetChat();RS.forEach(f=>f());
+ $("ta").value="";$("pv").innerHTML="";
+ $("hs").innerHTML="";
+ prog();T(1);
+ $("app").hidden=true;$("cfm").hidden=true;$("nmsg").hidden=true;$("ganti").hidden=true;$("mulai").hidden=false;
+ $("nama").readOnly=false;$("nama").value="";scrollTo(0,0);try{$("nama").focus()}catch(e){}}
+$("mulai").onclick=mulai;$("nama").addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+$("ganti").onclick=()=>{if(cnt()==N){resetAll();return}$("cfm").hidden=false;snd('click')};
+$("cya").onclick=resetAll;$("cbt").onclick=()=>{$("cfm").hidden=true};
+if(NM)unlock();
+
 KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('button,textarea').forEach(x=>x.remove());return c.textContent}});
 (function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
 </script></body></html>
