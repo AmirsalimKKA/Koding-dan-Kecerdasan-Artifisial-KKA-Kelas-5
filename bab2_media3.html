@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Media Interaktif Pertemuan 3 – Keamanan Informasi Pribadi</title><link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet"><style>
 :root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--red:#d62828;--paper:#fffdf7;--soft:#eef0ff}
 *{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#0f6fb0 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
 h1,h3,h4,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
 .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
@@ -69,6 +70,8 @@ p{margin:6px 0}ul{padding-left:1.2em}
 footer{text-align:center;color:#fff;opacity:.85;font-size:.85em;padding:0 14px calc(24px + env(safe-area-inset-bottom))}
 button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 .box.nm{border-left:8px solid var(--mint);background:#e6f9f2;color:var(--ink);border-radius:16px;padding:12px 16px;margin:12px 0;text-align:left}.box.nm b.t{display:block;font-family:"Baloo 2",Nunito,sans-serif;color:#0b6b52}input.in{width:100%;font:inherit;font-weight:700;padding:10px 14px;margin-top:6px;border:3px solid var(--soft);border-radius:14px;color:var(--ink);background:#fff}input.in:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.box.nm .row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#nmsg{color:#b3261e;font-weight:700;margin-top:6px}
 @media(max-width:600px){.bar b{width:100%;order:3}.crumb .mt2{display:none}.maskot .r{font-size:2.6em}.tab{font-size:.78em}header{position:static}.stars{font-size:1.15em}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
@@ -77,7 +80,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <div class="crumb"><span class="mt2" aria-label="Pertemuan 3 dari 5"><i>1</i><i>2</i><i class="on">3</i><i>4</i><i>5</i></span><a href="index.html">Home</a> › <a href="bab2.html">Bab 2</a> › Pertemuan 3 › Media</div></header>
 <div class="wrap" id="wr">
 <div class="hero"><h1>🛡️ Jadi Penjaga Data Digital!</h1>
-<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Digital Safety Guardian</b>. Semua tokoh dan pesan di sini fiktif, jadi jangan ketik data atau password aslimu. Boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"></div></div>
+<div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Selesaikan 5 aktivitas untuk meraih badge <b>Digital Safety Guardian</b>. Semua tokoh dan pesan di sini fiktif, jadi jangan ketik data atau password aslimu. Boleh mencoba lagi! ⭐</div></div><div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama panggilan atau nomor absen:</label><input class="in" id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7"><div class="row2"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn y" id="ganti" type="button" hidden>🔄 Ganti murid</button></div><p id="nmsg" role="alert" hidden></p><div id="cfm" class="fb no" role="alert" hidden>Yakin ganti murid? Progres di perangkat ini akan dihapus.<div class="row2"><button class="btn o" id="cya" type="button">Ya, ganti</button><button class="btn" id="cbt" type="button">Batal</button></div></div></div></div>
+<div id="app" hidden>
 <div class="score"><div class="stars" id="st" aria-hidden="true"></div><div style="flex:1"><div class="bar2" role="progressbar" aria-label="Kemajuan aktivitas" aria-valuemin="0" aria-valuemax="5" id="pbar"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 5 aktivitas untuk mendapat badge</small></div><b id="poin" class="chip">0 poin</b></div>
 <div class="tabs" id="tb" role="tablist" aria-label="Daftar aktivitas">
 <button class="tab on" onclick="T(1)" role="tab"><span class="e">🎬</span>Animasi</button><button class="tab" onclick="T(2)" role="tab"><span class="e">🗂️</span>Pilah</button><button class="tab" onclick="T(3)" role="tab"><span class="e">🔑</span>Password</button><button class="tab" onclick="T(4)" role="tab"><span class="e">📩</span>Pesan</button><button class="tab" onclick="T(5)" role="tab"><span class="e">📝</span>Evaluasi</button><button class="tab" onclick="T(6)" role="tab"><span class="e">🏅</span>Hasil</button></div>
@@ -91,66 +95,102 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <section id="t4" class="card"><h3>📩 Aktivitas 4: Simulasi Pesan Mencurigakan</h3><div id="q4"></div></section>
 <section id="t5" class="card"><h3>📝 Aktivitas 5: Evaluasi Interaktif</h3><div id="q5"></div></section>
 <section id="t6" class="card"><h3>🏅 Hasil dan Refleksi</h3><div id="hs"></div></section>
-
+</div>
 <div class="nv"><a class="btn" href="bab2_materi3.html">◀ Kembali ke Materi 3</a><a class="btn g" href="bab2.html">📘 Kembali ke Dashboard</a><a class="btn o" href="bab2_materi4.html">Selanjutnya: Pertemuan 4 ▶</a></div></div>
 <footer>SD Negeri 04 Tugusari · KKA Kelas V · Tahun Ajaran 2026/2027 · Semua contoh fiktif · Hasil aktivitas (nama panggilan dan skor) dikirim ke guru</footer>
 <script src="bab2_audio.js"></script><script>
 const $=id=>document.getElementById(id),snd=n=>{try{KKA.sfx(n)}catch(e){}};
-const URL_SHEET="https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec";
+const URL_SHEET="https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec";
 const BAB="Bab 2",PERTEMUAN="Pertemuan 3";
-function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total})}).catch(function(){})}catch(e){}}
-const NAMA=["Animasi","Pilah","Password","Pesan","Evaluasi"],N=5,KEY='bab2_p3_done';
-let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(a,n)=>shuf(a).slice(0,n);
+function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total,persen:(total>0?Math.round(skor/total*100):0)})}).catch(function(){})}catch(e){}}
+const NAMA=["Animasi","Pilah","Password","Pesan","Evaluasi"],N=5,KEY='bab2_p3_done',KN='bab2_p3_nama',KALL=[KEY,KN,'bab2_p3'];
+let gen=0,NM="";try{NM=localStorage.getItem(KN)||''}catch(e){}
+let done={};try{if(NM)done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
 
 $("bg").innerHTML=["🔐","📱","🔑","🛡️","⭐","🤖","🪪","🔒","📍","💬"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
 $("st").innerHTML=NAMA.map(()=>"<i>⭐</i>").join("");
 function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🛡️','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
 function T(n){try{KKA.stop()}catch(e){}for(let i=1;i<=6;i++){$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n);$("tb").children[i-1].setAttribute('aria-selected',i==n)}if(n==6)hasil();scrollTo({top:0,behavior:"smooth"})}
 const cnt=()=>NAMA.reduce((c,_,i)=>c+(done[i+1]?1:0),0);
-function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";try{localStorage.setItem(KEY,JSON.stringify(done));if(c==N)localStorage.setItem('bab2_p3','1')}catch(e){}}
+function prog(){const c=cnt();$("pg").style.width=c/N*100+"%";$("pbar").setAttribute('aria-valuenow',c);[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));NAMA.forEach((_,i)=>$("tb").children[i].classList.toggle("ok",!!done[i+1]));$("poin").textContent=c*20+" poin";$("pt").textContent=c==N?"🎉 Semua aktivitas selesai! Lihat badge-mu di tab Hasil.":c+" dari "+N+" aktivitas selesai";
+ try{if(c==N){KALL.forEach(k=>localStorage.removeItem(k))}else if(NM)localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
 const SENT=new Set();
 function fin(n,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama",k=n+"|"+nm;if(!SENT.has(k)){SENT.add(k);kirimHasil("Aktivitas "+n+": "+NAMA[n-1],skor===undefined?1:skor,total===undefined?1:total)}if(done[n])return;done[n]=1;const all=cnt()==N;prog();snd(all?'win':'ok');if(all)boom()}
 /* 1 animasi */
-$("anibtn").onclick=()=>{const t=$("anitx"),k=$("kid"),b=$("bub"),s=$("sh");b.classList.remove('show');s.classList.remove('show');k.classList.remove('think');
+$("anibtn").onclick=()=>{const t=$("anitx"),k=$("kid"),b=$("bub"),s=$("sh"),g0=gen;b.classList.remove('show');s.classList.remove('show');k.classList.remove('think');
 t.className="fb no";t.textContent="📩 Pesan dari orang tak dikenal muncul dan meminta alamat serta nomor HP Rani.";b.classList.add('show');snd('no');
-setTimeout(()=>{t.className="fb tp";t.textContent='🤔 Rani berpikir: "Aku tidak mengenalnya. Data pribadiku tidak boleh dikirim."';k.classList.add('think')},2000);
-setTimeout(()=>{t.className="fb ok";t.textContent="🛡️ Rani tidak membalas dan memberi tahu gurunya. Data Rani aman! Ingat: berhenti, jangan jawab, beri tahu orang dewasa.";s.classList.add('show');snd('ok');fin(1)},4200)};
-/* mesin kuis */
-function quiz(box,id,items,labels){let i=0,sc=0,el=$(box);
-function show(){const it=items[i],o=labels||it.o;if(box=='q2')$("p2").textContent=(i+1)+" / "+items.length;
-el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="msg">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABC"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
-const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==it.a;bs.forEach(x=>x.disabled=true);bs[it.a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
-el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
+setTimeout(()=>{if(g0!==gen)return;t.className="fb tp";t.textContent='🤔 Rani berpikir: "Aku tidak mengenalnya. Data pribadiku tidak boleh dikirim."';k.classList.add('think')},2000);
+setTimeout(()=>{if(g0!==gen)return;t.className="fb ok";t.textContent="🛡️ Rani tidak membalas dan memberi tahu gurunya. Data Rani aman! Ingat: berhenti, jangan jawab, beri tahu orang dewasa.";s.classList.add('show');snd('ok');fin(1)},4200)};
+/* mesin kuis: soal diacak dari bank, urutan pilihan diacak (kecuali tingkat privasi) */
+function quiz(box,id,bank,n,labels){const el=$(box);let items,i,sc;
+function init(){items=pick(bank,n);i=0;sc=0;show()}
+function show(){const it=items[i];let o=labels||it.o,a=it.a;
+ if(!labels){const p=shuf(o.map((t,k)=>[t,k==it.a]));o=p.map(x=>x[0]);a=p.findIndex(x=>x[1])}
+ if(box=='q2')$("p2").textContent=(i+1)+" / "+items.length;
+ el.innerHTML=`<p><span class="chip">Soal ${i+1} dari ${items.length}</span></p>${it.m?'<div class="msg">'+it.m+'</div>':''}<p><b>${it.q}</b></p>`+o.map((t,k)=>`<button class="opt" data-nosfx data-k="${k}">${"ABCD"[k]}. ${t}</button>`).join('')+'<div class="f"></div>';
+ const bs=[...el.querySelectorAll('.opt')];bs.forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==a;bs.forEach(x=>x.disabled=true);bs[a].classList.add('ok');if(!ok)b.classList.add('no');if(ok)sc++;snd(ok?'ok':'no');
+ el.querySelector('.f').innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?'✅ <b>Hebat!</b> ':'💡 <b>Belum tepat, ayo pelajari.</b> '}${it.e}</div><p><button class="btn b" data-nosfx>${i==items.length-1?'Lihat hasil 🏁':'Lanjut ▶'}</button></p>`;el.querySelector('.f .btn').onclick=()=>{i++;i<items.length?show():end()}})}
 function end(){fin(+id,sc,items.length);const g=sc==items.length?'Luar biasa! Kamu penjaga data yang hebat! 🏆':sc>=items.length/2?'Bagus! Baca lagi penjelasan yang masih keliru, lalu coba lagi kalau mau. 💪':'Terima kasih sudah mencoba! Buka lagi Materi 3, lalu ulangi aktivitas ini. Kamu pasti bisa. 🌱';
-$("p2").textContent=box=='q2'?'':'';el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn" onclick="this.dispatchEvent(new CustomEvent('again',{bubbles:true}))">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=()=>{i=0;sc=0;show()}}
-show()}
+ if(box=='q2')$("p2").textContent='';
+ el.innerHTML=`<div class="big">${sc>=items.length-1?'🏆':'🌟'}</div><p style="text-align:center"><b>Skor ${sc} dari ${items.length}</b></p><div class="fb ok">${g}</div><p style="text-align:center"><button class="btn">🔄 Ulangi</button></p>`;el.querySelector('.btn').onclick=init}
+init();return init}
 const R=['Rahasia 🔒','Hati-hati ⚠️','Aman 😊'];
-quiz('q2',2,[
-{q:'Kata sandi akun gim-mu',a:0,e:'Kata sandi adalah kunci akunmu. Tidak dibagikan kepada teman maupun orang asing.'},
-{q:'Lokasi langsungmu saat ini',a:0,e:'Orang asing bisa tahu keberadaanmu. Lokasi langsung termasuk rahasia.'},
-{q:'Kode verifikasi (OTP) yang masuk ke HP',a:0,e:'Kode ini bisa membuka akun. Siapa pun yang memintanya, jangan diberikan.'},
-{q:'Nama lengkap + nama sekolah + hobi digabung',a:1,e:'Sendiri-sendiri terlihat biasa, tetapi digabung bisa menunjukkan siapa dan di mana kamu. Bagikan hati-hati dan hanya kepada orang yang tepat.'},
-{q:'Nama sekolah',a:1,e:'Guru dan teman boleh tahu, tetapi hati-hati jika orang asing menanyakannya.'},
-{q:'Warna kesukaan',a:2,e:'Informasi umum yang jarang disalahgunakan. Tetap bijak, ya.'},
-{q:'Makanan favorit',a:2,e:'Informasi umum dan relatif aman, selama tidak digabung dengan data pribadi lain.'}],R);
-quiz('q3',3,[
-{q:'Mana password fiktif yang paling kuat?',o:['kucing123','Dimas2014','TehManis#83Kapal'],a:2,e:'<span class="pw">TehManis#83Kapal</span> panjang, bercampur huruf, angka, dan simbol, serta tidak memuat data pribadi.'},
-{q:'Rani ingin membuat password. Ide mana yang terbaik?',o:['Nama + tanggal lahir','Tiga kata acak + angka + simbol','Nama hewan peliharaan'],a:1,e:'Kata acak digabung angka dan simbol sulit ditebak. Nama dan tanggal lahir mudah diketahui orang lain.'},
-{q:'Cara memakai password yang paling aman?',o:['Satu password sama untuk semua akun','Password berbeda tiap akun dan dirahasiakan','Memberi tahu sahabat dekat'],a:1,e:'Jika satu password bocor, akun lain tetap aman. Rahasiakan dari semua teman.'}]);
-quiz('q4',4,[
-{m:'📩 "Halo! Aku dari toko gim. Kirim kode OTP yang baru masuk ke HP-mu agar hadiah cair."',q:'Apa tindakan yang aman?',o:['Kirim kodenya agar dapat hadiah','Tidak membalas, lalu tunjukkan kepada orang tua atau guru','Balas dan tanya nama lengkapnya'],a:1,e:'Kode OTP tidak boleh diberikan. Tidak membalas dan melapor kepada orang dewasa adalah langkah aman.'},
-{m:'📩 "Akun belajarmu akan dikunci! Klik tautan ini dan masukkan password sekarang."',q:'Apa yang sebaiknya dilakukan?',o:['Klik cepat sebelum terkunci','Tidak klik, tanyakan kepada guru','Teruskan ke semua teman'],a:1,e:'Pesan yang membuat panik adalah ciri penipuan. Jangan klik, jangan teruskan, tanyakan guru.'},
-{m:'💬 Teman sekelas: "Pinjam password akun belajarmu, punyaku lupa."',q:'Jawaban terbaikmu?',o:['Kuberi, dia temanku','Maaf, password itu rahasia. Yuk minta bantuan guru','Kuberi tapi minta dirahasiakan'],a:1,e:'Password tidak dibagikan, bahkan kepada teman. Mengajaknya meminta bantuan guru adalah sikap baik.'}]);
-quiz('q5',5,[
-{q:'Informasi pribadi adalah ....',o:['Informasi tentang cuaca','Informasi yang berkaitan dengan identitas dan kehidupan seseorang','Semua berita di internet'],a:1,e:'Informasi pribadi berkaitan dengan identitas dan kehidupan kita, sehingga perlu dijaga.'},
-{q:'Pasangan yang HARUS dilindungi adalah ....',o:['Password dan alamat rumah','Warna kesukaan dan lagu','Nama kota dan hari'],a:0,e:'Password dan alamat rumah dapat disalahgunakan.'},
-{q:'Mengapa nama sekolah + nama lengkap perlu hati-hati?',o:['Karena namanya panjang','Digabung bisa membuat orang asing tahu di mana kita','Karena tidak penting'],a:1,e:'Gabungan informasi bisa mengungkap identitas dan tempat kita.'},
-{q:'Ciri password yang lebih kuat adalah ....',o:['Pendek dan mudah diingat','Panjang dan sulit ditebak','Memakai tanggal lahir'],a:1,e:'Panjang dan sulit ditebak membuat password sukar dibuka orang lain.'},
-{q:'Setelah memakai komputer perpustakaan, kamu sebaiknya ....',o:['Menutup layar saja','Keluar (logout) dari akunmu','Membiarkan akun terbuka'],a:1,e:'Akun yang terbuka bisa dipakai orang berikutnya.'},
-{q:'Ada pesan aneh meminta data akunmu. Langkah pertama?',o:['Membalas cepat','Berhenti dan minta bantuan orang tua atau guru','Menyebarkan ke grup'],a:1,e:'Berhenti, jangan jawab, dan minta bantuan orang dewasa tepercaya.'}]);
+const B2=[
+{q:'Kata sandi akun belajarmu, diminta teman akrab yang bilang “pinjam sebentar saja”',a:0,e:'Kata sandi tidak dibagikan, bahkan kepada teman akrab. Kepercayaan bisa berubah dan kata sandi bisa tersebar.'},
+{q:'Kode OTP di HP-mu, diminta orang yang mengaku petugas toko gim',a:0,e:'OTP bisa langsung membuka akunmu. Petugas asli tidak akan memintanya.'},
+{q:'Alamat rumah lengkap, diminta penjual daring yang belum dikenal untuk “mengirim hadiah”',a:0,e:'Alamat lengkap bisa dipakai orang asing untuk mendatangimu. Hadiah dari orang tak dikenal patut dicurigai.'},
+{q:'Lokasi langsungmu yang terus tampil di akun yang bisa dilihat siapa saja',a:0,e:'Orang asing bisa mengikuti keberadaanmu secara langsung.'},
+{q:'Foto seragam dengan papan nama sekolah terlihat jelas, diunggah di akun terbuka',a:1,e:'Satu foto tampak biasa, tetapi menunjukkan siapa dan di mana kamu. Atur siapa yang boleh melihat dan samarkan bagian yang menunjukkan identitas.'},
+{q:'Nama sekolah, ditanyakan orang yang baru dikenal di gim daring',a:1,e:'Guru dan teman boleh tahu, tetapi orang asing tidak perlu. Alihkan pembicaraan dan ceritakan kepada orang dewasa.'},
+{q:'Nomor HP orang tua, diminta wali kelas lewat formulir resmi sekolah',a:1,e:'Boleh dibagikan bila yang meminta jelas, tujuannya jelas, dan lewat jalur resmi. Pastikan dulu dengan orang tua.'},
+{q:'Warna dan makanan kesukaan, diceritakan saat bermain bersama teman sekelas',a:2,e:'Informasi umum yang jarang disalahgunakan, selama tidak digabung dengan data pribadi lain.'},
+{q:'Gambar karya sendiri tanpa nama lengkap, dipajang di mading kelas',a:2,e:'Berbagi karya tanpa data pribadi aman dan menyenangkan.'}];
+const B3=[
+{q:'Dimas lahir 5 Mei 2014 dan suka bola. Password fiktif mana yang paling kuat?',o:['Dimas0505','BolaDimas2014','Kapal!Teh83Sepeda','dimas123'],a:2,e:'<span class="pw">Kapal!Teh83Sepeda</span> panjang, bercampur huruf, angka, dan simbol, serta tidak memuat nama atau tanggal lahir.'},
+{q:'Rani memakai password yang sama untuk email, gim, dan akun belajar. Lalu data gim itu bocor. Risiko terbesarnya adalah ....',o:['Akun lain juga bisa dibobol karena memakai password yang sama','Hanya akun gim yang terkena','Password jadi lebih kuat karena dipakai banyak akun','Tidak ada risiko karena password-nya sudah ada simbol'],a:0,e:'Satu password untuk banyak akun membuat satu kebocoran membuka semuanya. Pakai password berbeda tiap akun.'},
+{q:'Fajar memakai password “Fajar12345”. Mengapa password ini lemah?',o:['Memuat nama dan urutan angka yang mudah ditebak','Terlalu panjang','Memakai angka','Memakai huruf besar'],a:0,e:'Nama sendiri dan angka berurutan termasuk tebakan pertama orang yang ingin membobol akun.'},
+{q:'Kamu punya banyak akun dan sulit mengingat semua password. Cara yang paling aman adalah ....',o:['Membuat password panjang yang berbeda tiap akun, dan minta orang tua membantu menyimpannya di tempat aman','Memakai satu password yang sama untuk semua','Menempelkan catatan password di layar komputer','Mengirim daftar password ke grup kelas agar tidak hilang'],a:0,e:'Password berbeda dan disimpan di tempat aman menjaga akun tetap terlindungi sekaligus tidak mudah lupa.'},
+{q:'Raka meminjamkan password-nya kepada teman “cuma sebentar”, lalu merasa ada yang mengubah akunnya. Langkah paling tepat sekarang adalah ....',o:['Segera mengganti password dan memberi tahu orang tua atau guru','Menunggu beberapa hari dulu','Mengganti “Pass1” menjadi “Pass2”','Menghapus akun tanpa memberi tahu siapa pun'],a:0,e:'Ganti password secepatnya dan minta bantuan orang dewasa. Perubahan kecil seperti Pass1 menjadi Pass2 tetap mudah ditebak.'}];
+const B4=[
+{m:'📩 “Halo! Aku dari toko gim. Kirim kode OTP yang baru masuk ke HP-mu agar hadiah cair.”',q:'Apa tindakan yang aman?',o:['Kirim kodenya agar dapat hadiah','Tidak membalas, lalu tunjukkan kepada orang tua atau guru','Balas dan tanya nama lengkapnya','Kirim setengah kodenya saja'],a:1,e:'Kode OTP tidak boleh diberikan, bahkan sebagian. Tidak membalas dan melapor kepada orang dewasa adalah langkah aman.'},
+{m:'📩 “Akun belajarmu akan dikunci dalam 10 menit! Klik tautan ini dan masukkan password sekarang.”',q:'Ciri yang paling menunjukkan bahwa pesan ini penipuan adalah ....',o:['Membuat panik dengan batas waktu dan meminta password lewat tautan','Memakai kata “akun belajar”','Dikirim pada siang hari','Pesannya singkat'],a:0,e:'Penipu membuat kita panik agar tidak sempat berpikir. Sekolah tidak meminta password lewat tautan. Jangan klik, tanyakan guru.'},
+{m:'💬 Teman sekelas: “Pinjam password akun belajarmu, punyaku lupa.”',q:'Jawaban terbaikmu?',o:['Kuberi, dia temanku','Maaf, password itu rahasia. Yuk minta bantuan guru','Kuberi tapi minta dirahasiakan','Kuberi tetapi nanti kuganti'],a:1,e:'Password tidak dibagikan, bahkan kepada teman. Mengajaknya meminta bantuan guru adalah sikap baik.'},
+{m:'📩 Nomor baru memakai nama Bu Guru: “Segera kirim foto kartu keluarga ke nomor ini untuk bantuan sekolah.”',q:'Langkah paling bijak adalah ....',o:['Memeriksa langsung kepada Bu Guru lewat cara yang biasa, misalnya di kelas atau lewat nomor resmi sekolah, sebelum mengirim apa pun','Mengirim fotonya karena memakai nama Bu Guru','Mengirim foto sebagian yang tidak terlalu penting','Membalas dan menanyakan nomor rekening untuk mengecek'],a:0,e:'Nama guru mudah dipalsukan. Pastikan lewat jalur yang sudah kamu kenal sebelum mengirim data penting.'},
+{m:'💬 Akun temanmu mengirim tautan: “Lihat foto lucu kamu di sini!” Biasanya temanmu tidak pernah mengirim pesan seperti itu.',q:'Cara paling tepat memastikan pesan itu aman adalah ....',o:['Menghubungi temanmu lewat cara lain untuk bertanya apakah benar ia yang mengirim','Mengeklik cepat untuk memeriksa isinya','Meneruskan ke grup agar ramai-ramai menilai','Membalas dengan password agar terbukti dirimu'],a:0,e:'Akun teman bisa diretas. Menanyakan lewat jalur lain dan tidak mengeklik tautan adalah langkah yang aman.'}];
+const B5=[
+{q:'Dewi mengunggah foto di depan rumahnya dengan nomor rumah dan nama jalan terlihat, lalu menulis “sedang sendirian di rumah”. Risiko utamanya adalah ....',o:['Orang asing bisa tahu alamat dan bahwa ia sendirian','Fotonya kurang bagus','Teman-temannya jadi iri','Kuota internetnya cepat habis'],a:0,e:'Alamat yang terlihat digabung dengan keterangan sendirian membahayakan keselamatan. Jangan tampilkan alamat dan keberadaanmu.'},
+{q:'Nama sekolah, nama lengkap, dan jam pulang masing-masing tampak biasa. Mengapa digabung dalam satu unggahan terbuka justru berbahaya?',o:['Gabungan informasi memudahkan orang asing menemukan dan mengikuti kita','Karena tulisannya jadi terlalu panjang','Karena sekolah tidak mengizinkan unggahan','Karena huruf besarnya terlalu banyak'],a:0,e:'Potongan informasi kecil bisa dirangkai menjadi gambaran lengkap tentang siapa dan di mana kita.'},
+{q:'Raka berkata, “Di komputer perpustakaan aku tidak perlu logout, nanti layarnya mati sendiri.” Tanggapan yang paling tepat adalah ....',o:['Tetap harus logout karena orang berikutnya bisa membuka akunmu','Benar, layar mati sudah cukup','Cukup menutup satu tab','Cukup mematikan monitor'],a:0,e:'Akun yang masih terbuka bisa dipakai orang lain. Selalu keluar (logout) setelah selesai.'},
+{q:'Aplikasi kuis meminta akses kontak dan kamera, padahal hanya menampilkan soal. Sikap yang paling tepat adalah ....',o:['Menolak akses yang tidak diperlukan dan bertanya kepada orang tua atau guru','Mengizinkan semuanya agar aplikasi lancar','Mengizinkan kontak saja','Mengizinkan karena banyak teman memakainya'],a:0,e:'Izin yang tidak sesuai kebutuhan aplikasi patut dipertanyakan. Tolak dulu dan minta pendapat orang dewasa.'},
+{q:'Tuti berkata, “Password boleh dibagi ke sahabat yang dipercaya.” Mengapa pendapat ini lemah?',o:['Kepercayaan bisa berubah dan password yang dibagi bisa tersebar','Karena sahabat tidak mau menerima password','Karena password harus pendek','Karena password hanya untuk guru'],a:0,e:'Sekali dibagikan, kamu tidak bisa mengendalikan siapa lagi yang mengetahuinya.'},
+{q:'Dua unggahan: (A) “Aku suka melukis,” disertai karya tanpa nama. (B) “Aku kelas V di sekolah X dan pulang jam 12 lewat Jalan Mawar.” Mana yang lebih berisiko dan mengapa?',o:['B, karena menunjukkan tempat dan kebiasaan yang bisa dimanfaatkan orang asing','A, karena menyebut hobi','Keduanya sama berisikonya','Tidak ada yang berisiko'],a:0,e:'Informasi tempat dan jadwal rutin membuat kita mudah diikuti. Hobi dan karya tanpa data pribadi jauh lebih aman.'},
+{q:'Kamu perlu masuk ke akun belajar, tetapi hanya ada wifi umum tanpa kata sandi. Pertimbangan terbaik adalah ....',o:['Menghindari memasukkan password di jaringan umum yang tidak jelas keamanannya dan bertanya kepada guru atau orang tua','Aman karena gratis','Aman asalkan hanya sebentar','Aman karena banyak orang memakainya'],a:0,e:'Jaringan umum bisa disadap. Gunakan jaringan yang kamu percaya, atau minta bantuan orang dewasa.'},
+{q:'Ada orang di internet yang terus memaksa meminta fotomu dan membuatmu tidak nyaman. Siapa yang paling tepat diberi tahu?',o:['Orang tua atau guru yang kamu percaya','Orang itu sendiri supaya minta maaf','Tidak ada, cukup didiamkan sendiri','Semua orang di grup agar ramai'],a:0,e:'Berhenti membalas, simpan bukti, dan ceritakan kepada orang dewasa tepercaya agar kamu terbantu.'}];
+const RS=[quiz('q2',2,B2,7,R),quiz('q3',3,B3,4),quiz('q4',4,B4,4),quiz('q5',5,B5,6)];
 /* hasil */
-function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Digital Safety Guardian</b><p>Selamat! Kamu tahu cara menjaga data pribadi dan password.</p></div>':'<div class="badge lock"><span class="em">🔒</span><b>Digital Safety Guardian</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Satu hal yang akan kamu lakukan agar data dan passwordmu aman? Ceritakan kepada gurumu atau temanmu.</div>'}
+function hasil(){const c=cnt();$("hs").innerHTML=`<ul class="lst">${NAMA.map((n,i)=>'<li class="'+(done[i+1]?'d':'')+'">'+(done[i+1]?'✅':'⏳')+' Aktivitas '+(i+1)+': '+n+'</li>').join('')}</ul><p><b>Poin aktivitas: ${c*20}</b> (diberikan karena kamu menyelesaikan aktivitas, bukan karena cepat atau paling banyak benar).</p>`+(c==N?'<div class="badge"><span class="em">🏅</span><b>Digital Safety Guardian</b><p>Selamat! Kamu tahu cara menjaga data pribadi dan password.</p></div><div class="fb ok">Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus. Tekan tombol di bawah agar teman berikutnya bisa mengerjakan.</div><p style="text-align:center"><button class="btn o" onclick="resetAll()">👋 Murid berikutnya</button></p>':'<div class="badge lock"><span class="em">🔒</span><b>Digital Safety Guardian</b><p>Selesaikan '+(N-c)+' aktivitas lagi untuk membuka badge ini.</p></div>')+'<div class="fb tp">🪞 <b>Refleksi:</b> Satu hal yang akan kamu lakukan agar data dan passwordmu aman? Ceritakan kepada gurumu atau temanmu.</div>'}
 prog();
+
+/* ===== Nama wajib & reset ===== */
+function unlock(){$("nama").value=NM;$("nama").readOnly=true;$("app").hidden=false;$("mulai").hidden=true;$("ganti").hidden=false;$("nmsg").hidden=true}
+function mulai(){const v=($("nama").value||"").trim();if(v.length<2){$("nmsg").textContent="Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.";$("nmsg").hidden=false;$("nama").focus();snd('no');return}NM=v;try{localStorage.setItem(KN,NM)}catch(e){}unlock();snd('ok')}
+function resetAll(){/* reset di tempat tanpa memuat ulang halaman, supaya berhasil di semua browser */
+ try{KALL.forEach(k=>localStorage.removeItem(k))}catch(e){}
+ try{KKA.stop()}catch(e){}
+ gen++;NM="";done={};SENT.clear();
+ const t=$("anitx");t.className="fb ok";t.textContent="Tekan tombol untuk memulai.";$("bub").classList.remove("show");$("sh").classList.remove("show");$("kid").classList.remove("think");
+ RS.forEach(f=>f());
+ $("hs").innerHTML="";
+ prog();T(1);
+ $("app").hidden=true;$("cfm").hidden=true;$("nmsg").hidden=true;$("ganti").hidden=true;$("mulai").hidden=false;
+ $("nama").readOnly=false;$("nama").value="";scrollTo(0,0);try{$("nama").focus()}catch(e){}}
+$("mulai").onclick=mulai;$("nama").addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+$("ganti").onclick=()=>{if(cnt()==N){resetAll();return}$("cfm").hidden=false;snd('click')};
+$("cya").onclick=resetAll;$("cbt").onclick=()=>{$("cfm").hidden=true};
+if(NM)unlock();
+
 KKA.mount({target:$("wr"),getText:()=>{const c=document.querySelector('.card.on').cloneNode(true);c.querySelectorAll('button,.stage').forEach(x=>x.remove());return c.textContent}});
 (function(){const a=document.querySelector('#wr .kk-aud'),s=document.querySelector('.score');if(a&&s)s.parentNode.insertBefore(a,s)})();
 </script></body></html>
