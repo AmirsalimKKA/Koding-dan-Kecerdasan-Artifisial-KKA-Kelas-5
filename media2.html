@@ -6,55 +6,32 @@
 <title>Pertemuan 2: Urutan Langkah & IPO – Media Interaktif KKA Kelas V</title>
 <meta name="description" content="Media interaktif Pertemuan 2: algoritma dasar dan Input-Proses-Output.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9aa7'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E🤖%3C/text%3E%3C/svg%3E">
-<!-- Tailwind & FontAwesome for consistency -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>:root{
-  --bg: #f4f9f9; 
-  --card: #ffffff; 
-  --ink: #333333; 
-  --muted: #6b6880;
-  
-  /* VisualMath KKA Theme Colors */
-  --navy: #022050;
-  --teal: #0B7C86; 
-  --teal-d: #085E66;
-  --cyan: #00D6D8;
-  
-  --orange: #ff8a3d; 
-  --orange-d: #d4651a;
-  --yellow: #ffd34e; 
-  --pink: #ff6f91; 
-  --green: #2fb36d; 
-  --red: #e5484d; 
-
+  --bg: #f4f9f9; --card: #ffffff; --ink: #333333; --muted: #6b6880;
+  --navy: #022050; --teal: #0B7C86; --teal-d: #085E66; --cyan: #00D6D8;
+  --orange: #ff8a3d; --orange-d: #d4651a; --yellow: #ffd34e; --pink: #ff6f91; --green: #2fb36d; --red: #e5484d; 
   --line: #c3e2e5; 
   --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
   --r: 20px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family: 'Nunito', "Trebuchet MS", sans-serif;
-  font-size:17px;
-  line-height:1.55;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family: 'Nunito', "Trebuchet MS", sans-serif;font-size:17px;line-height:1.55;
   background-image: radial-gradient(#0B7C86 0.5px, transparent 0.5px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-  background-attachment:fixed;
+  background-size: 20px 20px;background-position: 0 0, 10px 10px;background-attachment:fixed;
 }
 h1,h2,h3{font-family:'Fredoka', "Trebuchet MS", sans-serif;line-height:1.2;margin:0 0 .5em; color: var(--navy);}
 h2{font-size:1.55rem} h3{font-size:1.15rem}
 p{margin:.4em 0 .8em}
 button{font:inherit;cursor:pointer}
-.sr{position:absolute;left:-9999px}
 a{color:var(--teal-d)}
 
-/* top bar */
 .top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
 .top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -65,7 +42,6 @@ a{color:var(--teal-d)}
 .home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
 .home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
 
-/* step nav */
 .steps{display:flex;gap:8px;overflow-x:auto;padding:20px 20px 6px;max-width:1100px;margin:0 auto;scrollbar-width:thin}
 .steps button{flex:0 0 auto;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 14px;font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center;box-shadow:0 3px 0 var(--line)}
 .steps button .n{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem}
@@ -74,6 +50,7 @@ a{color:var(--teal-d)}
 .steps button.done:not(.on) .n{background:var(--cyan);color:var(--navy)}
 
 main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
+.namewrap{max-width:1100px;margin:0 auto;padding:8px 20px 0}
 .panel{display:none;animation:pop .35s ease}
 .panel.on{display:block}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -114,19 +91,11 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .fb.no{background:#ffe6e6;color:#a31d22; border: 2px solid #f2b0b2;}
 .fb.hint{background:#e9f8f9;color:var(--teal-d); border: 2px solid var(--line);}
 
-/* chips / option buttons */
 .opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;font-weight:600;color:var(--ink);margin:8px 0;box-shadow:0 3px 0 var(--line); transition: all 0.2s;}
 .opt:hover{border-color:var(--teal); transform: translateY(-2px);}
 .opt.right{background:#e2f7ea;border-color:var(--green);box-shadow:0 3px 0 #8fd6b0}
 .opt.wrong{background:#ffe6e6;border-color:var(--red);box-shadow:0 3px 0 #f2b0b2}
-.opt.sel{border-color:var(--orange);background:#fff4e8}
-.word{display:inline-block;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 16px;font-weight:800;margin:6px;box-shadow:0 3px 0 var(--line); transition: transform 0.1s;}
-.word:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line);}
-.word.used{opacity:.35;pointer-events:none}
-.blank{display:inline-block;min-width:140px;border-bottom:4px dashed var(--teal);text-align:center;font-weight:800;color:var(--teal-d);padding:0 10px;cursor:pointer; font-size: 1.1rem;}
-.blank.ok{border-bottom-style:solid;border-color:var(--cyan);color:var(--navy)}
 
-/* sequencer */
 .seq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:820px){.seq{grid-template-columns:1fr}}
 .seq h4{margin:0 0 10px;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px; font-weight: 800;}
@@ -140,16 +109,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .slot.ok{border-color:var(--green);background:#eefaf3}.slot.ok .no{background:var(--green)}
 .slot.bad{border-color:var(--red);background:#fff2f2}.slot.bad .no{background:var(--red)}
 
-/* flip card */
-.flip{perspective:900px;min-height:180px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
-.flip .in{position:relative;width:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
-.flip.on .in{transform:rotateY(180deg)}
-.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:20px;border:2px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-weight:700}
-.flip .f{background:#fff; color: var(--navy); border-color: var(--teal); border-width: 3px;}
-.flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg); border-color: var(--cyan); border-width: 3px;}
-.flip .big{font-size:2.8rem; margin-bottom: 10px;}
-
-/* quiz */
 .q{margin:16px 0 26px}
 .q .qt{font-weight:800;margin-bottom:8px; font-size: 1.1rem; color: var(--navy);}
 .score{display:flex;gap:10px;align-items:center;font-weight:800; background: var(--navy); color: white; padding: 10px 20px; border-radius: 16px; width: max-content; font-size: 1.1rem;}
@@ -159,12 +118,8 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .badge .big{font-size:3.5rem; margin-bottom: 10px;}
 textarea,input[type=text]{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;background:#fff;color:var(--ink); transition: border-color 0.2s;}
 textarea:focus,input:focus,button:focus-visible{outline:none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(11, 124, 134, 0.2);}
-table.t{border-collapse:collapse;width:100%;font-size:.95rem}
-table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
-table.t th{background:#e9f8f9; color: var(--navy);}
 .mini{font-size:.9rem;color:var(--muted)}
 .kodi-say{display:flex;gap:16px;align-items:flex-start}
-.kodi-say img {width:90px;height:90px;flex:0 0 auto; object-fit: contain;}
 .bubble{background:#fff;border:2px solid var(--teal);border-radius:18px;padding:14px 20px;position:relative;box-shadow:0 4px 0 var(--teal);font-weight:600; color: var(--ink);}
 .card.key .bubble { background: var(--teal); color: white; border-color: var(--cyan); box-shadow: 0 4px 0 var(--navy); }
 .foot{max-width:1100px;margin:0 auto;padding:20px 20px 40px;color:var(--muted);font-size:.9rem;text-align:center; border-top: 2px dashed var(--line); font-weight: 600;}
@@ -187,14 +142,6 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <rect x="10" y="72" width="14" height="8" rx="4" fill="#4ec3cf" stroke="#2b2a3a" stroke-width="3"/>
     <rect x="76" y="72" width="14" height="8" rx="4" fill="#4ec3cf" stroke="#2b2a3a" stroke-width="3"/>
   </symbol>
-  <symbol id="andi" viewBox="0 0 100 100">
-    <path d="M22 98 q0-26 28-26 q28 0 28 26z" fill="#e5484d" stroke="#2b2a3a" stroke-width="4"/>
-    <circle cx="50" cy="42" r="26" fill="#f5c18f" stroke="#2b2a3a" stroke-width="4"/>
-    <path d="M24 38 q2-26 28-26 q24 0 26 26 q-10-12-26-12 q-18 0-28 12z" fill="#3a2a22" stroke="#2b2a3a" stroke-width="3"/>
-    <circle cx="40" cy="44" r="3.5" fill="#2b2a3a"/><circle cx="60" cy="44" r="3.5" fill="#2b2a3a"/>
-    <path d="M42 56 q8 7 16 0" fill="none" stroke="#2b2a3a" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="33" cy="52" r="4" fill="#ff9aa8" opacity=".7"/><circle cx="67" cy="52" r="4" fill="#ff9aa8" opacity=".7"/>
-  </symbol>
 </svg>
 <header class="top">
   <div class="brand">
@@ -205,12 +152,25 @@ table.t th{background:#e9f8f9; color: var(--navy);}
   <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
   <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
 </header>
+
+<div class="namewrap">
+  <div class="card tip">
+    <h3>🙋 Tulis namamu dulu ya!</h3>
+    <label for="nama" style="font-weight:700">Nama panggilan atau nomor absen (jangan tulis data pribadi lain):</label>
+    <input id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7" style="margin-top:6px">
+    <div class="row" style="margin-top:12px"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn ghost" id="ganti" type="button" hidden>🔄 Ganti murid</button></div>
+    <div id="nmsg" class="fb no show" role="alert" hidden></div>
+    <div id="cfm" class="fb no show" role="alert" hidden>Yakin ganti murid? Progres di perangkat ini akan dihapus.<div class="row" style="margin-top:10px"><button class="btn o" id="cya" type="button">Ya, ganti</button><button class="btn ghost" id="cbt" type="button">Batal</button></div></div>
+  </div>
+</div>
+
+<div id="app" hidden>
 <nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
 <main>
 <section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
   <div class="card key kodi-say">
     <svg viewBox="0 0 100 100" style="width:90px;height:90px;flex:0 0 auto"><use href="#kodi"/></svg>
-    <div class="bubble">Kemarin kita menemukan masalah dan penyebabnya. <b>Hari ini, kita carikan caranya!</b> Kita akan menyusun langkah yang runtut dan mengenal <b>Input – Proses – Output</b>.</div>
+    <div class="bubble">Kemarin kita menemukan masalah dan penyebabnya. <b>Hari ini, kita carikan caranya!</b> Kita akan menyusun langkah yang runtut dan mengenal <b>Input – Proses – Output</b>. Selesaikan 7 kegiatan: Urutan, Sikat Gigi, Robot, IPO Teh, Langkah Andi, IPO Andi, dan Kuis.</div>
   </div>
   <div class="grid g2">
     <div class="card"><h3>🎯 Tujuan pertemuan ini</h3>
@@ -239,7 +199,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <div class="row" style="margin-top:10px"><button class="btn g" type="button" id="washRun">▶ Jalankan algoritma</button><button class="btn ghost" type="button" id="washRst">↺ Semua langkah</button></div>
     <div class="fb" id="washFb"></div>
   </div>
-  <div class="card key"><b>Kesimpulan Kodi:</b> kegiatan yang sama bisa gagal bila <b>urutannya salah</b> atau ada <b>langkah yang terlewat</b>. Karena itu langkah perlu disusun secara runtut.</div>
+  <div class="card key"><b>Kesimpulan Kodi:</b> kegiatan yang sama bisa gagal bila <b>urutannya salah</b> atau ada <b>langkah yang terlewat</b>. Karena itu langkah perlu disusun secara runtut. <span class="mini" style="color:#e2e8f0">(Kegiatan ini selesai setelah kedua percobaan dicoba.)</span></div>
 </section>
 
 <section class="panel" id="p-algoritma" data-title="Algoritma" data-icon="📋" data-tp="3" data-sintaks="Joyful">
@@ -262,7 +222,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 
 <section class="panel" id="p-robot" data-title="Robot Patuh" data-icon="🤖" data-tp="3" data-sintaks="Joyful">
   <div class="card">
-    <p>Robot hanya bisa mengikuti perintah yang <b>jelas dan berurutan</b>. Mari antar <b>Kodi</b> ke 🚩 bendera! Perintah hanya boleh: <b>atas, kanan, kiri, bawah</b>. Kodi tidak boleh menebak!</p>
+    <p>Robot hanya bisa mengikuti perintah yang <b>jelas dan berurutan</b>. Mari antar <b>Kodi</b> ke 🚩 bendera! Perintah hanya boleh: <b>atas, kanan, kiri, bawah</b>. Kodi tidak boleh menebak! <span class="mini">(Kegiatan ini selesai bila Kodi sampai di bendera, di Level 1 atau Level 2.)</span></p>
     <div class="row" id="lvTabs"></div>
     <div class="grid g2" style="margin-top:14px;align-items:start">
       <div><div id="board" style="display:grid;grid-template-columns:repeat(3,92px);gap:6px;justify-content:center"></div></div>
@@ -316,6 +276,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div><label class="mini"><b>PROSES:</b> apa saja langkah yang harus dilakukan Andi?</label><textarea rows="3" data-save="p"></textarea></div>
       <div><label class="mini"><b>OUTPUT:</b> apa hasil yang diharapkan?</label><textarea rows="3" data-save="o"></textarea></div>
     </div>
+    <p class="mini" style="text-align:center;font-weight:700">Tulisanmu hanya tampil di layar ini dan tidak dikirim ke guru.</p>
   </div>
 </section>
 
@@ -325,23 +286,18 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <li>Jika urutan langkah salah, hasilnya bisa tidak sesuai harapan.</li>
     <li>Setiap kegiatan punya <b>Input</b> (bahan awal), <b>Proses</b> (langkah), dan <b>Output</b> (hasil akhir).</li></ul></div>
   <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div></div>
-  
-  <!-- Badge KELULUSAN + Navigasi Menu Bab & Menu Utama -->
+
+  <div class="fb hint show" id="remain" role="status" hidden></div>
+
   <div class="badge" id="badge">
     <div class="big">🤖🏅</div>
     <h3 style="font-size: 1.8rem; color: var(--navy);">Hebat! Kamu Insinyur Algoritma!</h3>
-    <p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 2. Sampai jumpa di Pertemuan 3: <b>Empat Pilar Berpikir Komputasional</b>.</p>
-    
+    <p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 2. Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus. Sampai jumpa di Pertemuan 3: <b>Empat Pilar Berpikir Komputasional</b>.</p>
     <div class="row" style="justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
-      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-list-ul"></i> Menu Bab 1
-      </a>
-      <a class="btn" href="media3.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        Ke Pertemuan 3 →
-      </a>
-      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-house"></i> Menu Utama
-      </a>
+      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-list-ul"></i> Menu Bab 1</a>
+      <a class="btn" href="media3.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">Ke Pertemuan 3 →</a>
+      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-house"></i> Menu Utama</a>
+      <button class="btn g" type="button" onclick="resetAll()">👋 Murid berikutnya</button>
     </div>
   </div>
 
@@ -350,9 +306,9 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <p><span class="chip joyful">Joyful</span> Permainan apa yang paling kamu sukai? Mengapa?</p><textarea rows="2" data-save="rf2"></textarea>
     <p><span class="chip meaningful">Meaningful</span> Kegiatan apa di rumahmu yang bisa kamu tuliskan algoritmanya?</p><textarea rows="2" data-save="rf3"></textarea></div>
 </section>
-
 </main>
-<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si</div>
+</div>
+<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SD Negeri 4 Tugusari • Disusun oleh Amir Salim, S.Si<br>Hasil kegiatan (nama panggilan dan skor) dikirim ke guru. Tulisan refleksi tidak dikirim.</div>
 <script>
 const PAGE='media2';
 const TPS={
@@ -364,28 +320,51 @@ const TPS={
  6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
 };
 </script>
-<script>/* ===== Utilitas & komponen bersama – Media Interaktif KKA Kelas V Bab 1 ===== */
+<script>/* ===== Utilitas & komponen bersama ===== */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const store={
   get(k){try{return localStorage.getItem(PAGE+':'+k)}catch(e){return null}},
   set(k,v){try{localStorage.setItem(PAGE+':'+k,v)}catch(e){}}
 };
+function clearAll(){try{Object.keys(localStorage).filter(k=>k.indexOf(PAGE+':')===0).forEach(k=>localStorage.removeItem(k))}catch(e){}}
+let NM=store.get('nama')||'';
+if(!NM)clearAll(); /* tanpa nama = murid baru, buang sisa data lama */
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-/* umpan balik */
+/* ===== Kirim hasil ke Google Sheet ===== */
+const URL_SHEET="https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec";
+const BAB="Bab 1",PERTEMUAN="Pertemuan 2";
+const ACT={urutan:[1,'Urutan'],sikat:[2,'Sikat Gigi'],robot:[3,'Robot'],ipotea:[4,'IPO Teh'],andi:[5,'Langkah Andi'],ipoandi:[6,'IPO Andi'],kuis2:[7,'Kuis']};
+const SENT=new Set();
+function kirim(id,skor,total){
+  const a=ACT[id],nm=($('#nama').value||'').trim()||'Tanpa nama',k=id+'|'+nm;
+  if(!a||SENT.has(k))return;SENT.add(k);
+  try{fetch(URL_SHEET,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({nama:nm,kelas:'V',bab:BAB,pertemuan:PERTEMUAN,aktivitas:'Aktivitas '+a[0]+': '+a[1],skor:skor,total:total,persen:total>0?Math.round(skor/total*100):0})}).catch(function(){})}catch(e){}
+}
+
 function fb(box,kind,msg){box.className='fb show '+kind;box.innerHTML=msg;box.setAttribute('role','status')}
 function fbClear(box){box.className='fb';box.innerHTML=''}
 
-/* bintang */
+/* bintang & penyelesaian */
 const earned=new Set();
 function earn(id){
-  if(earned.has(id))return;earned.add(id);
-  store.set('stars',JSON.stringify([...earned]));
-  $('#starN').textContent=earned.size;
-  const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  if(!earned.has(id)){
+    earned.add(id);
+    store.set('stars',JSON.stringify([...earned]));
+    $('#starN').textContent=earned.size;
+    const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  }
+  checkAll();
 }
+function checkAll(){
+  const miss=Object.keys(ACT).filter(k=>!earned.has(k)).map(k=>ACT[k][1]);
+  const b=$('#badge'),rm=$('#remain');
+  if(!miss.length){b.classList.add('show');rm.hidden=true;clearAll();return}
+  if(earned.has('kuis2')){rm.hidden=false;rm.innerHTML='🌟 Hampir selesai! Kegiatan yang belum selesai: <b>'+miss.join(', ')+'</b>.'}
+}
+function resetAll(){clearAll();location.replace(location.pathname)}
 
 /* ===== navigasi panel ===== */
 function initNav(){
@@ -395,7 +374,6 @@ function initNav(){
   panels.forEach((p,i)=>{
     const b=el('button','',`<span class="n">${i+1}</span>${p.dataset.title}`);
     b.type='button';b.onclick=()=>go(i);nav.appendChild(b);
-    // header
     const tps=(p.dataset.tp||'').split(',').filter(Boolean);
     const h=el('div','');
     let chips='';
@@ -417,7 +395,7 @@ function initNav(){
     i=Math.max(0,Math.min(panels.length-1,i));
     panels.forEach((p,j)=>p.classList.toggle('on',j===i));
     $$('button',nav).forEach((b,j)=>{b.classList.toggle('on',j===i);if(j<i)b.classList.add('done')});
-    const cur=$$('button',nav)[i];cur.scrollIntoView({inline:'center',block:'nearest'});
+    const cur=$$('button',nav)[i];try{cur.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}
     history.replaceState(null,'','#'+panels[i].id);
     window.scrollTo({top:0});
   }
@@ -455,29 +433,30 @@ function Sequencer(root,cfg){
     if(cfg.validator)res=cfg.validator(placed);
     else{const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});res={ok:!bad.length,bad,msg:'Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.'}}
     $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(res.bad.includes(k)?'bad':'ok')});
-    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
+    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));cfg.onOk&&cfg.onOk();earn(cfg.id)}
     else fb(F,'no','🤔 '+res.msg);
   };
   reset();
   return {reset};
 }
 
-/* ===== Kuis pilihan ganda ===== */
+/* ===== Kuis pilihan ganda (urutan pilihan diacak) ===== */
 function Quiz(root,qs,cfg){
   let score=0,done=0;
   const sc=el('div','score',`Skor: <span class="v">0</span> / ${qs.length}`);
   qs.forEach((q,qi)=>{
+    const p=shuffle(q.o.map((t,k)=>[t,k===q.a])),o=p.map(x=>x[0]),a=p.findIndex(x=>x[1]);
     const d=el('div','q',`<div class="qt">${qi+1}. ${q.q}</div>`);
     const f=el('div','fb');
-    q.o.forEach((t,oi)=>{
+    o.forEach((t,oi)=>{
       const b=el('button','opt',`<b>${'ABCD'[oi]}.</b> ${t}`);b.type='button';
       b.onclick=()=>{
         if(d.dataset.done)return;d.dataset.done=1;done++;
-        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('right')});
-        if(oi===q.a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
+        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===a)x.classList.add('right')});
+        if(oi===a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
         else{b.classList.add('wrong');fb(f,'no','❌ Belum tepat. '+q.why)}
         $('.v',sc).textContent=score;
-        if(done===qs.length){earn(cfg.id);cfg.onDone&&cfg.onDone(score)}
+        if(done===qs.length){cfg.onDone&&cfg.onDone(score);earn(cfg.id)}
       };
       d.appendChild(b);
     });
@@ -486,22 +465,37 @@ function Quiz(root,qs,cfg){
   root.appendChild(sc);
 }
 
-/* ===== refleksi (disimpan di peramban) ===== */
+/* ===== refleksi (disimpan di peramban, tidak dikirim) ===== */
 function initReflect(){
   $$('textarea[data-save]').forEach(t=>{
     const v=store.get('r:'+t.dataset.save);if(v)t.value=v;
     t.addEventListener('input',()=>store.set('r:'+t.dataset.save,t.value));
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(window.main)main()});
+
+/* ===== Nama wajib ===== */
+function unlock(){$('#nama').value=NM;$('#nama').readOnly=true;$('#app').hidden=false;$('#mulai').hidden=true;$('#ganti').hidden=false;$('#nmsg').hidden=true}
+function mulai(){
+  const v=($('#nama').value||'').trim();
+  if(v.length<2){$('#nmsg').textContent='Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.';$('#nmsg').hidden=false;$('#nama').focus();return}
+  NM=v;store.set('nama',NM);unlock();
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  initNav();initReflect();if(window.main)main();
+  $('#mulai').onclick=mulai;
+  $('#nama').addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+  $('#ganti').onclick=()=>{if(Object.keys(ACT).every(k=>earned.has(k))){resetAll();return}$('#cfm').hidden=false};
+  $('#cya').onclick=resetAll;$('#cbt').onclick=()=>{$('#cfm').hidden=true};
+  if(NM)unlock();
+});
 </script>
-<script>function IPOSort(root,items,id){
+<script>function IPOSort(root,items,id,onDone){
   root.innerHTML=`<div class="grid g3" style="margin-bottom:12px">
    <div class="card key" style="margin:0"><b>📥 INPUT</b><div class="col" data-c="I"></div></div>
    <div class="card tip" style="margin:0"><b>⚙️ PROSES</b><div class="col" data-c="P"></div></div>
    <div class="card" style="margin:0;background:#e2f7ea;border-color:#b4e8ca"><b>📤 OUTPUT</b><div class="col" data-c="O"></div></div></div>
    <div class="rows"></div><div class="fb"></div>`;
-  const rows=$('.rows',root),F=$('.fb',root);let left=items.length;
+  const rows=$('.rows',root),F=$('.fb',root),wrong=new Set();let left=items.length;
   shuffle(items).forEach(([t,c])=>{
     const r=el('div','row',`<div style="flex:1;min-width:220px;font-weight:700">${t}</div>`);r.style.margin='6px 0';
     [['I','📥 Input'],['P','⚙️ Proses'],['O','📤 Output']].forEach(([k,l])=>{
@@ -510,20 +504,20 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
         if(k===c){
           r.remove();$(`.col[data-c=${c}]`,root).appendChild(el('div','scard',t)).style.marginTop='6px';
           fb(F,'ok','✅ Tepat! “'+t+'” termasuk '+({I:'input',P:'proses',O:'output'})[c]+'.');
-          if(--left===0){fb(F,'ok','🎉 Semua kartu sudah pada tempatnya! Input diolah lewat proses menjadi output.');earn(id)}
-        }else fb(F,'no','🤔 Belum tepat. Ingat: input = bahan awal, proses = langkah yang dilakukan, output = hasil akhir.');
+          if(--left===0){fb(F,'ok','🎉 Semua kartu sudah pada tempatnya! Skormu '+(items.length-wrong.size)+' dari '+items.length+' (kartu yang langsung benar). Input diolah lewat proses menjadi output.');onDone&&onDone(items.length-wrong.size,items.length);earn(id)}
+        }else{wrong.add(t);fb(F,'no','🤔 Belum tepat. Ingat: input = bahan awal, proses = langkah yang dilakukan, output = hasil akhir.')}
       };r.appendChild(b)});
     rows.appendChild(r);
   });
 }
 
 function main(){
-  /* sepatu */
+  /* sepatu & cuci tangan: selesai bila keduanya dicoba */
+  function cekUrutan(){if(earned.has('sepatu')&&earned.has('wash')){kirim('urutan',1,1);earn('urutan')}}
   const skF=$('#skFb');
-  $('#sk1').onclick=()=>{fb(skF,'ok','🧦➡️👟 Kaki nyaman dan sepatu terpasang rapi. Urutan benar → hasil sesuai harapan.');earn('sepatu')};
-  $('#sk2').onclick=()=>{fb(skF,'no','👟➡️🧦 Kaus kaki tidak bisa dipakai di dalam sepatu! Urutan salah → hasil tidak sesuai harapan.');earn('sepatu')};
+  $('#sk1').onclick=()=>{fb(skF,'ok','🧦➡️👟 Kaki nyaman dan sepatu terpasang rapi. Urutan benar → hasil sesuai harapan.');earn('sepatu');cekUrutan()};
+  $('#sk2').onclick=()=>{fb(skF,'no','👟➡️🧦 Kaus kaki tidak bisa dipakai di dalam sepatu! Urutan salah → hasil tidak sesuai harapan.');earn('sepatu');cekUrutan()};
 
-  /* cuci tangan */
   const ws=[['Basahi tangan dengan air mengalir','Sabun sulit berbusa, jadi tangan tidak bisa digosok dengan baik.'],
             ['Ambil sabun dan sabuni tangan','Tangan hanya basah. Kuman tidak hilang!'],
             ['Gosok telapak, punggung tangan, dan sela jari','Sabun hanya menempel; sela jari tetap kotor.'],
@@ -542,13 +536,13 @@ function main(){
     const miss=ws.map((x,i)=>on[i]?null:x[1]).filter(Boolean);
     if(!miss.length)fb($('#washFb'),'ok','✨ Semua langkah dilakukan secara berurutan: tangan bersih! 🙌');
     else fb($('#washFb'),'no','⚠️ Ada langkah yang terlewat. Akibatnya: '+miss.join(' '));
-    earn('wash');
+    earn('wash');cekUrutan();
   };
 
   /* sikat gigi */
   Sequencer($('#seqTeeth'),{id:'sikat',
     items:[{id:'a',t:'Ambil sikat gigi dan pasta gigi',e:'🪥'},{id:'b',t:'Oleskan pasta gigi pada sikat',e:'🧴'},{id:'c',t:'Gosok gigi',e:'😁'},{id:'d',t:'Berkumur sampai bersih',e:'💧'},{id:'e',t:'Rapikan peralatan',e:'🧺'}],
-    order:['a','b','c','d','e'],okMsg:'Urutan menyikat gigi sudah benar! Itu adalah sebuah algoritma.'});
+    order:['a','b','c','d','e'],okMsg:'Urutan menyikat gigi sudah benar! Itu adalah sebuah algoritma.',onOk:()=>kirim('sikat',1,1)});
 
   /* robot patuh */
   const R=4,C=3,flag=[0,2];
@@ -586,13 +580,13 @@ function main(){
       pos=n;drawBoard();
     }
     running=false;
-    if(pos[0]===flag[0]&&pos[1]===flag[1]){fb($('#robFb'),'ok','🎉 Kodi sampai di bendera! Algoritmamu jelas dan berurutan. '+levels[lv].tip);earn('robot'+lv)}
+    if(pos[0]===flag[0]&&pos[1]===flag[1]){fb($('#robFb'),'ok','🎉 Kodi sampai di bendera! Algoritmamu jelas dan berurutan. '+levels[lv].tip);kirim('robot',1,1);earn('robot'+lv);earn('robot')}
     else fb($('#robFb'),'hint','🤖 Kodi sudah menjalankan semua perintah, tetapi belum sampai bendera. Perintahnya belum lengkap atau belum tepat. Coba lagi!');
   };
   reset();
 
   /* IPO teh manis */
-  IPOSort($('#ipoTea'),[['Gelas','I'],['Teh celup','I'],['Gula','I'],['Air panas','I'],['Tuang air panas ke gelas','P'],['Masukkan teh celup dan gula','P'],['Aduk sampai larut','P'],['Segelas teh manis','O']],'ipotea');
+  IPOSort($('#ipoTea'),[['Gelas','I'],['Teh celup','I'],['Gula','I'],['Air panas','I'],['Tuang air panas ke gelas','P'],['Masukkan teh celup dan gula','P'],['Aduk sampai larut','P'],['Segelas teh manis','O']],'ipotea',(s,t)=>kirim('ipotea',s,t));
 
   /* langkah Andi */
   Sequencer($('#seqAndi'),{id:'andi',
@@ -603,18 +597,20 @@ function main(){
       if(pos.f!==4){bad.add(pos.f);bad.add(4);msgs.push('Berangkat ke sekolah adalah langkah terakhir.')}
       if(pos.c>pos.d){bad.add(pos.c);bad.add(pos.d);msgs.push('Lihat jadwal dulu sebelum mengisi tas, supaya tahu apa yang dibawa.')}
       return {ok:!bad.size,bad:[...bad],msg:msgs.join(' ')};
-    },okMsg:'Urutan langkah Andi runtut dan logis. Sekarang Andi tidak akan lupa membawa alat tulis!'});
+    },okMsg:'Urutan langkah Andi runtut dan logis. Sekarang Andi tidak akan lupa membawa alat tulis!',onOk:()=>kirim('andi',1,1)});
 
   /* IPO Andi */
-  IPOSort($('#ipoAndi'),[['Pensil, penghapus, dan penggaris','I'],['Buku pelajaran sesuai jadwal','I'],['Jadwal pelajaran','I'],['Melihat jadwal pelajaran','P'],['Memasukkan buku dan alat tulis ke dalam tas','P'],['Memeriksa isi tas sekali lagi','P'],['Tas siap dengan alat tulis lengkap','O'],['Andi berangkat tepat waktu dan tidak ada yang tertinggal','O']],'ipoandi');
+  IPOSort($('#ipoAndi'),[['Pensil, penghapus, dan penggaris','I'],['Buku pelajaran sesuai jadwal','I'],['Jadwal pelajaran','I'],['Melihat jadwal pelajaran','P'],['Memasukkan buku dan alat tulis ke dalam tas','P'],['Memeriksa isi tas sekali lagi','P'],['Tas siap dengan alat tulis lengkap','O'],['Andi berangkat tepat waktu dan tidak ada yang tertinggal','O']],'ipoandi',(s,t)=>kirim('ipoandi',s,t));
 
-  /* kuis */
-  Quiz($('#quiz'),[
+  /* kuis: 4 soal diacak dari 6 */
+  const BK=[
     {q:'Urutan langkah yang jelas dan runtut untuk menyelesaikan masalah disebut …',o:['algoritma','animasi','aplikasi'],a:0,why:'Itulah pengertian algoritma.'},
     {q:'Hasil akhir dari suatu kegiatan disebut …',o:['input','proses','output'],a:2,why:'Output adalah hasil akhir setelah proses dilakukan.'},
     {q:'Pada pembuatan teh manis, “gula” termasuk …',o:['input','proses','output'],a:0,why:'Gula adalah bahan awal yang dibutuhkan, yaitu input.'},
-    {q:'Jika langkah-langkah dilakukan tidak berurutan, maka …',o:['hasilnya bisa tidak sesuai harapan','hasilnya pasti benar','pekerjaan jadi lebih cepat selesai'],a:0,why:'Urutan yang salah bisa membuat pekerjaan gagal, seperti memakai sepatu sebelum kaus kaki.'}
-  ],{id:'kuis2',onDone:()=>$('#badge').classList.add('show')});
+    {q:'Jika langkah-langkah dilakukan tidak berurutan, maka …',o:['hasilnya bisa tidak sesuai harapan','hasilnya pasti benar','pekerjaan jadi lebih cepat selesai'],a:0,why:'Urutan yang salah bisa membuat pekerjaan gagal, seperti memakai sepatu sebelum kaus kaki.'},
+    {q:'Pada pembuatan teh manis, “mengaduk sampai larut” termasuk …',o:['input','proses','output'],a:1,why:'Mengaduk adalah langkah yang dilakukan, yaitu proses.'},
+    {q:'Ciri algoritma yang baik adalah …',o:['langkahnya jelas dan berurutan','langkahnya boleh ditebak-tebak','langkahnya dilakukan acak'],a:0,why:'Algoritma yang baik jelas, berurutan, dan punya hasil akhir.'}];
+  Quiz($('#quiz'),shuffle(BK).slice(0,4),{id:'kuis2',onDone:s=>kirim('kuis2',s,4)});
 }
 </script>
 </body>
