@@ -6,7 +6,6 @@
 <title>Pertemuan 1: Mengenal Berpikir Komputasional – Media Interaktif KKA Kelas V</title>
 <meta name="description" content="Media interaktif Pertemuan 1: pengertian berpikir komputasional dan masalah sederhana.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230e9aa7'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E🤖%3C/text%3E%3C/svg%3E">
-<!-- Tailwind & FontAwesome for consistency if needed, but styling here is mostly custom CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -15,25 +14,22 @@
   --card: #ffffff; 
   --ink: #333333; 
   --muted: #6b6880;
-  
-  /* VisualMath KKA Theme Colors */
   --navy: #022050;
   --teal: #0B7C86; 
   --teal-d: #085E66;
   --cyan: #00D6D8;
-  
   --orange: #ff8a3d; 
   --orange-d: #d4651a;
   --yellow: #ffd34e; 
   --pink: #ff6f91; 
   --green: #2fb36d; 
   --red: #e5484d; 
-
   --line: #c3e2e5; 
   --shadow: 0 4px 0 rgba(43,42,58,.05), 0 10px 24px rgba(11, 124, 134, 0.1);
   --r: 20px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
   margin:0;
@@ -54,7 +50,6 @@ button{font:inherit;cursor:pointer}
 .sr{position:absolute;left:-9999px}
 a{color:var(--teal-d)}
 
-/* top bar */
 .top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .top .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px; font-family: 'Fredoka', sans-serif;}
 .top .brand img { height: 44px; width: auto; background: white; border-radius: 50%; padding: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
@@ -65,7 +60,6 @@ a{color:var(--teal-d)}
 .home{color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;opacity:.95;border:2px solid var(--teal); background: var(--teal); border-radius:12px; padding:6px 14px; transition: all 0.2s;}
 .home:hover { background: var(--cyan); color: var(--navy); border-color: var(--cyan); }
 
-/* step nav */
 .steps{display:flex;gap:8px;overflow-x:auto;padding:20px 20px 6px;max-width:1100px;margin:0 auto;scrollbar-width:thin}
 .steps button{flex:0 0 auto;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 14px;font-weight:700;color:var(--ink);display:flex;gap:8px;align-items:center;box-shadow:0 3px 0 var(--line)}
 .steps button .n{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.8rem}
@@ -74,6 +68,7 @@ a{color:var(--teal-d)}
 .steps button.done:not(.on) .n{background:var(--cyan);color:var(--navy)}
 
 main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
+.namewrap{max-width:1100px;margin:0 auto;padding:8px 20px 0}
 .panel{display:none;animation:pop .35s ease}
 .panel.on{display:block}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -114,33 +109,20 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .fb.no{background:#ffe6e6;color:#a31d22; border: 2px solid #f2b0b2;}
 .fb.hint{background:#e9f8f9;color:var(--teal-d); border: 2px solid var(--line);}
 
-/* chips / option buttons */
 .opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;font-weight:600;color:var(--ink);margin:8px 0;box-shadow:0 3px 0 var(--line); transition: all 0.2s;}
 .opt:hover{border-color:var(--teal); transform: translateY(-2px);}
 .opt.right{background:#e2f7ea;border-color:var(--green);box-shadow:0 3px 0 #8fd6b0}
 .opt.wrong{background:#ffe6e6;border-color:var(--red);box-shadow:0 3px 0 #f2b0b2}
-.opt.sel{border-color:var(--orange);background:#fff4e8}
 .word{display:inline-block;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 16px;font-weight:800;margin:6px;box-shadow:0 3px 0 var(--line); transition: transform 0.1s;}
 .word:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line);}
 .word.used{opacity:.35;pointer-events:none}
 .blank{display:inline-block;min-width:140px;border-bottom:4px dashed var(--teal);text-align:center;font-weight:800;color:var(--teal-d);padding:0 10px;cursor:pointer; font-size: 1.1rem;}
 .blank.ok{border-bottom-style:solid;border-color:var(--cyan);color:var(--navy)}
 
-/* sequencer */
-.seq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:820px){.seq{grid-template-columns:1fr}}
-.seq h4{margin:0 0 10px;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px; font-weight: 800;}
-.pool,.slots{display:flex;flex-direction:column;gap:10px;min-height:60px}
 .scard{border:2px solid var(--line);background:#fff;border-radius:16px;padding:12px 16px;font-weight:700;text-align:left;display:flex;gap:12px;align-items:center;box-shadow:0 3px 0 var(--line);color:var(--ink); transition: transform 0.1s;}
 .scard:active { transform: translateY(3px); box-shadow: none; }
 .scard .e{font-size:1.6rem}
-.slot{border:3px dashed var(--line);border-radius:16px;padding:10px 14px;min-height:60px;display:flex;align-items:center;gap:12px;background:#f8fbfc}
-.slot .no{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
-.slot .scard{flex:1;box-shadow:none;border-color:var(--cyan);background:#e9f8f9}
-.slot.ok{border-color:var(--green);background:#eefaf3}.slot.ok .no{background:var(--green)}
-.slot.bad{border-color:var(--red);background:#fff2f2}.slot.bad .no{background:var(--red)}
 
-/* flip card */
 .flip{perspective:900px;min-height:180px;cursor:pointer;border:0;background:none;padding:0;text-align:left}
 .flip .in{position:relative;width:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
 .flip.on .in{transform:rotateY(180deg)}
@@ -149,7 +131,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg); border-color: var(--cyan); border-width: 3px;}
 .flip .big{font-size:2.8rem; margin-bottom: 10px;}
 
-/* quiz */
 .q{margin:16px 0 26px}
 .q .qt{font-weight:800;margin-bottom:8px; font-size: 1.1rem; color: var(--navy);}
 .score{display:flex;gap:10px;align-items:center;font-weight:800; background: var(--navy); color: white; padding: 10px 20px; border-radius: 16px; width: max-content; font-size: 1.1rem;}
@@ -159,9 +140,6 @@ main{max-width:1100px;margin:0 auto;padding:8px 20px 60px}
 .badge .big{font-size:3.5rem; margin-bottom: 10px;}
 textarea,input[type=text]{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;background:#fff;color:var(--ink); transition: border-color 0.2s;}
 textarea:focus,input:focus,button:focus-visible{outline:none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(11, 124, 134, 0.2);}
-table.t{border-collapse:collapse;width:100%;font-size:.95rem}
-table.t th,table.t td{border:2px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
-table.t th{background:#e9f8f9; color: var(--navy);}
 .mini{font-size:.9rem;color:var(--muted)}
 .kodi-say{display:flex;gap:16px;align-items:flex-start}
 .kodi-say img {width:90px;height:90px;flex:0 0 auto; object-fit: contain;}
@@ -183,13 +161,26 @@ table.t th{background:#e9f8f9; color: var(--navy);}
   <a class="home" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
   <div class="stars" id="stars" aria-label="Bintang yang kamu kumpulkan">⭐ <span id="starN">0</span></div>
 </header>
+
+<div class="namewrap">
+  <div class="card tip">
+    <h3>🙋 Tulis namamu dulu ya!</h3>
+    <label for="nama" style="font-weight:700">Nama panggilan atau nomor absen (jangan tulis data pribadi lain):</label>
+    <input id="nama" type="text" maxlength="30" autocomplete="off" placeholder="Contoh: Budi / Absen 7" style="margin-top:6px">
+    <div class="row" style="margin-top:12px"><button class="btn g" id="mulai" type="button">▶ Mulai</button><button class="btn ghost" id="ganti" type="button" hidden>🔄 Ganti murid</button></div>
+    <div id="nmsg" class="fb no show" role="alert" hidden></div>
+    <div id="cfm" class="fb no show" role="alert" hidden>Yakin ganti murid? Progres di perangkat ini akan dihapus.<div class="row" style="margin-top:10px"><button class="btn o" id="cya" type="button">Ya, ganti</button><button class="btn ghost" id="cbt" type="button">Batal</button></div></div>
+  </div>
+</div>
+
+<div id="app" hidden>
 <nav class="steps" id="steps" aria-label="Langkah kegiatan"></nav>
 <main>
 <!-- 0 MULAI -->
 <section class="panel" id="p-mulai" data-title="Mulai" data-icon="🚀" data-intro="1">
   <div class="card key kodi-say">
     <img src="logo.png" alt="Kodi">
-    <div class="bubble"><b>Halo, teman-teman!</b> Aku Kodi, robot sahabat Andi. Hari ini kita akan <b>mengenal berpikir komputasional</b> dan menjadi <b>detektif masalah</b>. Siap?</div>
+    <div class="bubble"><b>Halo, teman-teman!</b> Aku Kodi, robot sahabat Andi. Hari ini kita akan <b>mengenal berpikir komputasional</b> dan menjadi <b>detektif masalah</b>. Selesaikan 5 kegiatan (Amati, Definisi, Detektif, Masalah, Kuis) untuk meraih badge. Siap?</div>
   </div>
   <div class="grid g2">
     <div class="card">
@@ -275,7 +266,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <!-- 3 DETEKTIF -->
 <section class="panel" id="p-detektif" data-title="Detektif Masalah" data-icon="🕵️" data-tp="2" data-sintaks="Joyful">
   <div class="card">
-    <p>Saat menemui masalah, lakukan <b>tiga langkah detektif</b>: <b>① Kenali masalah</b> → <b>② Cari penyebab</b> → <b>③ Pikirkan solusi</b>. Pilih satu kartu situasi lalu selesaikan penyelidikanmu!</p>
+    <p>Saat menemui masalah, lakukan <b>tiga langkah detektif</b>: <b>① Kenali masalah</b> → <b>② Cari penyebab</b> → <b>③ Pikirkan solusi</b>. Selesaikan ketiga kartu situasi untuk menyelesaikan kegiatan ini!</p>
     <div class="row" id="caseTabs"></div>
   </div>
   <div class="card" id="caseBox"></div>
@@ -297,7 +288,7 @@ table.t th{background:#e9f8f9; color: var(--navy);}
       <div><label class="mini" style="margin-bottom:6px; display:block;"><b>Penyebabnya</b></label><textarea rows="3" data-save="my-sebab"></textarea></div>
       <div><label class="mini" style="margin-bottom:6px; display:block;"><b>Solusinya</b></label><textarea rows="3" data-save="my-solusi"></textarea></div>
     </div>
-    <p class="mini mt-2 text-center text-teal-600 font-semibold">Jawabanmu tersimpan otomatis di perangkat ini.</p>
+    <p class="mini" style="text-align:center;font-weight:700">Tulisanmu hanya tampil di layar ini dan tidak dikirim ke guru.</p>
   </div>
   <div class="card key"><h3>📌 Rangkuman</h3>
     <ul style="padding-left: 20px;">
@@ -311,23 +302,18 @@ table.t th{background:#e9f8f9; color: var(--navy);}
 <!-- 5 UJI -->
 <section class="panel" id="p-uji" data-title="Uji Pemahaman & Refleksi" data-icon="🏆" data-tp="1,2" data-sintaks="Meaningful">
   <div class="card"><h3>✅ Ayo uji pemahamanmu</h3><div id="quiz"></div></div>
-  
-  <!-- Badge KELULUSAN + Navigasi Menu Bab & Menu Utama -->
+
+  <div class="fb hint show" id="remain" role="status" hidden></div>
+
   <div class="badge" id="badge">
     <div class="big">🕵️🏅</div>
     <h3 style="font-size: 1.8rem; color: var(--navy);">Selamat! Kamu Detektif Masalah!</h3>
-    <p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 1. Sampai jumpa di Pertemuan 2: <b>Urutan Langkah dan IPO</b>.</p>
-    
+    <p style="font-size: 1.1rem;">Kamu sudah menyelesaikan Pertemuan 1. Nilaimu sudah terkirim ke guru dan progres di perangkat ini sudah dihapus. Sampai jumpa di Pertemuan 2: <b>Urutan Langkah dan IPO</b>.</p>
     <div class="row" style="justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
-      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-list-ul"></i> Menu Bab 1
-      </a>
-      <a class="btn" href="media2.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        Ke Pertemuan 2 →
-      </a>
-      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fa-solid fa-house"></i> Menu Utama
-      </a>
+      <a class="btn ghost" href="bab1.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-list-ul"></i> Menu Bab 1</a>
+      <a class="btn" href="media2.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">Ke Pertemuan 2 →</a>
+      <a class="btn o" href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"><i class="fa-solid fa-house"></i> Menu Utama</a>
+      <button class="btn g" type="button" onclick="resetAll()">👋 Murid berikutnya</button>
     </div>
   </div>
 
@@ -338,9 +324,9 @@ table.t th{background:#e9f8f9; color: var(--navy);}
     <p><span class="chip meaningful">Meaningful</span> Masalah apa di rumah yang bisa kamu selesaikan dengan cara ini?</p><textarea rows="2" data-save="rf3"></textarea>
   </div>
 </section>
-
 </main>
-<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SDN 4 Tugusari • Disusun oleh Amir Salim, S.Si.</div>
+</div>
+<div class="foot">Media pembelajaran interaktif • Modul Ajar KKA Bab 1 – Berpikir Komputasional • SDN 4 Tugusari • Disusun oleh Amir Salim, S.Si.<br>Hasil kegiatan (nama panggilan dan skor) dikirim ke guru. Tulisan refleksi tidak dikirim.</div>
 <script>
 const PAGE='media1';
 const TPS={
@@ -352,28 +338,50 @@ const TPS={
  6:'Menyajikan solusi melalui kegiatan berbasis STEAM.'
 };
 </script>
-<script>/* ===== Utilitas & komponen bersama – Media Interaktif KKA Kelas V Bab 1 ===== */
+<script>/* ===== Utilitas & komponen bersama ===== */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const store={
   get(k){try{return localStorage.getItem(PAGE+':'+k)}catch(e){return null}},
   set(k,v){try{localStorage.setItem(PAGE+':'+k,v)}catch(e){}}
 };
+function clearAll(){try{Object.keys(localStorage).filter(k=>k.indexOf(PAGE+':')===0).forEach(k=>localStorage.removeItem(k))}catch(e){}}
+let NM=store.get('nama')||'';
+if(!NM)clearAll(); /* tanpa nama = murid baru, buang sisa data lama */
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-/* umpan balik */
+/* ===== Kirim hasil ke Google Sheet ===== */
+const URL_SHEET="https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec";
+const BAB="Bab 1",PERTEMUAN="Pertemuan 1";
+const ACT={amati:[1,'Amati'],definisi:[2,'Definisi'],detektif:[3,'Detektif'],mb:[4,'Masalah'],kuis1:[5,'Kuis']};
+const SENT=new Set();
+function kirim(id,skor,total){
+  const a=ACT[id],nm=($('#nama').value||'').trim()||'Tanpa nama',k=id+'|'+nm;
+  if(!a||SENT.has(k))return;SENT.add(k);
+  try{fetch(URL_SHEET,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({nama:nm,kelas:'V',bab:BAB,pertemuan:PERTEMUAN,aktivitas:'Aktivitas '+a[0]+': '+a[1],skor:skor,total:total,persen:total>0?Math.round(skor/total*100):0})}).catch(function(){})}catch(e){}
+}
+
 function fb(box,kind,msg){box.className='fb show '+kind;box.innerHTML=msg;box.setAttribute('role','status')}
 function fbClear(box){box.className='fb';box.innerHTML=''}
 
-/* bintang */
+/* bintang & penyelesaian */
 const earned=new Set();
 function earn(id){
-  if(earned.has(id))return;earned.add(id);
-  store.set('stars',JSON.stringify([...earned]));
-  $('#starN').textContent=earned.size;
-  const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  if(!earned.has(id)){
+    earned.add(id);
+    store.set('stars',JSON.stringify([...earned]));
+    $('#starN').textContent=earned.size;
+    const s=$('#stars');s.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:400});
+  }
+  checkAll();
 }
+function checkAll(){
+  const miss=Object.keys(ACT).filter(k=>!earned.has(k)).map(k=>ACT[k][1]);
+  const b=$('#badge'),rm=$('#remain');
+  if(!miss.length){b.classList.add('show');rm.hidden=true;clearAll();return}
+  if(earned.has('kuis1')){rm.hidden=false;rm.innerHTML='🌟 Hampir selesai! Kegiatan yang belum selesai: <b>'+miss.join(', ')+'</b>.'}
+}
+function resetAll(){clearAll();location.replace(location.pathname)}
 
 /* ===== navigasi panel ===== */
 function initNav(){
@@ -383,7 +391,6 @@ function initNav(){
   panels.forEach((p,i)=>{
     const b=el('button','',`<span class="n">${i+1}</span>${p.dataset.title}`);
     b.type='button';b.onclick=()=>go(i);nav.appendChild(b);
-    // header
     const tps=(p.dataset.tp||'').split(',').filter(Boolean);
     const h=el('div','');
     let chips='';
@@ -405,7 +412,7 @@ function initNav(){
     i=Math.max(0,Math.min(panels.length-1,i));
     panels.forEach((p,j)=>p.classList.toggle('on',j===i));
     $$('button',nav).forEach((b,j)=>{b.classList.toggle('on',j===i);if(j<i)b.classList.add('done')});
-    const cur=$$('button',nav)[i];cur.scrollIntoView({inline:'center',block:'nearest'});
+    const cur=$$('button',nav)[i];try{cur.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}
     history.replaceState(null,'','#'+panels[i].id);
     window.scrollTo({top:0});
   }
@@ -415,57 +422,23 @@ function initNav(){
   go(idx>=0?idx:0);
 }
 
-/* ===== Sequencer: ketuk kartu untuk menyusun urutan ===== */
-function Sequencer(root,cfg){
-  const byId=Object.fromEntries(cfg.items.map(i=>[i.id,i]));
-  let placed=Array(cfg.items.length).fill(null), pool=[];
-  root.innerHTML=`<div class="seq"><div><h4>Kartu langkah (ketuk untuk memilih)</h4><div class="pool"></div></div>
-  <div><h4>Urutanmu</h4><div class="slots"></div></div></div>
-  <div class="row" style="margin-top:20px"><button class="btn g chk" type="button"><i class="fa-solid fa-check"></i> Periksa urutan</button><button class="btn ghost rst" type="button"><i class="fa-solid fa-rotate-right"></i> Acak ulang</button></div><div class="fb"></div>`;
-  const P=$('.pool',root),S=$('.slots',root),F=$('.fb',root);
-  function card(id){const c=byId[id];const b=el('button','scard',`<span class="e">${c.e||''}</span><span>${c.t}</span>`);b.type='button';return b}
-  function draw(){
-    P.innerHTML='';S.innerHTML='';
-    pool.forEach(id=>{const b=card(id);b.onclick=()=>{const k=placed.indexOf(null);if(k<0)return;placed[k]=id;pool=pool.filter(x=>x!==id);fbClear(F);draw()};P.appendChild(b)});
-    placed.forEach((id,k)=>{
-      const s=el('div','slot',`<span class="no">${k+1}</span>`);s.dataset.k=k;
-      if(id){const b=card(id);b.title='Ketuk untuk mengembalikan';b.onclick=()=>{placed[k]=null;pool.push(id);fbClear(F);draw()};s.appendChild(b)}
-      S.appendChild(s);
-    });
-  }
-  function reset(){placed=Array(cfg.items.length).fill(null);pool=shuffle(cfg.items.map(i=>i.id));
-    if(cfg.order&&pool.join()===cfg.order.join())pool=shuffle(pool);
-    fbClear(F);draw()}
-  $('.rst',root).onclick=reset;
-  $('.chk',root).onclick=()=>{
-    if(placed.includes(null)){fb(F,'hint','Susun semua kartu dulu, ya. Masih ada kartu yang belum dipilih. 🙂');return}
-    let res;
-    if(cfg.validator)res=cfg.validator(placed);
-    else{const bad=[];placed.forEach((id,k)=>{if(id!==cfg.order[k])bad.push(k)});res={ok:!bad.length,bad,msg:'Ada langkah yang belum tepat. Perhatikan nomor yang berwarna merah, lalu coba lagi.'}}
-    $$('.slot',S).forEach((s,k)=>{s.classList.remove('ok','bad');s.classList.add(res.bad.includes(k)?'bad':'ok')});
-    if(res.ok){fb(F,'ok','🎉 '+(cfg.okMsg||'Urutanmu sudah runtut dan logis!'));earn(cfg.id);cfg.onOk&&cfg.onOk()}
-    else fb(F,'no','🤔 '+res.msg);
-  };
-  reset();
-  return {reset};
-}
-
-/* ===== Kuis pilihan ganda ===== */
+/* ===== Kuis pilihan ganda (urutan pilihan diacak) ===== */
 function Quiz(root,qs,cfg){
   let score=0,done=0;
   const sc=el('div','score',`Skor: <span class="v">0</span> / ${qs.length}`);
   qs.forEach((q,qi)=>{
+    const p=shuffle(q.o.map((t,k)=>[t,k===q.a])),o=p.map(x=>x[0]),a=p.findIndex(x=>x[1]);
     const d=el('div','q',`<div class="qt">${qi+1}. ${q.q}</div>`);
     const f=el('div','fb');
-    q.o.forEach((t,oi)=>{
+    o.forEach((t,oi)=>{
       const b=el('button','opt',`<b>${'ABCD'[oi]}.</b> ${t}`);b.type='button';
       b.onclick=()=>{
         if(d.dataset.done)return;d.dataset.done=1;done++;
-        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('right')});
-        if(oi===q.a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
+        $$('.opt',d).forEach((x,k)=>{x.disabled=true;if(k===a)x.classList.add('right')});
+        if(oi===a){score++;fb(f,'ok','✅ Tepat! '+q.why)}
         else{b.classList.add('wrong');fb(f,'no','❌ Belum tepat. '+q.why)}
         $('.v',sc).textContent=score;
-        if(done===qs.length){earn(cfg.id);cfg.onDone&&cfg.onDone(score)}
+        if(done===qs.length){cfg.onDone&&cfg.onDone(score);earn(cfg.id)}
       };
       d.appendChild(b);
     });
@@ -474,14 +447,29 @@ function Quiz(root,qs,cfg){
   root.appendChild(sc);
 }
 
-/* ===== refleksi (disimpan di peramban) ===== */
+/* ===== refleksi (disimpan di peramban, tidak dikirim) ===== */
 function initReflect(){
   $$('textarea[data-save]').forEach(t=>{
     const v=store.get('r:'+t.dataset.save);if(v)t.value=v;
     t.addEventListener('input',()=>store.set('r:'+t.dataset.save,t.value));
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(window.main)main()});
+
+/* ===== Nama wajib ===== */
+function unlock(){$('#nama').value=NM;$('#nama').readOnly=true;$('#app').hidden=false;$('#mulai').hidden=true;$('#ganti').hidden=false;$('#nmsg').hidden=true}
+function mulai(){
+  const v=($('#nama').value||'').trim();
+  if(v.length<2){$('#nmsg').textContent='Tulis namamu dulu ya (minimal 2 huruf), baru bisa mulai.';$('#nmsg').hidden=false;$('#nama').focus();return}
+  NM=v;store.set('nama',NM);unlock();
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  initNav();initReflect();if(window.main)main();
+  $('#mulai').onclick=mulai;
+  $('#nama').addEventListener('keydown',e=>{if(e.key==='Enter')mulai()});
+  $('#ganti').onclick=()=>{if(Object.keys(ACT).every(k=>earned.has(k))){resetAll();return}$('#cfm').hidden=false};
+  $('#cya').onclick=resetAll;$('#cbt').onclick=()=>{$('#cfm').hidden=true};
+  if(NM)unlock();
+});
 </script>
 <script>function main(){
   /* --- Ayo Amati --- */
@@ -492,7 +480,7 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
   const seen=new Set();
   $$('.floor').forEach(b=>b.onclick=()=>{
     $('#andiSay').textContent=says[b.dataset.k];seen.add(b.dataset.k);b.style.borderColor='var(--teal)';b.style.background='#e9f8f9';
-    if(seen.size===3){fb($('#sceneFb'),'ok','🔍 Kamu menemukan <b>masalahnya</b>: alat tulis Andi belum masuk tas, padahal bel sebentar lagi berbunyi!');earn('amati')}
+    if(seen.size===3){fb($('#sceneFb'),'ok','🔍 Kamu menemukan <b>masalahnya</b>: alat tulis Andi belum masuk tas, padahal bel sebentar lagi berbunyi!');kirim('amati',1,1);earn('amati')}
   });
   const D=[
     ['Apa masalah yang dialami Andi pagi ini?','Andi belum membawa alat tulis (pensil, penghapus, penggaris) karena masih berserakan di lantai, sementara waktu hampir habis.'],
@@ -501,6 +489,7 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
   D.forEach(([q,a],i)=>{
     const d=el('div','q',`<div class="qt">${i+1}. ${q}</div>`);
     const t=el('textarea');t.rows=2;t.dataset.save='disk'+i;t.placeholder='Tuliskan pendapatmu…';
+    const v=store.get('r:disk'+i);if(v)t.value=v;t.addEventListener('input',()=>store.set('r:disk'+i,t.value));
     const b=el('button','btn ghost','Lihat contoh jawaban');b.type='button';b.style.marginTop='10px';
     const f=el('div','fb');
     b.onclick=()=>{fb(f,'hint','💡 Contoh jawaban (jawabanmu boleh berbeda): '+a)};
@@ -517,7 +506,7 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
       const free=blanks.find(x=>!x.textContent&&x.dataset.set===s);
       if(!s||!free){fb($('#defFb'),'no','🤔 Kata “'+w+'” belum cocok. Ingat: berpikir komputasional itu <b>logis, runtut, dan sistematis</b>, dengan menyusun <b>langkah-langkah</b> yang jelas.');return}
       free.textContent=w;free.classList.add('ok');b.classList.add('used');
-      if(blanks.every(x=>x.textContent)){fb($('#defFb'),'ok','🎉 Tepat sekali! Definisinya sudah lengkap.');$('#defExplain').style.display='flex';earn('definisi')}
+      if(blanks.every(x=>x.textContent)){fb($('#defFb'),'ok','🎉 Tepat sekali! Definisinya sudah lengkap.');$('#defExplain').style.display='flex';kirim('definisi',1,1);earn('definisi')}
       else fbClear($('#defFb'));
     };
     bank.appendChild(b);
@@ -538,7 +527,7 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
    st:[['Kenali masalah: apa masalahnya?',['Tas Sinta terlalu berat','Kelas Sinta terlalu dekat','Sinta tidak punya tas'],0],
        ['Cari penyebab: mengapa itu terjadi?',['Sinta membawa semua buku, termasuk yang tidak ada pelajarannya hari ini','Tasnya terlalu bersih','Jalan menuju kelas terlalu rata'],0],
        ['Pikirkan solusi: apa yang sebaiknya dilakukan?',['Hanya membawa buku sesuai jadwal pelajaran hari ini','Menambah isi tas supaya seimbang','Meninggalkan tas di gerbang'],0]]}];
-  const done=new Set(), prog=cases.map(()=>0);
+  const done=new Set(), prog=cases.map(()=>0), missed=cases.map(()=>[false,false,false]);
   function renderTabs(cur){
     const t=$('#caseTabs');t.innerHTML='';
     cases.forEach((c,i)=>{const b=el('button','btn '+(i===cur?'o':'ghost'),`${c.e} Kartu ${i+1}: ${c.n}${done.has(i)?' ✅':''}`);b.type='button';b.onclick=()=>showCase(i);t.appendChild(b)});
@@ -560,9 +549,10 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
       const b=el('button','opt',o.t);b.type='button';
       b.onclick=()=>{
         if(o.idx===ans){b.classList.add('right');prog[i]++;
-          if(prog[i]===3){done.add(i);if(done.size===3)earn('detektif')}
+          if(prog[i]===3){done.add(i);
+            if(done.size===3){const salah=missed.reduce((s,m)=>s+m.filter(Boolean).length,0);kirim('detektif',9-salah,9);earn('detektif')}}
           setTimeout(()=>showCase(i),650)}
-        else{b.classList.add('wrong');fb(f,'no','🤔 Hmm, belum cocok dengan ceritanya. Baca situasinya sekali lagi, lalu coba pilihan lain.')}
+        else{missed[i][k]=true;b.classList.add('wrong');fb(f,'no','🤔 Hmm, belum cocok dengan ceritanya. Baca situasinya sekali lagi, lalu coba pilihan lain.')}
       };
       box.appendChild(b);
     });
@@ -576,22 +566,25 @@ document.addEventListener('DOMContentLoaded',()=>{initNav();initReflect();if(win
   mb.forEach(([t,v])=>{
     const r=el('div','row',`<div style="flex:1;min-width:220px;font-weight:700">${t}</div>`);
     const a=el('button','btn ghost','Masalah'),b=el('button','btn ghost','Bukan masalah');a.type=b.type='button';
-    const res=el('span','mini', '', {style: 'font-weight: 700;'});
+    const res=el('span','mini');res.style.fontWeight='700';
     [[a,1],[b,0]].forEach(([x,val])=>x.onclick=()=>{
       if(r.dataset.d)return;r.dataset.d=1;n++;
       const right=val===v;if(right)ok++;
       x.className='btn '+(right?'g':'o');res.textContent=right?'✅ Tepat':(v?'❌ Ini masalah: kegiatan terganggu':'❌ Ini fakta, bukan masalah');
-      if(n===mb.length){fb($('#mbFb'),ok>=5?'ok':'hint',`Skormu ${ok} dari ${mb.length}. Masalah sederhana adalah hal yang membuat kegiatan kita terganggu.`);earn('mb')}
+      if(n===mb.length){fb($('#mbFb'),ok>=5?'ok':'hint',`Skormu ${ok} dari ${mb.length}. Masalah sederhana adalah hal yang membuat kegiatan kita terganggu.`);kirim('mb',ok,mb.length);earn('mb')}
     });
     r.append(a,b,res);r.style.margin='10px 0';$('#mb').appendChild(r);
   });
 
-  /* --- Kuis --- */
-  Quiz($('#quiz'),[
+  /* --- Kuis: 4 soal diacak dari 6 --- */
+  const BK=[
     {q:'Berpikir komputasional adalah cara berpikir untuk …',o:['bermain gim sepanjang hari','menyelesaikan masalah secara logis, runtut, dan sistematis','menggambar tanpa aturan'],a:1,why:'Berpikir komputasional menyelesaikan masalah dengan langkah yang jelas.'},
     {q:'Contoh masalah sederhana dalam kehidupan sehari-hari adalah …',o:['terlambat ke sekolah karena bangun kesiangan','matahari terbit di timur','bumi mengelilingi matahari'],a:0,why:'Terlambat mengganggu kegiatan kita, jadi itu masalah.'},
-    {q:'Langkah pertama saat menghadapi masalah adalah …',o:['langsung marah','mengenali masalahnya','menyalahkan teman'],a:1,why:'Kenali masalah dulu, baru cari penyebab dan solusi.'}
-  ],{id:'kuis1',onDone:()=>$('#badge').classList.add('show')});
+    {q:'Langkah pertama saat menghadapi masalah adalah …',o:['langsung marah','mengenali masalahnya','menyalahkan teman'],a:1,why:'Kenali masalah dulu, baru cari penyebab dan solusi.'},
+    {q:'Mengapa kita perlu mencari penyebab masalah?',o:['agar solusi yang dipilih tepat sasaran','agar masalahnya makin banyak','agar bisa menyalahkan orang lain'],a:0,why:'Solusi yang tepat lahir dari penyebab yang tepat.'},
+    {q:'Berpikir komputasional harus selalu memakai komputer. Pernyataan ini …',o:['salah, cukup dengan otak, kertas, dan pensil','benar, harus ada komputer','benar, harus tersambung internet'],a:0,why:'Berpikir komputasional adalah cara berpikir, bukan alat.'},
+    {q:'Urutan tiga langkah detektif yang benar adalah …',o:['kenali masalah, cari penyebab, pikirkan solusi','pikirkan solusi, kenali masalah, cari penyebab','cari penyebab, lupakan masalah, tidur'],a:0,why:'Mulai dari mengenali masalah, lalu penyebab, kemudian solusi.'}];
+  Quiz($('#quiz'),shuffle(BK).slice(0,4),{id:'kuis1',onDone:s=>kirim('kuis1',s,4)});
 }
 </script>
 </body>
