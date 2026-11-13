@@ -3,6 +3,7 @@
 <style>
 :root{--ink:#1d1b4c;--indigo:#2b2a7a;--teal:#0fa3b1;--sun:#ffc93c;--coral:#ff6b6b;--mint:#2ec4a6;--paper:#fffdf7;--soft:#eef0ff}
 *{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 body{font-family:Nunito,system-ui,sans-serif;font-size:clamp(16px,1.2vw + 12px,19px);line-height:1.6;color:var(--ink);min-height:100dvh;background:linear-gradient(160deg,var(--indigo),#1b6fa8 55%,var(--teal));background-attachment:fixed;overflow-x:hidden}
 h1,h3,.btn,.tab{font-family:"Baloo 2",Nunito,sans-serif}
 .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
@@ -89,26 +90,26 @@ button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible{
 <div class="hero"><h1>🎮 Ayo Jelajahi Teknologi Digital!</h1>
 <div class="maskot"><div class="r">🤖</div><div class="s">Aku <b>Robo-KKA</b>! Isi nama dulu, lalu selesaikan 3 tantangan dan catat <b>satu hal baru</b> ya! ⭐</div></div>
 <div class="box"><b class="t">👩‍🏫 Buka bersama gurumu!</b>Amati dan jelajahi bagaimana teknologi digital membantu manusia menyelesaikan masalah. Pecahkan tantangan di bawah, lalu <b>catat satu hal baru</b> yang kamu temukan.</div>
-<div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama lengkap atau nama panggilanmu (contoh: Budi Santoso):</label><input class="in" id="nama" type="text" maxlength="50" autocomplete="off" placeholder="Contoh: Budi Santoso"><div id="nmsg" aria-live="polite"></div><p style="margin-top:10px"><button class="btn g" id="mulai" type="button" onclick="mulai()">🚀 Mulai Tantangan</button> <button class="btn y" type="button" onclick="mulaiBaru()">🔄 Ganti siswa</button></p></div>
+<div class="box nm"><b class="t">🙋 Tulis namamu dulu ya!</b><label for="nama" style="font-weight:700">Nama lengkap atau nama panggilanmu (contoh: Budi Santoso):</label><input class="in" id="nama" type="text" maxlength="50" autocomplete="off" placeholder="Contoh: Budi Santoso"><div id="nmsg" aria-live="polite"></div><p style="margin-top:10px"><button class="btn g" id="mulai" type="button" onclick="mulai()">🚀 Mulai Tantangan</button> <button class="btn y" type="button" onclick="mulaiBaru()">🔄 Ganti siswa</button></p><div id="cfm" class="fb no" role="alert" hidden>Yakin ganti siswa? Progres di perangkat ini akan dihapus.<p style="margin-top:8px"><button class="btn o" id="cya" type="button" onclick="resetAll()">Ya, ganti</button> <button class="btn" id="cbt" type="button" onclick="$('cfm').hidden=true">Batal</button></p></div></div>
 <div class="box lk" id="lockmsg"><b class="t">🔒 Tantangan masih terkunci</b>Isi namamu, lalu tekan <b>Mulai Tantangan</b>.</div></div>
 
 <div id="game" hidden>
 <div class="score"><div class="stars" id="st" aria-hidden="true"><i>⭐</i><i>⭐</i><i>⭐</i></div><div style="flex:1"><div class="bar2"><i id="pg"></i></div><small id="pt" aria-live="polite">Selesaikan 3 tantangan untuk mendapat bintang ⭐</small></div></div>
 <div class="tabs" id="tb"><button class="tab on" onclick="T(1)"><span class="e">🃏</span>Kartu</button><button class="tab" onclick="T(2)"><span class="e">🧩</span>Sortir</button><button class="tab" onclick="T(3)"><span class="e">❓</span>Kuis</button><button class="tab" onclick="T(4)"><span class="e">📝</span>Catatan</button></div>
 
-<div id="t1" class="card on"><h3>🃏 Tantangan 1: Kartu Teknologi atau Bukan?</h3><p>Lihat kartunya, lalu tebak: <b>teknologi digital</b> atau <b>bukan</b>? <span class="chip" id="fcn"></span></p><div id="fcw"></div></div>
+<div id="t1" class="card on"><h3>🃏 Tantangan 1: Kartu Teknologi atau Bukan?</h3><p>Lihat kartunya, lalu tebak: <b>teknologi digital</b> atau <b>bukan</b>? Hati-hati, ada yang mengecoh: memakai listrik belum tentu digital. Cari tanda komputer kecil, sensor, atau data digital. <span class="chip" id="fcn"></span></p><div id="fcw"></div></div>
 
 <div id="t2" class="card"><h3>🧩 Tantangan 2: Manfaat atau Kurang Bijak?</h3><p>Pikirkan <b>tujuan</b> dan <b>akibatnya</b>. Skor: <b id="sc" class="chip">0</b> dari 8</p><div class="sit" id="sit"></div><div class="act"><button class="btn g" onclick="A(true)">✅ Manfaat</button><button class="btn o" onclick="A(false)">⚠️ Kurang Bijak</button></div><div id="sfb" aria-live="polite"></div></div>
 
 <div id="t3" class="card"><h3>❓ Tantangan 3: Kuis Kilat</h3><div id="qz"></div></div>
 
-<div id="t4" class="card"><h3>📝 Catatan Penjelajah</h3><p>Tuliskan <b>satu hal baru</b> yang kamu temukan hari ini:</p><textarea id="note" rows="4" placeholder="Hal baru yang kutemukan..."></textarea><p style="margin-top:10px"><button class="btn" onclick="try{localStorage.setItem('bab2_note1',$('note').value)}catch(e){};this.textContent='✅ Tersimpan di perangkat ini'">💾 Simpan</button></p><p><small>Catatan ini hanya tersimpan di Chromebook ini, tidak dikirim ke guru.</small></p><div id="fin"></div></div>
+<div id="t4" class="card"><h3>📝 Catatan Penjelajah</h3><p>Tuliskan <b>satu hal baru</b> yang kamu temukan hari ini:</p><textarea id="note" rows="4" placeholder="Hal baru yang kutemukan..."></textarea><p style="margin-top:10px"><button class="btn" onclick="try{localStorage.setItem('bab2_note1',$('note').value)}catch(e){};this.textContent='✅ Tersimpan sementara'">💾 Simpan</button></p><p><small>Catatan ini tidak dikirim ke guru dan akan dihapus saat siswa berikutnya mulai.</small></p><div id="fin"></div></div>
 </div></div>
 <div class="fb kst" id="kst" role="status" aria-live="polite"></div>
 <footer>SD Negeri 04 Tugusari · KKA Kelas V · Hasil aktivitas (nama dan skor) dikirim ke guru</footer>
 <script>
-const $=id=>document.getElementById(id);let done={1:0,2:0,3:0},ready=false;
-const URL_SHEET='https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec';
+const $=id=>document.getElementById(id);let done={1:0,2:0,3:0},ready=false,gen=0;
+const URL_SHEET='https://script.google.com/macros/s/AKfycbwWoT9Nesgz-nzMdr5kBWLXFEVahaJxY5Y4wUrRme1C2ree-4ncOKRhCPqQeFdjsyps/exec';
 const BAB="Bab 2",PERTEMUAN="Pertemuan 1";
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const pick=(a,n)=>shuf(a).slice(0,n);
@@ -120,30 +121,45 @@ function mulai(){const nm=$("nama").value.replace(/\s+/g," ").trim();
  try{localStorage.setItem("bab2_nama",nm)}catch(e){}
  ready=true;$("game").hidden=false;$("lockmsg").style.display="none"}
 $("nama").addEventListener("keydown",e=>{if(e.key==="Enter")mulai()});
-try{const n=localStorage.getItem("bab2_nama");if(n){$("nama").value=n;mulai()}}catch(e){}
+try{const n=localStorage.getItem("bab2_nama");if(n){$("nama").value=n;mulai()}else localStorage.removeItem("bab2_note1")}catch(e){}
 
 /* ===== kirim ke sheet dengan konfirmasi ===== */
 let pend=null,kt=0;
 function stt(c,h){const k=$("kst");clearTimeout(kt);k.className="fb "+c+" kst";k.style.display="block";k.innerHTML=h;if(c=="ok")kt=setTimeout(()=>k.style.display="none",6000)}
 function kirimHasil(aktivitas,skor,total){pend={aktivitas:aktivitas,skor:skor,total:total};kirimP()}
-function kirimP(){if(!pend)return;const nm=($("nama").value||"").trim();
+function kirimP(){if(!pend)return;const nm=($("nama").value||"").trim(),g0=gen;
  if(!ready||!nm){stt("no","✏️ Isi namamu dan tekan Mulai dulu.");return}
  stt("ok","⏳ Mengirim jawaban...");
- fetch(URL_SHEET,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:pend.aktivitas,skor:pend.skor,total:pend.total})})
-  .then(r=>r.json()).then(j=>{if(j&&j.ok){pend=null;stt("ok","✅ Jawabanmu sudah tersimpan.")}else throw 0})
-  .catch(()=>stt("no",'⚠️ Belum terkirim. Periksa internet, lalu <button class="btn" onclick="kirimP()">Kirim ulang</button>'))}
-function mulaiBaru(){if(!confirm("Hapus progres di Chromebook ini dan ganti siswa?"))return;try{['bab2_p1','bab2_note1','bab2_nama'].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload()}
+ fetch(URL_SHEET,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:pend.aktivitas,skor:pend.skor,total:pend.total,persen:(pend.total>0?Math.round(pend.skor/pend.total*100):0)})})
+  .then(r=>r.text()).then(t=>{if(g0!==gen)return;let ok=false;try{ok=JSON.parse(t).ok===true}catch(e){ok=t.trim()==="OK"}if(ok){pend=null;stt("ok","✅ Jawabanmu sudah tersimpan.")}else throw 0})
+  .catch(()=>{if(g0===gen)stt("no",'⚠️ Belum terkirim. Periksa internet, lalu <button class="btn" onclick="kirimP()">Kirim ulang</button>')})}
+
+/* ===== ganti siswa: konfirmasi di halaman, reset di tempat (tanpa reload) ===== */
+function mulaiBaru(){const c=done[1]+done[2]+done[3];if(!ready||c==3){resetAll();return}$("cfm").hidden=false}
+function resetAll(){
+ try{['bab2_nama','bab2_p1','bab2_note1'].forEach(k=>localStorage.removeItem(k))}catch(e){}
+ gen++;pend=null;ready=false;done={1:0,2:0,3:0};
+ $("kst").style.display="none";$("cfm").hidden=true;
+ D=pick(D0,10);fi=0;fs=0;RF();
+ S=pick(S0,8);si=0;sc=0;lock=false;$("sc").textContent=0;$("sfb").innerHTML="";show();
+ Q=newQ();qi=0;qs=0;Rq();
+ $("note").value="";$("fin").innerHTML="";try{$("t4").querySelector("button").textContent="💾 Simpan"}catch(e){}
+ [1,2,3,4].forEach(i=>{$("t"+i).classList.toggle("on",i==1);$("tb").children[i-1].classList.toggle("on",i==1)});
+ prog();
+ $("game").hidden=true;$("lockmsg").style.display="";$("nmsg").innerHTML="";$("mulai").style.display="";
+ $("nama").readOnly=false;$("nama").value="";scrollTo(0,0);try{$("nama").focus()}catch(e){}}
+
 $("bg").innerHTML=["📱","💻","📺","⌚","📷","💡","🚀","⭐","🤖","🎧"].map((e,i)=>`<span style="left:${i*10+2}%;animation-duration:${14+i*2}s;animation-delay:-${i*3}s;font-size:${24+i%3*10}px">${e}</span>`).join("");
 function boom(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<30;i++){const e=document.createElement('div');e.className='conf';e.textContent=['🎉','⭐','🎈','✨','🤖'][i%5];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}}
 function T(n){if(!ready)return;[1,2,3,4].forEach(i=>{$("t"+i).classList.toggle("on",i==n);$("tb").children[i-1].classList.toggle("on",i==n)});if(n==4)fin();scrollTo({top:0,behavior:"smooth"})}
-function prog(){const c=done[1]+done[2]+done[3];$("pg").style.width=c/3*100+"%";[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));[1,2,3].forEach(i=>$("tb").children[i-1].classList.toggle("ok",!!done[i]));$("pt").textContent=c==3?"🎉 Semua tantangan selesai! Tulis catatanmu di tab Catatan.":c+" dari 3 tantangan selesai";if(c==3){try{localStorage.setItem("bab2_p1","1")}catch(e){};boom()}}
-function fin(){const c=done[1]+done[2]+done[3];$("fin").innerHTML=c==3?'<div class="fb ok">🌟🌟🌟 Hebat! Kamu menyelesaikan Pertemuan 1!</div><p><a class="btn b" href="bab2.html">📘 Kembali ke Dashboard</a></p>':'<div class="fb no">Masih ada tantangan yang belum selesai. Ayo lengkapi dulu ya! 💪</div>'}
+function prog(){const c=done[1]+done[2]+done[3];$("pg").style.width=c/3*100+"%";[...$("st").children].forEach((s,i)=>s.classList.toggle("on",i<c));[1,2,3].forEach(i=>$("tb").children[i-1].classList.toggle("ok",!!done[i]));$("pt").textContent=c==3?"🎉 Semua tantangan selesai! Tulis catatanmu di tab Catatan.":c+" dari 3 tantangan selesai";if(c==3){try{['bab2_nama','bab2_p1','bab2_note1'].forEach(k=>localStorage.removeItem(k))}catch(e){};boom()}}
+function fin(){const c=done[1]+done[2]+done[3];$("fin").innerHTML=c==3?'<div class="fb ok">🌟🌟🌟 Hebat! Kamu menyelesaikan Pertemuan 1! Progres di perangkat ini sudah dihapus.</div>'+(pend?'<div class="fb no">⚠️ Ada jawaban yang belum terkirim. <button class="btn" onclick="kirimP()">Kirim ulang</button> Pastikan terkirim sebelum menekan Murid berikutnya.</div>':'')+'<p><a class="btn b" href="bab2.html">📘 Kembali ke Dashboard</a> <button class="btn o" onclick="resetAll()">👋 Murid berikutnya</button></p>':'<div class="fb no">Masih ada tantangan yang belum selesai. Ayo lengkapi dulu ya! 💪</div>'}
 
-/* ===== 1. Kartu: 10 kartu diacak dari 14 (ada yang mengecoh) ===== */
-const D0=[["📱","Ponsel",1,"Memakai komputer dan internet untuk menelepon, mengirim pesan, dan video call."],["📏","Penggaris kayu",0,"Hanya alat ukur biasa, tidak memakai komputer atau internet."],["💻","Laptop",1,"Komputer untuk mengetik tugas, presentasi, dan belajar daring."],["✏️","Pensil",0,"Alat tulis biasa tanpa komputer atau listrik."],["⌚","Jam pintar",1,"Menunjukkan waktu dan menghitung langkah kaki dengan komputer kecil."],["📒","Buku tulis",0,"Alat mencatat dari kertas, bukan teknologi digital."],["🏧","Mesin ATM",1,"Menyimpan dan mengambil uang lewat sistem komputer."],["🧹","Sapu",0,"Alat kebersihan sederhana tanpa komputer."],["📷","Kamera digital",1,"Menyimpan foto dan video dalam bentuk data digital."],["🪑","Kursi kayu",0,"Perabot biasa, tidak memakai komputer atau internet."],["🚪","Pintu otomatis",1,"Sensor dan komputer kecil membuatnya terbuka sendiri saat ada orang."],["🧮","Kalkulator",1,"Mengolah angka secara elektronik dengan chip komputer."],["🕰️","Jam dinding jarum",0,"Jarumnya digerakkan mesin sederhana, tidak mengolah data digital."],["🕯️","Lilin",0,"Memberi cahaya dari api, tidak memakai komputer."]];
+/* ===== 1. Kartu: 10 kartu diacak dari 14, banyak yang mengecoh (listrik belum tentu digital) ===== */
+const D0=[["📱","Ponsel",1,"Memakai komputer dan internet untuk menelepon, mengirim pesan, dan video call."],["🔦","Senter biasa",0,"Hanya baterai dan lampu. Memakai listrik saja belum berarti digital, karena tidak ada komputer yang mengolah data."],["🚦","Lampu lalu lintas berwaktu",1,"Komputer kecil mengatur kapan lampu berganti warna."],["🌀","Kipas dengan saklar putar",0,"Memakai listrik, tetapi hanya digerakkan saklar sederhana tanpa mengolah data."],["🎞️","Kamera film",0,"Menyimpan gambar pada film, bukan sebagai data digital."],["📷","Kamera digital",1,"Menyimpan foto dan video dalam bentuk data digital."],["♨️","Setrika listrik biasa",0,"Memanaskan dengan listrik, tanpa komputer atau sensor yang mengolah data."],["🧺","Mesin cuci program otomatis",1,"Chip komputer dan sensor mengatur air, putaran, dan waktu cuci."],["🧭","Kompas jarum",0,"Jarum magnet menunjuk utara. Tidak ada data digital."],["🗺️","Peta di ponsel (GPS)",1,"Mengolah data lokasi dari satelit lewat komputer dan internet."],["🌡️","Termometer raksa",0,"Suhu terbaca dari tinggi cairan raksa, bukan dari data digital."],["🩺","Termometer tembak",1,"Sensor inframerah dan chip komputer mengubah suhu menjadi angka digital."],["⚖️","Timbangan pegas",0,"Beratnya ditunjukkan gerakan pegas, tanpa komputer."],["📟","Timbangan digital",1,"Sensor dan chip komputer mengubah berat menjadi angka di layar."]];
 let D=pick(D0,10),fi=0,fs=0;
 function RF(){$("fcn").textContent=Math.min(fi+1,D.length)+" / "+D.length;
-if(fi>=D.length){$("fcw").innerHTML=`<div class="big">${fs>=8?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${fs}/${D.length}</b></p><p style="text-align:center"><button class="btn" onclick="D=pick(D0,10);fi=0;fs=0;RF()">🔄 Main lagi</button></p>`;if(!done[1]){done[1]=1;kirimHasil("Kartu Teknologi",fs,D.length);prog()}return}
+if(fi>=D.length){$("fcw").innerHTML=`<div class="big">${fs>=8?"🏆":"👍"}</div><p style="text-align:center"><b>Skor ${fs}/${D.length}</b></p><p style="text-align:center"><button class="btn" onclick="D=pick(D0,10);fi=0;fs=0;RF()">🔄 Main lagi</button></p>`;if(!done[1]){done[1]=1;kirimHasil("Aktivitas 1: Kartu Teknologi",fs,D.length);prog()}return}
 const d=D[fi];$("fcw").innerHTML=`<div class="fc" id="fc"><div class="fci"><div class="face front"><span class="em">${d[0]}</span><b>${d[1]}</b><small>Teknologi digital atau bukan?</small></div><div class="face back" id="bk"></div></div></div><div class="act" id="fa"><button class="btn g" onclick="F(true)">📱 Teknologi</button><button class="btn o" onclick="F(false)">🚫 Bukan</button></div>`}
 function F(v){const d=D[fi],ok=(!!d[2])==v;if(ok)fs++;$("bk").className="face back "+(ok?"y":"n");$("bk").innerHTML=`<span class="em">${ok?"✅":"❌"}</span><h4>${d[1]}: ${d[2]?"Teknologi digital":"Bukan teknologi digital"}</h4><p>${d[3]}</p>`;$("fc").classList.add("f");$("fa").innerHTML=`<button class="btn b" style="grid-column:1/3" onclick="fi++;RF()">${fi==D.length-1?"Lihat skor 🏁":"Kartu berikutnya ▶"}</button>`}
 RF();
@@ -151,28 +167,29 @@ RF();
 /* ===== 2. Manfaat / Kurang bijak: 8 situasi diacak dari 14, harus menimbang tujuan, durasi, dan akibat ===== */
 const S0=[["Raka menonton video cara melipat origami lalu mempraktikkannya.",1,"Belajar hal baru dan langsung dipraktikkan."],["Dewi video call dengan kakeknya yang tinggal di luar kota.",1,"Menjaga hubungan dengan keluarga."],["Fajar bermain gim sampai pukul 11 malam.",0,"Kurang tidur, sulit fokus esok hari."],["Putri memakai ponsel saat makan bersama keluarga.",0,"Mengurangi kebersamaan dan sopan santun."],["Raka memakai ponsel 30 menit untuk mencari bahan tugas IPAS, lalu menaruhnya dan beristirahat.",1,"Ada tujuan jelas dan waktu dibatasi."],["Dewi membuka video belajar, tetapi 2 jam kemudian masih berpindah-pindah ke video lucu.",0,"Awalnya baik, tetapi tujuan belajar terlupakan."],["Fajar membuat kartu ucapan digital untuk gurunya.",1,"Berkreasi dengan teknologi."],["Putri menunda PR karena asyik bermain gawai.",0,"Tugas terbengkalai; perlu mengatur waktu."],["Raka memotret papan tulis agar bisa belajar ulang, setelah meminta izin gurunya.",1,"Memakai kamera untuk belajar, dengan izin."],["Dewi memotret temannya yang sedang menangis lalu mengunggahnya agar lucu.",0,"Tidak menghargai perasaan dan privasi teman."],["Fajar menerima pesan 'klik tautan ini, dapat pulsa gratis' lalu langsung meneruskannya ke kelas.",0,"Belum dicek kebenarannya; bisa menyebarkan penipuan."],["Putri menanyakan ke guru apakah sebuah berita di internet benar sebelum membagikannya.",1,"Memeriksa informasi sebelum menyebarkan."],["Raka bermain gim edukasi 20 menit sesuai kesepakatan dengan ibunya.",1,"Hiburan yang dibatasi dan disepakati."],["Dewi memakai ponsel kakaknya tanpa bertanya karena 'cuma sebentar'.",0,"Tidak meminta izin; menghargai barang orang lain."]];
 let S=pick(S0,8),si=0,sc=0,lock=false;
-function show(){if(si>=S.length){$("sit").innerHTML="🏁 Selesai! Skormu "+sc+"/"+S.length;kirimHasil("Manfaat atau Kurang Bijak",sc,S.length);
+function show(){if(si>=S.length){$("sit").innerHTML="🏁 Selesai! Skormu "+sc+"/"+S.length;kirimHasil("Aktivitas 2: Manfaat atau Kurang Bijak",sc,S.length);
  if(sc>=6){if(!done[2]){done[2]=1;prog()}$("sfb").innerHTML='<div class="fb ok">🌟 Bagus! Tantangan 2 selesai.</div>'}
  else $("sfb").innerHTML='<div class="fb no">Skormu belum 6. Baca lagi pembahasannya ya.</div><button class="btn" onclick="S=pick(S0,8);si=0;sc=0;$(\'sc\').textContent=0;$(\'sfb\').innerHTML=\'\';show()">🔄 Coba lagi (butuh minimal 6)</button>';return}
  $("sit").textContent=S[si][0];$("sit").classList.remove("sw");void $("sit").offsetWidth;$("sit").classList.add("sw");lock=false}
-function A(v){if(lock||si>=S.length)return;lock=true;const ok=(!!S[si][1])==v;if(ok)sc++;$("sc").textContent=sc;$("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Benar!":"❌ Belum tepat."} ${S[si][2]}</div>`;si++;setTimeout(show,1800)}
+function A(v){if(lock||si>=S.length)return;lock=true;const ok=(!!S[si][1])==v,g0=gen;if(ok)sc++;$("sc").textContent=sc;$("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"✅ Benar!":"❌ Belum tepat."} ${S[si][2]}</div>`;si++;setTimeout(()=>{if(g0===gen)show()},1800)}
 show();
 
 /* ===== 3. Kuis Kilat (HOTS): 5 soal diacak dari 8, pilihan jawaban juga diacak ===== */
-const Q0=[["Sekolah ingin menghemat kertas saat mengumpulkan tugas. Cara berteknologi digital yang paling tepat adalah ....",["Menulis ulang tugas di papan tulis","Mengirim tugas lewat aplikasi kelas","Memfotokopi semua tugas","Menempel tugas di dinding kelas"],1],
-["Raka menonton video belajar 30 menit, lalu 2 jam video hiburan. Perbaikan yang paling tepat adalah ....",["Membeli ponsel baru","Membuat jadwal dengan tujuan dan batas waktu tiap kegiatan","Menonton lebih larut malam","Menyembunyikan ponsel dari ibu"],1],
-["Pasangan alat dan fungsi yang TIDAK tepat adalah ....",["ATM: mengambil uang lewat sistem komputer","Kamera digital: menyimpan foto sebagai data","Penggaris kayu: menyimpan data tugas","Laptop: membuat presentasi"],2],
-["Dewi menerima pesan 'bagikan ke 10 teman, dapat hadiah gratis'. Langkah paling bijak adalah ....",["Langsung membagikannya","Menanyakan kebenarannya ke guru atau orang tua dulu","Mengeklik tautannya supaya tahu isinya","Mengisi data diri agar dapat hadiah"],1],
-["Teknologi digital disebut 'bermata dua' karena ....",["Harganya mahal","Hanya boleh dipakai orang dewasa","Bisa bermanfaat atau merugikan, tergantung cara memakainya","Selalu berbahaya bagi anak"],2],
-["Fajar dan Putri sama-sama memakai tablet 1 jam. Fajar mencari bahan laporan, Putri menggulir video tanpa tujuan. Pernyataan yang paling tepat ....",["Keduanya sama baiknya karena sama lamanya","Fajar lebih bijak karena memakai dengan tujuan jelas","Putri lebih bijak karena lebih santai","Keduanya sama-sama salah"],1],
-["Jam pintar dan jam dinding jarum sama-sama menunjukkan waktu. Jam pintar disebut teknologi digital karena ....",["Harganya lebih mahal","Bentuknya lebih kecil","Warnanya lebih menarik","Ada komputer kecil yang mengolah data, misalnya menghitung langkah"],3],
-["Ibu meminta ponsel disimpan saat makan malam. Alasan terbaik untuk menurut adalah ....",["Ponsel bisa terkena makanan","Kebersamaan dengan keluarga lebih berharga daripada layar saat itu","Ibu sedang marah","Ponsel harus diisi daya"],1]];
-let Q=pick(Q0,5).map(q=>({t:q[0],o:shuf(q[1].map((x,i)=>[x,i==q[2]?1:0]))})),qi=0,qs=0;
+const Q0=[["Sekolah ingin murid mengumpulkan tugas tanpa banyak kertas dan tanpa antre di kantor guru. Rancangan yang paling tepat adalah ....",["Mengirim tugas lewat aplikasi kelas yang dipilih guru, lalu guru memberi nilai di sana","Mengirim tugas ke nomor pribadi guru lalu meneruskannya ke teman","Memfotokopi tugas lalu memotret hasilnya","Mengunggah tugas ke situs umum supaya semua orang ikut menilai"],0],
+["Raka berniat belajar 30 menit, tetapi selalu berakhir 2 jam menonton hiburan. Langkah perbaikan yang paling mungkin berhasil adalah ....",["Membuat jadwal tertulis berisi tujuan, batas waktu, dan pengingat sebelum membuka perangkat","Membeli ponsel baru agar lebih fokus","Berjanji dalam hati akan lebih disiplin","Menonton hiburan dulu, belajar belakangan"],0],
+["Kakak berkata, “Semua alat yang memakai listrik pasti teknologi digital.” Contoh yang paling tepat untuk menunjukkan kekeliruan kakak adalah ....",["Setrika listrik biasa: memakai listrik, tetapi tidak mengolah data","Ponsel yang bisa menelepon","Laptop yang dipakai mengetik","Jam pintar yang menghitung langkah"],0],
+["Dewi menerima pesan dari akun teman akrabnya: “Klik tautan ini, kamu menang pulsa!” Tindakan yang paling bijak adalah ....",["Menanyakan langsung kepada temannya lewat cara lain, lalu menunjukkan pesan itu kepada guru atau orang tua","Mengeklik tautannya karena pengirimnya teman akrab","Meneruskannya ke kelas supaya semua dapat pulsa","Membalas dengan memberikan nomor ponselnya"],0],
+["Putri dan Fajar sama-sama memakai tablet 1 jam. Putri mencari bahan laporan, Fajar menggulir video tanpa tujuan. Kesimpulan yang paling tepat adalah ....",["Bijak atau tidaknya dinilai dari tujuan dan akibatnya, bukan hanya lamanya","Keduanya sama baiknya karena sama lamanya","Putri kurang bijak karena terlalu serius","Keduanya salah karena tablet tidak boleh dipakai"],0],
+["Saat makan malam, ponsel Raka berbunyi karena grup kelas membahas PR yang dikumpulkan besok pagi. Sikap yang paling seimbang adalah ....",["Meminta izin ibu untuk mengecek sebentar, lalu menyimpan ponsel dan melanjutkan makan","Mengecek terus selama makan agar tidak ketinggalan","Tidak pernah membuka grup kelas lagi","Membawa ponsel ke meja makan dan membalas semua pesan"],0],
+["Jam pintar disebut teknologi digital, sedangkan jam dinding berjarum belum tentu. Alasan yang paling tepat adalah ....",["Jam pintar punya komputer kecil dan sensor yang mengolah data, misalnya langkah kaki","Harga jam pintar lebih mahal","Bentuk jam pintar lebih kecil","Warna jam pintar lebih menarik"],0],
+["Artikel A memuat nama penulis, tanggal, dan sumber rujukan. Artikel B sangat seru tetapi tanpa penulis dan sumber. Untuk tugas sekolah, langkah paling tepat adalah ....",["Memakai Artikel A, lalu mencocokkan satu fakta pentingnya dengan buku pelajaran","Memakai Artikel B karena lebih menarik dibaca","Memakai keduanya tanpa dicek karena sama-sama di internet","Memakai artikel yang paling banyak dibagikan"],0]];
+const newQ=()=>pick(Q0,5).map(q=>({t:q[0],o:shuf(q[1].map((x,i)=>[x,i==q[2]?1:0]))}));
+let Q=newQ(),qi=0,qs=0;
 function Rq(){if(qi>=Q.length){$("qz").innerHTML='<div class="big">📨</div><p style="text-align:center"><b>Jawabanmu sudah dikumpulkan.</b></p><p style="text-align:center">Pembahasan akan dibahas bersama gurumu di kelas.</p>';
- if(!done[3]){done[3]=1;kirimHasil("Kuis Kilat",qs,Q.length);prog()}return}
+ if(!done[3]){done[3]=1;kirimHasil("Aktivitas 3: Kuis Kilat",qs,Q.length);prog()}return}
  const q=Q[qi];$("qz").innerHTML=`<p><span class="chip">Soal ${qi+1} dari ${Q.length}</span></p><p><b>${q.t}</b></p>`+q.o.map((o,i)=>`<button class="opt" data-i="${i}">${"ABCD"[i]}. ${o[0]}</button>`).join("")+'<div id="qf" aria-live="polite"></div>';
- document.querySelectorAll("#qz .opt").forEach((b,i)=>b.onclick=()=>{document.querySelectorAll("#qz .opt").forEach(x=>x.disabled=true);b.classList.add("sel");if(q.o[i][1])qs++;
-  $("qf").innerHTML=`<p><small>${qi==Q.length-1?"📨 Mengirim jawaban...":"✔ Jawaban dicatat, lanjut ke soal berikutnya..."}</small></p>`;setTimeout(()=>{qi++;Rq()},800)})}
+ document.querySelectorAll("#qz .opt").forEach((b,i)=>b.onclick=()=>{const g0=gen;document.querySelectorAll("#qz .opt").forEach(x=>x.disabled=true);b.classList.add("sel");if(q.o[i][1])qs++;
+  $("qf").innerHTML=`<p><small>${qi==Q.length-1?"📨 Mengirim jawaban...":"✔ Jawaban dicatat, lanjut ke soal berikutnya..."}</small></p>`;setTimeout(()=>{if(g0!==gen)return;qi++;Rq()},800)})}
 Rq();
 try{$("note").value=localStorage.getItem("bab2_note1")||""}catch(e){}
 </script></body></html>
