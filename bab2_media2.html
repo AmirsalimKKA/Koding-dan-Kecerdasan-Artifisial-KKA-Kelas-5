@@ -211,7 +211,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 <script src="bab2_audio.js"></script>
 <script>
 const $=id=>document.getElementById(id);
-const URL_SHEET="https://script.google.com/macros/s/AKfycbxVGtwkEd4IvEPBEdhRDV95LPnQfiycGteztPOcgO1L6IOKfOhQRw5oG9j88VoJK3gP/exec";
+const URL_SHEET="https://script.google.com/macros/s/AKfycby7eGCkqRj6rqUC3MxFmaG5I5ykR8MN2PU4Kvbg3VFaoVtr8dK13s7Cla8wYZoRJeQ/exec";
 const BAB="Bab 2",PERTEMUAN="Pertemuan 2";
 function kirimHasil(aktivitas,skor,total){const nm=($("nama").value||"").trim()||"Tanpa nama";try{fetch(URL_SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({nama:nm,kelas:"V",bab:BAB,pertemuan:PERTEMUAN,aktivitas:aktivitas,skor:skor,total:total})}).catch(function(){})}catch(e){}}
 const snd=n=>{try{KKA.sfx(n)}catch(e){}};
